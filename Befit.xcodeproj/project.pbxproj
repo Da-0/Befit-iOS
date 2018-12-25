@@ -16,6 +16,11 @@
 		5066558E21D228C900580137 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066558D21D228C900580137 /* Model.swift */; };
 		5066559021D228D500580137 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066558F21D228D500580137 /* View.swift */; };
 		5066559221D22A8900580137 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066559121D22A8900580137 /* LogIn.storyboard */; };
+		506655BA21D2546900580137 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655B921D2546900580137 /* LogInVC.swift */; };
+		506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BB21D2547500580137 /* UserInfoVC1.swift */; };
+		506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BD21D2548000580137 /* UserInfoVC2.swift */; };
+		506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BF21D2548A00580137 /* UserInfoVC3.swift */; };
+		506655C221D2549600580137 /* UserInfoVC4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655C121D2549600580137 /* UserInfoVC4.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		5066558D21D228C900580137 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		5066558F21D228D500580137 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		5066559121D22A8900580137 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
+		506655B921D2546900580137 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
+		506655BB21D2547500580137 /* UserInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC1.swift; sourceTree = "<group>"; };
+		506655BD21D2548000580137 /* UserInfoVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC2.swift; sourceTree = "<group>"; };
+		506655BF21D2548A00580137 /* UserInfoVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC3.swift; sourceTree = "<group>"; };
+		506655C121D2549600580137 /* UserInfoVC4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC4.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F1753E98B305F8F0B08C8C /* Pods-Befit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +134,11 @@
 		5066559321D22B0F00580137 /* LogIn */ = {
 			isa = PBXGroup;
 			children = (
+				506655B921D2546900580137 /* LogInVC.swift */,
+				506655BB21D2547500580137 /* UserInfoVC1.swift */,
+				506655BD21D2548000580137 /* UserInfoVC2.swift */,
+				506655BF21D2548A00580137 /* UserInfoVC3.swift */,
+				506655C121D2549600580137 /* UserInfoVC4.swift */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
@@ -277,6 +292,11 @@
 				5066559021D228D500580137 /* View.swift in Sources */,
 				5066558E21D228C900580137 /* Model.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
+				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
+				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
+				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
+				506655C221D2549600580137 /* UserInfoVC4.swift in Sources */,
+				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
