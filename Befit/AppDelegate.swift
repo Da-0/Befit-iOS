@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //SideMenu 적용.
-        SideMenuController.preferences.basic.menuWidth = 325
+        SideMenuController.preferences.basic.menuWidth = 320
         SideMenuController.preferences.basic.statusBarBehavior = .hideOnMenu
         SideMenuController.preferences.basic.enablePanGesture = true
         SideMenuController.preferences.basic.supportedOrientations = .portrait
