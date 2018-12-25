@@ -25,6 +25,8 @@
 		506655C721D257CF00580137 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655C621D257CF00580137 /* SearchVC.swift */; };
 		506655C921D258FA00580137 /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655C821D258FA00580137 /* Rank.storyboard */; };
 		506655CC21D2592400580137 /* RankVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655CB21D2592400580137 /* RankVC.swift */; };
+		506655CE21D259F200580137 /* Like.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655CD21D259F200580137 /* Like.storyboard */; };
+		506655D121D25A4A00580137 /* LikeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D021D25A4A00580137 /* LikeVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		506655C621D257CF00580137 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		506655C821D258FA00580137 /* Rank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
 		506655CB21D2592400580137 /* RankVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankVC.swift; sourceTree = "<group>"; };
+		506655CD21D259F200580137 /* Like.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Like.storyboard; sourceTree = "<group>"; };
+		506655D021D25A4A00580137 /* LikeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeVC.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F1753E98B305F8F0B08C8C /* Pods-Befit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,6 +107,7 @@
 				5066557A21D21FDF00580137 /* Main.storyboard */,
 				506655C321D2578100580137 /* Search.storyboard */,
 				506655C821D258FA00580137 /* Rank.storyboard */,
+				506655CD21D259F200580137 /* Like.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 				5066559421D22B1800580137 /* Main */,
 				506655C521D257AD00580137 /* Search */,
 				506655CA21D2590C00580137 /* Rank */,
+				506655CF21D25A3400580137 /* Like */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -177,6 +183,14 @@
 				506655CB21D2592400580137 /* RankVC.swift */,
 			);
 			path = Rank;
+			sourceTree = "<group>";
+		};
+		506655CF21D25A3400580137 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				506655D021D25A4A00580137 /* LikeVC.swift */,
+			);
+			path = Like;
 			sourceTree = "<group>";
 		};
 		6773F0E3D5EDC3069E6DFDE0 /* Frameworks */ = {
@@ -256,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506655CE21D259F200580137 /* Like.storyboard in Resources */,
 				506655C921D258FA00580137 /* Rank.storyboard in Resources */,
 				5066559221D22A8900580137 /* LogIn.storyboard in Resources */,
 				5066558121D21FE000580137 /* LaunchScreen.storyboard in Resources */,
@@ -324,6 +339,7 @@
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
+				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
 				506655C221D2549600580137 /* UserInfoVC4.swift in Sources */,

@@ -67,6 +67,16 @@
             </objects>
             <point key="canvasLocation" x="998" y="754"/>
         </scene>
+        <!--LikeNavi-->
+        <scene sceneID="EzO-Hd-Rkj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Like" referencedIdentifier="LikeNavi" id="nGD-ia-TBk" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2kj-bu-ome"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kAF-pi-8Jc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994" y="834"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2ef-ag-Oeu">
             <objects>
@@ -80,6 +90,7 @@
                         <segue destination="pWH-Rh-wt6" kind="relationship" relationship="viewControllers" id="O59-2S-uyA"/>
                         <segue destination="vYu-dU-4Vb" kind="relationship" relationship="viewControllers" id="Jxx-fC-AWc"/>
                         <segue destination="rzL-wE-Pb4" kind="relationship" relationship="viewControllers" id="PcX-Go-JyW"/>
+                        <segue destination="nGD-ia-TBk" kind="relationship" relationship="viewControllers" id="4Na-cB-Bnl"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3R-Ka-Zq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
