@@ -55,7 +55,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pFb-hm-VMN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="999" y="651"/>
+            <point key="canvasLocation" x="998" y="650"/>
+        </scene>
+        <!--RankNavi-->
+        <scene sceneID="bmA-Jx-Jmt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Rank" referencedIdentifier="RankNavi" id="rzL-wE-Pb4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="1Wn-FB-T88"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2z6-fH-WYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="998" y="754"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2ef-ag-Oeu">
@@ -69,6 +79,7 @@
                     <connections>
                         <segue destination="pWH-Rh-wt6" kind="relationship" relationship="viewControllers" id="O59-2S-uyA"/>
                         <segue destination="vYu-dU-4Vb" kind="relationship" relationship="viewControllers" id="Jxx-fC-AWc"/>
+                        <segue destination="rzL-wE-Pb4" kind="relationship" relationship="viewControllers" id="PcX-Go-JyW"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3R-Ka-Zq7" userLabel="First Responder" sceneMemberID="firstResponder"/>
