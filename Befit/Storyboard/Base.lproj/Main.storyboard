@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X3C-DX-jhr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jms-GG-FJh">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -87,12 +87,47 @@
             </objects>
             <point key="canvasLocation" x="998" y="909"/>
         </scene>
+        <!--Side Menu Controller-->
+        <scene sceneID="ZF2-1U-nqS">
+            <objects>
+                <viewController id="Jms-GG-FJh" customClass="SideMenuController" customModule="SideMenuSwift" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qOz-0t-E1j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SideMenuController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FdX-oh-tUP">
+                                <rect key="frame" x="29.666666666666657" y="383.66666666666669" width="316" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="316" id="8Pl-gE-JdB"/>
+                                    <constraint firstAttribute="height" constant="45" id="xm9-Sh-MdU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.078431372550000003" green="0.85490196080000003" blue="0.77647058820000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="FdX-oh-tUP" firstAttribute="centerY" secondItem="qOz-0t-E1j" secondAttribute="centerY" id="1qb-1i-sl8"/>
+                            <constraint firstItem="FdX-oh-tUP" firstAttribute="centerX" secondItem="qOz-0t-E1j" secondAttribute="centerX" id="WSL-HX-j2a"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HbU-j0-olL"/>
+                    </view>
+                    <connections>
+                        <segue destination="X3C-DX-jhr" kind="custom" identifier="SideMenu.Content" customClass="SideMenuSegue" customModule="SideMenuSwift" id="qUr-ia-8hF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upC-qJ-QuJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-998" y="137"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2ef-ag-Oeu">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="X3C-DX-jhr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UYE-Rg-XuT">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenuSwift
 
 class MainVC: UIViewController {
 
