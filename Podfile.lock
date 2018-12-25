@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 3.3)
+  - Kingfisher (4.10.0)
+  - ObjectMapper (3.3.0)
+  - SideMenuSwift (1.0.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper
+  - Kingfisher
+  - ObjectMapper
+  - SideMenuSwift
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireObjectMapper
+    - Kingfisher
+    - ObjectMapper
+    - SideMenuSwift
+
+SPEC CHECKSUMS:
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  SideMenuSwift: f8567754feb36ade13ffd613f608829f4b86d4b3
+
+PODFILE CHECKSUM: 01af9a03ac9b6eedfa6a0aa20e1f25ec5c20ca54
+
+COCOAPODS: 1.5.3
