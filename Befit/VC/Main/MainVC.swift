@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SideMenuSwift
 
 class MainVC: UIViewController {
 
@@ -14,7 +15,11 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    @IBAction func categoryAction(_ sender: Any) {
+        self.sideMenuController?.revealMenu();
+    }
+    
 
 }
 

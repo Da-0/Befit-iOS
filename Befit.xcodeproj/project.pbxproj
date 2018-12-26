@@ -33,6 +33,7 @@
 		A59B1C9821D34EC600C2B6F2 /* KoPubDotumLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */; };
 		A59B1C9921D34EC600C2B6F2 /* KoPubDotumBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */; };
 		A59B1C9A21D34EC600C2B6F2 /* KoPubDotumMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		506655D021D25A4A00580137 /* LikeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeVC.swift; sourceTree = "<group>"; };
 		506655D221D25AD100580137 /* MyPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyPage.storyboard; sourceTree = "<group>"; };
 		506655D521D25B1100580137 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
+		506655D721D25E4900580137 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
+		506655D921D26FF900580137 /* CategoryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTVCell.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59B1C8521D3429300C2B6F2 /* FindIDVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindIDVC.swift; path = "../../../../Befit-iOS/Befit/VC/LogIn/FindIDVC.swift"; sourceTree = "<group>"; };
 		A59B1C8621D3429300C2B6F2 /* FindPWVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindPWVC.swift; path = "../../../../Befit-iOS/Befit/VC/LogIn/FindPWVC.swift"; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				5066558F21D228D500580137 /* View.swift */,
+				506655D921D26FF900580137 /* CategoryTVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				5066557821D21FDF00580137 /* MainVC.swift */,
+				506655D721D25E4900580137 /* CategoryVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -364,9 +369,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				506655D821D25E4900580137 /* CategoryVC.swift in Sources */,
 				5066559021D228D500580137 /* View.swift in Sources */,
 				5066558E21D228C900580137 /* Model.swift in Sources */,
 				506655D621D25B1100580137 /* MyPageVC.swift in Sources */,
+				506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
@@ -535,7 +542,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sopt.Befit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -555,7 +562,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sopt.Befit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
