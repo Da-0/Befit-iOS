@@ -20,7 +20,6 @@
 		506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BB21D2547500580137 /* UserInfoVC1.swift */; };
 		506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BD21D2548000580137 /* UserInfoVC2.swift */; };
 		506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BF21D2548A00580137 /* UserInfoVC3.swift */; };
-		506655C221D2549600580137 /* UserInfoVC4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655C121D2549600580137 /* UserInfoVC4.swift */; };
 		506655C421D2578100580137 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655C321D2578100580137 /* Search.storyboard */; };
 		506655C721D257CF00580137 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655C621D257CF00580137 /* SearchVC.swift */; };
 		506655C921D258FA00580137 /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655C821D258FA00580137 /* Rank.storyboard */; };
@@ -47,7 +46,6 @@
 		506655BB21D2547500580137 /* UserInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC1.swift; sourceTree = "<group>"; };
 		506655BD21D2548000580137 /* UserInfoVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC2.swift; sourceTree = "<group>"; };
 		506655BF21D2548A00580137 /* UserInfoVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC3.swift; sourceTree = "<group>"; };
-		506655C121D2549600580137 /* UserInfoVC4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC4.swift; sourceTree = "<group>"; };
 		506655C321D2578100580137 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		506655C621D257CF00580137 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		506655C821D258FA00580137 /* Rank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
@@ -162,7 +160,6 @@
 				506655BB21D2547500580137 /* UserInfoVC1.swift */,
 				506655BD21D2548000580137 /* UserInfoVC2.swift */,
 				506655BF21D2548A00580137 /* UserInfoVC3.swift */,
-				506655C121D2549600580137 /* UserInfoVC4.swift */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
@@ -358,7 +355,6 @@
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
-				506655C221D2549600580137 /* UserInfoVC4.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
 				506655CC21D2592400580137 /* RankVC.swift in Sources */,
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
