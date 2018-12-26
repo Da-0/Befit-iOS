@@ -63,20 +63,21 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
             return 1
         }
     }
-
+    
+ 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
             cell.titleLB.text = tableData[indexPath.section].title
-          
+            cell.titleLB.font = UIFont.systemFont(ofSize: 20)
             return cell
         }
         else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
             cell.titleLB.text = tableData[indexPath.section].items?[indexPath.row-1]
-            
-     
+            cell.titleLB.font = UIFont.systemFont(ofSize: 14)
             return cell
         }
 
