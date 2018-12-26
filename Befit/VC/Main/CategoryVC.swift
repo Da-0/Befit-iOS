@@ -16,10 +16,6 @@ struct cellData {
     var items: [String]?
 }
 
-struct items{
-    var name: String!
-    var nextViewid: String!
-}
 
 class CategoryVC: UIViewController {
     
@@ -28,6 +24,7 @@ class CategoryVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
        tableView.delegate = self;
@@ -68,18 +65,39 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
-            cell.titleLB.text = tableData[indexPath.section].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
+        
+        if indexPath.section == 2 || indexPath.section == 3 {
+            
+            if indexPath.row == 0 {
+                cell.titleLB.text = tableData[ indexPath.section].title
+                cell.titleLB.font = UIFont.systemFont(ofSize: 20)
+                
+                if tableData[ indexPath.section].open {
+                    cell.arrowBtn.image = #imageLiteral(resourceName: "icArrowDown")
+                    cell.titleLB?.textColor = #colorLiteral(red: 0.2815084657, green: 0.3887723505, blue: 1, alpha: 1)
+                }
+                else{
+                    cell.arrowBtn.image = #imageLiteral(resourceName: "icArrowUp")
+                    cell.titleLB?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                }
+            
+            }
+            
+            else {
+                cell.titleLB.text = tableData[indexPath.section].items?[indexPath.row-1]
+                cell.titleLB.font = UIFont.systemFont(ofSize: 14)
+                cell.titleLB?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.arrowBtn.image = nil
+            }
+        
+        }else{
+            cell.titleLB.text = tableData[ indexPath.section].title
             cell.titleLB.font = UIFont.systemFont(ofSize: 20)
-            return cell
+            
         }
-        else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
-            cell.titleLB.text = tableData[indexPath.section].items?[indexPath.row-1]
-            cell.titleLB.font = UIFont.systemFont(ofSize: 14)
-            return cell
-        }
+        
+        return cell
 
     }
     
@@ -95,21 +113,26 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         if tableData[indexPath.section].open {
             tableData[indexPath.section].open = false
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
+            
             print("\(indexPath.section), \(indexPath.row)")
             
         }
             
         else{
+            
             if indexPath.section == 2 || indexPath.section == 3 {
                 tableData[indexPath.section].open = true
                 let section = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(section, with: .automatic)
+                
                 print("\(indexPath.section), \(indexPath.row)")
             }
+                
             else{
                 print("\(indexPath.section), \(indexPath.row)")
             }

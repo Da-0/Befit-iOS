@@ -11,6 +11,7 @@ import UIKit
 class CategoryTVCell: UITableViewCell {
 
     @IBOutlet weak var titleLB: UILabel!
+    @IBOutlet weak var arrowBtn: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

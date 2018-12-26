@@ -167,7 +167,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMh-Vx-ban">
-                                                    <rect key="frame" x="29" y="17.666666666666671" width="276" height="24.333333333333329"/>
+                                                    <rect key="frame" x="29" y="17.666666666666671" width="205" height="24.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -179,18 +179,28 @@
                                                         <constraint firstAttribute="width" constant="250" id="YKh-YQ-8ny"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eaQ-wv-36z">
+                                                    <rect key="frame" x="234" y="6" width="48" height="48"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="PJd-1g-KPU"/>
+                                                        <constraint firstAttribute="width" constant="48" id="tfG-l9-IZe"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="cMh-Vx-ban" secondAttribute="trailing" id="D5Y-YR-mOB"/>
+                                                <constraint firstItem="eaQ-wv-36z" firstAttribute="leading" secondItem="cMh-Vx-ban" secondAttribute="trailing" id="AIh-nE-4KW"/>
+                                                <constraint firstItem="eaQ-wv-36z" firstAttribute="centerY" secondItem="pbF-4n-cik" secondAttribute="centerY" id="I7x-Wh-jI3"/>
                                                 <constraint firstItem="jDh-Ya-LJQ" firstAttribute="leading" secondItem="cMh-Vx-ban" secondAttribute="leading" id="IQf-1x-pT1"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="jDh-Ya-LJQ" secondAttribute="bottom" constant="-10" id="JY2-BY-sN2"/>
                                                 <constraint firstItem="jDh-Ya-LJQ" firstAttribute="top" secondItem="pbF-4n-cik" secondAttribute="top" constant="59" id="SHv-vu-AfB"/>
                                                 <constraint firstItem="jDh-Ya-LJQ" firstAttribute="top" secondItem="cMh-Vx-ban" secondAttribute="bottom" constant="17" id="hwE-xS-pfR"/>
                                                 <constraint firstItem="cMh-Vx-ban" firstAttribute="centerY" secondItem="pbF-4n-cik" secondAttribute="centerY" id="lrU-xA-gAL"/>
                                                 <constraint firstItem="cMh-Vx-ban" firstAttribute="leading" secondItem="pbF-4n-cik" secondAttribute="leadingMargin" constant="14" id="lyq-cX-0Me"/>
+                                                <constraint firstAttribute="trailing" secondItem="eaQ-wv-36z" secondAttribute="trailing" constant="38" id="uAN-Gw-mwr"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="arrowBtn" destination="eaQ-wv-36z" id="Bip-Qa-ca5"/>
                                             <outlet property="titleLB" destination="cMh-Vx-ban" id="eTr-se-hxh"/>
                                         </connections>
                                     </tableViewCell>
