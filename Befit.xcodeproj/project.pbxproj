@@ -33,7 +33,6 @@
 		A59B1C9821D34EC600C2B6F2 /* KoPubDotumLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */; };
 		A59B1C9921D34EC600C2B6F2 /* KoPubDotumBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */; };
 		A59B1C9A21D34EC600C2B6F2 /* KoPubDotumMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -369,11 +368,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				506655D821D25E4900580137 /* CategoryVC.swift in Sources */,
 				5066559021D228D500580137 /* View.swift in Sources */,
 				5066558E21D228C900580137 /* Model.swift in Sources */,
 				506655D621D25B1100580137 /* MyPageVC.swift in Sources */,
-				506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
@@ -534,7 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,7 +551,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

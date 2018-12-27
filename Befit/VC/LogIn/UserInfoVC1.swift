@@ -8,8 +8,8 @@
 
 import UIKit
 
-class UserInfoVC1: UIViewController {
-
+class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
+    
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var yearTF: UITextField!
     @IBOutlet weak var monthTF: UITextField!
@@ -18,28 +18,29 @@ class UserInfoVC1: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var ckPasswordTF: UITextField!
     
+    var keyboardDismissGesture : UITapGestureRecognizer?
     
     let yearArray = ["1993", "1994", "1995", "1996"]
     let pickerview = UIPickerView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setKeyboardSetting()
         setupTap()
-//        setupCompleteButton()
+        //        setupCompleteButton()
         
         yearTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
         yearTF.delegate = self
         initPicker()
         
-       
     }
     
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-    
+        
     @objc func completeWrite() {
         // 아래의 guard 문법은 guard 의 조건이 참 이라면 조건을 통과하고 그렇지 않다면 else로 넘어가 예외처리를 하게되는 문법입니다.
         // 여기서는 제목과 내용의 text가 존재하지 않으면 통과하지 못하는 방식으로 사용되었습니다.
@@ -57,12 +58,12 @@ class UserInfoVC1: UIViewController {
     // 글 작성을 완료하는 버튼 설정
     // 인터페이스 빌더에서 네비게이션 바에 버튼이 추가가 안될 경우 (세그로 연결되어 있는 뷰)
     // 아래의 코드작성을 통해 버튼을 추가할 수 있습니다.
-//    func setupCompleteButton() {
-//        let completeBtn = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(completeWrite))
-//        self.navigationItem.setRightBarButton(completeBtn, animated: true)
-//    }
+    //    func setupCompleteButton() {
+    //        let completeBtn = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(completeWrite))
+    //        self.navigationItem.setRightBarButton(completeBtn, animated: true)
+    //    }
     
-  
+    
     
     // 텍스트필드나 텍스트 뷰의 edit 모드를 해제하기 위한, 즉, 키보드를 내리기 위한 탭 제스처와
     // 이미지 뷰를 탭하면 이미지를 추가할 수 있는 탭 제스처 설정
@@ -78,8 +79,6 @@ class UserInfoVC1: UIViewController {
         self.view.endEditing(true)
     }
     
-
-
 }
 
 
@@ -129,6 +128,41 @@ extension UserInfoVC1: UIPickerViewDelegate, UIPickerViewDataSource {
         return yearArray[row]
     }
     
+}
+
+//MARK: - 키보드 대응
+extension UserInfoVC1 {
     
+    func setKeyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+    }
+    
+    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
+        if isKeyboardVisible {
+            if keyboardDismissGesture == nil {
+                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
+                view.addGestureRecognizer(keyboardDismissGesture!)
+            }
+        } else {
+            if keyboardDismissGesture != nil {
+                view.removeGestureRecognizer(keyboardDismissGesture!)
+                keyboardDismissGesture = nil
+            }
+        }
+    }
+    
+    @objc func tapBackground() {
+        self.view.endEditing(true)
+    }
 }
 
