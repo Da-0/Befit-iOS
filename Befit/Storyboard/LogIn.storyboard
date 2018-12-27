@@ -22,13 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-FB-0j4">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-FB-0j4">
+                                <rect key="frame" x="0.0" y="44" width="377" height="734"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="befit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4s-nR-evq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="befit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4s-nR-evq">
                                 <rect key="frame" x="141" y="209" width="95" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="95" id="DNb-Me-6vr"/>
+                                    <constraint firstAttribute="height" constant="53" id="tYs-rd-MtA"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="44"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -128,6 +130,15 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="P4s-nR-evq" firstAttribute="top" secondItem="F2e-M6-17l" secondAttribute="top" constant="165" id="89d-Ls-Eqg"/>
+                            <constraint firstItem="HiJ-FB-0j4" firstAttribute="leading" secondItem="F2e-M6-17l" secondAttribute="leading" id="Fq3-yq-4zz"/>
+                            <constraint firstItem="P4s-nR-evq" firstAttribute="leading" secondItem="F2e-M6-17l" secondAttribute="leading" constant="141" id="JgT-6h-Xd3"/>
+                            <constraint firstItem="HiJ-FB-0j4" firstAttribute="top" secondItem="F2e-M6-17l" secondAttribute="top" id="KwI-cp-Rvs"/>
+                            <constraint firstItem="HiJ-FB-0j4" firstAttribute="trailing" secondItem="F2e-M6-17l" secondAttribute="trailing" id="PrP-TL-dxM"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="HiJ-FB-0j4" secondAttribute="bottom" id="czJ-wG-tLQ"/>
+                            <constraint firstItem="P4s-nR-evq" firstAttribute="centerX" secondItem="HiJ-FB-0j4" secondAttribute="centerX" id="n2s-mY-lNu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="F2e-M6-17l"/>
                     </view>
                     <connections>
