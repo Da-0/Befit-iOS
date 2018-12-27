@@ -70,18 +70,12 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         if indexPath.section == 2 || indexPath.section == 3 {
             
             if indexPath.row == 0 {
+                
                 cell.titleLB.text = tableData[ indexPath.section].title
                 cell.titleLB.font = UIFont.systemFont(ofSize: 20)
-                
-                if tableData[ indexPath.section].open {
-                    cell.arrowBtn.image = #imageLiteral(resourceName: "icArrowDown")
-                    cell.titleLB?.textColor = #colorLiteral(red: 0.2815084657, green: 0.3887723505, blue: 1, alpha: 1)
-                }
-                else{
-                    cell.arrowBtn.image = #imageLiteral(resourceName: "icArrowUp")
-                    cell.titleLB?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                }
-            
+                cell.arrowBtn.image = tableData[indexPath.section] ? #imageLiteral(resourceName: "icArrowDown") : #imageLiteral(resourceName: "icArrowUp")
+                cell.titleLB.textColor = tableData[indexPath.section] ? #colorLiteral(red: 0.2815084657, green: 0.3887723505, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+     
             }
             
             else {
