@@ -73,8 +73,8 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 
                 cell.titleLB.text = tableData[ indexPath.section].title
                 cell.titleLB.font = UIFont.systemFont(ofSize: 20)
-                cell.arrowBtn.image = tableData[indexPath.section] ? #imageLiteral(resourceName: "icArrowDown") : #imageLiteral(resourceName: "icArrowUp")
-                cell.titleLB.textColor = tableData[indexPath.section] ? #colorLiteral(red: 0.2815084657, green: 0.3887723505, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.arrowBtn.image = tableData[indexPath.section].open ? #imageLiteral(resourceName: "icArrowDown") : #imageLiteral(resourceName: "icArrowUp")
+                cell.titleLB.textColor = tableData[indexPath.section].open ? #colorLiteral(red: 0.2815084657, green: 0.3887723505, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
      
             }
             
