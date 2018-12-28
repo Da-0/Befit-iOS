@@ -30,7 +30,9 @@
 		506655D621D25B1100580137 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D521D25B1100580137 /* MyPageVC.swift */; };
 		506655D821D25E4900580137 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D721D25E4900580137 /* CategoryVC.swift */; };
 		506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D921D26FF900580137 /* CategoryTVCell.swift */; };
-		5082DF6A21D4AF1200E4135D /* LikeProductCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6921D4AF1200E4135D /* LikeProductCVC.swift */; };
+		506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C4F21D546660016549B /* LikeBrandTVCell.swift */; };
+		506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C5121D5D7240016549B /* LikeProductCVCell.swift */; };
+		506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C5521D5D8080016549B /* LikeProductCVC.swift */; };
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +62,9 @@
 		506655D521D25B1100580137 /* MyPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageVC.swift; sourceTree = "<group>"; };
 		506655D721D25E4900580137 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		506655D921D26FF900580137 /* CategoryTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTVCell.swift; sourceTree = "<group>"; };
-		5082DF6921D4AF1200E4135D /* LikeProductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductCVC.swift; sourceTree = "<group>"; };
+		506E5C4F21D546660016549B /* LikeBrandTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVCell.swift; sourceTree = "<group>"; };
+		506E5C5121D5D7240016549B /* LikeProductCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductCVCell.swift; sourceTree = "<group>"; };
+		506E5C5521D5D8080016549B /* LikeProductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductCVC.swift; sourceTree = "<group>"; };
 		5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVC.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6F1753E98B305F8F0B08C8C /* Pods-Befit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 			children = (
 				5066558F21D228D500580137 /* View.swift */,
 				506655D921D26FF900580137 /* CategoryTVCell.swift */,
+				506E5C4F21D546660016549B /* LikeBrandTVCell.swift */,
+				506E5C5121D5D7240016549B /* LikeProductCVCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -202,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				506655D021D25A4A00580137 /* LikeVC.swift */,
-				5082DF6921D4AF1200E4135D /* LikeProductCVC.swift */,
+				506E5C5521D5D8080016549B /* LikeProductCVC.swift */,
 				5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */,
 			);
 			path = Like;
@@ -364,10 +370,12 @@
 				5066559021D228D500580137 /* View.swift in Sources */,
 				5066558E21D228C900580137 /* Model.swift in Sources */,
 				506655D621D25B1100580137 /* MyPageVC.swift in Sources */,
-				5082DF6A21D4AF1200E4135D /* LikeProductCVC.swift in Sources */,
+				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
+				506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */,
 				506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */,
 				5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
+				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
