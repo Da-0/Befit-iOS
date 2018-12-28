@@ -11,5 +11,5 @@ target 'Befit' do
 	pod 'ObjectMapper'
 	pod 'Kingfisher'
 	pod 'SideMenuSwift'
-
+	pod 'XLPagerTabStrip'
 end
