@@ -31,8 +31,9 @@ class MyPageVC: UIViewController {
 
     @IBAction func settingBtn(_ sender: Any) {
         
-        
-        
+        let myPage = UIStoryboard.init(name: "MyPage", bundle: nil)
+        let settingVC = myPage.instantiateViewController(withIdentifier: "SettingVC") as? SettingVC
+        self.navigationController?.pushViewController(settingVC!, animated: true)
     }
     
     
