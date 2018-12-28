@@ -5,6 +5,8 @@
 //  Created by 이충신 on 27/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+// 좋아요 한 브랜드 조회
+// 테이블 뷰로 구성
 
 import UIKit
 import XLPagerTabStrip
@@ -24,14 +26,14 @@ class LikeBrandTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeBrandTVCell", for: indexPath) as! LikeBrandTVCell
         cell.brandName.text = "Vans"
-        // Configure the cell...
+       
 
         return cell
     }
