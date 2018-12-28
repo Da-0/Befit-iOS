@@ -10,11 +10,13 @@ import UIKit
 
 class LogInVC: UIViewController {
 
+    @IBOutlet weak var switchBtn: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
     }
+    
     
 
 

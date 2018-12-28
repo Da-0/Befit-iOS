@@ -67,6 +67,11 @@
 		506E5C5521D5D8080016549B /* LikeProductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductCVC.swift; sourceTree = "<group>"; };
 		5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVC.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A59B1C8521D3429300C2B6F2 /* FindIDVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindIDVC.swift; path = "../../../../Befit-iOS/Befit/VC/LogIn/FindIDVC.swift"; sourceTree = "<group>"; };
+		A59B1C8621D3429300C2B6F2 /* FindPWVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindPWVC.swift; path = "../../../../Befit-iOS/Befit/VC/LogIn/FindPWVC.swift"; sourceTree = "<group>"; };
+		A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumLight.ttf; sourceTree = "<group>"; };
+		A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumBold.ttf; sourceTree = "<group>"; };
+		A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumMedium.ttf; sourceTree = "<group>"; };
 		C6F1753E98B305F8F0B08C8C /* Pods-Befit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,6 +167,9 @@
 		5066558C21D2235A00580137 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */,
+				A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */,
+				A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */,
 				5066557D21D21FE000580137 /* Assets.xcassets */,
 				5066558221D21FE000580137 /* Info.plist */,
 			);
@@ -172,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				506655B921D2546900580137 /* LogInVC.swift */,
+				A59B1C8521D3429300C2B6F2 /* FindIDVC.swift */,
+				A59B1C8621D3429300C2B6F2 /* FindPWVC.swift */,
 				506655BB21D2547500580137 /* UserInfoVC1.swift */,
 				506655BD21D2548000580137 /* UserInfoVC2.swift */,
 				506655BF21D2548A00580137 /* UserInfoVC3.swift */,
@@ -301,12 +311,15 @@
 			files = (
 				506655CE21D259F200580137 /* Like.storyboard in Resources */,
 				506655C921D258FA00580137 /* Rank.storyboard in Resources */,
+				A59B1C9A21D34EC600C2B6F2 /* KoPubDotumMedium.ttf in Resources */,
 				5066559221D22A8900580137 /* LogIn.storyboard in Resources */,
 				506655D321D25AD100580137 /* MyPage.storyboard in Resources */,
 				5066558121D21FE000580137 /* LaunchScreen.storyboard in Resources */,
 				5066557E21D21FE000580137 /* Assets.xcassets in Resources */,
+				A59B1C9821D34EC600C2B6F2 /* KoPubDotumLight.ttf in Resources */,
 				5066557C21D21FDF00580137 /* Main.storyboard in Resources */,
 				506655C421D2578100580137 /* Search.storyboard in Resources */,
+				A59B1C9921D34EC600C2B6F2 /* KoPubDotumBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,11 +391,13 @@
 				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
+				A59B1C8821D3429300C2B6F2 /* FindPWVC.swift in Sources */,
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
 				506655CC21D2592400580137 /* RankVC.swift in Sources */,
+				A59B1C8721D3429300C2B6F2 /* FindIDVC.swift in Sources */,
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -531,8 +546,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8E3WW2RPPH;
+				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,8 +566,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8E3WW2RPPH;
+				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
