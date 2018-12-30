@@ -51,8 +51,6 @@ class LikeVC: ButtonBarPagerTabStripViewController {
         // Sets the height and colour of the slider bar of the selected pager tab
         settings.style.selectedBarHeight = 1.0
         settings.style.selectedBarBackgroundColor = .black // 선택되었을경우
-        
-        
         settings.style.selectedBarVerticalAlignment = .bottom //****
         
         

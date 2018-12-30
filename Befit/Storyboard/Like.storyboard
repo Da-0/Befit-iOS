@@ -52,10 +52,10 @@
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="fHE-xA-woB" secondAttribute="bottom" id="AgZ-9o-tFp"/>
                             <constraint firstAttribute="trailing" secondItem="fHE-xA-woB" secondAttribute="trailing" id="Lmi-dz-c3v"/>
-                            <constraint firstItem="fHE-xA-woB" firstAttribute="top" secondItem="plh-My-2Ot" secondAttribute="top" constant="131" id="M2h-Jy-eHk"/>
+                            <constraint firstItem="fHE-xA-woB" firstAttribute="top" secondItem="0CM-VI-p7q" secondAttribute="bottom" id="M2h-Jy-eHk"/>
                             <constraint firstItem="0CM-VI-p7q" firstAttribute="leading" secondItem="plh-My-2Ot" secondAttribute="leading" id="PVG-WM-3mG"/>
                             <constraint firstAttribute="trailing" secondItem="0CM-VI-p7q" secondAttribute="trailing" id="egX-Po-ZQl"/>
-                            <constraint firstItem="0CM-VI-p7q" firstAttribute="top" secondItem="plh-My-2Ot" secondAttribute="top" constant="88" id="rON-uq-lKp"/>
+                            <constraint firstItem="0CM-VI-p7q" firstAttribute="top" secondItem="Pqg-Uz-85e" secondAttribute="bottom" id="rON-uq-lKp"/>
                             <constraint firstItem="fHE-xA-woB" firstAttribute="leading" secondItem="plh-My-2Ot" secondAttribute="leading" id="zzT-b0-ut4"/>
                         </constraints>
                     </view>
