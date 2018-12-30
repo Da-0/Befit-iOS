@@ -37,7 +37,7 @@ class CategoryVC: UIViewController {
          cellData(open: false, title: "New", items: nil),
          cellData(open: false, title: "Best", items: nil),
          cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Vest","Hoody","Sweat Shirts","T-Shirt","Dress","Jean","Short-Pants","Skirts", "Leggings"]),
-         cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Vest","Hoody","Sweat Shirts","T-Shirt","Dress","Jean","Short-Pants"])
+         cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Vest","Hoody","Sweat Shirts","T-Shirt","Jean","Short-Pants"])
         ]
         
     }
@@ -74,7 +74,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 cell.titleLB.text = tableData[ indexPath.section].title
                 cell.titleLB.font = UIFont.systemFont(ofSize: 20)
                 cell.arrowBtn.image = tableData[indexPath.section].open ? #imageLiteral(resourceName: "icArrowDown") : #imageLiteral(resourceName: "icArrowUp")
-                cell.titleLB.textColor = tableData[indexPath.section].open ? #colorLiteral(red: 0.2815084657, green: 0.3887723505, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+                cell.titleLB.textColor = tableData[indexPath.section].open ? #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
      
             }
             

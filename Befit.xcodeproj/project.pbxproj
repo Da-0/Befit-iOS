@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		3B84E94CEB62C9768A62B9C5 /* Pods_Befit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */; };
+		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		5066557721D21FDF00580137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557621D21FDF00580137 /* AppDelegate.swift */; };
 		5066557921D21FDF00580137 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557821D21FDF00580137 /* MainVC.swift */; };
 		5066557C21D21FDF00580137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066557A21D21FDF00580137 /* Main.storyboard */; };
 		5066557E21D21FE000580137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5066557D21D21FE000580137 /* Assets.xcassets */; };
 		5066558121D21FE000580137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066557F21D21FE000580137 /* LaunchScreen.storyboard */; };
 		5066558E21D228C900580137 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066558D21D228C900580137 /* Model.swift */; };
-		5066559021D228D500580137 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066558F21D228D500580137 /* View.swift */; };
 		5066559221D22A8900580137 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066559121D22A8900580137 /* LogIn.storyboard */; };
 		506655BA21D2546900580137 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655B921D2546900580137 /* LogInVC.swift */; };
 		506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BB21D2547500580137 /* UserInfoVC1.swift */; };
@@ -35,11 +35,16 @@
 		506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C5521D5D8080016549B /* LikeProductCVC.swift */; };
 		506E5C5821D60F840016549B /* MyPageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C5721D60F840016549B /* MyPageTVCell.swift */; };
 		506E5C5A21D64BA10016549B /* SettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C5921D64BA10016549B /* SettingVC.swift */; };
+		506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6021D74EA80016549B /* SearchProductVC.swift */; };
+		506E5C6521D756A50016549B /* SearchVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6421D756A50016549B /* SearchVC2.swift */; };
+		506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6621D7584D0016549B /* SearchProductCVCell.swift */; };
+		506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6821D758680016549B /* SearchBrandTVCell.swift */; };
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E9628501C4FE32118E472D1 /* Pods-Befit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.debug.xcconfig"; sourceTree = "<group>"; };
+		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		5066557321D21FDF00580137 /* Befit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Befit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5066557621D21FDF00580137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5066557821D21FDF00580137 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -48,7 +53,6 @@
 		5066558021D21FE000580137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5066558221D21FE000580137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5066558D21D228C900580137 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		5066558F21D228D500580137 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		5066559121D22A8900580137 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		506655B921D2546900580137 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		506655BB21D2547500580137 /* UserInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC1.swift; sourceTree = "<group>"; };
@@ -69,6 +73,10 @@
 		506E5C5521D5D8080016549B /* LikeProductCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductCVC.swift; sourceTree = "<group>"; };
 		506E5C5721D60F840016549B /* MyPageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTVCell.swift; sourceTree = "<group>"; };
 		506E5C5921D64BA10016549B /* SettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVC.swift; sourceTree = "<group>"; };
+		506E5C6021D74EA80016549B /* SearchProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductVC.swift; sourceTree = "<group>"; };
+		506E5C6421D756A50016549B /* SearchVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC2.swift; sourceTree = "<group>"; };
+		506E5C6621D7584D0016549B /* SearchProductCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductCVCell.swift; sourceTree = "<group>"; };
+		506E5C6821D758680016549B /* SearchBrandTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVCell.swift; sourceTree = "<group>"; };
 		5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVC.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59B1C8521D3429300C2B6F2 /* FindIDVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindIDVC.swift; path = "../../../../Befit-iOS/Befit/VC/LogIn/FindIDVC.swift"; sourceTree = "<group>"; };
@@ -139,11 +147,10 @@
 		5066558921D2231500580137 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5066558F21D228D500580137 /* View.swift */,
-				506655D921D26FF900580137 /* CategoryTVCell.swift */,
-				506E5C4F21D546660016549B /* LikeBrandTVCell.swift */,
-				506E5C5121D5D7240016549B /* LikeProductCVCell.swift */,
-				506E5C5721D60F840016549B /* MyPageTVCell.swift */,
+				506E5C5B21D69E8F0016549B /* Main */,
+				506E5C5E21D69ED30016549B /* Search */,
+				506E5C5C21D69E9A0016549B /* Like */,
+				506E5C5D21D69EBB0016549B /* MyPage */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -207,6 +214,9 @@
 			isa = PBXGroup;
 			children = (
 				506655C621D257CF00580137 /* SearchVC.swift */,
+				506E5C6421D756A50016549B /* SearchVC2.swift */,
+				506E5C6021D74EA80016549B /* SearchProductVC.swift */,
+				503DF98C21D88A12001F950D /* SearchBrandTVC.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -236,6 +246,40 @@
 				506E5C5921D64BA10016549B /* SettingVC.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		506E5C5B21D69E8F0016549B /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				506655D921D26FF900580137 /* CategoryTVCell.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		506E5C5C21D69E9A0016549B /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				506E5C4F21D546660016549B /* LikeBrandTVCell.swift */,
+				506E5C5121D5D7240016549B /* LikeProductCVCell.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
+		506E5C5D21D69EBB0016549B /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+				506E5C5721D60F840016549B /* MyPageTVCell.swift */,
+			);
+			path = MyPage;
+			sourceTree = "<group>";
+		};
+		506E5C5E21D69ED30016549B /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				506E5C6621D7584D0016549B /* SearchProductCVCell.swift */,
+				506E5C6821D758680016549B /* SearchBrandTVCell.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		6773F0E3D5EDC3069E6DFDE0 /* Frameworks */ = {
@@ -383,12 +427,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				506655D821D25E4900580137 /* CategoryVC.swift in Sources */,
-				5066559021D228D500580137 /* View.swift in Sources */,
+				506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */,
 				5066558E21D228C900580137 /* Model.swift in Sources */,
 				506655D621D25B1100580137 /* MyPageVC.swift in Sources */,
 				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
+				506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */,
 				506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */,
 				506E5C5821D60F840016549B /* MyPageTVCell.swift in Sources */,
+				506E5C6521D756A50016549B /* SearchVC2.swift in Sources */,
 				506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */,
 				5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
@@ -397,8 +443,10 @@
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
+				503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
+				506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */,
 				506E5C5A21D64BA10016549B /* SettingVC.swift in Sources */,
 				506655CC21D2592400580137 /* RankVC.swift in Sources */,
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
