@@ -28,10 +28,26 @@
                                     <segue destination="8hs-NI-8TY" kind="embed" id="SRI-jP-vPy"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xhV-Uw-e7O">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <connections>
+                                    <segue destination="98a-Kx-Acb" kind="embed" id="BDz-xW-xyI"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xhV-Uw-e7O" secondAttribute="trailing" id="7uS-xv-ZTB"/>
+                            <constraint firstItem="xhV-Uw-e7O" firstAttribute="leading" secondItem="2xt-Yt-Omd" secondAttribute="leading" id="BSJ-AL-WFV"/>
+                            <constraint firstItem="xhV-Uw-e7O" firstAttribute="top" secondItem="nOd-Cp-z9A" secondAttribute="bottom" id="mfG-aG-hDd"/>
+                            <constraint firstItem="icJ-Y2-Ng2" firstAttribute="top" secondItem="xhV-Uw-e7O" secondAttribute="bottom" id="w2R-O6-WgT"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="wVj-CC-VPA"/>
+                    <connections>
+                        <outlet property="firstView" destination="xhV-Uw-e7O" id="mQc-GN-Mrj"/>
+                        <outlet property="secondView" destination="940-LQ-TxG" id="KUm-zP-BPR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2b-5Z-hpZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,9 +120,9 @@
                         <viewControllerLayoutGuide type="bottom" id="9iJ-o8-14J"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="spe-pI-ba5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juS-ex-STh" userLabel="First Responder" sceneMemberID="firstResponder"/>

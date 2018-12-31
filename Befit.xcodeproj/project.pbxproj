@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B84E94CEB62C9768A62B9C5 /* Pods_Befit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */; };
+		501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F73E421D92BD0000D2F3E /* RankTVCell.swift */; };
 		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		5066557721D21FDF00580137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557621D21FDF00580137 /* AppDelegate.swift */; };
 		5066557921D21FDF00580137 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557821D21FDF00580137 /* MainVC.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		4E9628501C4FE32118E472D1 /* Pods-Befit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.debug.xcconfig"; sourceTree = "<group>"; };
+		501F73E421D92BD0000D2F3E /* RankTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTVCell.swift; sourceTree = "<group>"; };
 		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		5066557321D21FDF00580137 /* Befit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Befit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5066557621D21FDF00580137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		501F73E321D92BB3000D2F3E /* Rank */ = {
+			isa = PBXGroup;
+			children = (
+				501F73E421D92BD0000D2F3E /* RankTVCell.swift */,
+			);
+			path = Rank;
+			sourceTree = "<group>";
+		};
 		5066556A21D21FDF00580137 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 			children = (
 				506E5C5B21D69E8F0016549B /* Main */,
 				506E5C5E21D69ED30016549B /* Search */,
+				501F73E321D92BB3000D2F3E /* Rank */,
 				506E5C5C21D69E9A0016549B /* Like */,
 				506E5C5D21D69EBB0016549B /* MyPage */,
 			);
@@ -447,6 +458,7 @@
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
 				506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */,
+				501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */,
 				506E5C5A21D64BA10016549B /* SettingVC.swift in Sources */,
 				506655CC21D2592400580137 /* RankVC.swift in Sources */,
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
