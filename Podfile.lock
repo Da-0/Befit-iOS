@@ -6,6 +6,7 @@ PODS:
   - Kingfisher (4.10.0)
   - ObjectMapper (3.3.0)
   - SideMenuSwift (1.0.0)
+  - XLPagerTabStrip (8.1.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - Kingfisher
   - ObjectMapper
   - SideMenuSwift
+  - XLPagerTabStrip
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - Kingfisher
     - ObjectMapper
     - SideMenuSwift
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -28,7 +31,8 @@ SPEC CHECKSUMS:
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   SideMenuSwift: f8567754feb36ade13ffd613f608829f4b86d4b3
+  XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: 01af9a03ac9b6eedfa6a0aa20e1f25ec5c20ca54
+PODFILE CHECKSUM: 47a3dcd434833b8b689c2a4f7592cd4758bfd4a4
 
 COCOAPODS: 1.5.3
