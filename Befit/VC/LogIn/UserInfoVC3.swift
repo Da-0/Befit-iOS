@@ -47,9 +47,7 @@ class UserInfoVC3: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-    
-    
-    
+
     func initBtn(){
         
         btnArray.append(btn0)
@@ -71,17 +69,12 @@ class UserInfoVC3: UIViewController {
         
     }
     
-    
-    
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    
-    
     @IBAction func buttonClick(_ sender: UIButton) {
 
-        
         if selectedCount != 2 {
             
             if sender.isSelected == false {
@@ -90,52 +83,38 @@ class UserInfoVC3: UIViewController {
                 selectedCount += 1
                 
                 if selectedCount == 2 {
-                    nextBtn.isEnabled = true
-                    print(nextBtn.isEnabled)
+                    nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
                 }
-        
+                
             }
                 
             else{
                 sender.setImage(menUnselected[sender.tag], for: .selected)
                 sender.isSelected = false
                 selectedCount -= 1
-            
             }
-        }
             
+        }
+         
         else {
             
             if sender.isSelected == true{
                 sender.imageView!.image = menUnselected[sender.tag]
                 sender.isSelected = false
                 selectedCount -= 1
-                nextBtn.isEnabled = false
-                print(nextBtn.isEnabled)
+                nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+                
             }
-        
         }
-    
     }
     
     @IBAction func nextAction(_ sender: Any) {
         
-//        if (selectedCount == 2) {
-//            nextBtn.isEnabled = true
-//            print("다음뷰로 넘어갑니다!")
-//        }
-//        else{
-//
-//            print(nextBtn.isEnabled)
-//        }
-        
-        
-    }
-
-}
-
-extension UserInfoVC3 {
-    func brand(){
-        
+        if selectedCount == 2 {
+            let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
+            let userInfoVC1 = logIn.instantiateViewController(withIdentifier: "UserInfoVC1") as? UserInfoVC1
+            self.navigationController?.pushViewController(userInfoVC1!, animated: true)
+            
+        }
     }
 }

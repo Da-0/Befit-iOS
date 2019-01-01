@@ -20,26 +20,67 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     
     var keyboardDismissGesture : UITapGestureRecognizer?
     
-    let yearArray = ["1993", "1994", "1995", "1996"]
+    //create date picker
     let pickerview = UIPickerView()
+    
+    var yearsTillNow : [String] {
+        var years = [String]()
+        for i in (1960..<2019).reversed() {
+            years.append("\(i)")
+        }
+        return years
+    }
+    
+    var monthsTillNow : [String] {
+        var month = [String]()
+        for i in (1..<12).reversed() {
+            month.append("\(i)")
+        }
+        return month
+    }
+    
+    var daysTillNow : [String] {
+        var days = [String]()
+        for i in (1..<31).reversed() {
+            days.append("\(i)")
+        }
+        return days
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //        setupCompleteButton()
         
         setKeyboardSetting()
         setupTap()
-        //        setupCompleteButton()
-        
-//        yearTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
+   
+        yearTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
         yearTF.delegate = self
-//        initPicker()
+        
+        monthTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
+        monthTF.delegate = self
+        
+        dayFT.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
+        dayFT.delegate = self
+        
+        initPicker()
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
+    
     @IBAction func backBtn(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
         
     @objc func completeWrite() {
@@ -54,20 +95,7 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
         guard passwordTF.text?.isEmpty != true else {return}
         guard ckPasswordTF.text?.isEmpty != true else {return}
     }
-    
-    
-    // 글 작성을 완료하는 버튼 설정
-    // 인터페이스 빌더에서 네비게이션 바에 버튼이 추가가 안될 경우 (세그로 연결되어 있는 뷰)
-    // 아래의 코드작성을 통해 버튼을 추가할 수 있습니다.
-    //    func setupCompleteButton() {
-    //        let completeBtn = UIBarButtonItem(title: "완료", style: .done, target: self, action: #selector(completeWrite))
-    //        self.navigationItem.setRightBarButton(completeBtn, animated: true)
-    //    }
-    
-    
-    
-    // 텍스트필드나 텍스트 뷰의 edit 모드를 해제하기 위한, 즉, 키보드를 내리기 위한 탭 제스처와
-    // 이미지 뷰를 탭하면 이미지를 추가할 수 있는 탭 제스처 설정
+
     func setupTap() {
         let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         
@@ -81,19 +109,6 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     }
     
 }
-
-
-////pickerView관련
-//extension UserInfoVC1: UITextFieldDelegate {
-//
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        self.view.endEditing(true)
-//    }
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        self.view.endEditing(true)
-//        return true
-//    }
-//}
 
 extension UserInfoVC1: UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -110,11 +125,19 @@ extension UserInfoVC1: UIPickerViewDelegate, UIPickerViewDataSource {
         bar.setItems([doneButton], animated: true)
         yearTF.inputAccessoryView = bar
         yearTF.inputView = pickerview
+        
+        monthTF.inputAccessoryView = bar
+        monthTF.inputView = pickerview
+        
+        dayFT.inputAccessoryView = bar
+        dayFT.inputView = pickerview
     }
 
     @objc func selectedPicker(){
         let row = pickerview.selectedRow(inComponent: 0)
-        yearTF.text = yearArray[row]
+        yearTF.text = yearsTillNow[row]
+        monthTF.text = monthsTillNow[row]
+        dayFT.text = daysTillNow[row]
         view.endEditing(true)
     }
 
@@ -123,11 +146,11 @@ extension UserInfoVC1: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return yearArray.count
+        return yearsTillNow.count
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return yearArray[row]
+        return yearsTillNow[row]
     }
 
 }

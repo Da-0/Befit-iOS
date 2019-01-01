@@ -21,8 +21,12 @@ class UserInfoVC2: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //네비게이션 바 설정
+        self.navigationController!.navigationBar.barTintColor = UIColor.white
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
 
-        // Do any additional setup after loading the view.
     }
     
     //성별 선택시 이미지 변환
@@ -31,6 +35,7 @@ class UserInfoVC2: UIViewController {
         if !womanImg.isSelected {
             womanImg.isSelected = true
             womanImg.setImage(#imageLiteral(resourceName: "icWomanTouch"), for: .selected)
+            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
             manImg.setImage(#imageLiteral(resourceName: "icManNotouch"), for: .selected)
             manImg.isSelected = false
             uesrDefault.set("여", forKey: "gender")
@@ -38,8 +43,8 @@ class UserInfoVC2: UIViewController {
         else{
             womanImg.isSelected = false
             womanImg.setImage(#imageLiteral(resourceName: "icWomanNotouch"), for: .selected)
+            nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
         }
-       
     }
     
     @IBAction func manBtn(_ sender: Any) {
@@ -48,6 +53,7 @@ class UserInfoVC2: UIViewController {
         if !manImg.isSelected {
             manImg.isSelected = true
             manImg.setImage(#imageLiteral(resourceName: "icManTouch"), for: .selected)
+            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
             womanImg.setImage(#imageLiteral(resourceName: "icWomanNotouch"), for: .selected)
             womanImg.isSelected = false
             uesrDefault.set("남", forKey: "gender")
@@ -55,6 +61,7 @@ class UserInfoVC2: UIViewController {
         else{
             manImg.isSelected = false
             manImg.setImage(#imageLiteral(resourceName: "icManNotouch"), for: .selected)
+            nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
         }
     }
     
@@ -66,5 +73,8 @@ class UserInfoVC2: UIViewController {
             self.navigationController?.pushViewController(userInfoVC!, animated: true)
         }
     }
-
+    @IBAction func backAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
