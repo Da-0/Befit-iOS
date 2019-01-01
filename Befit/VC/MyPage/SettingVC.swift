@@ -35,7 +35,7 @@ class SettingVC: UIViewController {
     }
     
     @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
