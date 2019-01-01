@@ -12,9 +12,14 @@ class SearchVC: UIViewController {
     
     var searchController : UISearchController!
 
+    @IBOutlet weak var firstView: UIView!
+    @IBOutlet weak var secondView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchBar()
+        secondView.isHidden = true
     }
     
  
@@ -25,14 +30,17 @@ class SearchVC: UIViewController {
 extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearchBarDelegate{
     
     func updateSearchResults(for searchController: UISearchController) {
-        print("update Search Results")
+        print("키보드 입력중...")
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print("Search!!")
-        let search = UIStoryboard.init(name: "Search", bundle: nil)
-        let searchVC2 = search.instantiateViewController(withIdentifier: "SearchVC2") as? SearchVC2
-        self.navigationController?.pushViewController(searchVC2!, animated: true)
+        print("검색완료!")
+        self.view.endEditing(true)
+        firstView.isHidden = true
+        secondView.isHidden = false
+//        let search = UIStoryboard.init(name: "Search", bundle: nil)
+//        let searchVC2 = search.instantiateViewController(withIdentifier: "SearchVC2") as? SearchVC2
+//        self.navigationController?.pushViewController(searchVC2!, animated: true)
     }
     
 
