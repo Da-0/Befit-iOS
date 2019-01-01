@@ -27,13 +27,14 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         setKeyboardSetting()
         setupTap()
         //        setupCompleteButton()
         
-        yearTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
+//        yearTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
         yearTF.delegate = self
-        initPicker()
+//        initPicker()
         
     }
     
@@ -82,56 +83,67 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
 }
 
 
-//pickerView관련
-extension UserInfoVC1: UITextFieldDelegate {
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
-        return true
-    }
-}
+////pickerView관련
+//extension UserInfoVC1: UITextFieldDelegate {
+//
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        self.view.endEditing(true)
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        self.view.endEditing(true)
+//        return true
+//    }
+//}
 
 extension UserInfoVC1: UIPickerViewDelegate, UIPickerViewDataSource {
-    
+
     func initPicker() {
-        
+
         self.pickerview.delegate = self;
         self.pickerview.dataSource = self;
-        
+
         let bar = UIToolbar()
         bar.sizeToFit()
-        
+
         let doneButton = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(selectedPicker))
-        
+
         bar.setItems([doneButton], animated: true)
         yearTF.inputAccessoryView = bar
         yearTF.inputView = pickerview
     }
-    
+
     @objc func selectedPicker(){
         let row = pickerview.selectedRow(inComponent: 0)
         yearTF.text = yearArray[row]
         view.endEditing(true)
     }
-    
+
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return yearArray.count
     }
-    
+
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return yearArray[row]
     }
-    
+
 }
 
 //MARK: - 키보드 대응
-extension UserInfoVC1 {
+extension UserInfoVC1: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        self.view.endEditing(true)
+        return true
+    }
     
     func setKeyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -140,12 +152,15 @@ extension UserInfoVC1 {
     
     @objc func keyboardWillShow(_ notification: Notification) {
         adjustKeyboardDismissGesture(isKeyboardVisible: true)
-        
+        self.view.frame.origin.y = -150
     }
     
     @objc func keyboardWillHide(_ notification: Notification) {
         adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        self.view.frame.origin.y = 0
     }
+    
+    
     
     func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
         if isKeyboardVisible {

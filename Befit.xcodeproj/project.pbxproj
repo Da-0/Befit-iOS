@@ -31,6 +31,12 @@
 		506655D121D25A4A00580137 /* LikeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D021D25A4A00580137 /* LikeVC.swift */; };
 		506655D321D25AD100580137 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655D221D25AD100580137 /* MyPage.storyboard */; };
 		506655D621D25B1100580137 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D521D25B1100580137 /* MyPageVC.swift */; };
+
+		A59B1C9821D34EC600C2B6F2 /* KoPubDotumLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */; };
+		A59B1C9921D34EC600C2B6F2 /* KoPubDotumBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */; };
+		A59B1C9A21D34EC600C2B6F2 /* KoPubDotumMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */; };
+		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
+		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
 		506655D821D25E4900580137 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D721D25E4900580137 /* CategoryVC.swift */; };
 		506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D921D26FF900580137 /* CategoryTVCell.swift */; };
 		506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C4F21D546660016549B /* LikeBrandTVCell.swift */; };
@@ -43,6 +49,7 @@
 		506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6621D7584D0016549B /* SearchProductCVCell.swift */; };
 		506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6821D758680016549B /* SearchBrandTVCell.swift */; };
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
+
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,11 +92,11 @@
 		506E5C6821D758680016549B /* SearchBrandTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVCell.swift; sourceTree = "<group>"; };
 		5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVC.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A59B1C8521D3429300C2B6F2 /* FindIDVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindIDVC.swift; path = "../../../../Befit-iOS/Befit/VC/LogIn/FindIDVC.swift"; sourceTree = "<group>"; };
-		A59B1C8621D3429300C2B6F2 /* FindPWVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FindPWVC.swift; path = "../../../../Befit-iOS/Befit/VC/LogIn/FindPWVC.swift"; sourceTree = "<group>"; };
 		A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumLight.ttf; sourceTree = "<group>"; };
 		A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumBold.ttf; sourceTree = "<group>"; };
 		A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumMedium.ttf; sourceTree = "<group>"; };
+		A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWSettingVC.swift; sourceTree = "<group>"; };
+		A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWVC.swift; sourceTree = "<group>"; };
 		C6F1753E98B305F8F0B08C8C /* Pods-Befit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,8 +214,8 @@
 			isa = PBXGroup;
 			children = (
 				506655B921D2546900580137 /* LogInVC.swift */,
-				A59B1C8521D3429300C2B6F2 /* FindIDVC.swift */,
-				A59B1C8621D3429300C2B6F2 /* FindPWVC.swift */,
+				A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */,
+				A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */,
 				506655BB21D2547500580137 /* UserInfoVC1.swift */,
 				506655BD21D2548000580137 /* UserInfoVC2.swift */,
 				506655BF21D2548A00580137 /* UserInfoVC3.swift */,
@@ -458,10 +465,13 @@
 				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
+				A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */,
+
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
 				503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
+				A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */,
 				504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
 				506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */,
