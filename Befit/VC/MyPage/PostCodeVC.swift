@@ -20,6 +20,7 @@ class PostCodeVC: UIViewController, WKScriptMessageHandler, WKNavigationDelegate
     var address = ""
     
     override func loadView() {
+        
         super.loadView()
         
         let contentController = WKUserContentController()
@@ -35,6 +36,7 @@ class PostCodeVC: UIViewController, WKScriptMessageHandler, WKNavigationDelegate
         self.webView?.addSubview(indicator)
         indicator.center.x = UIScreen.main.bounds.width/2
         indicator.center.y = UIScreen.main.bounds.height/2
+        
     }
     
     
@@ -60,29 +62,27 @@ class PostCodeVC: UIViewController, WKScriptMessageHandler, WKNavigationDelegate
             if let destination = segue.destination as? UserInfoAdminVC {
                 
                 destination.postCodeLabel.text = postCode
-                destination.address1Label.text = address
-                
+                destination.addressLabel.text = address
+
                 let addressBool = postCode == "" || address == ""
-                
                 
                 //우편번호 검색 이전(버튼만 보여준다)
                 destination.postCodeButton.isHidden = addressBool ? false : true
-                
                 //우편번호 검색완료 이후
-                destination.deleteBtn.isHidden = addressBool ? true : false
-                destination.postCodeLabel.isHidden = addressBool ? true : false
-                destination.addressLabel.isHidden = addressBool ? true : false
-                destination.address1Label.isHidden = addressBool ? true : false
-                
-                
+                destination.postView.isHidden = addressBool ? true : false
+            
+            
+
             }
         }
+        
     }
     
     
     
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
         if let postCodData = message.body as? [String: Any] {
             
             postCode = postCodData["zonecode"] as? String ?? ""
