@@ -58,11 +58,17 @@ extension MyPageVC : UITableViewDelegate, UITableViewDataSource{
         switch indexPath.row {
             case 0:
                 print("나의 패션 취향 뷰로 이동")
+            
             case 1:
                 print("나의 사이즈정보 뷰로 이동")
+                let sizeInfoVC1 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC1")as! SizeInfoVC1
+                self.navigationController?.pushViewController(sizeInfoVC1, animated: true)
+            
             case 2:
+                print("통합회원정보 관리 뷰로 이동")
                 let userInfoAdminVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "UserInfoAdminVC")as! UserInfoAdminVC
                 self.navigationController?.present(userInfoAdminVC, animated: true, completion: nil)
+            
             case 3:
                 print("고객센터 뷰로 이동")
             default:
