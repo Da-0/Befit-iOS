@@ -21,14 +21,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 이창현" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-yD-0Jo">
-                                        <rect key="frame" x="147" y="35" width="80" height="27"/>
+                                        <rect key="frame" x="38" y="35" width="76" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="lcs3303@naver.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-NE-VX3">
-                                        <rect key="frame" x="118" y="70" width="138" height="27"/>
+                                        <rect key="frame" x="43" y="70" width="123" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -306,11 +306,13 @@
             </objects>
             <point key="canvasLocation" x="2023" y="-604"/>
         </scene>
-        <!--MyPageVC-->
+        <!--마이페이지-->
         <scene sceneID="lyD-F4-AA0">
             <objects>
                 <navigationController storyboardIdentifier="MyPageNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="z0U-h6-HOp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="MyPageVC" id="gvx-3H-RWb"/>
+                    <tabBarItem key="tabBarItem" title="마이페이지" image="tabMypage" id="gvx-3H-RWb">
+                        <color key="badgeColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="cab-lQ-hbN">
@@ -649,5 +651,6 @@
     <resources>
         <image name="icLeftArrowBlack" width="32" height="32"/>
         <image name="icSetting" width="45" height="45"/>
+        <image name="tabMypage" width="22.666666030883789" height="21.666666030883789"/>
     </resources>
 </document>

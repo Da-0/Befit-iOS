@@ -14,8 +14,8 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     var searchController : UISearchController!
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         configureButtonBar()
+        super.viewDidLoad()
         //initSearchBar()
 
     }
@@ -77,7 +77,7 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
         settings.style.buttonBarRightContentInset = 0
         
         // Sets the height and colour of the slider bar of the selected pager tab
-        settings.style.selectedBarHeight = 1.0
+        settings.style.selectedBarHeight = 3.0
         settings.style.selectedBarBackgroundColor = .black
         settings.style.selectedBarVerticalAlignment = .bottom
         
@@ -88,10 +88,8 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
             newCell?.label.textColor = .black
         }
     }
-    
-
-
 }
+    
 
 
 extension SearchVC2 : UISearchControllerDelegate, UISearchResultsUpdating,UISearchBarDelegate{

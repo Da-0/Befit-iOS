@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RankTVCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="RankTVCell" rowHeight="70" id="qqM-r5-W9C" customClass="RankTVCell" customModule="Befit" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="RankTVCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="RankTVCell" rowHeight="70" id="qqM-r5-W9C" customClass="RankTVCell" customModule="Befit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qqM-r5-W9C" id="f8O-jy-h5y">
@@ -56,7 +56,7 @@
                                             <constraints>
                                                 <constraint firstItem="uwq-Ws-zBo" firstAttribute="leading" secondItem="f8O-jy-h5y" secondAttribute="leading" constant="15" id="KFb-hA-Pes"/>
                                                 <constraint firstItem="gxq-VO-c1e" firstAttribute="leading" secondItem="vq0-ZP-D74" secondAttribute="trailing" constant="17" id="OUw-7J-gy4"/>
-                                                <constraint firstItem="uwq-Ws-zBo" firstAttribute="centerY" secondItem="f8O-jy-h5y" secondAttribute="centerY" constant="-3.3333333333333357" id="XD4-0A-pFx"/>
+                                                <constraint firstItem="uwq-Ws-zBo" firstAttribute="centerY" secondItem="f8O-jy-h5y" secondAttribute="centerY" constant="-3.3300000000000001" id="XD4-0A-pFx"/>
                                                 <constraint firstItem="gxq-VO-c1e" firstAttribute="centerY" secondItem="vq0-ZP-D74" secondAttribute="centerY" id="aea-yW-a1h"/>
                                                 <constraint firstItem="vq0-ZP-D74" firstAttribute="centerY" secondItem="uwq-Ws-zBo" secondAttribute="centerY" id="atP-IS-cOv"/>
                                                 <constraint firstItem="vq0-ZP-D74" firstAttribute="leading" secondItem="uwq-Ws-zBo" secondAttribute="trailing" constant="13" id="mSS-ko-xF3"/>
@@ -89,11 +89,13 @@
             </objects>
             <point key="canvasLocation" x="1263.2" y="-271.18226600985224"/>
         </scene>
-        <!--RankVC-->
+        <!--랭킹-->
         <scene sceneID="taj-nz-DyI">
             <objects>
                 <navigationController storyboardIdentifier="RankNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fYO-dj-Ebg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="RankVC" id="vHf-JD-lFa"/>
+                    <tabBarItem key="tabBarItem" title="랭킹" image="tabRanking" id="vHf-JD-lFa">
+                        <color key="badgeColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="251-hj-EN8">
@@ -110,4 +112,7 @@
             <point key="canvasLocation" x="320.80000000000001" y="-271.18226600985224"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tabRanking" width="22.333333969116211" height="22.666666030883789"/>
+    </resources>
 </document>

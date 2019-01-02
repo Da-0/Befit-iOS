@@ -12,11 +12,18 @@ import UIKit
 import XLPagerTabStrip
 
 class LikeBrandTVC: UITableViewController {
-
+    
+    @IBOutlet weak var likeBrandNumb: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+      
     }
 
     // MARK: - Table view data source
@@ -28,6 +35,9 @@ class LikeBrandTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
+        likeBrandNumb.text = "찜한브랜드 " + "10"
+        
         return 5
     }
 
