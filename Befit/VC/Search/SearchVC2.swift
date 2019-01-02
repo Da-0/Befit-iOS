@@ -16,7 +16,7 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     override func viewDidLoad() {
         configureButtonBar()
         super.viewDidLoad()
-        //initSearchBar()
+        initSearchBar()
 
     }
 

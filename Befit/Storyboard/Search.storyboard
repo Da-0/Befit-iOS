@@ -378,7 +378,7 @@
     </scenes>
     <resources>
         <image name="background" width="376" height="768"/>
-        <image name="icLikeLine" width="34" height="34"/>
+        <image name="icLikeLine" width="23.666666030883789" height="21"/>
         <image name="tabSearch" width="24" height="24"/>
     </resources>
 </document>
