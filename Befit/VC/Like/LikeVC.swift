@@ -12,8 +12,8 @@ import XLPagerTabStrip
 class LikeVC: ButtonBarPagerTabStripViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         configureButtonBar()
+        super.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -22,7 +22,6 @@ class LikeVC: ButtonBarPagerTabStripViewController {
         
     }
 
-    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
         
         let child1 = UIStoryboard(name: "Like", bundle: nil).instantiateViewController(withIdentifier: "LikeProductCVC") as! LikeProductCVC
@@ -49,7 +48,7 @@ class LikeVC: ButtonBarPagerTabStripViewController {
         settings.style.buttonBarRightContentInset = 0
         
         // Sets the height and colour of the slider bar of the selected pager tab
-        settings.style.selectedBarHeight = 1.0
+        settings.style.selectedBarHeight = 3.0
         settings.style.selectedBarBackgroundColor = .black // 선택되었을경우
         settings.style.selectedBarVerticalAlignment = .bottom //****
         
