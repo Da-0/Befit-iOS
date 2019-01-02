@@ -10,9 +10,14 @@ import UIKit
 
 class UserInfoVC2: UIViewController {
     
+    let uesrDefault = UserDefaults.standard
+    
     @IBOutlet weak var womanImg: UIButton!
     @IBOutlet weak var manImg: UIButton!
+    @IBOutlet weak var nextBtn: UIButton!
+    
     var selected: Bool!
+    let gender = UserDefaults.standard.string(forKey: "gender")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,7 @@ class UserInfoVC2: UIViewController {
             womanImg.setImage(#imageLiteral(resourceName: "icWomanTouch"), for: .selected)
             manImg.setImage(#imageLiteral(resourceName: "icManNotouch"), for: .selected)
             manImg.isSelected = false
+            uesrDefault.set("여", forKey: "gender")
         }
         else{
             womanImg.isSelected = false
@@ -44,6 +50,7 @@ class UserInfoVC2: UIViewController {
             manImg.setImage(#imageLiteral(resourceName: "icManTouch"), for: .selected)
             womanImg.setImage(#imageLiteral(resourceName: "icWomanNotouch"), for: .selected)
             womanImg.isSelected = false
+            uesrDefault.set("남", forKey: "gender")
         }
         else{
             manImg.isSelected = false
@@ -51,5 +58,13 @@ class UserInfoVC2: UIViewController {
         }
     }
     
+    @IBAction func nextBtn(_ sender: Any) {
+        
+        if manImg.isSelected || womanImg.isSelected {
+            let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
+            let userInfoVC = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
+            self.navigationController?.pushViewController(userInfoVC!, animated: true)
+        }
+    }
 
 }
