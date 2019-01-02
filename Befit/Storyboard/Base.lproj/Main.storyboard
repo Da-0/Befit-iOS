@@ -21,7 +21,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="drM-Qi-VgX">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="3XI-ym-RkZ">
+                        <barButtonItem key="leftBarButtonItem" image="hambugerBar" id="3XI-ym-RkZ">
+                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="categoryAction:" destination="BYZ-38-t0r" id="OsB-un-O0S"/>
                             </connections>
@@ -32,11 +33,13 @@
             </objects>
             <point key="canvasLocation" x="2021.5999999999999" y="136.69950738916256"/>
         </scene>
-        <!--MainVC-->
+        <!--홈-->
         <scene sceneID="4OU-8e-rLs">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pWH-Rh-wt6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="MainVC" id="0QT-Ee-CZx"/>
+                    <tabBarItem key="tabBarItem" title="홈" image="tabHome" id="0QT-Ee-CZx">
+                        <color key="badgeColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vat-Je-GZk">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -231,7 +234,16 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UYE-Rg-XuT">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="0.0" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="pWH-Rh-wt6" kind="relationship" relationship="viewControllers" id="O59-2S-uyA"/>
@@ -246,4 +258,8 @@
             <point key="canvasLocation" x="56.799999999999997" y="136.69950738916256"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hambugerBar" width="36" height="36"/>
+        <image name="tabHome" width="25.333333969116211" height="24.666666030883789"/>
+    </resources>
 </document>

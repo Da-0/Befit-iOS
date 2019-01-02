@@ -291,11 +291,13 @@
             </objects>
             <point key="canvasLocation" x="3244" y="351.72413793103448"/>
         </scene>
-        <!--LikeVC-->
+        <!--찜-->
         <scene sceneID="Yzr-Lw-toe">
             <objects>
                 <navigationController storyboardIdentifier="LikeNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8hp-nu-oN1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="LikeVC" id="teM-aq-K7Y"/>
+                    <tabBarItem key="tabBarItem" title="찜" image="tabLike" id="teM-aq-K7Y">
+                        <color key="badgeColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="E9b-gj-5cW">
@@ -314,5 +316,6 @@
     </scenes>
     <resources>
         <image name="icLikeFull" width="11" height="10"/>
+        <image name="tabLike" width="24.666666030883789" height="21.666666030883789"/>
     </resources>
 </document>

@@ -129,11 +129,13 @@
             </objects>
             <point key="canvasLocation" x="1887" y="790"/>
         </scene>
-        <!--SearchVC-->
+        <!--상품검색-->
         <scene sceneID="xnC-qb-nwq">
             <objects>
                 <navigationController storyboardIdentifier="SearchNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mXh-2Q-3S7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="SearchVC" id="9uK-ZZ-6Eg"/>
+                    <tabBarItem key="tabBarItem" title="상품검색" image="tabSearch" id="9uK-ZZ-6Eg">
+                        <color key="badgeColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Y4Q-5v-57F">
@@ -362,5 +364,6 @@
     <resources>
         <image name="icArrowDown" width="48" height="48"/>
         <image name="icLikeFull" width="11" height="10"/>
+        <image name="tabSearch" width="24" height="24"/>
     </resources>
 </document>
