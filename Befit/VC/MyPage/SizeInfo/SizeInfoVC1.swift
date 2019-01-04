@@ -18,7 +18,7 @@ class SizeInfoVC1: UIViewController {
         tableView.delegate = self;
         tableView.dataSource = self;
         
-        //*****Test용(성별을 gender에 받아오는것에 따라 달리 출력
+        //*****Test용(성별을 gender에 받아오는것에 따라 달리 출력)
         UserDefaults.standard.set("남", forKey: "gender")
         initGender()
     }
