@@ -31,12 +31,6 @@
 		506655D121D25A4A00580137 /* LikeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D021D25A4A00580137 /* LikeVC.swift */; };
 		506655D321D25AD100580137 /* MyPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655D221D25AD100580137 /* MyPage.storyboard */; };
 		506655D621D25B1100580137 /* MyPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D521D25B1100580137 /* MyPageVC.swift */; };
-
-		A59B1C9821D34EC600C2B6F2 /* KoPubDotumLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */; };
-		A59B1C9921D34EC600C2B6F2 /* KoPubDotumBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */; };
-		A59B1C9A21D34EC600C2B6F2 /* KoPubDotumMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */; };
-		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
-		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
 		506655D821D25E4900580137 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D721D25E4900580137 /* CategoryVC.swift */; };
 		506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655D921D26FF900580137 /* CategoryTVCell.swift */; };
 		506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C4F21D546660016549B /* LikeBrandTVCell.swift */; };
@@ -49,9 +43,10 @@
 		506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6621D7584D0016549B /* SearchProductCVCell.swift */; };
 		506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6821D758680016549B /* SearchBrandTVCell.swift */; };
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
+		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
+		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
 		50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */; };
 		50B9A7D121DB30D50088E02D /* SizeInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfoTVCell.swift */; };
-
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -474,7 +469,6 @@
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
 				A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */,
-
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
 				503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */,
@@ -635,9 +629,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8E3WW2RPPH;
+				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,9 +649,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8E3WW2RPPH;
+				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
