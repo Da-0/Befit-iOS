@@ -108,6 +108,7 @@ class UserInfoVC3: UIViewController {
         }
     }
     
+    // 다음 버튼 누를 때 선택된 카운트가 2일 경우에만 가능
     @IBAction func nextAction(_ sender: Any) {
         
         if selectedCount == 2 {

@@ -10,11 +10,14 @@ import UIKit
 
 class PWSettingVC: UIViewController {
 
+    @IBOutlet weak var newPWTF: UITextField!
+    @IBOutlet weak var newPWCKTF: UITextField!
+    @IBOutlet weak var disagreeLB: UILabel!
     var keyboardDismissGesture : UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setKeyboardSetting()
 
     }
@@ -26,6 +29,19 @@ class PWSettingVC: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
+    }
+    
+    @IBAction func okAction(_ sender: Any) {
+        
+        // password 불일치 시
+        if newPWTF.text != newPWCKTF.text {
+            disagreeLB.isHidden = false
+            newPWCKTF.clearButtonMode = .never
+        }
+        // 일치
+        else {
+            disagreeLB.isHidden = true
+        }
     }
     
     @IBAction func backBtn(_ sender: Any) {
