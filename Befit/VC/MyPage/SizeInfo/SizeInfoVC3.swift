@@ -14,6 +14,8 @@ import UIKit
 class SizeInfoVC3: UIViewController {
     
     let userDefault = UserDefaults.standard
+    
+    //Right BarButton Item
     @IBOutlet weak var completeBtn: UIBarButtonItem!
     
     //Cell 0
@@ -28,35 +30,48 @@ class SizeInfoVC3: UIViewController {
     @IBOutlet weak var arrowBtn: UIImageView!
     var productName: String?
     
+    //ContentView
+    @IBOutlet weak var ContentView: UIView!
+    @IBOutlet weak var CproductImg: UIImageView!
+    @IBOutlet weak var CproductName: UILabel!
+    @IBOutlet weak var sizeTF: UITextField!
+    let pickerview = UIPickerView()
+    let sizeArray = ["S", "M", "L", "XL"]
+   
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         completeBtn.tintColor = .clear
         completeBtn.isEnabled = false
         
-    
+        sizeTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
+        sizeTF.delegate = self;
+        initPicker()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         
-      
-        if brandName != nil && productName != nil {
-            completeBtn.tintColor = .black
-            completeBtn.isEnabled = true
-        }
-        
         if brandName != nil {
+            
             brandNameLB.text = brandName
             productViewEnable(true)
-        }else {
-            productViewEnable(false)
+            
+            if productName != nil {
+                ContentView.isHidden = false
+            }
+            
         }
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
@@ -76,7 +91,11 @@ class SizeInfoVC3: UIViewController {
     
     }
     
-    
+}
+
+//Mark: - Button Action 관련
+
+extension SizeInfoVC3 {
     
     @IBAction func brandSelectAction(_ sender: Any) {
         
@@ -91,30 +110,99 @@ class SizeInfoVC3: UIViewController {
         let productSelectVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ProductSelectVC")as! ProductSelectVC
         productSelectVC.delegate = self;
         self.navigationController?.pushViewController(productSelectVC, animated: true)
-
+        
     }
     
     @IBAction func completBtn(_ sender: Any) {
         print(brandName!)
         print(productName!)
+        
+        //서버와의 통신하여 정보 다보내기
+        self.navigationController?.popViewController(animated: true)
     }
     
     
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
 }
 
 
 
+//Mark: - UITExtFieldDelegate
+extension SizeInfoVC3: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        completeBtn.tintColor = .black
+        completeBtn.isEnabled = true
+    }
+    
+}
+
+
+//Mark: - UIPicker
+extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func initPicker() {
+        
+        self.pickerview.delegate = self;
+        self.pickerview.dataSource = self;
+        
+        let bar = UIToolbar()
+        bar.sizeToFit()
+        
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(selectedPicker))
+        
+        bar.setItems([flexible,doneButton], animated: true)
+        
+        sizeTF.inputAccessoryView = bar
+        sizeTF.inputView = pickerview
+    }
+    
+    @objc func selectedPicker(){
+        let row = pickerview.selectedRow(inComponent: 0)
+        sizeTF.text = sizeArray[row]
+        view.endEditing(true)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return sizeArray.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return sizeArray[row]
+    }
+    
+}
+
+
+//Mark: - BrandVCDelegate
 extension SizeInfoVC3 : BrandVCDelegate {
     func BrandVCResponse(value: String) {
         self.brandName = value;
     }
 }
 
+//Mark: - BrandVCDelega
 extension SizeInfoVC3: ProductVCDelegate {
     func ProductVCResponse(value: String) {
         self.productName = value;
     }
 }
+
+
