@@ -57,12 +57,9 @@ class SizeInfoVC1: UIViewController {
 extension SizeInfoVC1: UITableViewDelegate, UITableViewDataSource {
     
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return categoryList.count
     }
-    
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
