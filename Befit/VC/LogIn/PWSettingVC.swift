@@ -19,6 +19,8 @@ class PWSettingVC: UIViewController {
         super.viewDidLoad()
 
         setKeyboardSetting()
+        
+//        UITextField.BorderStyle = UIColor.brown
 
     }
     override func viewWillAppear(_ animated: Bool) {
