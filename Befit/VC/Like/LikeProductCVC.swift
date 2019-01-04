@@ -14,6 +14,7 @@ import XLPagerTabStrip
 class LikeProductCVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+
     
     let brand = ["Uniqlo", "LMC", "Nike", "라퍼지스토어", "아이오아이", "A-LAND", "BBCCAA"]
     let product = ["양털후리스", "매우매우큰자켓", "에어맥스 조던", "에어맥스 조던1111", "에어맥스 조던2222", "에어맥스 조던333",
@@ -48,6 +49,7 @@ class LikeProductCVC: UIViewController {
 extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
         return 6
     }
     
@@ -65,14 +67,14 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         //iphone사이즈에 따라 동적으로 대응이 가능해진다.
-        let width: CGFloat = (self.collectionView.frame.width - 30) / 2
-        let height: CGFloat =  (self.collectionView.frame.height - 30) / 2
-        return CGSize(width: width, height: height)
+       //let width: CGFloat = (self.collectionView.frame.width - 30) / 2
+        //let height: CGFloat =  (self.collectionView.frame.height - 30) / 2
+        return CGSize(width: 167, height: 235)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -81,7 +83,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0 , left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0 , left: 15, bottom: 15, right: 15)
     }
     
     

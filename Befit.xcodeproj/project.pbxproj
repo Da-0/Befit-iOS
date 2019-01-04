@@ -17,7 +17,7 @@
 		5066557C21D21FDF00580137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066557A21D21FDF00580137 /* Main.storyboard */; };
 		5066557E21D21FE000580137 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5066557D21D21FE000580137 /* Assets.xcassets */; };
 		5066558121D21FE000580137 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066557F21D21FE000580137 /* LaunchScreen.storyboard */; };
-		5066558E21D228C900580137 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066558D21D228C900580137 /* Model.swift */; };
+		5066558E21D228C900580137 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066558D21D228C900580137 /* Category.swift */; };
 		5066559221D22A8900580137 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066559121D22A8900580137 /* LogIn.storyboard */; };
 		506655BA21D2546900580137 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655B921D2546900580137 /* LogInVC.swift */; };
 		506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BB21D2547500580137 /* UserInfoVC1.swift */; };
@@ -45,6 +45,8 @@
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
 		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
 		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
+		50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */; };
+		50B9A7D121DB30D50088E02D /* SizeInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfoTVCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,7 +62,7 @@
 		5066557D21D21FE000580137 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5066558021D21FE000580137 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5066558221D21FE000580137 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5066558D21D228C900580137 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		5066558D21D228C900580137 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5066559121D22A8900580137 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		506655B921D2546900580137 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
 		506655BB21D2547500580137 /* UserInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC1.swift; sourceTree = "<group>"; };
@@ -86,6 +88,8 @@
 		506E5C6621D7584D0016549B /* SearchProductCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductCVCell.swift; sourceTree = "<group>"; };
 		506E5C6821D758680016549B /* SearchBrandTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVCell.swift; sourceTree = "<group>"; };
 		5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVC.swift; sourceTree = "<group>"; };
+		50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoVC1.swift; sourceTree = "<group>"; };
+		50B9A7D021DB30D50088E02D /* SizeInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoTVCell.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumLight.ttf; sourceTree = "<group>"; };
 		A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumBold.ttf; sourceTree = "<group>"; };
@@ -175,7 +179,7 @@
 		5066558A21D2231D00580137 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5066558D21D228C900580137 /* Model.swift */,
+				5066558D21D228C900580137 /* Category.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -263,6 +267,7 @@
 				506E5C5921D64BA10016549B /* SettingVC.swift */,
 				504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */,
 				504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */,
+				50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -288,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				506E5C5721D60F840016549B /* MyPageTVCell.swift */,
+				50B9A7D021DB30D50088E02D /* SizeInfoTVCell.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -447,10 +453,11 @@
 			files = (
 				506655D821D25E4900580137 /* CategoryVC.swift in Sources */,
 				506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */,
-				5066558E21D228C900580137 /* Model.swift in Sources */,
+				5066558E21D228C900580137 /* Category.swift in Sources */,
 				506655D621D25B1100580137 /* MyPageVC.swift in Sources */,
 				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
 				506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */,
+				50B9A7D121DB30D50088E02D /* SizeInfoTVCell.swift in Sources */,
 				506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */,
 				506E5C5821D60F840016549B /* MyPageTVCell.swift in Sources */,
 				506E5C6521D756A50016549B /* SearchVC2.swift in Sources */,
@@ -458,6 +465,7 @@
 				5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
 				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
+				50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
 				A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */,
