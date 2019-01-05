@@ -22,14 +22,11 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.navigationController?.isNavigationBarHidden = true
-        moveToViewController(at: 0)
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        //self.navigationController?.isNavigationBarHidden = false
+        moveToViewController(at: 0)
     }
 
     // willMove -> It appears on the parent screen.
