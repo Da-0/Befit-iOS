@@ -58,6 +58,7 @@
 		50DD803921E0890000E6F743 /* CategoryDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803821E0890000E6F743 /* CategoryDetailCVCell.swift */; };
 		50DD803B21E0BE7E00E6F743 /* SearchVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803A21E0BE7E00E6F743 /* SearchVC1.swift */; };
 		50DD803D21E0C37F00E6F743 /* SearchCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803C21E0C37F00E6F743 /* SearchCVCell.swift */; };
+		50DD803F21E0D71D00E6F743 /* MySizeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803E21E0D71D00E6F743 /* MySizeVC.swift */; };
 		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
 		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
 /* End PBXBuildFile section */
@@ -116,6 +117,7 @@
 		50DD803821E0890000E6F743 /* CategoryDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailCVCell.swift; sourceTree = "<group>"; };
 		50DD803A21E0BE7E00E6F743 /* SearchVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC1.swift; sourceTree = "<group>"; };
 		50DD803C21E0C37F00E6F743 /* SearchCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCVCell.swift; sourceTree = "<group>"; };
+		50DD803E21E0D71D00E6F743 /* MySizeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySizeVC.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumLight.ttf; sourceTree = "<group>"; };
 		A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumBold.ttf; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				5068A53021DD3F7100F22E95 /* SizeInfoVC3.swift */,
 				5068A53821DE262600F22E95 /* BrandSelectVC.swift */,
 				5068A53A21DE263C00F22E95 /* ProductSelectVC.swift */,
+				50DD803E21E0D71D00E6F743 /* MySizeVC.swift */,
 			);
 			path = SizeInfo;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				50DD803921E0890000E6F743 /* CategoryDetailCVCell.swift in Sources */,
 				5068A52F21DD3F4F00F22E95 /* SizeInfoVC2.swift in Sources */,
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
+				50DD803F21E0D71D00E6F743 /* MySizeVC.swift in Sources */,
 				5068A53521DDDA2500F22E95 /* SizeInfo3TVCell.swift in Sources */,
 				50DD803521E07A2300E6F743 /* SizeItems.swift in Sources */,
 			);
