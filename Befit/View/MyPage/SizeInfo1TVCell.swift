@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SizeInfoTVCell: UITableViewCell {
+class SizeInfo1TVCell: UITableViewCell {
 
     @IBOutlet weak var categoryImg: UIImageView!
     @IBOutlet weak var categoryName: UILabel!
