@@ -192,7 +192,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="167" height="235"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="bvF-6A-jtq">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="bvF-6A-jtq">
                                                     <rect key="frame" x="0.0" y="0.0" width="167" height="167"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="167" id="ajB-Xw-uHy"/>
@@ -378,7 +378,8 @@
     </scenes>
     <resources>
         <image name="background" width="376" height="768"/>
-        <image name="icLikeLine" width="23.666666030883789" height="21"/>
+        <image name="icLikeLine" width="34" height="34"/>
         <image name="tabSearch" width="24" height="24"/>
+        <image name="testImage" width="139" height="142"/>
     </resources>
 </document>

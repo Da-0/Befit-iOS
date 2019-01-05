@@ -63,6 +63,8 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
     
  
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
@@ -73,7 +75,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 
                 cell.titleLB.text = tableData[ indexPath.section].title
                 cell.titleLB.font = UIFont.systemFont(ofSize: 20)
-                cell.arrowBtn.image = tableData[indexPath.section].open ? #imageLiteral(resourceName: "icArrowDown") : #imageLiteral(resourceName: "icArrowUp")
+                cell.arrowBtn.image = tableData[indexPath.section].open ?  #imageLiteral(resourceName: "icArrowUp") : #imageLiteral(resourceName: "icArrowDown")
                 cell.titleLB.textColor = tableData[indexPath.section].open ? #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
      
             }
@@ -95,38 +97,56 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
 
     }
     
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
         if indexPath.row == 0 {
             return CGFloat(60)
         }else{
             return CGFloat(30)
         }
-        
     }
+    
+    
+    //Mark: - DidselectRowAt
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
+        // 열려있는 경우.
         if tableData[indexPath.section].open {
+            
             tableData[indexPath.section].open = false
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
             
             print("\(indexPath.section), \(indexPath.row)")
             
-        }
+            print("아우터!!")
+//            let navigationCon = sideMenuController?.contentViewController as! UINavigationController
+//            
+//            let categoryDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoryDetailVC")as! CategoryDetailVC
+//            navigationCon.pushViewController(categoryDetailVC, animated: true)
             
+        }
+        
+        // 닫혀있는 경우.
         else{
             
             if indexPath.section == 2 || indexPath.section == 3 {
+                
                 tableData[indexPath.section].open = true
                 let section = IndexSet.init(integer: indexPath.section)
                 tableView.reloadSections(section, with: .automatic)
                 
                 print("\(indexPath.section), \(indexPath.row)")
-            }
+                print("Outer!!!"
+                )
                 
+            }
+             
+            //New, Best뷰로 이동
             else{
                 print("\(indexPath.section), \(indexPath.row)")
             }
