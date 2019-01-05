@@ -21,9 +21,6 @@ class SearchVC: UIViewController {
         initSearchBar()
         secondView.isHidden = true
     }
-    
- 
-
 
 }
 
@@ -38,6 +35,7 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         self.view.endEditing(true)
         firstView.isHidden = true
         secondView.isHidden = false
+        
 //        let search = UIStoryboard.init(name: "Search", bundle: nil)
 //        let searchVC2 = search.instantiateViewController(withIdentifier: "SearchVC2") as? SearchVC2
 //        self.navigationController?.pushViewController(searchVC2!, animated: true)

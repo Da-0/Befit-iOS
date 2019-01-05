@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -113,7 +112,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yl3-df-8fY">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yl3-df-8fY">
                                                     <rect key="frame" x="10" y="194" width="111" height="12"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -317,7 +316,7 @@
         <scene sceneID="Yzr-Lw-toe">
             <objects>
                 <navigationController storyboardIdentifier="LikeNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8hp-nu-oN1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="찜" image="tabLike" id="teM-aq-K7Y">
+                    <tabBarItem key="tabBarItem" title="찜" image="icLikeLine" id="teM-aq-K7Y">
                         <color key="badgeColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -338,9 +337,8 @@
     </scenes>
     <resources>
         <image name="icLikeFull" width="34" height="34"/>
-        <image name="icLikeLine" width="34" height="34"/>
+        <image name="icLikeLine" width="23.666666030883789" height="21"/>
         <image name="searchKnits" width="48" height="48"/>
-        <image name="tabLike" width="24.666666030883789" height="21.666666030883789"/>
         <image name="testImage" width="139" height="142"/>
     </resources>
 </document>

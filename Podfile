@@ -12,4 +12,5 @@ target 'Befit' do
 	pod 'Kingfisher'
 	pod 'SideMenuSwift'
 	pod 'XLPagerTabStrip'
+	pod 'SNCollectionViewLayout'
 end
