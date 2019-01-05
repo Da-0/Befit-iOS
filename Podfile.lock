@@ -6,6 +6,7 @@ PODS:
   - Kingfisher (4.10.0)
   - ObjectMapper (3.3.0)
   - SideMenuSwift (1.0.0)
+  - SNCollectionViewLayout (1.0.1)
   - XLPagerTabStrip (8.1.1)
 
 DEPENDENCIES:
@@ -14,6 +15,7 @@ DEPENDENCIES:
   - Kingfisher
   - ObjectMapper
   - SideMenuSwift
+  - SNCollectionViewLayout
   - XLPagerTabStrip
 
 SPEC REPOS:
@@ -23,6 +25,7 @@ SPEC REPOS:
     - Kingfisher
     - ObjectMapper
     - SideMenuSwift
+    - SNCollectionViewLayout
     - XLPagerTabStrip
 
 SPEC CHECKSUMS:
@@ -31,8 +34,9 @@ SPEC CHECKSUMS:
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   SideMenuSwift: f8567754feb36ade13ffd613f608829f4b86d4b3
+  SNCollectionViewLayout: 9991574aa022237c75acf0e3dc890b09aa4e4c31
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: 47a3dcd434833b8b689c2a4f7592cd4758bfd4a4
+PODFILE CHECKSUM: c28a35defb6ddb219d7b3b91e6074e59c007b584
 
 COCOAPODS: 1.5.3
