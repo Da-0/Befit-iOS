@@ -17,44 +17,41 @@ class SizeInfoVC2: UIViewController {
     var categoryName: String?
 
     @IBOutlet weak var tabView: UIControl!
-    var numberofcollection = 10
-    var Model: [String] = ["helloworld","안녕바다","하이하이","카테고리","그레고리"]
+    var Model: [SizeItems]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.delegate = self;
         collectionView.dataSource = self;
+        
+        navigationBar.topItem?.rightBarButtonItem = editButtonItem
+        editButtonItem.tintColor = .black
 
-        // if 콜렉션뷰 모델의 수 == 0 {
-        
-            // tabView.isHidden = false
-            //편집 버튼 히든
-        
-        // }
-    
-  
-    
-        
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         navigationBar.topItem?.title = categoryName
+       
+        ///**************통신이 일어나는 시점 **************
+        Model = [
+            SizeItems(image: #imageLiteral(resourceName: "testImage"), brand: "헬로월드", product: "나이키"),
+            SizeItems(image: #imageLiteral(resourceName: "testImage"), brand: "헬로월드", product: "나이키"),
+            SizeItems(image: #imageLiteral(resourceName: "testImage"), brand: "헬로월드", product: "나이키")
+        ]
         
-        if Model.count != 0 {
-            tabView.isHidden = true
-            collectionView.isHidden = false
-        }else{
-            tabView.isHidden = false
-            collectionView.isHidden = true
-        }
+        tabView.isHidden = Model.count != 0 ?  true : false
+        collectionView.isHidden = Model.count != 0 ? false: true
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
         
@@ -67,23 +64,14 @@ class SizeInfoVC2: UIViewController {
         
     }
     
-    
-  
-    
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     
-    @IBAction func editBtn(_ sender: Any) {
-        //Edit collectionView
-        //편집이후 통신이 일어나는 시점.
-        
-    }
-    
 }
 
-extension SizeInfoVC2 : UICollectionViewDataSource ,UICollectionViewDelegateFlowLayout {
+extension SizeInfoVC2 : UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,16 +83,18 @@ extension SizeInfoVC2 : UICollectionViewDataSource ,UICollectionViewDelegateFlow
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SizeInfo2CVCell", for: indexPath) as! SizeInfo2CVCell
         
+        cell.delegate = self;
+        
         if indexPath.row == Model.count{
             cell.productImg.image = #imageLiteral(resourceName: "plusBox")
-            cell.brandName.text = ""
-            cell.productName.text = ""
+            cell.brandName.text = nil
+            cell.productName.text = nil
         }
             
         else{
-            cell.productImg.image = #imageLiteral(resourceName: "testImage")
-            cell.brandName.text = Model[indexPath.row]
-            cell.productName.text = Model[indexPath.row]
+            cell.productImg.image = Model[indexPath.row].image
+            cell.brandName.text = Model[indexPath.row].brandName
+            cell.productName.text = Model[indexPath.row].productName
         }
 
         return cell
@@ -115,24 +105,71 @@ extension SizeInfoVC2 : UICollectionViewDataSource ,UICollectionViewDelegateFlow
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-
         if indexPath.row == Model.count {
+            //마지막 index는 등록뷰로 이동
             let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
             self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
-        }
             
-        else {
-            //해당 상품 웹페이지로 이동
         }
-        
-        
-        
-        
+        else {
+            
+            //내 사이즈 확인뷰로 이동
+            
+        }
+    
     }
+    
+    
+    // MARK: - Delete Items
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        
+        super.setEditing(editing, animated: animated)
+
+        if let indexPaths = collectionView?.indexPathsForVisibleItems {
+            
+            for indexPath in indexPaths {
+                
+                if let cell = collectionView?.cellForItem(at: indexPath) as? SizeInfo2CVCell {
+                    cell.isEditing = editing
+                    
+                    //if indexPath.row == Model.count {
+                    if cell.productImg.image == #imageLiteral(resourceName: "plusBox"){
+                        cell.isEditing = false
+                        cell.isUserInteractionEnabled = !editing
+                    }
+                    
+                }
+            }
+        }
+    }
+
+}
+
+
+
+
+extension SizeInfoVC2: SizeInfo2CellDelegate {
+    
+    func delete(cell: SizeInfo2CVCell) {
+        
+        if let indexPath = collectionView.indexPath(for: cell) {
+            
+            Model.remove(at: indexPath.row)
+            collectionView.deleteItems(at: [indexPath])
+            
+            print(Model.count)
+        }
+    }
+}
+
+
+
+
+extension SizeInfoVC2: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 184, height: 279)
+        return CGSize(width: 186, height: 279)
     }
     
     
@@ -149,12 +186,4 @@ extension SizeInfoVC2 : UICollectionViewDataSource ,UICollectionViewDelegateFlow
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
-    
-    
-    
-
-    
-    
 }
-
-

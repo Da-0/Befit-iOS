@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -214,12 +213,6 @@
                                                 <action selector="backBtn:" destination="4i4-D7-VoV" id="wko-32-Vp8"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="편집" id="q0C-Qg-CXA">
-                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <connections>
-                                                <action selector="editBtn:" destination="4i4-D7-VoV" id="U5l-wf-CYL"/>
-                                            </connections>
-                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -265,19 +258,45 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sAt-Th-7LX" userLabel="alphaView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="183" height="280"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WnX-E1-fJk" userLabel="deleteBtn">
+                                                            <rect key="frame" x="15" y="15" width="20" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="20" id="FUT-oA-nDj"/>
+                                                                <constraint firstAttribute="height" constant="22" id="iJq-i6-zgj"/>
+                                                            </constraints>
+                                                            <state key="normal" image="icMiuns"/>
+                                                            <connections>
+                                                                <action selector="deletBtnAction:" destination="0A3-Ke-57j" eventType="touchUpInside" id="MUd-fu-Gkc"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstItem="WnX-E1-fJk" firstAttribute="top" secondItem="sAt-Th-7LX" secondAttribute="top" constant="15" id="5TP-eI-TpI"/>
+                                                        <constraint firstItem="WnX-E1-fJk" firstAttribute="leading" secondItem="sAt-Th-7LX" secondAttribute="leading" constant="15" id="Hga-LU-FEo"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="sAt-Th-7LX" secondAttribute="trailing" id="3R9-Nh-kzZ"/>
                                             <constraint firstItem="mz1-kt-1rp" firstAttribute="top" secondItem="xsT-a8-Vm7" secondAttribute="bottom" constant="8" id="A1U-CE-IH4"/>
                                             <constraint firstItem="xsT-a8-Vm7" firstAttribute="top" secondItem="dCe-hu-EGR" secondAttribute="bottom" constant="12" id="CZJ-xM-wZF"/>
+                                            <constraint firstItem="sAt-Th-7LX" firstAttribute="leading" secondItem="0A3-Ke-57j" secondAttribute="leading" id="Lbx-jw-wky"/>
+                                            <constraint firstAttribute="bottom" secondItem="sAt-Th-7LX" secondAttribute="bottom" id="RtP-1b-y4Y"/>
                                             <constraint firstItem="mz1-kt-1rp" firstAttribute="leading" secondItem="0A3-Ke-57j" secondAttribute="leading" constant="15" id="SS8-FP-U2X"/>
                                             <constraint firstItem="dCe-hu-EGR" firstAttribute="top" secondItem="0A3-Ke-57j" secondAttribute="top" id="T1D-1N-fan"/>
                                             <constraint firstItem="dCe-hu-EGR" firstAttribute="leading" secondItem="0A3-Ke-57j" secondAttribute="leading" id="XKJ-kh-kdn"/>
                                             <constraint firstItem="xsT-a8-Vm7" firstAttribute="leading" secondItem="0A3-Ke-57j" secondAttribute="leading" constant="15" id="cTc-KS-wA3"/>
                                             <constraint firstAttribute="trailing" secondItem="dCe-hu-EGR" secondAttribute="trailing" constant="-6" id="smF-75-A8h"/>
+                                            <constraint firstItem="sAt-Th-7LX" firstAttribute="top" secondItem="0A3-Ke-57j" secondAttribute="top" id="yBt-y3-VAh"/>
                                         </constraints>
                                         <size key="customSize" width="183" height="280"/>
                                         <connections>
+                                            <outlet property="alphaView" destination="sAt-Th-7LX" id="YOK-RL-dwU"/>
                                             <outlet property="brandName" destination="xsT-a8-Vm7" id="6JO-z4-IEH"/>
                                             <outlet property="productImg" destination="dCe-hu-EGR" id="YEM-B6-90D"/>
                                             <outlet property="productName" destination="mz1-kt-1rp" id="fjk-zZ-j3E"/>
@@ -343,7 +362,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tfu-kk-vZX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3097" y="100"/>
+            <point key="canvasLocation" x="3096.8000000000002" y="99.753694581280797"/>
         </scene>
         <!--Size InfoVC3-->
         <scene sceneID="eN5-VW-QOv">
@@ -1504,6 +1523,7 @@
     </scenes>
     <resources>
         <image name="backArrow" width="32" height="32"/>
+        <image name="icMiuns" width="20" height="20"/>
         <image name="icPlus" width="43" height="43"/>
         <image name="icSetting" width="45" height="45"/>
         <image name="icYearsClick" width="22" height="23"/>
