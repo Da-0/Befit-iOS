@@ -9,6 +9,8 @@
 import UIKit
 
 class PWSettingVC: UIViewController {
+    
+    let userDefault = UserDefaults.standard
 
     @IBOutlet weak var newPWTF: UITextField!
     @IBOutlet weak var newPWCKTF: UITextField!
@@ -60,9 +62,8 @@ class PWSettingVC: UIViewController {
         }
     }
     
-    
-    
     @IBAction func passwordCKAction(_ sender: Any) {
+        
         // password 불일치 시
         if newPWTF.text != newPWCKTF.text {
             disagreeLB.isHidden = false
@@ -76,10 +77,33 @@ class PWSettingVC: UIViewController {
         }
     }
     @IBAction func okAction(_ sender: Any) {
-        if passwordNoticeLB.textColor == #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) && disagreeLB.isHidden == true{
-            self.dismiss(animated: true, completion: nil)
+        
+        if passwordNoticeLB.textColor != #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) && !disagreeLB.isHidden {
+            simpleAlert(title: "경고", message: "패스워드가 불일치 합니다.")
         }
+        
+        network()
     }
+    
+    func network(){
+        let idx = userDefault.integer(forKey: "idx")
+        
+        PWSettingService.shared.setPW(idx: idx, pw: newPWTF.text!, completion: {[weak self] (res) in
+            guard let `self` = self else {return}
+            
+            if res == "회원 비밀번호 정보 수정 성공" {
+                print(res)
+                self.dismiss(animated: true, completion: nil)
+            }
+            else {
+                self.simpleAlert(title: "에러", message: res)
+            }
+            
+        })
+    
+    }
+    
+    
     
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

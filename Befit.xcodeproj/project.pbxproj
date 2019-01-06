@@ -69,6 +69,7 @@
 		50DD805121E1ABAB00E6F743 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD805021E1ABAB00E6F743 /* UIViewController+Extensions.swift */; };
 		50DD805421E1B1D200E6F743 /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD805321E1B1D200E6F743 /* LogInService.swift */; };
 		50DD805621E1C5D400E6F743 /* FindPWService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD805521E1C5D400E6F743 /* FindPWService.swift */; };
+		50DD805821E1CF3000E6F743 /* PWSettingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD805721E1CF3000E6F743 /* PWSettingService.swift */; };
 		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
 		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
 		A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2EB5521E09834002C23A7 /* ExtensionControl.swift */; };
@@ -139,6 +140,7 @@
 		50DD805021E1ABAB00E6F743 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		50DD805321E1B1D200E6F743 /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
 		50DD805521E1C5D400E6F743 /* FindPWService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindPWService.swift; sourceTree = "<group>"; };
+		50DD805721E1CF3000E6F743 /* PWSettingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PWSettingService.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumLight.ttf; sourceTree = "<group>"; };
 		A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumBold.ttf; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 			children = (
 				50DD805321E1B1D200E6F743 /* LogInService.swift */,
 				50DD805521E1C5D400E6F743 /* FindPWService.swift */,
+				50DD805721E1CF3000E6F743 /* PWSettingService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -594,6 +597,7 @@
 				50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */,
 				A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC2.swift in Sources */,
+				50DD805821E1CF3000E6F743 /* PWSettingService.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC1.swift in Sources */,
 				A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */,
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
