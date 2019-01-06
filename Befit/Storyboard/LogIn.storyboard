@@ -70,6 +70,9 @@
                                 <state key="normal" title="로그인">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="loginBtn:" destination="29Z-zX-oXX" eventType="touchUpInside" id="4ki-D1-ObR"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1O-Ak-2LE" userLabel="barView">
                                 <rect key="frame" x="38" y="462" width="299" height="1"/>
@@ -82,7 +85,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="KnS-7i-5Fs">
-                                <rect key="frame" x="113.66666666666666" y="626" width="147" height="26"/>
+                                <rect key="frame" x="113.66666666666666" y="626" width="148" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3O-MU-siD">
@@ -96,7 +99,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIf-2X-BVJ">
-                                        <rect key="frame" x="81" y="0.0" width="66" height="26"/>
+                                        <rect key="frame" x="81" y="0.0" width="67" height="26"/>
                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                         <state key="normal" title="비밀번호 찾기">
                                             <color key="titleColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -140,6 +143,8 @@
                         <viewLayoutGuide key="safeArea" id="F2e-M6-17l"/>
                     </view>
                     <connections>
+                        <outlet property="emailTF" destination="0Q6-ZV-MTE" id="kxk-5W-xPS"/>
+                        <outlet property="pwTF" destination="WFq-If-Sce" id="S6H-pS-g1L"/>
                         <outlet property="switchBtn" destination="Swy-nt-vHk" id="zSC-eB-smd"/>
                     </connections>
                 </viewController>

@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -98,7 +97,7 @@
         <!--Side Menu Controller-->
         <scene sceneID="ZF2-1U-nqS">
             <objects>
-                <viewController id="Jms-GG-FJh" customClass="SideMenuController" customModule="SideMenuSwift" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="sideStart" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Jms-GG-FJh" customClass="SideMenuController" customModule="SideMenuSwift" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qOz-0t-E1j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -428,7 +427,7 @@
     <resources>
         <image name="backArrow" width="32" height="32"/>
         <image name="hambugerBar" width="36" height="36"/>
-        <image name="icLikeLine" width="34" height="34"/>
+        <image name="icLikeLine" width="23.666666030883789" height="21"/>
         <image name="tabHome" width="25.333333969116211" height="24.666666030883789"/>
         <image name="testImage" width="139" height="142"/>
     </resources>

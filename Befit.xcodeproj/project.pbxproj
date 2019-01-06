@@ -67,6 +67,7 @@
 		50DD804D21E1AAFC00E6F743 /* ResponseArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD804C21E1AAFC00E6F743 /* ResponseArray.swift */; };
 		50DD804F21E1AB8E00E6F743 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD804E21E1AB8E00E6F743 /* UIImageView+Extensions.swift */; };
 		50DD805121E1ABAB00E6F743 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD805021E1ABAB00E6F743 /* UIViewController+Extensions.swift */; };
+		50DD805421E1B1D200E6F743 /* LogInService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD805321E1B1D200E6F743 /* LogInService.swift */; };
 		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
 		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
 		A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2EB5521E09834002C23A7 /* ExtensionControl.swift */; };
@@ -135,6 +136,7 @@
 		50DD804C21E1AAFC00E6F743 /* ResponseArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseArray.swift; sourceTree = "<group>"; };
 		50DD804E21E1AB8E00E6F743 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		50DD805021E1ABAB00E6F743 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		50DD805321E1B1D200E6F743 /* LogInService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInService.swift; sourceTree = "<group>"; };
 		9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Befit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumLight.ttf; sourceTree = "<group>"; };
 		A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumBold.ttf; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				50DD804221E19E6900E6F743 /* NetworkResult.swift */,
 				50DD804421E1AA5800E6F743 /* APIManager.swift */,
 				50DD804621E1AA9F00E6F743 /* Requestable.swift */,
+				50DD805221E1B1C200E6F743 /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -406,6 +409,14 @@
 				50DD805021E1ABAB00E6F743 /* UIViewController+Extensions.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		50DD805221E1B1C200E6F743 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				50DD805321E1B1D200E6F743 /* LogInService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		6773F0E3D5EDC3069E6DFDE0 /* Frameworks */ = {
@@ -595,6 +606,7 @@
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
 				5068A53121DD3F7100F22E95 /* SizeInfoVC3.swift in Sources */,
 				50DD803D21E0C37F00E6F743 /* SearchCVCell.swift in Sources */,
+				50DD805421E1B1D200E6F743 /* LogInService.swift in Sources */,
 				506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */,
 				501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */,
 				506E5C5A21D64BA10016549B /* SettingVC.swift in Sources */,
