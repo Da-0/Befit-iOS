@@ -20,9 +20,9 @@
 		5066558E21D228C900580137 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066558D21D228C900580137 /* Category.swift */; };
 		5066559221D22A8900580137 /* LogIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066559121D22A8900580137 /* LogIn.storyboard */; };
 		506655BA21D2546900580137 /* LogInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655B921D2546900580137 /* LogInVC.swift */; };
-		506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BB21D2547500580137 /* UserInfoVC1.swift */; };
-		506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BD21D2548000580137 /* UserInfoVC2.swift */; };
-		506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BF21D2548A00580137 /* UserInfoVC3.swift */; };
+		506655BC21D2547500580137 /* UserInfoVC3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BB21D2547500580137 /* UserInfoVC3.swift */; };
+		506655BE21D2548000580137 /* UserInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BD21D2548000580137 /* UserInfoVC1.swift */; };
+		506655C021D2548A00580137 /* UserInfoVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655BF21D2548A00580137 /* UserInfoVC2.swift */; };
 		506655C421D2578100580137 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655C321D2578100580137 /* Search.storyboard */; };
 		506655C721D257CF00580137 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506655C621D257CF00580137 /* SearchVC.swift */; };
 		506655C921D258FA00580137 /* Rank.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506655C821D258FA00580137 /* Rank.storyboard */; };
@@ -52,10 +52,6 @@
 		506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6821D758680016549B /* SearchBrandTVCell.swift */; };
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
 		50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */; };
-		50B9A7D121DB30D50088E02D /* SizeInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfoTVCell.swift */; };
-		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
-		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
-		A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2EB5521E09834002C23A7 /* ExtensionControl.swift */; };
 		50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */; };
 		50DD803521E07A2300E6F743 /* SizeItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803421E07A2300E6F743 /* SizeItems.swift */; };
 		50DD803721E088BD00E6F743 /* CategoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803621E088BD00E6F743 /* CategoryDetailVC.swift */; };
@@ -65,6 +61,7 @@
 		50DD803F21E0D71D00E6F743 /* MySizeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803E21E0D71D00E6F743 /* MySizeVC.swift */; };
 		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
 		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
+		A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2EB5521E09834002C23A7 /* ExtensionControl.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,9 +80,9 @@
 		5066558D21D228C900580137 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		5066559121D22A8900580137 /* LogIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LogIn.storyboard; sourceTree = "<group>"; };
 		506655B921D2546900580137 /* LogInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInVC.swift; sourceTree = "<group>"; };
-		506655BB21D2547500580137 /* UserInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC1.swift; sourceTree = "<group>"; };
-		506655BD21D2548000580137 /* UserInfoVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC2.swift; sourceTree = "<group>"; };
-		506655BF21D2548A00580137 /* UserInfoVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC3.swift; sourceTree = "<group>"; };
+		506655BB21D2547500580137 /* UserInfoVC3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC3.swift; sourceTree = "<group>"; };
+		506655BD21D2548000580137 /* UserInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC1.swift; sourceTree = "<group>"; };
+		506655BF21D2548A00580137 /* UserInfoVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoVC2.swift; sourceTree = "<group>"; };
 		506655C321D2578100580137 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		506655C621D257CF00580137 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		506655C821D258FA00580137 /* Rank.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rank.storyboard; sourceTree = "<group>"; };
@@ -250,9 +247,9 @@
 				506655B921D2546900580137 /* LogInVC.swift */,
 				A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */,
 				A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */,
-				506655BB21D2547500580137 /* UserInfoVC1.swift */,
-				506655BD21D2548000580137 /* UserInfoVC2.swift */,
-				506655BF21D2548A00580137 /* UserInfoVC3.swift */,
+				506655BD21D2548000580137 /* UserInfoVC1.swift */,
+				506655BF21D2548A00580137 /* UserInfoVC2.swift */,
+				506655BB21D2547500580137 /* UserInfoVC3.swift */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
@@ -537,11 +534,11 @@
 				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
 				50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */,
 				A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */,
-				506655C021D2548A00580137 /* UserInfoVC3.swift in Sources */,
-				506655BE21D2548000580137 /* UserInfoVC2.swift in Sources */,
+				506655C021D2548A00580137 /* UserInfoVC2.swift in Sources */,
+				506655BE21D2548000580137 /* UserInfoVC1.swift in Sources */,
 				A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */,
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
-				506655BC21D2547500580137 /* UserInfoVC1.swift in Sources */,
+				506655BC21D2547500580137 /* UserInfoVC3.swift in Sources */,
 				5068A53B21DE263C00F22E95 /* ProductSelectVC.swift in Sources */,
 				503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,

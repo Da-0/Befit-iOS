@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="29Z-zX-oXX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="29Z-zX-oXX">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -142,12 +142,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3J-ue-uAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-858.39999999999998" y="26.600985221674879"/>
+            <point key="canvasLocation" x="-3942" y="488"/>
         </scene>
-        <!--User InfoVC1-->
+        <!--User InfoVC3-->
         <scene sceneID="0nG-Gp-PbP">
             <objects>
-                <viewController storyboardIdentifier="UserInfoVC1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UUj-U2-Kug" customClass="UserInfoVC1" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoVC3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="UUj-U2-Kug" customClass="UserInfoVC3" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="N4k-hS-Xuh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -430,12 +430,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSX-LQ-GHJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1196" y="1594.5812807881773"/>
+            <point key="canvasLocation" x="358" y="-41"/>
         </scene>
-        <!--User InfoVC2-->
+        <!--User InfoVC1-->
         <scene sceneID="UXq-VC-h2b">
             <objects>
-                <viewController storyboardIdentifier="UserInfoVC2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3of-eu-Z6o" customClass="UserInfoVC2" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoVC1" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3of-eu-Z6o" customClass="UserInfoVC1" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cqD-pj-Bqu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -537,12 +537,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWa-dC-aKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2796" y="1595"/>
+            <point key="canvasLocation" x="-1676" y="-41"/>
         </scene>
-        <!--User InfoVC3-->
+        <!--User InfoVC2-->
         <scene sceneID="UFS-Th-cgq">
             <objects>
-                <viewController storyboardIdentifier="UserInfoVC3" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qrh-LX-sgn" customClass="UserInfoVC3" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserInfoVC2" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qrh-LX-sgn" customClass="UserInfoVC2" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="q5e-Vi-Jzc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -671,7 +671,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xp-AN-h3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2009" y="1595"/>
+            <point key="canvasLocation" x="-658" y="-41"/>
         </scene>
         <!--FindPWVC-->
         <scene sceneID="dxJ-c3-mNi">
@@ -779,7 +779,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RA9-ti-JcL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1238" y="1610"/>
+            <point key="canvasLocation" x="-1676" y="845"/>
         </scene>
         <!--PWSettingVC-->
         <scene sceneID="9sq-ag-PRI">
@@ -884,7 +884,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLl-S1-ItF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1884" y="1609"/>
+            <point key="canvasLocation" x="-658" y="845"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="SOh-M8-X7E">
@@ -902,7 +902,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HVu-Cy-ZPG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2796" y="788"/>
+            <point key="canvasLocation" x="-2702" y="-40"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="QGu-En-H88">
@@ -920,7 +920,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lFu-BL-9o5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1238" y="763"/>
+            <point key="canvasLocation" x="-2703" y="846"/>
         </scene>
     </scenes>
     <resources>
