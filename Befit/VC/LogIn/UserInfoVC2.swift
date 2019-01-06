@@ -5,6 +5,7 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+// 브랜드 선택 뷰
 
 import UIKit
 
@@ -88,7 +89,27 @@ class UserInfoVC2: UIViewController {
             if sender.isSelected == false {
                 sender.setImage(menSelected[sender.tag], for: .selected)
                 sender.isSelected = true
-                brandIdx.append(sender.tag)
+                
+                switch sender.tag {
+                    case 0:  brandIdx.append(17)
+                        break
+                    case 1:  brandIdx.append(12)
+                        break
+                    case 2:  brandIdx.append(18)
+                        break
+                    case 3:  brandIdx.append(10)
+                        break
+                    case 4:  brandIdx.append(7)
+                        break
+                    case 5:  brandIdx.append(9)
+                        break
+                    case 6:  brandIdx.append(22)
+                        break
+                    case 7:  brandIdx.append(14)
+                        break
+                    default: break
+                }
+               
                 selectedCount += 1
                 
                 if selectedCount == 2 {
@@ -139,5 +160,33 @@ class UserInfoVC2: UIViewController {
     }
 
 }
+
+
+
+
+
+
+//남,여 Tag 번호에 따른 실제 브랜드 Idx
+
+//남성:
+//0. THISISNEVERTHAT 17.
+//1. ROMANTIC CROWN 12
+//2. IST KUNST 18
+//3. LIBERTENG 10
+//4. COVERNAT 7
+//5. ANDERSSON BELL 9
+//6. INSILENCE 22
+//7. CRITIC 14
+
+//여성:
+//0. THISISNEVERTHAT 17
+//1. ROMANTIC CROWN 12
+//2. MINAV 2    ***************
+//3. LAFUDGESTORE 3   ***************
+//4. MORE OR LESS 32   ***************
+//5. ANDERSSON BELL 9
+//6. OiOi 37     ***************
+//7. CRITIC 14
+
 
 

@@ -1,5 +1,5 @@
 //
-//  LogInService.swift
+//  PWSettingService.swift
 //  Befit
 //
 //  Created by 이충신 on 06/01/2019.
@@ -8,29 +8,28 @@
 
 import Alamofire
 
-struct LoginService: APIManager, Requestable {
+struct PWSettingService: APIManager, Requestable{
     
     typealias NetworkData = ResponseObject<Token>
-    static let shared = LoginService()
+    static let shared = PWSettingService()
     
-    let loginURL = url("/login")
+    let URL = url("/user")
     let headers: HTTPHeaders = [
         "Content-Type" : "application/json"
     ]
     
-    //로그인 api
-    func login(email: String, password: String, completion: @escaping (Token) -> Void) {
+    //비밀번호 재설정 api
+    func setPW(idx: Int, pw: String, completion: @escaping (NetworkData) -> Void) {
         
         let body = [
-            "email" : email,
-            "password" : password
-            ]
+            "userIdx" : idx,
+            "password" : pw
+            ] as [String : Any]
         
-        postable(loginURL, body: body, header: headers) { res in
+        puttable(URL, body: body, header: headers) { res in
             switch res {
             case .success(let value):
-                guard let token = value.data else {return}
-                completion(token)
+                    completion(value)
             case .error(let error):
                 print(error)
             }

@@ -19,3 +19,14 @@ struct Token: Mappable {
     }
 }
 
+struct Idx: Mappable {
+    
+    var idx: Int?
+    
+    init?(map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        idx <- map["idx"]
+    }
+}
+
