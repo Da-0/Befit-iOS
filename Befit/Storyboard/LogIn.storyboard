@@ -367,7 +367,7 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="iVQ-A3-azP">
-                                        <barButtonItem key="leftBarButtonItem" image="icLeftArrowBlack" id="atj-aS-I3X">
+                                        <barButtonItem key="leftBarButtonItem" image="backArrow" id="atj-aS-I3X">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
                                                 <action selector="backBtn:" destination="UUj-U2-Kug" id="9er-qm-qfi"/>
@@ -530,7 +530,7 @@
                         <viewLayoutGuide key="safeArea" id="hpM-gs-53L"/>
                     </view>
                     <navigationItem key="navigationItem" id="7Qx-xG-oLw">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icLeftArrowBlack" id="N85-TJ-8Et">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="backArrow" id="N85-TJ-8Et">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="backAction:" destination="3of-eu-Z6o" id="Frk-QD-scb"/>
@@ -555,19 +555,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjL-i7-R3K">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjL-i7-R3K">
                                 <rect key="frame" x="171" y="762" width="34" height="19"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxd-iz-yJn">
-                                <rect key="frame" x="85" y="116" width="218" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">선호 브랜드 
-2가지를 선택해주세요</string>
-                                <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -646,13 +636,12 @@
                                     <action selector="nextAction:" destination="qrh-LX-sgn" eventType="touchUpInside" id="Sod-93-0Nj"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBv-pr-fao">
-                                <rect key="frame" x="1" y="44" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBv-pr-fao">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="XZn-6w-Vnn">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="icLeftArrowBlack" id="Rsq-E6-2PF">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="backArrow" id="Rsq-E6-2PF">
                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <action selector="backAction:" destination="qrh-LX-sgn" id="I3s-FC-XVB"/>
@@ -661,8 +650,29 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxd-iz-yJn">
+                                <rect key="frame" x="0.0" y="116" width="375" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="MMn-HV-nIY"/>
+                                    <constraint firstAttribute="height" constant="62" id="vsW-Bl-LWp"/>
+                                </constraints>
+                                <string key="text">선호 브랜드 
+2가지를 선택해주세요</string>
+                                <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="JjL-i7-R3K" firstAttribute="centerX" secondItem="0gQ-WB-GBJ" secondAttribute="centerX" id="MdR-VI-Hha"/>
+                            <constraint firstItem="Hxd-iz-yJn" firstAttribute="centerX" secondItem="0gQ-WB-GBJ" secondAttribute="centerX" id="Pyi-Z8-jov"/>
+                            <constraint firstItem="JjL-i7-R3K" firstAttribute="bottom" secondItem="0gQ-WB-GBJ" secondAttribute="bottom" constant="3" id="Qvf-9j-kTj"/>
+                            <constraint firstItem="TBv-pr-fao" firstAttribute="leading" secondItem="0gQ-WB-GBJ" secondAttribute="leading" id="SrW-iT-IBp"/>
+                            <constraint firstItem="Hxd-iz-yJn" firstAttribute="top" secondItem="TBv-pr-fao" secondAttribute="bottom" constant="28" id="ZFG-KF-eUm"/>
+                            <constraint firstItem="TBv-pr-fao" firstAttribute="top" secondItem="0gQ-WB-GBJ" secondAttribute="top" id="bA7-UJ-eVA"/>
+                            <constraint firstAttribute="trailing" secondItem="TBv-pr-fao" secondAttribute="trailing" id="t2Q-5C-6S7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="0gQ-WB-GBJ"/>
                     </view>
                     <connections>
@@ -770,7 +780,7 @@
                         <viewLayoutGuide key="safeArea" id="bWk-zO-Mqi"/>
                     </view>
                     <navigationItem key="navigationItem" id="szL-mh-vyh">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="icLeftArrowBlack" id="B5h-xh-CGr">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="backArrow" id="B5h-xh-CGr">
                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="backAction:" destination="b9M-FH-T2j" id="NoS-cT-Jsp"/>
@@ -860,7 +870,7 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="Pyx-WN-Rch">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" image="icLeftArrowBlack" id="4Nx-eD-4Ne">
+                                        <barButtonItem key="leftBarButtonItem" title="Item" image="backArrow" id="4Nx-eD-4Ne">
                                             <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <connections>
                                                 <action selector="backBtn:" destination="yzx-rJ-84x" id="a7X-yY-BUI"/>
@@ -932,6 +942,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backArrow" width="32" height="32"/>
         <image name="background" width="376" height="768"/>
         <image name="icGrayarrow" width="48" height="48"/>
         <image name="icLeftArrowBlack" width="32" height="32"/>

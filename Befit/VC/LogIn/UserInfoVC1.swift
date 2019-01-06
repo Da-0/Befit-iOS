@@ -5,7 +5,7 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-
+// 성별 선택 뷰
 import UIKit
 
 class UserInfoVC1: UIViewController {

@@ -5,6 +5,7 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+// 브랜드 선택 뷰
 
 import UIKit
 
@@ -139,5 +140,30 @@ class UserInfoVC2: UIViewController {
     }
 
 }
+
+
+
+//남,여 Tag 번호에 따른 실제 브랜드 Idx
+
+//남성:
+//0. THISISNEVERTHAT 17.
+//1. ROMANTIC CROWN 12
+//2. IST KUNST 18
+//3. LIBERTENG 10
+//4. COVERNAT 7
+//5. ANDERSSON BELL 9
+//6. INSILENCE 22
+//7. CRITIC 14
+
+//여성:
+//0. THISISNEVERTHAT 17
+//1. ROMANTIC CROWN 12
+//2. MINAV 2    ***************
+//3. LAFUDGESTORE 3   ***************
+//4. MORE OR LESS 32   ***************
+//5. ANDERSSON BELL 9
+//6. OiOi 37     ***************
+//7. CRITIC 14
+
 
 

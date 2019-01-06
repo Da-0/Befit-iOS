@@ -1,6 +1,17 @@
+//
+//  UserInfoVC3.swift
+//  Befit
+//
+//  Created by 이충신 on 25/12/2018.
+//  Copyright © 2018 GGOMMI. All rights reserved.
+//
+//  회원 가입 뷰
+
 import UIKit
 
 class UserInfoVC3: UIViewController {
+    
+    let userDefault = UserDefaults.standard
     
     @IBOutlet weak var nameTF: UITextField!
     
@@ -137,8 +148,26 @@ class UserInfoVC3: UIViewController {
     
     
     @IBAction func nextAction(_ sender: Any) {
+        
+        network()
     }
     
+    
+    func network(){
+        
+        let gender = userDefault.string(forKey: "gender")
+        let brand1 = userDefault.integer(forKey: "brand1_idx")
+        let brand2 = userDefault.integer(forKey: "brand2_idx")
+        let birthday = yearTF.text! + "/" + monthTF.text! + "/" + dayTF.text!
+        
+        SignUpService.shared.signUp(email: emailTF.text!, pw: passwordCkTF.text!, gender: gender!, name: nameTF.text!, brand1: brand1, brand2: brand2, birthday: birthday, completion: {[weak self] (res) in
+            guard let `self` = self else {return}
+            if res == "회원가입 성공" {
+                print(res)
+                self.dismiss(animated: true, completion: nil)
+            }
+        })
+    }
     
 }
 
