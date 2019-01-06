@@ -89,7 +89,27 @@ class UserInfoVC2: UIViewController {
             if sender.isSelected == false {
                 sender.setImage(menSelected[sender.tag], for: .selected)
                 sender.isSelected = true
-                brandIdx.append(sender.tag)
+                
+                switch sender.tag {
+                    case 0:  brandIdx.append(17)
+                        break
+                    case 1:  brandIdx.append(12)
+                        break
+                    case 2:  brandIdx.append(18)
+                        break
+                    case 3:  brandIdx.append(10)
+                        break
+                    case 4:  brandIdx.append(7)
+                        break
+                    case 5:  brandIdx.append(9)
+                        break
+                    case 6:  brandIdx.append(22)
+                        break
+                    case 7:  brandIdx.append(14)
+                        break
+                    default: break
+                }
+               
                 selectedCount += 1
                 
                 if selectedCount == 2 {
@@ -140,6 +160,9 @@ class UserInfoVC2: UIViewController {
     }
 
 }
+
+
+
 
 
 
