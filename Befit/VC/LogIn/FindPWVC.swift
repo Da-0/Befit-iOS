@@ -10,6 +10,8 @@ import UIKit
 
 class FindPWVC: UIViewController {
 
+    let userDefault = UserDefaults.standard
+    
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var yearTF: UITextField!
     @IBOutlet weak var monthTF: UITextField!
@@ -24,7 +26,7 @@ class FindPWVC: UIViewController {
     
     var yearsTillNow : [String] {
         var years = [String]()
-        for i in (1960..<2019).reversed() {
+        for i in 1960...2019 {
             years.append("\(i)년")
         }
         return years
@@ -32,7 +34,7 @@ class FindPWVC: UIViewController {
     
     var monthsTillNow : [String] {
         var month = [String]()
-        for i in (1..<12).reversed() {
+        for i in 1...12 {
             month.append("\(i)월")
         }
         return month
@@ -40,7 +42,7 @@ class FindPWVC: UIViewController {
     
     var daysTillNow : [String] {
         var days = [String]()
-        for i in (1..<31).reversed() {
+        for i in 1...31 {
             days.append("\(i)일")
         }
         return days
@@ -49,26 +51,11 @@ class FindPWVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setKeyboardSetting()
-        
-        // 텍스트필드 borderColor
-        nameTF.setCustom()
-        yearTF.setCustom()
-        monthTF.setCustom()
-        dayTF.setCustom()
-        emailTF.setCustom()
-        
-        
-        // 텍스트필드 padding
-        nameTF.setLeftPaddingPoints(14)
-        yearTF.setLeftPaddingPoints(14)
-        monthTF.setLeftPaddingPoints(14)
-        dayTF.setLeftPaddingPoints(14)
-        emailTF.setLeftPaddingPoints(14)
-    self.navigationController!.navigationBar.barTintColor = UIColor.white
+        self.navigationController!.navigationBar.barTintColor = UIColor.white
         UINavigationBar.appearance().shadowImage = UIImage()
-    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        setTF()
+        setKeyboardSetting()
         
         //키보드
         setKeyboardSetting()
@@ -86,12 +73,55 @@ class FindPWVC: UIViewController {
         dayTF.delegate = self
         
     }
-    @IBAction func okAction(_ sender: Any) {
-        let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
-        let settingVC = logIn.instantiateViewController(withIdentifier: "PWSettingVC") as? PWSettingVC
-        self.navigationController?.pushViewController(settingVC!, animated: true)
+    
+    
+    func setTF(){
+        
+        // 텍스트필드 borderColor
+        nameTF.setCustom()
+        yearTF.setCustom()
+        monthTF.setCustom()
+        dayTF.setCustom()
+        emailTF.setCustom()
+        
+        
+        // 텍스트필드 padding
+        nameTF.setLeftPaddingPoints(14)
+        yearTF.setLeftPaddingPoints(14)
+        monthTF.setLeftPaddingPoints(14)
+        dayTF.setLeftPaddingPoints(14)
+        emailTF.setLeftPaddingPoints(14)
         
     }
+    
+    @IBAction func okAction(_ sender: Any) {
+        network()
+    }
+    
+    func network(){
+        
+        let birthday = yearTF.text! + "/" + monthTF.text! + "/" + dayTF.text!
+        
+        print(nameTF.text!)
+        print(emailTF.text!)
+        print(birthday)
+        
+        FindPWService.shared.findPW(email: emailTF.text!, name: nameTF.text!, birthday: birthday, completion: {[weak self] (res) in
+            guard let `self` = self else {return}
+            
+            if res.idx != nil {
+                self.userDefault.set(res.idx!, forKey: "idx")
+                let settingVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "PWSettingVC") as! PWSettingVC
+                self.navigationController?.pushViewController(settingVC, animated: true)
+                
+            }
+            
+        })
+        
+    }
+    
+    
+    
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

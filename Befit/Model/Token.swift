@@ -21,7 +21,7 @@ struct Token: Mappable {
 
 struct Idx: Mappable {
     
-    var idx: String?
+    var idx: Int?
     
     init?(map: Map) {}
     

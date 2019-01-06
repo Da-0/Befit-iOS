@@ -18,7 +18,6 @@ class LogInVC: UIViewController, APIManager {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
     }
     
