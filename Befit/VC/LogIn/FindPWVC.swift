@@ -54,6 +54,7 @@ class FindPWVC: UIViewController {
         self.navigationController!.navigationBar.barTintColor = UIColor.white
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         setTF()
         setKeyboardSetting()
         
@@ -95,6 +96,11 @@ class FindPWVC: UIViewController {
     }
     
     @IBAction func okAction(_ sender: Any) {
+        
+        if (nameTF.text?.isEmpty)! || (yearTF.text?.isEmpty)! || (monthTF.text?.isEmpty)! || (dayTF.text?.isEmpty)! || (emailTF.text?.isEmpty)! {
+              simpleAlert(title: "찾기 실패", message: "모든 항목을 입력해 주세요")
+        }
+        
         network()
     }
     
@@ -102,20 +108,22 @@ class FindPWVC: UIViewController {
         
         let birthday = yearTF.text! + "/" + monthTF.text! + "/" + dayTF.text!
         
-        print(nameTF.text!)
-        print(emailTF.text!)
-        print(birthday)
-        
         FindPWService.shared.findPW(email: emailTF.text!, name: nameTF.text!, birthday: birthday, completion: {[weak self] (res) in
             guard let `self` = self else {return}
-            
-            if res.idx != nil {
-                self.userDefault.set(res.idx!, forKey: "idx")
-                let settingVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "PWSettingVC") as! PWSettingVC
-                self.navigationController?.pushViewController(settingVC, animated: true)
-                
+            if let status = res.status {
+                switch status {
+                    case 200 :
+                        self.userDefault.set(res.data?.idx!, forKey: "idx")
+                        let settingVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "PWSettingVC") as! PWSettingVC
+                        self.navigationController?.pushViewController(settingVC, animated: true)
+                        break
+                    case 400, 401, 500, 600 :
+                        self.simpleAlert(title: "Error", message: res.message!)
+                        break
+                    default:
+                        break
+                }
             }
-            
         })
         
     }

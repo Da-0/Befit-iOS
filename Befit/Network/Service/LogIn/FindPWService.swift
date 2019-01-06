@@ -19,7 +19,7 @@ struct FindPWService: APIManager, Requestable{
     ]
     
     //비밀번호 찾기 api
-    func findPW(email: String, name: String, birthday: String, completion: @escaping (Idx) -> Void) {
+    func findPW(email: String, name: String, birthday: String, completion: @escaping (NetworkData) -> Void) {
         
         let body = [
             "email" : email,
@@ -30,8 +30,7 @@ struct FindPWService: APIManager, Requestable{
         postable(URL, body: body, header: headers) { res in
             switch res {
             case .success(let value):
-                guard let idx = value.data else {return}
-                completion(idx)
+                completion(value)
             case .error(let error):
                 print(error)
             }
