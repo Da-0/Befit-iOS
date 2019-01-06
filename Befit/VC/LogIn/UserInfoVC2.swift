@@ -1,5 +1,5 @@
 //
-//  UserInfoVC2.swift
+//  UserInfoVC3.swift
 //  Befit
 //
 //  Created by 이충신 on 25/12/2018.
@@ -10,71 +10,134 @@ import UIKit
 
 class UserInfoVC2: UIViewController {
     
-    let uesrDefault = UserDefaults.standard
+    let userDefault = UserDefaults.standard
     
-    @IBOutlet weak var womanImg: UIButton!
-    @IBOutlet weak var manImg: UIButton!
+    var btnArray: [UIButton] = [UIButton]()
+    @IBOutlet weak var btn0: UIButton!
+    @IBOutlet weak var btn1: UIButton!
+    @IBOutlet weak var btn2: UIButton!
+    @IBOutlet weak var btn3: UIButton!
+    @IBOutlet weak var btn4: UIButton!
+    @IBOutlet weak var btn5: UIButton!
+    @IBOutlet weak var btn6: UIButton!
+    @IBOutlet weak var btn7: UIButton!
+    
     @IBOutlet weak var nextBtn: UIButton!
     
-    var selected: Bool!
-    let gender = UserDefaults.standard.string(forKey: "gender")
+    var brandIdx: [Int] = []
+    
+    //Buttons Images
+    let menUnselected: [UIImage] = [#imageLiteral(resourceName: "manThisisneverthat"),#imageLiteral(resourceName: "manRomanticcrown"),#imageLiteral(resourceName: "manIstkunst"),#imageLiteral(resourceName: "manLiberteng"),#imageLiteral(resourceName: "manCovernat"),#imageLiteral(resourceName: "manAnderssonbell"),#imageLiteral(resourceName: "manInsilence"),#imageLiteral(resourceName: "manCritic")]
+    var menSelected:[UIImage] = [#imageLiteral(resourceName: "manSelectThisisneverthat"),#imageLiteral(resourceName: "manSelectRomanticcrown"),#imageLiteral(resourceName: "manSelectIstkunst"),#imageLiteral(resourceName: "manSelectLiberteng"),#imageLiteral(resourceName: "manSelectCovernat"),#imageLiteral(resourceName: "manSelectAnderssonbell"),#imageLiteral(resourceName: "manSelectInsilence"),#imageLiteral(resourceName: "manSelectCritic")]
+    let womenUnselected: [UIImage] = [#imageLiteral(resourceName: "womanThisisneverthat"),#imageLiteral(resourceName: "womanRomanticCrwon"),#imageLiteral(resourceName: "womanMinav"),#imageLiteral(resourceName: "womanLafudgestore"),#imageLiteral(resourceName: "womanMoreOrLess"),#imageLiteral(resourceName: "womanAnderssonBell"),#imageLiteral(resourceName: "womanOioi"),#imageLiteral(resourceName: "womanCritic")]
+    var womenSelected:[UIImage] = [#imageLiteral(resourceName: "womanSelectThisisneverthat"),#imageLiteral(resourceName: "womanSelectRomanticCrown"),#imageLiteral(resourceName: "womanSelectMinav"),#imageLiteral(resourceName: "womanSelectLafudgestore"),#imageLiteral(resourceName: "womanSelectMoreOrLess"),#imageLiteral(resourceName: "womanSelectAnderssonBell"),#imageLiteral(resourceName: "womanSelectOioi"),#imageLiteral(resourceName: "womanSelectCritic")]
+    var selectedCount = 0
 
+    
+    let gender = UserDefaults.standard.string(forKey: "gender")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        initBtn()
         
-        //네비게이션 바 설정
-        self.navigationController!.navigationBar.barTintColor = UIColor.white
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-
     }
     
-    //성별 선택시 이미지 변환
-    @IBAction func womanBtn(_ sender: Any) {
-        
-        if !womanImg.isSelected {
-            womanImg.isSelected = true
-            womanImg.setImage(#imageLiteral(resourceName: "icWomanTouch"), for: .selected)
-            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
-            manImg.setImage(#imageLiteral(resourceName: "icManNotouch"), for: .selected)
-            manImg.isSelected = false
-            uesrDefault.set("여", forKey: "gender")
-        }
-        else{
-            womanImg.isSelected = false
-            womanImg.setImage(#imageLiteral(resourceName: "icWomanNotouch"), for: .selected)
-            nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
-    @IBAction func manBtn(_ sender: Any) {
-        
-        
-        if !manImg.isSelected {
-            manImg.isSelected = true
-            manImg.setImage(#imageLiteral(resourceName: "icManTouch"), for: .selected)
-            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
-            womanImg.setImage(#imageLiteral(resourceName: "icWomanNotouch"), for: .selected)
-            womanImg.isSelected = false
-            uesrDefault.set("남", forKey: "gender")
-        }
-        else{
-            manImg.isSelected = false
-            manImg.setImage(#imageLiteral(resourceName: "icManNotouch"), for: .selected)
-            nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = false
     }
     
-    @IBAction func nextBtn(_ sender: Any) {
+    func initBtn(){
         
-        if manImg.isSelected || womanImg.isSelected {
-            let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
-            let userInfoVC = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
-            self.navigationController?.pushViewController(userInfoVC!, animated: true)
+        btnArray.append(btn0)
+        btnArray.append(btn1)
+        btnArray.append(btn2)
+        btnArray.append(btn3)
+        btnArray.append(btn4)
+        btnArray.append(btn5)
+        btnArray.append(btn6)
+        btnArray.append(btn7)
+        
+        for btn in btnArray {
+            
+            if gender == "남성" {
+                btn.setImage(menUnselected[btn.tag], for: .normal)
+            }
+            else {
+                btn.setImage(womenUnselected[btn.tag], for: .normal)
+                menSelected = womenSelected
+            }
+            
         }
+        
     }
+    
     @IBAction func backAction(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func buttonClick(_ sender: UIButton) {
+        
+        if selectedCount != 2 {
+            
+            if sender.isSelected == false {
+                sender.setImage(menSelected[sender.tag], for: .selected)
+                sender.isSelected = true
+                brandIdx.append(sender.tag)
+                selectedCount += 1
+                
+                if selectedCount == 2 {
+                    nextBtn.setImage( #imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+                }
+                
+            }
+                
+            else{
+                sender.setImage(menUnselected[sender.tag], for: .selected)
+                sender.isSelected = false
+                brandIdx.removeLast()
+                selectedCount -= 1
+            }
+            
+        }
+            
+        else {
+            
+            if sender.isSelected == true{
+                sender.imageView!.image = menUnselected[sender.tag]
+                sender.isSelected = false
+                brandIdx.removeLast()
+                selectedCount -= 1
+                nextBtn.setImage( #imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+                
+            }
+        }
+    }
+    
+    // 다음 버튼 누를 때 선택된 카운트가 2일 경우에만 가능
+    @IBAction func nextAction(_ sender: Any) {
+        
+        if selectedCount == 2 {
+            
+            print(brandIdx)
+            
+            userDefault.set(brandIdx[0], forKey: "brand1_idx")
+            userDefault.set(brandIdx[1], forKey: "brand2_idx")
+            
+            let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
+            let userInfoVC3 = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
+            self.navigationController?.pushViewController(userInfoVC3!, animated: true)
+            
+        }
+        
+        
+    }
+
 }
+
+
