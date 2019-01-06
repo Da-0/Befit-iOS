@@ -17,7 +17,6 @@ class FindPWVC: UIViewController {
     @IBOutlet weak var emailTF: UITextField!
     var keyboardDismissGesture : UITapGestureRecognizer?
     
-    
     //create date picker
     let pickerView1 = UIPickerView()
     let pickerview2 = UIPickerView()
