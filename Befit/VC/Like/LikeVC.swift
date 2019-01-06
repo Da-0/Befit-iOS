@@ -18,8 +18,12 @@ class LikeVC: ButtonBarPagerTabStripViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        moveToViewController(at: 0)
+       
         
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+         moveToViewController(at: 0)
     }
 
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
