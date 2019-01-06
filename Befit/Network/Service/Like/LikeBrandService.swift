@@ -1,5 +1,5 @@
 //
-//  BrandRankService.swift
+//  LikeBrandService.swift
 //  Befit
 //
 //  Created by 이충신 on 06/01/2019.
@@ -8,30 +8,31 @@
 
 import Alamofire
 
-struct BrandRankService: APIManager, Requestable{
+struct LikeBrandService: APIManager, Requestable{
     
     typealias NetworkData = ResponseArray<Brand>
-    static let shared = BrandRankService()
+    static let shared = LikeBrandService()
     
-    let URL = url("/brands/preference")
+    let URL = url("/likes/brands")
     
     let headers: HTTPHeaders = [
         "Authorization" : UserDefaults.standard.string(forKey: "token")!
     ]
     
-    //브랜드 랭킹보여주기(10개) api
-    func showBrandRank(completion: @escaping ([Brand]) -> Void) {
+    //좋아요한 브랜드 보여주기
+    func showBrandLike(completion: @escaping ([Brand]) -> Void) {
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
-                completion(value.data!)
+                guard let data = value.data else {return}
+                completion(data)
             case .error(let error):
                 print(error)
             }
         }
         
     }
-
+    
     
 }

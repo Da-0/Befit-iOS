@@ -10,7 +10,9 @@
 		3B84E94CEB62C9768A62B9C5 /* Pods_Befit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */; };
 		501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F73E421D92BD0000D2F3E /* RankTVCell.swift */; };
 		5031148521E1E9FB008D81AC /* BrandRankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148421E1E9FB008D81AC /* BrandRankService.swift */; };
-		5031148921E1EAC5008D81AC /* BrandRank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148821E1EAC5008D81AC /* BrandRank.swift */; };
+		5031148921E1EAC5008D81AC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148821E1EAC5008D81AC /* Brand.swift */; };
+		5031148C21E22A42008D81AC /* LikeBrandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148B21E22A42008D81AC /* LikeBrandService.swift */; };
+		5031148E21E22A4F008D81AC /* LikeProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148D21E22A4F008D81AC /* LikeProductService.swift */; };
 		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		504CBAEB21D9DA38008606F7 /* UserInfoAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */; };
 		504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */; };
@@ -82,7 +84,9 @@
 		4E9628501C4FE32118E472D1 /* Pods-Befit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.debug.xcconfig"; sourceTree = "<group>"; };
 		501F73E421D92BD0000D2F3E /* RankTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTVCell.swift; sourceTree = "<group>"; };
 		5031148421E1E9FB008D81AC /* BrandRankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandRankService.swift; sourceTree = "<group>"; };
-		5031148821E1EAC5008D81AC /* BrandRank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandRank.swift; sourceTree = "<group>"; };
+		5031148821E1EAC5008D81AC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		5031148B21E22A42008D81AC /* LikeBrandService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandService.swift; sourceTree = "<group>"; };
+		5031148D21E22A4F008D81AC /* LikeProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeProductService.swift; sourceTree = "<group>"; };
 		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoAdminVC.swift; sourceTree = "<group>"; };
 		504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeVC.swift; sourceTree = "<group>"; };
@@ -196,6 +200,15 @@
 			path = Brand;
 			sourceTree = "<group>";
 		};
+		5031148A21E22A0C008D81AC /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				5031148B21E22A42008D81AC /* LikeBrandService.swift */,
+				5031148D21E22A4F008D81AC /* LikeProductService.swift */,
+			);
+			path = Like;
+			sourceTree = "<group>";
+		};
 		5066556A21D21FDF00580137 = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +276,7 @@
 				50DD804821E1AACA00E6F743 /* Token.swift */,
 				5066558D21D228C900580137 /* Category.swift */,
 				50DD803421E07A2300E6F743 /* SizeItems.swift */,
-				5031148821E1EAC5008D81AC /* BrandRank.swift */,
+				5031148821E1EAC5008D81AC /* Brand.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -446,6 +459,7 @@
 			children = (
 				5031148221E1E99F008D81AC /* LogIn */,
 				5031148321E1E9AB008D81AC /* Brand */,
+				5031148A21E22A0C008D81AC /* Like */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -598,6 +612,7 @@
 			files = (
 				50DD804521E1AA5800E6F743 /* APIManager.swift in Sources */,
 				50DD804921E1AACA00E6F743 /* Token.swift in Sources */,
+				5031148C21E22A42008D81AC /* LikeBrandService.swift in Sources */,
 				506655D821D25E4900580137 /* CategoryVC.swift in Sources */,
 				50DD803721E088BD00E6F743 /* CategoryDetailVC.swift in Sources */,
 				50DD804D21E1AAFC00E6F743 /* ResponseArray.swift in Sources */,
@@ -607,9 +622,10 @@
 				5068A53321DDD8A000F22E95 /* SizeInfo2CVCell.swift in Sources */,
 				5066558E21D228C900580137 /* Category.swift in Sources */,
 				506655D621D25B1100580137 /* MyPageVC.swift in Sources */,
+				5031148E21E22A4F008D81AC /* LikeProductService.swift in Sources */,
 				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
 				50DD804B21E1AAE400E6F743 /* ResponseObject.swift in Sources */,
-				5031148921E1EAC5008D81AC /* BrandRank.swift in Sources */,
+				5031148921E1EAC5008D81AC /* Brand.swift in Sources */,
 				506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */,
 				50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */,
 				506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */,

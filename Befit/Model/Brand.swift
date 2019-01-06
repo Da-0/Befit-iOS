@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-struct BrandRank : Mappable {
+struct Brand : Mappable {
     
     var idx : Int?
     var name_korean : String?
