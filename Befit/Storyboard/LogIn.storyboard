@@ -350,7 +350,7 @@
                                 <rect key="frame" x="296.33333333333331" y="736" width="48" height="48"/>
                                 <state key="normal" image="icGrayarrow"/>
                                 <connections>
-                                    <action selector="nextBtn:" destination="UUj-U2-Kug" eventType="touchUpInside" id="X38-4e-pF4"/>
+                                    <action selector="nextAction:" destination="UUj-U2-Kug" eventType="touchUpInside" id="dsR-nP-xnA"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ife-nD-rFO">
@@ -420,8 +420,8 @@
                         <outlet property="duplicationLB" destination="mSd-Kv-sDK" id="N30-31-h5Z"/>
                         <outlet property="emailTF" destination="7tX-8M-vmm" id="XFY-ZU-lw5"/>
                         <outlet property="monthTF" destination="CdV-zP-xmp" id="xeQ-lI-fyc"/>
-                        <outlet property="nameTF" destination="erR-ub-Pud" id="1DB-O1-BON"/>
-                        <outlet property="nextBtn" destination="3GW-r0-gQx" id="b83-Y3-itS"/>
+                        <outlet property="nameTF" destination="erR-ub-Pud" id="2M7-QS-Fqy"/>
+                        <outlet property="nextBtn" destination="3GW-r0-gQx" id="qfS-eO-S3G"/>
                         <outlet property="passwordCkTF" destination="hhh-5d-hcK" id="35l-Qd-5bN"/>
                         <outlet property="passwordNoticeLB" destination="lyP-ou-xIU" id="YRr-e6-6n6"/>
                         <outlet property="passwordTF" destination="2aU-pf-wPV" id="fcO-fh-7aG"/>
@@ -635,7 +635,7 @@
                                 </accessibility>
                                 <state key="normal" image="icGrayarrow"/>
                                 <connections>
-                                    <action selector="nextAction:" destination="qrh-LX-sgn" eventType="touchUpInside" id="wc4-up-JNd"/>
+                                    <action selector="nextAction:" destination="qrh-LX-sgn" eventType="touchUpInside" id="Sod-93-0Nj"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TBv-pr-fao">
@@ -666,12 +666,12 @@
                         <outlet property="btn5" destination="GvA-18-B0d" id="Pgy-zc-YTU"/>
                         <outlet property="btn6" destination="xMy-Bu-1fO" id="BE9-bk-S6k"/>
                         <outlet property="btn7" destination="KR3-vW-yWL" id="80u-G4-Ewe"/>
-                        <outlet property="nextBtn" destination="osR-Pu-rXg" id="93H-N8-wsS"/>
+                        <outlet property="nextBtn" destination="osR-Pu-rXg" id="346-Za-YMG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xp-AN-h3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-658" y="-41"/>
+            <point key="canvasLocation" x="-658.39999999999998" y="-41.379310344827587"/>
         </scene>
         <!--FindPWVC-->
         <scene sceneID="dxJ-c3-mNi">

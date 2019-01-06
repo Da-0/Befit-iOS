@@ -38,7 +38,7 @@ class UserInfoVC1: UIViewController {
             nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
             manImg.setImage(#imageLiteral(resourceName: "icManNotouch"), for: .selected)
             manImg.isSelected = false
-            uesrDefault.set("여", forKey: "gender")
+            uesrDefault.set("여성", forKey: "gender")
         }
         else{
             womanImg.isSelected = false
@@ -56,7 +56,7 @@ class UserInfoVC1: UIViewController {
             nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
             womanImg.setImage(#imageLiteral(resourceName: "icWomanNotouch"), for: .selected)
             womanImg.isSelected = false
-            uesrDefault.set("남", forKey: "gender")
+            uesrDefault.set("남성", forKey: "gender")
         }
         else{
             manImg.isSelected = false
@@ -69,8 +69,8 @@ class UserInfoVC1: UIViewController {
         
         if manImg.isSelected || womanImg.isSelected {
             let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
-            let userInfoVC = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC2
-            self.navigationController?.pushViewController(userInfoVC!, animated: true)
+            let userInfoVC2 = logIn.instantiateViewController(withIdentifier: "UserInfoVC2") as? UserInfoVC2
+            self.navigationController?.pushViewController(userInfoVC2!, animated: true)
         }
     }
     @IBAction func backAction(_ sender: Any) {
@@ -78,3 +78,4 @@ class UserInfoVC1: UIViewController {
     }
     
 }
+

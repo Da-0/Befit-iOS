@@ -10,6 +10,8 @@ import UIKit
 
 class UserInfoVC2: UIViewController {
     
+    let userDefault = UserDefaults.standard
+    
     var btnArray: [UIButton] = [UIButton]()
     @IBOutlet weak var btn0: UIButton!
     @IBOutlet weak var btn1: UIButton!
@@ -22,6 +24,7 @@ class UserInfoVC2: UIViewController {
     
     @IBOutlet weak var nextBtn: UIButton!
     
+    var brandIdx: [Int] = []
     
     //Buttons Images
     let menUnselected: [UIImage] = [#imageLiteral(resourceName: "manThisisneverthat"),#imageLiteral(resourceName: "manRomanticcrown"),#imageLiteral(resourceName: "manIstkunst"),#imageLiteral(resourceName: "manLiberteng"),#imageLiteral(resourceName: "manCovernat"),#imageLiteral(resourceName: "manAnderssonbell"),#imageLiteral(resourceName: "manInsilence"),#imageLiteral(resourceName: "manCritic")]
@@ -30,6 +33,7 @@ class UserInfoVC2: UIViewController {
     var womenSelected:[UIImage] = [#imageLiteral(resourceName: "womanSelectThisisneverthat"),#imageLiteral(resourceName: "womanSelectRomanticCrown"),#imageLiteral(resourceName: "womanSelectMinav"),#imageLiteral(resourceName: "womanSelectLafudgestore"),#imageLiteral(resourceName: "womanSelectMoreOrLess"),#imageLiteral(resourceName: "womanSelectAnderssonBell"),#imageLiteral(resourceName: "womanSelectOioi"),#imageLiteral(resourceName: "womanSelectCritic")]
     var selectedCount = 0
 
+    
     let gender = UserDefaults.standard.string(forKey: "gender")
     
     override func viewDidLoad() {
@@ -37,7 +41,7 @@ class UserInfoVC2: UIViewController {
         initBtn()
         
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
@@ -47,7 +51,7 @@ class UserInfoVC2: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
-
+    
     func initBtn(){
         
         btnArray.append(btn0)
@@ -60,11 +64,15 @@ class UserInfoVC2: UIViewController {
         btnArray.append(btn7)
         
         for btn in btnArray {
-            print(btn.tag)
-            if gender == "남" { btn.setImage(menUnselected[btn.tag], for: .normal)}
-            else {btn.setImage(womenUnselected[btn.tag], for: .normal)
+            
+            if gender == "남성" {
+                btn.setImage(menUnselected[btn.tag], for: .normal)
+            }
+            else {
+                btn.setImage(womenUnselected[btn.tag], for: .normal)
                 menSelected = womenSelected
             }
+            
         }
         
     }
@@ -74,16 +82,17 @@ class UserInfoVC2: UIViewController {
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {
-
+        
         if selectedCount != 2 {
             
             if sender.isSelected == false {
                 sender.setImage(menSelected[sender.tag], for: .selected)
                 sender.isSelected = true
+                brandIdx.append(sender.tag)
                 selectedCount += 1
                 
                 if selectedCount == 2 {
-                    nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+                    nextBtn.setImage( #imageLiteral(resourceName: "icPurplearrow"), for: .normal)
                 }
                 
             }
@@ -91,18 +100,20 @@ class UserInfoVC2: UIViewController {
             else{
                 sender.setImage(menUnselected[sender.tag], for: .selected)
                 sender.isSelected = false
+                brandIdx.removeLast()
                 selectedCount -= 1
             }
             
         }
-         
+            
         else {
             
             if sender.isSelected == true{
                 sender.imageView!.image = menUnselected[sender.tag]
                 sender.isSelected = false
+                brandIdx.removeLast()
                 selectedCount -= 1
-                nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+                nextBtn.setImage( #imageLiteral(resourceName: "icGrayarrow"), for: .normal)
                 
             }
         }
@@ -112,10 +123,21 @@ class UserInfoVC2: UIViewController {
     @IBAction func nextAction(_ sender: Any) {
         
         if selectedCount == 2 {
+            
+            print(brandIdx)
+            
+            userDefault.set(brandIdx[0], forKey: "brand1_idx")
+            userDefault.set(brandIdx[1], forKey: "brand2_idx")
+            
             let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
-            let userInfoVC1 = logIn.instantiateViewController(withIdentifier: "UserInfoVC1") as? UserInfoVC11
-            self.navigationController?.pushViewController(userInfoVC1!, animated: true)
+            let userInfoVC3 = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
+            self.navigationController?.pushViewController(userInfoVC3!, animated: true)
             
         }
+        
+        
     }
+
 }
+
+
