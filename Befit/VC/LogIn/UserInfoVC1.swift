@@ -2,7 +2,7 @@ import UIKit
 
 class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var nameFT: UITextField!
+    @IBOutlet weak var nameTF: UITextField!
     
     @IBOutlet weak var yearTF: UITextField!
     @IBOutlet weak var monthTF: UITextField!
@@ -15,6 +15,7 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var passwordNoticeLB: UILabel!
     @IBOutlet weak var passwordCkTF: UITextField!
     @IBOutlet weak var correctLB: UILabel!
+    @IBOutlet weak var nextBtn: UIButton!
     
     var keyboardDismissGesture : UITapGestureRecognizer?
     
@@ -33,7 +34,7 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     
     var monthsTillNow : [String] {
         var month = [String]()
-        for i in (1..<12).reversed() {
+        for i in 1...12 {
             month.append("\(i)월")
         }
         return month
@@ -41,7 +42,7 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     
     var daysTillNow : [String] {
         var days = [String]()
-        for i in (1..<31).reversed() {
+        for i in 1...31 {
             days.append("\(i)일")
         }
         return days
@@ -53,6 +54,7 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
         
         setKeyboardSetting()
         setupTap()
+        setupTF()
         
         yearTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
         yearTF.delegate = self
@@ -64,6 +66,7 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
         dayTF.delegate = self
         
         initPicker()
+        nextBtn.addTarget(self, action: #selector(completeWrite), for: .touchUpInside)
         
     }
     
@@ -76,6 +79,38 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
     }
+    
+    @IBAction func nextBtn(_ sender: Any) {
+        // completeWrite()
+        //self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func completeWrite() {
+        
+        // 아래의 guard 문법은 guard 의 조건이 참 이라면 조건을 통과하고 그렇지 않다면 else로 넘어가 예외처리를 하게되는 문법입니다.
+        // 여기서는 제목과 내용의 text가 존재하지 않으면 통과하지 못하는 방식으로 사용되었습니다.
+        // guard let 구문을 항상 써왔으니 금방 이해하실겁니다!
+        
+        let pwCheck: Bool = passwordTF.text == passwordCkTF.text
+        let pwNotice: Bool = passwordNoticeLB.textColor == #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5)
+    
+        guard nameTF.text?.isEmpty != true else {return}
+        guard yearTF.text?.isEmpty != true else {return}
+        guard monthTF.text?.isEmpty != true else {return}
+        guard dayTF.text?.isEmpty != true else {return}
+        guard emailTF.text?.isEmpty != true else {return}
+        guard passwordTF.text?.isEmpty != true else {return}
+        guard passwordCkTF.text?.isEmpty != true else {return}
+        guard pwCheck == true else {return}
+        guard duplicationLB.isHidden == true else {return}
+        guard pwNotice == true else {return}
+        
+        self.dismiss(animated: true, completion: nil)
+    
+    }
+    
+    
+    
     
     // 이메일 정규화
     @IBAction func emailAction(_ sender: Any) {
@@ -123,26 +158,36 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    
-    
-    
-    
-    
-    @objc func completeWrite() {
-        // 아래의 guard 문법은 guard 의 조건이 참 이라면 조건을 통과하고 그렇지 않다면 else로 넘어가 예외처리를 하게되는 문법입니다.
-        // 여기서는 제목과 내용의 text가 존재하지 않으면 통과하지 못하는 방식으로 사용되었습니다.
-        // guard let 구문을 항상 써왔으니 금방 이해하실겁니다!
-        guard yearTF.text?.isEmpty != true else {return}
-        guard monthTF.text?.isEmpty != true else {return}
-        guard dayTF.text?.isEmpty != true else {return}
-        guard emailTF.text?.isEmpty != true else {return}
-        guard passwordTF.text?.isEmpty != true else {return}
-        guard passwordCkTF.text?.isEmpty != true else {return}
+    func setupTF(){
+        
+        // 텍스트필드 borderColor
+        nameTF.setCustom()
+        yearTF.setCustom()
+        monthTF.setCustom()
+        dayTF.setCustom()
+        emailTF.setCustom()
+        passwordTF.setCustom()
+        passwordCkTF.setCustom()
+        
+        
+        // 텍스트필드 padding
+        nameTF.setLeftPaddingPoints(14)
+        yearTF.setLeftPaddingPoints(14)
+        monthTF.setLeftPaddingPoints(14)
+        dayTF.setLeftPaddingPoints(14)
+        emailTF.setLeftPaddingPoints(14)
+        passwordTF.setLeftPaddingPoints(14)
+        passwordCkTF.setLeftPaddingPoints(14)
+        
+        passwordCkTF.delegate = self;
+        
     }
     
+ 
+    
     func setupTap() {
-        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         
+        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
         self.view.addGestureRecognizer(viewTap)
         
     }
@@ -155,6 +200,10 @@ class UserInfoVC1: UIViewController, UIGestureRecognizerDelegate {
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+   
+    
+    
     
 }
 
@@ -278,6 +327,14 @@ extension UserInfoVC1: UITextFieldDelegate {
         self.view.endEditing(true)
         return true
     }
+
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        if (textField.tag == 6 && duplicationLB.isHidden == true && passwordNoticeLB.textColor == #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) && passwordTF.text == passwordCkTF.text){
+            print("helloworld!")
+            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+        }
+    }
+ 
     
     func setKeyboardSetting() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -309,6 +366,8 @@ extension UserInfoVC1: UITextFieldDelegate {
             }
         }
     }
+    
+    
     
     @objc func tapBackground() {
         self.view.endEditing(true)

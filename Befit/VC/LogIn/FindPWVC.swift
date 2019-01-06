@@ -52,9 +52,24 @@ class FindPWVC: UIViewController {
         super.viewDidLoad()
         
         setKeyboardSetting()
-        self.navigationController!.navigationBar.barTintColor = UIColor.white
+        
+        // 텍스트필드 borderColor
+        nameTF.setCustom()
+        yearTF.setCustom()
+        monthTF.setCustom()
+        dayTF.setCustom()
+        emailTF.setCustom()
+        
+        
+        // 텍스트필드 padding
+        nameTF.setLeftPaddingPoints(14)
+        yearTF.setLeftPaddingPoints(14)
+        monthTF.setLeftPaddingPoints(14)
+        dayTF.setLeftPaddingPoints(14)
+        emailTF.setLeftPaddingPoints(14)
+    self.navigationController!.navigationBar.barTintColor = UIColor.white
         UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
         //키보드
         setKeyboardSetting()
