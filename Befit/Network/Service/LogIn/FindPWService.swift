@@ -18,7 +18,7 @@ struct FindPWService: APIManager, Requestable{
         "Content-Type" : "application/json"
     ]
     
-    //로그인 api
+    //비밀번호 찾기 api
     func findPW(email: String, name: String, birthday: String, completion: @escaping (Idx) -> Void) {
         
         let body = [

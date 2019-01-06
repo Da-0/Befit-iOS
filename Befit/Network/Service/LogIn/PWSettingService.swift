@@ -18,7 +18,7 @@ struct PWSettingService: APIManager, Requestable{
         "Content-Type" : "application/json"
     ]
     
-    //로그인 api
+    //비밀번호 재설정 api
     func setPW(idx: Int, pw: String, completion: @escaping (String) -> Void) {
         
         let body = [
