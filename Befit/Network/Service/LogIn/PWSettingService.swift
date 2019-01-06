@@ -19,7 +19,7 @@ struct PWSettingService: APIManager, Requestable{
     ]
     
     //비밀번호 재설정 api
-    func setPW(idx: Int, pw: String, completion: @escaping (String) -> Void) {
+    func setPW(idx: Int, pw: String, completion: @escaping (NetworkData) -> Void) {
         
         let body = [
             "userIdx" : idx,
@@ -29,7 +29,7 @@ struct PWSettingService: APIManager, Requestable{
         puttable(URL, body: body, header: headers) { res in
             switch res {
             case .success(let value):
-                    completion(value.message!)
+                    completion(value)
             case .error(let error):
                 print(error)
             }
