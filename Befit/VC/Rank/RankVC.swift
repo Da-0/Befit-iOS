@@ -11,6 +11,7 @@ import UIKit
 class RankVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var brandRankList = [BrandRank]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +19,20 @@ class RankVC: UIViewController {
         tableView.dataSource = self;
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        brandListInit() 
+        
+    }
+    
+    func brandListInit() {
+        BrandRankService.shared.showBrandRank { (brandData) in
+            self.brandRankList = brandData
+            self.tableView.reloadData()
+        }
+    }
+    
     
 
 }
@@ -27,12 +42,17 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return brandRankList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let brand = brandRankList[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankTVCell", for: indexPath) as! RankTVCell
         cell.rankLB.text = "\(indexPath.row + 1)"
+        cell.brandImg.imageFromUrl(brand.logo_url, defaultImgPath: "")
+        cell.brandName.text = brand.name_english
         
         return cell
         

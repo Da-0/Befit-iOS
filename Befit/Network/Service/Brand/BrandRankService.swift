@@ -10,7 +10,7 @@ import Alamofire
 
 struct BrandRankService: APIManager, Requestable{
     
-    typealias NetworkData = ResponseObject<BrandRank>
+    typealias NetworkData = ResponseArray<BrandRank>
     static let shared = BrandRankService()
     
     let URL = url("/brands/preference")
@@ -19,8 +19,8 @@ struct BrandRankService: APIManager, Requestable{
         "Authorization" : UserDefaults.standard.string(forKey: "token")!
     ]
     
-    //브랜드 랭킹(10개) api
-    func showBrandRank(completion: @escaping (BrandRank) -> Void) {
+    //브랜드 랭킹보여주기(10개) api
+    func showBrandRank(completion: @escaping ([BrandRank]) -> Void) {
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
