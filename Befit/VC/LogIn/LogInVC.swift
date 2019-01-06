@@ -36,18 +36,24 @@ class LogInVC: UIViewController, APIManager {
         
         LoginService.shared.login(email: emailTF.text!, password: pwTF.text!, completion: {[weak self] (res) in
             guard let `self` = self else {return}
-            
-            if res.token != nil {
-                
-                self.userDefault.set(res.token!, forKey: "token")
-                
-                print(res.token!)
-                
-                let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
-                
-                self.present(mainVC, animated: true, completion: nil)
+           
+            if let status = res.status {
+                switch status {
+                    case 200 :
+                         self.userDefault.set(res.data?.token!, forKey: "token")
+                         print("토근값 저장:" + self.userDefault.string(forKey: "token")!)
+                         let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
+                         self.present(mainVC, animated: true, completion: nil)
+                         break
+                    case 400:
+                        self.simpleAlert(title: "Error", message: "입력정보가 일치 하지 않습니다!")
+                    case 401, 500, 600 :
+                        self.simpleAlert(title: "Error", message: res.message!)
+                        break
+                    default:
+                        break
+                }
             }
-            
         })
         
     }

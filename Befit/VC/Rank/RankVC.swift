@@ -32,8 +32,6 @@ class RankVC: UIViewController {
             self.tableView.reloadData()
         }
     }
-    
-    
 
 }
 
@@ -50,6 +48,7 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
         let brand = brandRankList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankTVCell", for: indexPath) as! RankTVCell
+        
         cell.rankLB.text = "\(indexPath.row + 1)"
         cell.brandImg.imageFromUrl(brand.logo_url, defaultImgPath: "")
         cell.brandName.text = brand.name_english

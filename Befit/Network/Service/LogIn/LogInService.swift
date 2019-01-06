@@ -19,7 +19,7 @@ struct LoginService: APIManager, Requestable {
     ]
     
     //로그인 api
-    func login(email: String, password: String, completion: @escaping (Token) -> Void) {
+    func login(email: String, password: String, completion: @escaping (NetworkData) -> Void) {
         
         let body = [
             "email" : email,
@@ -29,8 +29,7 @@ struct LoginService: APIManager, Requestable {
         postable(loginURL, body: body, header: headers) { res in
             switch res {
             case .success(let value):
-                guard let token = value.data else {return}
-                completion(token)
+                completion(value)
             case .error(let error):
                 print(error)
             }
