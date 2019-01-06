@@ -39,9 +39,22 @@ class SettingVC: UIViewController {
     }
     
     @IBAction func logoutBtn(_ sender: Any) {
-        print("로그아웃!")
-        //alert창 띄운다음에 home으로
         
+            let alert = UIAlertController(title: "로그아웃", message: "메인으로 돌아가시겠습니까?", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "확인", style: .default) {
+                _ in
+                self.performSegue(withIdentifier: "GoToLogin", sender: self)
+            }
+            
+            let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        
+            print("로그아웃 완료!")
+    
     }
 
     @IBAction func signoutBtn(_ sender: Any) {

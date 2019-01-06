@@ -56,6 +56,7 @@ class PWSettingVC: UIViewController {
     }
     
     @IBAction func passwordCKAction(_ sender: Any) {
+        
         // password 불일치 시
         if newPWTF.text != newPWCKTF.text {
             disagreeLB.isHidden = false
@@ -67,10 +68,12 @@ class PWSettingVC: UIViewController {
             disagreeLB.isHidden = true
             okBtn.isEnabled = true
         }
+        
     }
     
     
     @IBAction func okAction(_ sender: Any) {
+        
         if (newPWTF.text?.isEmpty)! || (newPWCKTF.text?.isEmpty)! {
             simpleAlert(title: "경고", message: "모든 항목을 입력해 주십시오.")
         }
@@ -81,10 +84,10 @@ class PWSettingVC: UIViewController {
         network()
     }
     
+    
     func network(){
         
         let idx = userDefault.integer(forKey: "idx")
-        
         PWSettingService.shared.setPW(idx: idx, pw: newPWTF.text!, completion:
             
             {[weak self] (res) in

@@ -21,6 +21,11 @@ class LogInVC: UIViewController, APIManager {
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        emailTF.text = ""
+        pwTF.text = ""
+    }
+    
     @IBAction func loginBtn(_ sender: Any){
         
         if (emailTF.text?.isEmpty)! || (pwTF.text?.isEmpty)! {
@@ -46,7 +51,7 @@ class LogInVC: UIViewController, APIManager {
                          self.present(mainVC, animated: true, completion: nil)
                          break
                     case 400:
-                        self.simpleAlert(title: "Error", message: "입력정보가 일치 하지 않습니다!")
+                        self.simpleAlert(title: "Error", message: "아이디 또는 패스워드가 일치하지 않습니다!")
                     case 401, 500, 600 :
                         self.simpleAlert(title: "Error", message: res.message!)
                         break
@@ -55,6 +60,10 @@ class LogInVC: UIViewController, APIManager {
                 }
             }
         })
+        
+    }
+    
+    @IBAction func unwind(_ sender: UIStoryboardSegue){
         
     }
     
