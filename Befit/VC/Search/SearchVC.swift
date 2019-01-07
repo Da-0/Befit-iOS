@@ -15,11 +15,11 @@ class SearchVC: UIViewController {
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchBar()
         secondView.isHidden = true
+
     }
 
 }

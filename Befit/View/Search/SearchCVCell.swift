@@ -12,5 +12,4 @@ class SearchCVCell: UICollectionViewCell {
     
     @IBOutlet weak var productImg: UIImageView!
     
-    
 }

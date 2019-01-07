@@ -55,6 +55,7 @@
                         <viewLayoutGuide key="safeArea" id="zZ1-wK-w7O"/>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="f0w-ZN-gZh" id="Ov9-Ti-iFR"/>
                         <outlet property="webView" destination="Ude-sB-9v8" id="hPi-nx-g2R"/>
                     </connections>
                 </viewController>
