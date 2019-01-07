@@ -29,7 +29,7 @@
                                                 <action selector="dismisssAction:" destination="N1c-Oo-YIe" id="h2k-hm-AtK"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" image="sizecheckBox" id="fko-cP-KSb">
+                                        <barButtonItem key="rightBarButtonItem" image="sizeCheckButton" id="fko-cP-KSb">
                                             <connections>
                                                 <action selector="sizeCheckAction:" destination="N1c-Oo-YIe" id="Z8v-mt-mWh"/>
                                             </connections>
@@ -66,6 +66,6 @@
     </scenes>
     <resources>
         <image name="icX" width="48" height="48"/>
-        <image name="sizecheckBox" width="70" height="21"/>
+        <image name="sizeCheckButton" width="70" height="21"/>
     </resources>
 </document>
