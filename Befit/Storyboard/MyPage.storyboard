@@ -21,7 +21,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgq-Vx-79c">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 이창현" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-yD-0Jo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 이충신" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-yD-0Jo">
                                         <rect key="frame" x="38" y="35" width="76" height="27"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
@@ -948,7 +948,7 @@
                                         <barButtonItem key="rightBarButtonItem" title="완료" id="CnW-f1-hMu">
                                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <connections>
-                                                <action selector="completeBtn:" destination="PYu-9F-NLs" id="abV-wd-CU7"/>
+                                                <action selector="completeAction:" destination="PYu-9F-NLs" id="abV-wd-CU7"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -970,6 +970,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="aMh-wj-UM9" id="bNW-Ub-rYh"/>
                         <outlet property="birthday" destination="suT-4d-Vu8" id="TSA-y5-4AO"/>
+                        <outlet property="completeBtn" destination="CnW-f1-hMu" id="RDt-mx-UQD"/>
                         <outlet property="deleteBtn" destination="SjI-6b-F8c" id="ghX-Fl-47c"/>
                         <outlet property="detailAddress" destination="Ka9-Se-GaZ" id="TtD-R6-xbt"/>
                         <outlet property="phoneNumber" destination="Mrg-sp-yHG" id="NUH-GW-eHK"/>

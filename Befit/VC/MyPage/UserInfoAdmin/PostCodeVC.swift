@@ -70,16 +70,12 @@ class PostCodeVC: UIViewController, WKScriptMessageHandler, WKNavigationDelegate
                 destination.postCodeButton.isHidden = addressBool ? false : true
                 //우편번호 검색완료 이후
                 destination.postView.isHidden = addressBool ? true : false
-            
-            
 
             }
         }
         
     }
-    
-    
-    
+
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         

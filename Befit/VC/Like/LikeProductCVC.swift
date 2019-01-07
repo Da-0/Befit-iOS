@@ -14,32 +14,42 @@ import XLPagerTabStrip
 class LikeProductCVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-
-    
-    let brand = ["Uniqlo", "LMC", "Nike", "라퍼지스토어", "아이오아이", "A-LAND", "BBCCAA"]
-    let product = ["양털후리스", "매우매우큰자켓", "에어맥스 조던", "에어맥스 조던1111", "에어맥스 조던2222", "에어맥스 조던333",
-                   "?"]
+    var productLikeList = [Product]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.delegate = self;
         collectionView.dataSource = self;
-    
+       
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        productListInit()
+    }
+    
+    
+    func productListInit() {
+        LikeProductService.shared.showProductLike { (productData) in
+           // self.likeBrandNumb.text = "찜한브랜드 " + "\(self.brandLikeList.count)"
+            self.productLikeList = productData
+            self.collectionView.reloadData()
+        }
+    }
+    
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath as IndexPath)
-            
-            headerView.backgroundColor = UIColor.white;
-            return headerView
+            case UICollectionView.elementKindSectionHeader:
+                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath as IndexPath)
+                headerView.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+                return headerView
 
-        default:
-            assert(false, "Unexpected element kind")
+            default:
+                assert(false, "Unexpected element kind")
         }
         
     }
@@ -50,16 +60,17 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-        return 6
+        return productLikeList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        let product = productLikeList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeProductCVCell", for: indexPath) as! LikeProductCVCell
         
-        cell.brandName.text = brand[indexPath.row]
-        cell.productName.text = product[indexPath.row]
-        cell.price.text = "550,000"
+        cell.brandName.text = product.brand_Korean_name
+        cell.productName.text = product.name
+        cell.price.text = product.price
         
         return cell
     }

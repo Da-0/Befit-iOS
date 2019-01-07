@@ -1,26 +1,27 @@
 //
-//  LikeProductServicew.swift
+//  UserInfoService.swift
 //  Befit
 //
-//  Created by 이충신 on 06/01/2019.
+//  Created by 이충신 on 08/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+// 회원조회를 하기 위한 서비스(통합회원정보관리, 초기화면에서 이용)
 
 import Alamofire
 
-struct LikeProductService: APIManager, Requestable{
+struct UserInfoService: APIManager, Requestable{
     
-    typealias NetworkData = ResponseArray<Product>
-    static let shared = LikeProductService()
+    typealias NetworkData = ResponseObject<User>
+    static let shared = UserInfoService()
     
-    let URL = url("/likes/products")
+    let URL = url("/user")
     
     let headers: HTTPHeaders = [
         "Authorization" : UserDefaults.standard.string(forKey: "token")!
     ]
     
-    //좋아요한 상품 보여주기
-    func showProductLike(completion: @escaping ([Product]) -> Void) {
+    //개인 회원 정보 보여주기
+    func showUserInfo(completion: @escaping (User) -> Void) {
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
