@@ -24,6 +24,9 @@
 		503114A721E37F86008D81AC /* M.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114A621E37F86008D81AC /* M.swift */; };
 		503114A921E37F8D008D81AC /* S.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114A821E37F8D008D81AC /* S.swift */; };
 		503114AC21E38714008D81AC /* SearchFirstService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114AB21E38714008D81AC /* SearchFirstService.swift */; };
+		503114AE21E3C5F7008D81AC /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114AD21E3C5F7008D81AC /* UserInfoService.swift */; };
+		503114B021E3C646008D81AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114AF21E3C646008D81AC /* User.swift */; };
+		503114B221E3CF64008D81AC /* SetUserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114B121E3CF64008D81AC /* SetUserInfoService.swift */; };
 		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		504CBAEB21D9DA38008606F7 /* UserInfoAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */; };
 		504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */; };
@@ -111,6 +114,9 @@
 		503114A621E37F86008D81AC /* M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M.swift; sourceTree = "<group>"; };
 		503114A821E37F8D008D81AC /* S.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S.swift; sourceTree = "<group>"; };
 		503114AB21E38714008D81AC /* SearchFirstService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFirstService.swift; sourceTree = "<group>"; };
+		503114AD21E3C5F7008D81AC /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
+		503114AF21E3C646008D81AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		503114B121E3CF64008D81AC /* SetUserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUserInfoService.swift; sourceTree = "<group>"; };
 		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoAdminVC.swift; sourceTree = "<group>"; };
 		504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeVC.swift; sourceTree = "<group>"; };
@@ -214,6 +220,8 @@
 				50DD805521E1C5D400E6F743 /* FindPWService.swift */,
 				50DD805721E1CF3000E6F743 /* PWSettingService.swift */,
 				50DD805921E1D8FD00E6F743 /* SignUpService.swift */,
+				503114AD21E3C5F7008D81AC /* UserInfoService.swift */,
+				503114B121E3CF64008D81AC /* SetUserInfoService.swift */,
 			);
 			path = LogIn;
 			sourceTree = "<group>";
@@ -339,6 +347,7 @@
 				50DD804821E1AACA00E6F743 /* Token.swift */,
 				5066558D21D228C900580137 /* Category.swift */,
 				50DD803421E07A2300E6F743 /* SizeItems.swift */,
+				503114AF21E3C646008D81AC /* User.swift */,
 				5031148821E1EAC5008D81AC /* Brand.swift */,
 				5031149F21E37EC5008D81AC /* Product.swift */,
 				503114A121E37ED9008D81AC /* Measure.swift */,
@@ -701,10 +710,12 @@
 				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
 				5031149B21E34F31008D81AC /* BrandCRV.swift in Sources */,
 				50DD804B21E1AAE400E6F743 /* ResponseObject.swift in Sources */,
+				503114AE21E3C5F7008D81AC /* UserInfoService.swift in Sources */,
 				5031148921E1EAC5008D81AC /* Brand.swift in Sources */,
 				506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */,
 				50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */,
 				506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */,
+				503114B221E3CF64008D81AC /* SetUserInfoService.swift in Sources */,
 				506E5C5821D60F840016549B /* MyPageTVCell.swift in Sources */,
 				50DD803B21E0BE7E00E6F743 /* SearchVC1.swift in Sources */,
 				506E5C6521D756A50016549B /* SearchVC2.swift in Sources */,
@@ -735,6 +746,7 @@
 				5031148521E1E9FB008D81AC /* BrandRankService.swift in Sources */,
 				504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */,
 				503114A721E37F86008D81AC /* M.swift in Sources */,
+				503114B021E3C646008D81AC /* User.swift in Sources */,
 				5031149421E27D0E008D81AC /* SearchCRV.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
 				5031149E21E36CB9008D81AC /* ProductVC.swift in Sources */,

@@ -65,7 +65,7 @@ extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UIColl
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         
         guard let link = searchProduct.link else {return}
-        guard let brandName = searchProduct.name else {return}
+        guard let brandName = searchProduct.brand_English_name else {return}
         
         productVC.address = link
         productVC.brandName = brandName

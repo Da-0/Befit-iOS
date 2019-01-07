@@ -19,17 +19,12 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(address)
-        print("http://" + address!)
-        print(brandName)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         navigationBar.topItem?.title = brandName
         self.request(url: "https://" + address!)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
