@@ -1,19 +1,18 @@
 //
-//  UserInfoVC3.swift
+//  ChangeBrandVC.swift
 //  Befit
 //
-//  Created by 이충신 on 25/12/2018.
-//  Copyright © 2018 GGOMMI. All rights reserved.
+//  Created by 이충신 on 08/01/2019.
+//  Copyright © 2019 GGOMMI. All rights reserved.
 //
-// 브랜드 선택 뷰
 
 import UIKit
 
-class UserInfoVC2: UIViewController {
+class ChangeBrandVC: UIViewController {
     
     let userDefault = UserDefaults.standard
-    
     var btnArray: [UIButton] = [UIButton]()
+    
     @IBOutlet weak var btn0: UIButton!
     @IBOutlet weak var btn1: UIButton!
     @IBOutlet weak var btn2: UIButton!
@@ -23,11 +22,9 @@ class UserInfoVC2: UIViewController {
     @IBOutlet weak var btn6: UIButton!
     @IBOutlet weak var btn7: UIButton!
     
-    @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var pageLB: UILabel!
-    
     var brandIdx: [Int] = []
     var gender: String?
+    @IBOutlet weak var backBtn: UIBarButtonItem!
     
     //Buttons Images
     let menUnselected: [UIImage] = [#imageLiteral(resourceName: "manThisisneverthat"),#imageLiteral(resourceName: "manRomanticcrown"),#imageLiteral(resourceName: "manIstkunst"),#imageLiteral(resourceName: "manLiberteng"),#imageLiteral(resourceName: "manCovernat"),#imageLiteral(resourceName: "manAnderssonbell"),#imageLiteral(resourceName: "manInsilence"),#imageLiteral(resourceName: "manCritic")]
@@ -39,17 +36,18 @@ class UserInfoVC2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initBtn()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.isNavigationBarHidden = false
+         self.tabBarController?.tabBar.isHidden = false
     }
     
     func initBtn(){
@@ -78,7 +76,32 @@ class UserInfoVC2: UIViewController {
     }
     
     @IBAction func backAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        if selectedCount == 2 {
+            
+            print(brandIdx)
+            
+            userDefault.set(brandIdx[0], forKey: "brand1_idx")
+            userDefault.set(brandIdx[1], forKey: "brand2_idx")
+            
+            ChangeBrandService.shared.setBrand(brand1: userDefault.integer(forKey: "brand1_idx"), brand2: userDefault.integer(forKey: "brand2_idx")) { (res) in
+                
+                if let status = res.status {
+                    switch status {
+                        case 200 :
+                            self.navigationController?.popViewController(animated: true)
+                        case 204, 401, 500, 600:
+                            self.simpleAlert(title: "Error", message: res.message!)
+                        default: break
+                    }
+                }
+                
+            }
+            
+          
+            
+        }
+     
     }
     
     @IBAction func buttonClick(_ sender: UIButton) {
@@ -92,37 +115,38 @@ class UserInfoVC2: UIViewController {
                 let selected = gender == "남성"
                 
                 switch sender.tag {
-                    case 0:
-                        brandIdx.append(17)
-                        break
-                    case 1:
-                        brandIdx.append(12)
-                        break
-                    case 2:
-                        selected ? brandIdx.append(18) : brandIdx.append(2)
-                        break
-                    case 3:
-                        selected ? brandIdx.append(10) : brandIdx.append(3)
-                        break
-                    case 4:
-                        selected ? brandIdx.append(7) : brandIdx.append(32)
-                        break
-                    case 5:
-                        brandIdx.append(9)
-                        break
-                    case 6:
-                        selected ? brandIdx.append(22) : brandIdx.append(37)
-                        break
-                    case 7:
-                        brandIdx.append(14)
-                        break
-                    default: break
+                case 0:
+                    brandIdx.append(17)
+                    break
+                case 1:
+                    brandIdx.append(12)
+                    break
+                case 2:
+                    selected ? brandIdx.append(18) : brandIdx.append(2)
+                    break
+                case 3:
+                    selected ? brandIdx.append(10) : brandIdx.append(3)
+                    break
+                case 4:
+                    selected ? brandIdx.append(7) : brandIdx.append(32)
+                    break
+                case 5:
+                    brandIdx.append(9)
+                    break
+                case 6:
+                    selected ? brandIdx.append(22) : brandIdx.append(37)
+                    break
+                case 7:
+                    brandIdx.append(14)
+                    break
+                default: break
                 }
-               
+                
                 selectedCount += 1
                 
                 if selectedCount == 2 {
-                    nextBtn.setImage( #imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+                    backBtn.isEnabled = true
+                
                 }
                 
             }
@@ -143,33 +167,19 @@ class UserInfoVC2: UIViewController {
                 sender.isSelected = false
                 brandIdx.removeLast()
                 selectedCount -= 1
-                nextBtn.setImage( #imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+                backBtn.isEnabled = false
                 
             }
         }
     }
     
-    // 다음 버튼 누를 때 선택된 카운트가 2일 경우에만 가능
-    @IBAction func nextAction(_ sender: Any) {
-        
-        if selectedCount == 2 {
-            
-            print(brandIdx)
-            
-            userDefault.set(brandIdx[0], forKey: "brand1_idx")
-            userDefault.set(brandIdx[1], forKey: "brand2_idx")
-            
-            let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
-            let userInfoVC3 = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
-            userInfoVC3?.gender = self.gender
-            self.navigationController?.pushViewController(userInfoVC3!, animated: true)
-            
-        }
-        
-        
-    }
-
 }
+
+
+
+
+
+
 //남,여 Tag 번호에 따른 실제 브랜드 Idx
 
 //남성:
@@ -191,6 +201,7 @@ class UserInfoVC2: UIViewController {
 //5. ANDERSSON BELL 9
 //6. OiOi 37     ***************
 //7. CRITIC 14
+
 
 
 

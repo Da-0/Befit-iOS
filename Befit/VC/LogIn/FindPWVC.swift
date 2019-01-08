@@ -105,16 +105,16 @@ class FindPWVC: UIViewController {
     }
     
     func network(){
-        
         let birthday = yearTF.text! + "/" + monthTF.text! + "/" + dayTF.text!
         
         FindPWService.shared.findPW(email: emailTF.text!, name: nameTF.text!, birthday: birthday, completion: {[weak self] (res) in
             guard let `self` = self else {return}
+            
             if let status = res.status {
                 switch status {
                     case 200 :
-                        self.userDefault.set(res.data?.idx!, forKey: "idx")
                         let settingVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "PWSettingVC") as! PWSettingVC
+                        settingVC.userIdx = res.data?.idx
                         self.navigationController?.pushViewController(settingVC, animated: true)
                         break
                     case 400, 401, 500, 600 :

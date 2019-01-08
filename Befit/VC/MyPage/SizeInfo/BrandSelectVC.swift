@@ -19,7 +19,7 @@ class BrandSelectVC: UIViewController {
     var delegate: BrandVCDelegate?
 
     @IBOutlet weak var tableView: UITableView!
-    var brand: [String] = []
+    var brand: [Brand]? = []
     var selectedButton: String?
     
     override func viewDidLoad() {
@@ -69,10 +69,13 @@ class BrandSelectVC: UIViewController {
             default: break
         }
         
-        //통신이 일어나는 시점
-        brand = ["A-LAND","ABC초퀄릿","A-YOZZ","ABW"]
+        userDefault.set(selectedButton!, forKey: "brand_initial")
         
-        tableView.reloadData()
+        BrandSelectService.shared.showBrandList { (brandList) in
+            self.brand = brandList
+            self.tableView.reloadData()
+        }
+        
     }
     
     
@@ -85,20 +88,28 @@ extension BrandSelectVC : UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return brand.count
+        if brand == nil {
+            return 0
+        }else {
+            return brand!.count
+        }
+       
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+     
         let cell = tableView.dequeueReusableCell(withIdentifier: "BrandSelectTVCell", for: indexPath) as! BrandSelectTVCell
-            cell.brandName.text = brand[indexPath.row]
+        guard let _brand = brand else {return cell}
         
+        cell.brandName.text = _brand[indexPath.row].name_english
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.delegate?.BrandVCResponse(value: brand[indexPath.row])
+        guard let _brand = brand else {return}
+        self.delegate?.BrandVCResponse(value: _brand[indexPath.row].name_english!)
         self.navigationController?.popViewController(animated: true)
     }
     

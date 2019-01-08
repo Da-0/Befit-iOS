@@ -31,7 +31,7 @@ class UserInfoVC3: UIViewController {
     @IBOutlet weak var correctLB: UILabel!
     
     @IBOutlet weak var nextBtn: UIButton!
-    
+    var gender: String?
     
     var keyboardDismissGesture : UITapGestureRecognizer?
     
@@ -154,10 +154,10 @@ class UserInfoVC3: UIViewController {
     
     
     func network(){
-        
-        let gender = userDefault.string(forKey: "gender")
+    
         let brand1 = userDefault.integer(forKey: "brand1_idx")
         let brand2 = userDefault.integer(forKey: "brand2_idx")
+        
         let birthday = yearTF.text! + "/" + monthTF.text! + "/" + dayTF.text!
         
         SignUpService.shared.signUp(email: emailTF.text!, pw: passwordCkTF.text!, gender: gender!, name: nameTF.text!, brand1: brand1, brand2: brand2, birthday: birthday, completion: {[weak self] (res) in

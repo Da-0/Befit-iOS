@@ -44,6 +44,8 @@ class SettingVC: UIViewController {
             
             let okAction = UIAlertAction(title: "확인", style: .default) {
                 _ in
+                UserDefaults.standard.removeObject(forKey: "token")
+                print(UserDefaults.standard.string(forKey: "token"))
                 self.performSegue(withIdentifier: "GoToLogin", sender: self)
             }
             
