@@ -71,7 +71,6 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         return cell
     }
     
-    
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //        
 //        switch kind {

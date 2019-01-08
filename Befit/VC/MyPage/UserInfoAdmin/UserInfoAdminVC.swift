@@ -86,10 +86,15 @@ class UserInfoAdminVC: UIViewController {
                 self.ueserDefault.set(self.addressLabel.text!, forKey: "address")
       }else{
      
-            self.ueserDefault.set("", forKey: "postCode")
-            self.ueserDefault.set("", forKey: "address")
-            self.ueserDefault.set("", forKey: "detailAddress")
-            self.ueserDefault.set("", forKey: "phoneNumber")
+        self.ueserDefault.removeObject(forKey: "postCode")
+        self.ueserDefault.removeObject(forKey: "address")
+        self.ueserDefault.removeObject(forKey: "detailAddress")
+        self.ueserDefault.removeObject(forKey: "phoneNumber")
+        
+//            self.ueserDefault.set("", forKey: "postCode")
+//            self.ueserDefault.set("", forKey: "address")
+//            self.ueserDefault.set("", forKey: "detailAddress")
+//            self.ueserDefault.set("", forKey: "phoneNumber")
         }
     
         network()

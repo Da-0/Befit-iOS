@@ -14,11 +14,12 @@ class SearchVC: UIViewController {
 
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
-    
+    var searchBarActive:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchBar()
+        
         secondView.isHidden = true
     }
 
@@ -28,19 +29,35 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
     
     func updateSearchResults(for searchController: UISearchController) {
         print("키보드 입력중...")
+        
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        firstView.isHidden = true
+        secondView.isHidden = true
+        self.searchController.searchBar.showsCancelButton = true
+       
+        
+        return true
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         print("검색완료!")
         self.view.endEditing(true)
+        self.searchController.searchBar.showsCancelButton = false
         firstView.isHidden = true
         secondView.isHidden = false
+        
         
 //        let search = UIStoryboard.init(name: "Search", bundle: nil)
 //        let searchVC2 = search.instantiateViewController(withIdentifier: "SearchVC2") as? SearchVC2
 //        self.navigationController?.pushViewController(searchVC2!, animated: true)
     }
-    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        firstView.isHidden = false
+        print(firstView.isHidden)
+    }
 
     
     
@@ -61,8 +78,7 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         
         self.definesPresentationContext = true
     }
-        
-        
+    
         
         
 }

@@ -122,7 +122,7 @@
         <!--BrandVC-->
         <scene sceneID="GCP-dt-8NP">
             <objects>
-                <viewController id="ldC-NA-fce" customClass="BrandVC" customModule="testBefit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ldC-NA-fce" customClass="BrandVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svM-C7-Mii">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -350,13 +350,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJl-Od-AGT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2116" y="-271"/>
+            <point key="canvasLocation" x="2572" y="-517"/>
         </scene>
     </scenes>
     <resources>
-        <image name="logoOutline" width="48" height="48"/>
         <image name="backArrow" width="32" height="32"/>
         <image name="icLikeLine" width="23.666666030883789" height="21"/>
+        <image name="logoOutline" width="48" height="48"/>
         <image name="manCovernat" width="130" height="130"/>
         <image name="tabRanking" width="22.333333969116211" height="22.666666030883789"/>
         <image name="testImage" width="139" height="142"/>
