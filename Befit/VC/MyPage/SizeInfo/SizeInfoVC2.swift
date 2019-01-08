@@ -17,7 +17,7 @@ class SizeInfoVC2: UIViewController {
     @IBOutlet weak var tabView: UIControl!
     
     var categoryName: String?
-    var ClosetList: [Closet]? = []
+    var ClosetList: [Closet]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +39,7 @@ class SizeInfoVC2: UIViewController {
         
         network()
        
-        tabView.isHidden = ClosetList == nil ?  true : false
-        collectionView.isHidden = ClosetList == nil ? false : true
+
         
     }
     
@@ -54,8 +53,12 @@ class SizeInfoVC2: UIViewController {
     
     func network(){
         GetClosetListService.shared.showClosetList { (clsoetList) in
+            
             self.ClosetList = clsoetList
             self.collectionView.reloadData()
+            
+            self.tabView.isHidden = self.ClosetList == nil ?  false : true
+            self.collectionView.isHidden = self.ClosetList == nil ? true : false
         }
         
     }

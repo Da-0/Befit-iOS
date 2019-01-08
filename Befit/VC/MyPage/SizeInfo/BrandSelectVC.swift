@@ -110,6 +110,7 @@ extension BrandSelectVC : UITableViewDataSource, UITableViewDelegate{
         
         guard let _brand = brand else {return}
         self.delegate?.BrandVCResponse(value: _brand[indexPath.row].name_english!)
+        userDefault.set(_brand[indexPath.row].idx!, forKey: "brand_idx")    
         self.navigationController?.popViewController(animated: true)
     }
     

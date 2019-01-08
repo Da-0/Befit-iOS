@@ -11,6 +11,7 @@ import ObjectMapper
 
 struct Closet : Mappable {
     
+    var idx: Int?
     var closet_idx : Int?
     var name_korean : String?
     var name_english : String?
@@ -26,6 +27,7 @@ struct Closet : Mappable {
     
     mutating func mapping(map: Map) {
         
+        idx <- map["idx"]
         closet_idx <- map["closet_idx"]
         name_korean <- map["name_korean"]
         name_english <- map["name_english"]

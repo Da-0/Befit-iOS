@@ -36,8 +36,15 @@ class SizeInfoVC3: UIViewController {
     @IBOutlet weak var CproductName: UILabel!
     @IBOutlet weak var sizeTF: UITextField!
     let pickerview = UIPickerView()
-    let sizeArray = ["S", "M", "L", "XL"]
-   
+    var sizeArray = [String]()
+    
+    //stackView
+    @IBOutlet weak var stackView1: UIStackView!
+    @IBOutlet weak var stackView2: UIStackView!
+    
+    
+    var productIdx: Int?
+    var productSize: String?
     
     
     override func viewDidLoad() {
@@ -90,6 +97,7 @@ class SizeInfoVC3: UIViewController {
         productNameLB.text = productName != nil ? productName : nil
     
     }
+
     
 }
 
@@ -114,11 +122,23 @@ extension SizeInfoVC3 {
     }
     
     @IBAction func completBtn(_ sender: Any) {
-        print(brandName!)
-        print(productName!)
         
-        //서버와의 통신하여 정보 다보내기
-        self.navigationController?.popViewController(animated: true)
+        print(productIdx)
+        print(productSize)
+        
+        AddClosetService.shared.addCloset(idx: productIdx!, size: productSize!) { (res) in
+            if let status = res.status {
+                print(res)
+                switch status {
+                    case 200, 201:
+                          self.navigationController?.popViewController(animated: true)
+                    case 400...600 :
+                        self.simpleAlert(title: "Error", message: res.message!)
+                    default: break
+                }
+            }
+        }
+    
     }
     
     
@@ -173,6 +193,7 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
     @objc func selectedPicker(){
         let row = pickerview.selectedRow(inComponent: 0)
         sizeTF.text = sizeArray[row]
+        productSize = sizeArray[row]
         view.endEditing(true)
     }
     
@@ -194,14 +215,28 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
 //Mark: - BrandVCDelegate
 extension SizeInfoVC3 : BrandVCDelegate {
     func BrandVCResponse(value: String) {
-        self.brandName = value;
+        self.brandName = value
     }
 }
 
 //Mark: - BrandVCDelega
 extension SizeInfoVC3: ProductVCDelegate {
-    func ProductVCResponse(value: String) {
-        self.productName = value;
+    func ProductVCResponse(value: Closet) {
+        
+        sizeArray.removeAll()
+        
+        guard let measureData = value.measure?.toJSON() else {return}
+        let data = measureData.values
+    
+        self.CproductImg.imageFromUrl(value.image_url!, defaultImgPath: "")
+        self.CproductName.text = value.name
+        self.productName = value.name
+        self.productIdx = value.idx
+        
+        for size in measureData.keys.sorted() {
+            sizeArray.append(size)
+        }
+        
     }
 }
 
