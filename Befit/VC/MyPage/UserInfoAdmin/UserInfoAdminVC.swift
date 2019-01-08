@@ -53,7 +53,6 @@ class UserInfoAdminVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
       //  self.navigationController?.navigationBar.isHidden = false
-        
     }
     
 
@@ -84,7 +83,7 @@ class UserInfoAdminVC: UIViewController {
             self.postView.isHidden = false
         
             }
-        }
+    }
 
     @IBAction func unwindFromPostCodeSelectionView(_ sender: UIStoryboardSegue) {
         print(#function)
@@ -100,27 +99,6 @@ class UserInfoAdminVC: UIViewController {
     @IBAction func completeAction(_ sender: Any) {
     
         let alert = UIAlertController(title: "정보 수정", message: "추가 정보를 등록하시겠습니까?", preferredStyle: .alert)
-              if  postCodeLabel.text != "" && addressLabel.text != ""
-            && detailAddress.text != "" && phoneNumber.text != "" {
-                self.ueserDefault.set(self.postCodeLabel.text!, forKey: "postCode")
-                self.ueserDefault.set(self.addressLabel.text!, forKey: "address")
-      }else{
-     
-        self.ueserDefault.removeObject(forKey: "postCode")
-        self.ueserDefault.removeObject(forKey: "address")
-        self.ueserDefault.removeObject(forKey: "detailAddress")
-        self.ueserDefault.removeObject(forKey: "phoneNumber")
-     
-      if  postCodeLabel.text != "" && addressLabel.text != ""
-            && detailAddress.text != "" && phoneNumber.text != "" {
-                self.ueserDefault.set(self.postCodeLabel.text!, forKey: "postCode")
-                self.ueserDefault.set(self.addressLabel.text!, forKey: "address")
-      }else{
-     
-        self.ueserDefault.removeObject(forKey: "postCode")
-        self.ueserDefault.removeObject(forKey: "address")
-        self.ueserDefault.removeObject(forKey: "detailAddress")
-        self.ueserDefault.removeObject(forKey: "phoneNumber")
         
         let okAction = UIAlertAction(title: "확인", style: .default) {
             _ in
@@ -149,9 +127,9 @@ class UserInfoAdminVC: UIViewController {
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
-        
-    }
-
+    
+        }
+    
     //우편번호를 수정하기 위해 삭제하는 버튼
     @IBAction func deleteAction(_ sender: Any) {
         
