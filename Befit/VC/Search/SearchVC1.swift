@@ -12,6 +12,7 @@ import SNCollectionViewLayout
 class SearchVC1: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var searchProductList:[Product] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,13 +21,24 @@ class SearchVC1: UIViewController {
         initSNCollection()
     }
     
-    func initSNCollection() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        initSearchProductList()
+        
+    }
     
+    func initSearchProductList(){
+        SearchFirstService.shared.showSearchFirstView { (productData) in
+            self.searchProductList = productData
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func initSNCollection() {
         let snCollectionViewLayout = SNCollectionViewLayout()
         snCollectionViewLayout.delegate = self;
         snCollectionViewLayout.fixedDivisionCount = 6
         collectionView.collectionViewLayout = snCollectionViewLayout
-        
     }
 
 }
@@ -34,18 +46,34 @@ class SearchVC1: UIViewController {
 extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 24
+        return searchProductList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let searchCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCVCell", for: indexPath) as! SearchCVCell
+        let product = searchProductList[indexPath.row]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCVCell", for: indexPath) as! SearchCVCell
+        cell.productImg.imageFromUrl(product.image_url!, defaultImgPath: "")
         
-        searchCVCell.productImg.image = #imageLiteral(resourceName: "testImage")
-        
-        return searchCVCell
+        return cell
     }
 
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let searchProduct = searchProductList[indexPath.row]
+        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        
+        guard let link = searchProduct.link else {return}
+        guard let brandName = searchProduct.brand_English_name else {return}
+        
+        productVC.address = link
+        productVC.brandName = brandName
+        print(brandName)
+        
+        self.navigationController?.present(productVC, animated: true, completion: nil)
+        
+    }
 }
 
 

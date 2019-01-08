@@ -24,8 +24,10 @@ class UserInfoVC2: UIViewController {
     @IBOutlet weak var btn7: UIButton!
     
     @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet weak var pageLB: UILabel!
     
     var brandIdx: [Int] = []
+    var gender: String?
     
     //Buttons Images
     let menUnselected: [UIImage] = [#imageLiteral(resourceName: "manThisisneverthat"),#imageLiteral(resourceName: "manRomanticcrown"),#imageLiteral(resourceName: "manIstkunst"),#imageLiteral(resourceName: "manLiberteng"),#imageLiteral(resourceName: "manCovernat"),#imageLiteral(resourceName: "manAnderssonbell"),#imageLiteral(resourceName: "manInsilence"),#imageLiteral(resourceName: "manCritic")]
@@ -33,9 +35,6 @@ class UserInfoVC2: UIViewController {
     let womenUnselected: [UIImage] = [#imageLiteral(resourceName: "womanThisisneverthat"),#imageLiteral(resourceName: "womanRomanticCrwon"),#imageLiteral(resourceName: "womanMinav"),#imageLiteral(resourceName: "womanLafudgestore"),#imageLiteral(resourceName: "womanMoreOrLess"),#imageLiteral(resourceName: "womanAnderssonBell"),#imageLiteral(resourceName: "womanOioi"),#imageLiteral(resourceName: "womanCritic")]
     var womenSelected:[UIImage] = [#imageLiteral(resourceName: "womanSelectThisisneverthat"),#imageLiteral(resourceName: "womanSelectRomanticCrown"),#imageLiteral(resourceName: "womanSelectMinav"),#imageLiteral(resourceName: "womanSelectLafudgestore"),#imageLiteral(resourceName: "womanSelectMoreOrLess"),#imageLiteral(resourceName: "womanSelectAnderssonBell"),#imageLiteral(resourceName: "womanSelectOioi"),#imageLiteral(resourceName: "womanSelectCritic")]
     var selectedCount = 0
-
-    
-    let gender = UserDefaults.standard.string(forKey: "gender")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,22 +89,32 @@ class UserInfoVC2: UIViewController {
                 sender.setImage(menSelected[sender.tag], for: .selected)
                 sender.isSelected = true
                 
+                let selected = gender == "남성"
+                
                 switch sender.tag {
-                    case 0:  brandIdx.append(17)
+                    case 0:
+                        brandIdx.append(17)
                         break
-                    case 1:  brandIdx.append(12)
+                    case 1:
+                        brandIdx.append(12)
                         break
-                    case 2:  brandIdx.append(18)
+                    case 2:
+                        selected ? brandIdx.append(18) : brandIdx.append(2)
                         break
-                    case 3:  brandIdx.append(10)
+                    case 3:
+                        selected ? brandIdx.append(10) : brandIdx.append(3)
                         break
-                    case 4:  brandIdx.append(7)
+                    case 4:
+                        selected ? brandIdx.append(7) : brandIdx.append(32)
                         break
-                    case 5:  brandIdx.append(9)
+                    case 5:
+                        brandIdx.append(9)
                         break
-                    case 6:  brandIdx.append(22)
+                    case 6:
+                        selected ? brandIdx.append(22) : brandIdx.append(37)
                         break
-                    case 7:  brandIdx.append(14)
+                    case 7:
+                        brandIdx.append(14)
                         break
                     default: break
                 }
@@ -152,6 +161,7 @@ class UserInfoVC2: UIViewController {
             
             let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
             let userInfoVC3 = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
+            userInfoVC3?.gender = self.gender
             self.navigationController?.pushViewController(userInfoVC3!, animated: true)
             
         }
@@ -160,12 +170,6 @@ class UserInfoVC2: UIViewController {
     }
 
 }
-
-
-
-
-
-
 //남,여 Tag 번호에 따른 실제 브랜드 Idx
 
 //남성:

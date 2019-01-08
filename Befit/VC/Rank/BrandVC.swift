@@ -10,6 +10,7 @@ import UIKit
 
 class BrandVC: UIViewController {
 
+    @IBOutlet weak var brandBackGround: UIImageView!
     @IBOutlet weak var BrandLogoImg: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -19,7 +20,6 @@ class BrandVC: UIViewController {
         super.viewDidLoad()
         
         BrandLogoImg.setRounded()
-        
         collectionView.delegate = self;
         collectionView.dataSource = self;
     }
@@ -28,7 +28,6 @@ class BrandVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
-//        navigationBar.topItem?.title = categoryName
         }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,6 +39,23 @@ class BrandVC: UIViewController {
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    @objc
+    func popularReload(){
+        //인기순을 클릭했을때 통신이 일어나는 시점
+        
+    }
+    
+    
+    @objc
+    func newReload(){
+        //신상품순을 클릭했을때 통신이 일어나는 시점
+        
+    }
+    
+    
+    
     
 }
 
@@ -54,11 +70,11 @@ extension UIImageView {
 
 
 extension BrandVC: UICollectionViewDataSource{
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-    
+ 
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -82,6 +98,31 @@ extension BrandVC: UICollectionViewDataSource{
 
 
 extension BrandVC: UICollectionViewDelegateFlowLayout{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+            
+        case UICollectionView.elementKindSectionHeader:
+            
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "BrandCRV", for: indexPath as IndexPath) as! BrandCRV
+            
+            cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+            cell.isUserInteractionEnabled = true;
+            
+            cell.popularBtn.addTarget(self, action: #selector(popularReload), for: .touchUpInside)
+            cell.newBtn.addTarget(self, action: #selector(newReload), for: .touchUpInside)
+            cell.productAmount.text = "PRODUCT" + " ()"
+            
+            return cell
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
          //iphone사이즈에 따라 동적으로 대응이 가능해진다.
         // let width: CGFloat = (self.collectionView.frame.width ) / 2 - 20
@@ -97,6 +138,9 @@ extension BrandVC: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 15)
     }
+    
+    
+    
     
 }
 

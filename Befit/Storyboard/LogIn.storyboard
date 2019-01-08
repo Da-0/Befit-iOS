@@ -735,6 +735,7 @@
                         <outlet property="btn6" destination="xMy-Bu-1fO" id="BE9-bk-S6k"/>
                         <outlet property="btn7" destination="KR3-vW-yWL" id="80u-G4-Ewe"/>
                         <outlet property="nextBtn" destination="osR-Pu-rXg" id="346-Za-YMG"/>
+                        <outlet property="pageLB" destination="JjL-i7-R3K" id="v4B-nw-Qun"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xp-AN-h3E" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -993,7 +994,7 @@
         <!--DescriptionVC-->
         <scene sceneID="zvI-N9-Xua">
             <objects>
-                <viewController id="DqO-2g-iZY" customClass="DescriptionVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DescriptionVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DqO-2g-iZY" customClass="DescriptionVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DFC-dq-H4H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1026,7 +1027,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s6b-lb-qAU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1374" y="-41"/>
+            <point key="canvasLocation" x="-2703" y="-871"/>
         </scene>
     </scenes>
     <resources>

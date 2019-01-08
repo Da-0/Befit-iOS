@@ -11,7 +11,10 @@ import UIKit
 class UserInfoAdminVC: UIViewController {
     
     let ueserDefault = UserDefaults.standard
+    var textComplete = false
 
+    
+    //기존의 회원정보
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var birthday: UILabel!
     @IBOutlet weak var userEmail: UILabel!
@@ -30,41 +33,59 @@ class UserInfoAdminVC: UIViewController {
     //UserDefault에 저장되어야하는 변수
     @IBOutlet weak var detailAddress: UITextField!
     @IBOutlet weak var phoneNumber: UITextField!
-
+    
+    
+    @IBOutlet weak var completeBtn: UIBarButtonItem!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         detailAddress.delegate = self;
         phoneNumber.delegate = self;
-        initUserInfo()
+        completeBtn.isEnabled = false;
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-        
-        if let detail = ueserDefault.string(forKey: "detailAddress"),
-            let phone = ueserDefault.string(forKey: "phoneNumber"),
-            let post = ueserDefault.string(forKey: "postCode"),
-            let address = ueserDefault.string(forKey: "address")
-            
-            {
-                detailAddress.text = detail
-                phoneNumber.text = phone
-                postCodeLabel.text = post
-                addressLabel.text = address
-                
-                postCodeButton.isHidden = true
-                postView.isHidden = false
-                
-            }
+       // self.navigationController?.navigationBar.isHidden = false
+        network()
         
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
+      //  self.navigationController?.navigationBar.isHidden = false
+        
     }
     
-    
+
+    func network(){
+        
+        UserInfoService.shared.showUserInfo { (res) in
+            
+            self.userName.text = res.name
+            self.birthday.text = res.birthday
+            self.userEmail.text = res.email
+            self.userGender.text = res.gender
+            self.userPW.text = "**********"
+            
+            guard let post = res.post_number else {return}
+            guard let address = res.home_address else {return}
+            guard let detail = res.detail_address else {return}
+            guard let phone = res.phone else {return}
+   
+            print(post)
+            print(address)
+            
+            self.addressLabel.text = address
+            self.detailAddress.text = detail
+            self.phoneNumber.text = phone
+            self.postCodeLabel.text = post
+            
+            self.postCodeButton.isHidden = true
+            self.postView.isHidden = false
+        
+            }
+        }
+
     @IBAction func unwindFromPostCodeSelectionView(_ sender: UIStoryboardSegue) {
         print(#function)
         
@@ -76,9 +97,9 @@ class UserInfoAdminVC: UIViewController {
     
     
     //정보수정완료 창 띄우기
-    @IBAction func completeBtn(_ sender: Any) {
-        
-      self.dismiss(animated: true, completion: nil)
+    @IBAction func completeAction(_ sender: Any) {
+    
+        let alert = UIAlertController(title: "정보 수정", message: "추가 정보를 등록하시겠습니까?", preferredStyle: .alert)
         
       if  postCodeLabel.text != "" && addressLabel.text != ""
             && detailAddress.text != "" && phoneNumber.text != "" {
@@ -95,48 +116,44 @@ class UserInfoAdminVC: UIViewController {
 //            self.ueserDefault.set("", forKey: "address")
 //            self.ueserDefault.set("", forKey: "detailAddress")
 //            self.ueserDefault.set("", forKey: "phoneNumber")
+        let okAction = UIAlertAction(title: "확인", style: .default) {
+            _ in
+          
+              //특정회원 통합로그인 정보수정이 일어나는 시점.
+                SetUserInfoService.shared.setUserInfo(post: self.postCodeLabel.text!, address: self.addressLabel.text!, detail: self.detailAddress.text!, phone: self.phoneNumber.text!, completion: {[weak self] (res) in
+                    guard let `self` = self else {return}
+                    if let status = res.status {
+                        switch status {
+                        case 200:
+                            self.dismiss(animated: true, completion: nil)
+                        case 401, 500, 600:
+                            self.simpleAlert(title: "Error", message: res.message!)
+                        default:
+                            break
+                        }
+                    }
+                })
+            
+                self.dismiss(animated: true, completion: nil)
+            
+
         }
-    
-        network()
-    
-    }
-    
-    
-    //가입시 입력한 회원정보 픽스
-    func initUserInfo(){
         
-        //        userName.text = ""
-        //        birthday.text = ""
-        //        userEmail.text = ""
-        //        userPW.text = ""
-        //        userGender.text = ""
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
         
     }
-    
-    
+
     //우편번호를 수정하기 위해 삭제하는 버튼
     @IBAction func deleteAction(_ sender: Any) {
-        
-        self.ueserDefault.set("", forKey: "postCode")
-        self.ueserDefault.set("", forKey: "address")
         
         postCodeButton.isHidden = false
         postView.isHidden = true
         
     }
-
-    
-    func network(){
-        
-        //{
-        //    "post_number" : "09952",
-        //    "home_address" : "서울시 서대문구 대현동",
-        //    "detail_address" : "이화여대 아산공학관",
-        //    "phone" : "010-1234-1143"
-        //}
-        
-    }
-    
 
 }
 
@@ -144,14 +161,15 @@ class UserInfoAdminVC: UIViewController {
 extension UserInfoAdminVC: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-      
+    
         if textField.tag == 0 {
-               ueserDefault.set(textField.text!, forKey: "detailAddress")
+               textComplete = true
         }
         if textField.tag == 1 {
-               ueserDefault.set(textField.text!, forKey: "phoneNumber")
+            if textComplete && postView.isHidden == false {
+                completeBtn.isEnabled = true
+            }
         }
-        
         
     }
 
