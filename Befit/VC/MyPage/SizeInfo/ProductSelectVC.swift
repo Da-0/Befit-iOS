@@ -10,9 +10,8 @@ import UIKit
 
 protocol ProductVCDelegate
 {
-    func ProductVCResponse(value: String)
+    func ProductVCResponse(value: Closet)
 }
-
 
 class ProductSelectVC: UIViewController {
 
@@ -22,9 +21,9 @@ class ProductSelectVC: UIViewController {
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var products:[String] = ["나이키 슈즈", "조던 스포츠웨어 티" ,"아이스 아메리카노" , "카페모카", "바닐라 라떼", "고구마 라떼", "콜드브류", "꼬미", "야옹아", "그만좀 울자"]
-    var originalproducts = [String]()
-    
+    var originalCloset = [Closet]()
+    var closetList: [Closet]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,10 +34,6 @@ class ProductSelectVC: UIViewController {
         searchTF.delegate = self;
         searchTF.addTarget(self, action: #selector(searchRecords( _:)), for: .editingChanged);
         
-        for product in products {
-            originalproducts.append(product)
-        }
-
     }
 
     @IBAction func backBtn(_ sender: Any) {
@@ -50,7 +45,8 @@ class ProductSelectVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
-        
+        network()
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,7 +56,21 @@ class ProductSelectVC: UIViewController {
         
     }
     
+    
+    func network(){
+        ProductSelectService.shared.showProductList { (closet) in
+            self.closetList = closet
+            self.tableView.reloadData()
+            
+            guard let closetlist = self.closetList else {return}
+            for product in closetlist {
+                self.originalCloset.append(product)
+            }
+        }
+    }
+    
 }
+
 
 extension ProductSelectVC: UITextFieldDelegate {
     
@@ -70,24 +80,28 @@ extension ProductSelectVC: UITextFieldDelegate {
     }
     
     @objc func searchRecords(_ textField: UITextField){
-        
-        self.products.removeAll()
+    
+       self.closetList?.removeAll()
         
         if textField.text?.count != 0 {
-            for product in originalproducts {
+            
+            for product in originalCloset {
                 if let productToSearch = textField.text {
-                    let range = product.lowercased().range(of: productToSearch, options: .caseInsensitive, range: nil, locale: nil)
-                    if range != nil {self.products.append(product)}
+                    let range = product.name!.lowercased().range(of: productToSearch, options: .caseInsensitive, range: nil, locale: nil)
+                    if range != nil {self.closetList?.append(product)}
                 }
             }
+            
         }
+            
         else {
-            for product in originalproducts {
-                products.append(product)
+            for product in originalCloset {
+                closetList?.append(product)
             }
         }
         
         tableView.reloadData()
+        
     }
     
 }
@@ -98,24 +112,24 @@ extension ProductSelectVC : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return products.count
+        guard let closet = closetList else {return 0}
+        return closet.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProductSelectTVCell", for: indexPath) as! ProductSelectTVCell
+        guard let closet = closetList else {return cell}
         
-         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductSelectTVCell", for: indexPath) as! ProductSelectTVCell
-        
-          cell.textLB.text =  products[indexPath.row]
+            cell.textLB.text = closet[indexPath.row].name
         
         return cell
         
     }
-    
-    
-    
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.delegate?.ProductVCResponse(value: products[indexPath.row])
+        guard let closet = closetList else {return}
+        self.delegate?.ProductVCResponse(value: closet[indexPath.row])
         self.navigationController?.popViewController(animated: true)
         }
     

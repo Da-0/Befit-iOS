@@ -33,6 +33,7 @@
 		503114BC21E47962008D81AC /* Closet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114BB21E47962008D81AC /* Closet.swift */; };
 		503114BE21E48812008D81AC /* BrandSelectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114BD21E48812008D81AC /* BrandSelectService.swift */; };
 		503114C021E4881E008D81AC /* ProductSelectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114BF21E4881E008D81AC /* ProductSelectService.swift */; };
+		503114C221E4F9AF008D81AC /* AddClosetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114C121E4F9AF008D81AC /* AddClosetService.swift */; };
 		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		504CBAEB21D9DA38008606F7 /* UserInfoAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */; };
 		504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */; };
@@ -128,6 +129,7 @@
 		503114BB21E47962008D81AC /* Closet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closet.swift; sourceTree = "<group>"; };
 		503114BD21E48812008D81AC /* BrandSelectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandSelectService.swift; sourceTree = "<group>"; };
 		503114BF21E4881E008D81AC /* ProductSelectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSelectService.swift; sourceTree = "<group>"; };
+		503114C121E4F9AF008D81AC /* AddClosetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClosetService.swift; sourceTree = "<group>"; };
 		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoAdminVC.swift; sourceTree = "<group>"; };
 		504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeVC.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				503114B921E4771D008D81AC /* GetClosetListService.swift */,
 				503114BD21E48812008D81AC /* BrandSelectService.swift */,
 				503114BF21E4881E008D81AC /* ProductSelectService.swift */,
+				503114C121E4F9AF008D81AC /* AddClosetService.swift */,
 			);
 			path = SizeInfo;
 			sourceTree = "<group>";
@@ -764,6 +767,7 @@
 				503114A521E37F80008D81AC /* L.swift in Sources */,
 				A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC2.swift in Sources */,
+				503114C221E4F9AF008D81AC /* AddClosetService.swift in Sources */,
 				50DD805821E1CF3000E6F743 /* PWSettingService.swift in Sources */,
 				506655BE21D2548000580137 /* UserInfoVC1.swift in Sources */,
 				A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */,
