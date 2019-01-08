@@ -17,20 +17,28 @@ class BrandSelectVC: UIViewController {
     
     let userDefault = UserDefaults.standard
     var delegate: BrandVCDelegate?
-
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "ETC"]
+    var selectedAlphabet: String?
+    var selectedButton: String?
+    
     @IBOutlet weak var tableView: UITableView!
     var brand: [Brand]? = []
-    var selectedButton: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         tableView.delegate = self;
         tableView.dataSource = self;
         tableView.tableFooterView = UIView()
 
     }
-
+    
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -47,38 +55,6 @@ class BrandSelectVC: UIViewController {
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
     }
-    
-    
-    @IBAction func btnClick(_ sender: UIButton) {
-        
-        switch sender.tag {
-            case 0: selectedButton = "A"; case 1: selectedButton = "B"
-            case 2: selectedButton = "C"; case 3: selectedButton = "D"
-            case 4: selectedButton = "E"; case 5: selectedButton = "F"
-            case 6: selectedButton = "G"; case 7: selectedButton = "H"
-            case 8: selectedButton = "I"; case 9: selectedButton = "J"
-            case 10: selectedButton = "K"; case 11: selectedButton = "L"
-            case 12: selectedButton = "M"; case 13: selectedButton = "N"
-            case 14: selectedButton = "O"; case 15: selectedButton = "P"
-            case 16: selectedButton = "Q"; case 17: selectedButton = "R"
-            case 18: selectedButton = "S"; case 19: selectedButton = "T"
-            case 20: selectedButton = "U"; case 21: selectedButton = "V"
-            case 22: selectedButton = "W"; case 23: selectedButton = "X"
-            case 24: selectedButton = "Y"; case 25: selectedButton = "Z"
-            case 26: selectedButton = ""
-            default: break
-        }
-        
-        userDefault.set(selectedButton!, forKey: "brand_initial")
-        
-        BrandSelectService.shared.showBrandList { (brandList) in
-            self.brand = brandList
-            self.tableView.reloadData()
-        }
-        
-    }
-    
-    
     
 }
 
@@ -112,8 +88,66 @@ extension BrandSelectVC : UITableViewDataSource, UITableViewDelegate{
         self.delegate?.BrandVCResponse(value: _brand[indexPath.row].name_english!)
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
-    
-    
+
 }
+
+
+//collectionView
+extension BrandSelectVC: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return alphabet.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        cell.alphabet.text = alphabet[indexPath.item]
+        cell.alphabet.adjustsFontSizeToFitWidth = true
+        cell.alphabet.minimumScaleFactor = 0.2
+        return cell
+    }
+}
+
+extension BrandSelectVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        
+        if cell.isSelected {
+            cell.isSelected = false
+        }else {
+            cell.isSelected = true
+        }
+        
+        selectedAlphabet = alphabet[indexPath.row]
+        
+        userDefault.set(selectedAlphabet!, forKey: "brand_initial")
+
+        BrandSelectService.shared.showBrandList { (brandList) in
+            self.brand = brandList
+            self.tableView.reloadData()
+        }
+
+        
+    }
+}
+
+
+extension BrandSelectVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (view.frame.width - 90) / 9
+        return CGSize(width: size, height: size)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+

@@ -21,6 +21,7 @@ class SearchProductVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
+    
     }
     
 
