@@ -110,11 +110,18 @@ class UserInfoAdminVC: UIViewController {
         self.ueserDefault.removeObject(forKey: "address")
         self.ueserDefault.removeObject(forKey: "detailAddress")
         self.ueserDefault.removeObject(forKey: "phoneNumber")
+     
+      if  postCodeLabel.text != "" && addressLabel.text != ""
+            && detailAddress.text != "" && phoneNumber.text != "" {
+                self.ueserDefault.set(self.postCodeLabel.text!, forKey: "postCode")
+                self.ueserDefault.set(self.addressLabel.text!, forKey: "address")
+      }else{
+     
+        self.ueserDefault.removeObject(forKey: "postCode")
+        self.ueserDefault.removeObject(forKey: "address")
+        self.ueserDefault.removeObject(forKey: "detailAddress")
+        self.ueserDefault.removeObject(forKey: "phoneNumber")
         
-//            self.ueserDefault.set("", forKey: "postCode")
-//            self.ueserDefault.set("", forKey: "address")
-//            self.ueserDefault.set("", forKey: "detailAddress")
-
         let okAction = UIAlertAction(title: "확인", style: .default) {
             _ in
           
@@ -135,7 +142,6 @@ class UserInfoAdminVC: UIViewController {
             
                 self.dismiss(animated: true, completion: nil)
             
->>>>>>> c2ae1a3f3dd5dd78202fc0c4052a50f2515ea5d7
         }
         
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)

@@ -88,7 +88,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
 //        
 //    }
     
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         //iphone사이즈에 따라 동적으로 대응이 가능해진다.
