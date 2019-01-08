@@ -16,9 +16,15 @@ class LogInVC: UIViewController, APIManager {
     let userDefault = UserDefaults.standard
     @IBOutlet weak var switchBtn: UISwitch!
     
+     var keyboardDismissGesture : UITapGestureRecognizer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setKeyboardSetting()
+        setupTap()
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,9 +70,68 @@ class LogInVC: UIViewController, APIManager {
     }
     
     @IBAction func unwind(_ sender: UIStoryboardSegue){
-        
+    }
+
+}
+
+
+//MARK: - 키보드 대응 및 뷰 탭
+extension LogInVC: UITextFieldDelegate, UIGestureRecognizerDelegate {
+    
+    
+    func setupTap() {
+        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        self.view.addGestureRecognizer(viewTap)
     }
     
-
-
+    //뷰를 탭하면 edit 상태를 끝낸다
+    @objc func viewTapped() {
+        self.view.endEditing(true)
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        self.view.endEditing(true)
+        return true
+    }
+    
+    func setKeyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        self.view.frame.origin.y = -120
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        self.view.frame.origin.y = 0
+    }
+    
+    
+    
+    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
+        if isKeyboardVisible {
+            if keyboardDismissGesture == nil {
+                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
+                view.addGestureRecognizer(keyboardDismissGesture!)
+            }
+        } else {
+            if keyboardDismissGesture != nil {
+                view.removeGestureRecognizer(keyboardDismissGesture!)
+                keyboardDismissGesture = nil
+            }
+        }
+    }
+    
+    @objc func tapBackground() {
+        self.view.endEditing(true)
+    }
 }

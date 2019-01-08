@@ -101,6 +101,21 @@ class UserInfoAdminVC: UIViewController {
     
         let alert = UIAlertController(title: "정보 수정", message: "추가 정보를 등록하시겠습니까?", preferredStyle: .alert)
         
+      if  postCodeLabel.text != "" && addressLabel.text != ""
+            && detailAddress.text != "" && phoneNumber.text != "" {
+                self.ueserDefault.set(self.postCodeLabel.text!, forKey: "postCode")
+                self.ueserDefault.set(self.addressLabel.text!, forKey: "address")
+      }else{
+     
+        self.ueserDefault.removeObject(forKey: "postCode")
+        self.ueserDefault.removeObject(forKey: "address")
+        self.ueserDefault.removeObject(forKey: "detailAddress")
+        self.ueserDefault.removeObject(forKey: "phoneNumber")
+        
+//            self.ueserDefault.set("", forKey: "postCode")
+//            self.ueserDefault.set("", forKey: "address")
+//            self.ueserDefault.set("", forKey: "detailAddress")
+//            self.ueserDefault.set("", forKey: "phoneNumber")
         let okAction = UIAlertAction(title: "확인", style: .default) {
             _ in
           
@@ -121,6 +136,7 @@ class UserInfoAdminVC: UIViewController {
             
                 self.dismiss(animated: true, completion: nil)
             
+
         }
         
         let cancelAction = UIAlertAction(title: "취소", style: .cancel)
