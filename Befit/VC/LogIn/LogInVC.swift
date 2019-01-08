@@ -52,7 +52,7 @@ class LogInVC: UIViewController, APIManager {
                 switch status {
                     case 200 :
                          self.userDefault.set(res.data?.token!, forKey: "token")
-                         print("토근값 저장:" + self.userDefault.string(forKey: "token")!)
+                         print("\n토근값 저장:" + self.userDefault.string(forKey: "token")!)
                          let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
                          self.present(mainVC, animated: true, completion: nil)
                          break

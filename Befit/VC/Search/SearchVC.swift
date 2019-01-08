@@ -14,6 +14,7 @@ class SearchVC: UIViewController {
 
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
+
     var searchBarActive:Bool = false
     
     override func viewDidLoad() {
@@ -21,6 +22,7 @@ class SearchVC: UIViewController {
         initSearchBar()
         
         secondView.isHidden = true
+
     }
 
 }

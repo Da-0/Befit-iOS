@@ -14,10 +14,10 @@ class SizeInfoVC2: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationBar!
-    var categoryName: String?
-
     @IBOutlet weak var tabView: UIControl!
-    var Model: [SizeItems]!
+    
+    var categoryName: String?
+    var ClosetList: [Closet]? = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,16 +36,11 @@ class SizeInfoVC2: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         navigationBar.topItem?.title = categoryName
-       
-        ///**************통신이 일어나는 시점 **************
-        Model = [
-            SizeItems(image: #imageLiteral(resourceName: "testImage"), brand: "헬로월드", product: "나이키"),
-            SizeItems(image: #imageLiteral(resourceName: "testImage"), brand: "헬로월드", product: "나이키"),
-            SizeItems(image: #imageLiteral(resourceName: "testImage"), brand: "헬로월드", product: "나이키")
-        ]
         
-        tabView.isHidden = Model.count != 0 ?  true : false
-        collectionView.isHidden = Model.count != 0 ? false: true
+        network()
+       
+        tabView.isHidden = ClosetList == nil ?  true : false
+        collectionView.isHidden = ClosetList == nil ? false : true
         
     }
     
@@ -54,6 +49,14 @@ class SizeInfoVC2: UIViewController {
         
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
+        
+    }
+    
+    func network(){
+        GetClosetListService.shared.showClosetList { (clsoetList) in
+            self.ClosetList = clsoetList
+            self.collectionView.reloadData()
+        }
         
     }
 
@@ -76,25 +79,33 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return Model.count + 1
+        if ClosetList == nil {
+            return 1
+        }
+        else{
+            return (ClosetList?.count)! + 1
+        }
+ 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SizeInfo2CVCell", for: indexPath) as! SizeInfo2CVCell
+        guard let closet = ClosetList else {return cell}
         
         cell.delegate = self;
         
-        if indexPath.row == Model.count{
+        if indexPath.row == closet.count{
             cell.productImg.image = #imageLiteral(resourceName: "plusBox")
             cell.brandName.text = nil
             cell.productName.text = nil
         }
             
         else{
-            cell.productImg.image = Model[indexPath.row].image
-            cell.brandName.text = Model[indexPath.row].brandName
-            cell.productName.text = Model[indexPath.row].productName
+            cell.productImg.imageFromUrl(closet[indexPath.row].image_url!, defaultImgPath: "")
+            cell.brandName.text = closet[indexPath.row].name_korean
+            cell.productName.text = closet[indexPath.row].name
         }
 
         return cell
@@ -105,14 +116,15 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.row == Model.count{
+        guard let closet = ClosetList else {return}
+        
+        if indexPath.row == closet.count{
             //마지막 index는 등록뷰로 이동
             let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
             self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
             
         }
         else {
-            
             //내 사이즈 확인뷰로 이동
             let mysizeVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MySizeVC")as! MySizeVC
             self.navigationController?.pushViewController(mysizeVC, animated: true)
@@ -156,10 +168,10 @@ extension SizeInfoVC2: SizeInfo2CellDelegate {
         
         if let indexPath = collectionView.indexPath(for: cell) {
             
-            Model.remove(at: indexPath.row)
+            guard let closet = ClosetList else {return}
+            //closet.remove(at: indexPath.row)
             collectionView.deleteItems(at: [indexPath])
-            
-            print(Model.count)
+
         }
     }
 }

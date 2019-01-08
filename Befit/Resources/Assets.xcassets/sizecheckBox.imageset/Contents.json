@@ -1,19 +1,19 @@
 {
   "images" : [
     {
-      "scale" : "1x",
+      "filename" : "sizecheckBox.png",
       "idiom" : "universal",
-      "filename" : "sizecheckBox.png"
+      "scale" : "1x"
     },
     {
-      "scale" : "2x",
+      "filename" : "sizecheckBox@2x.png",
       "idiom" : "universal",
-      "filename" : "sizecheckBox@2x.png"
+      "scale" : "2x"
     },
     {
-      "scale" : "3x",
+      "filename" : "sizecheckBox@3x.png",
       "idiom" : "universal",
-      "filename" : "sizecheckBox@3x.png"
+      "scale" : "3x"
     }
   ],
   "info" : {

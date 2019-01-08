@@ -12,9 +12,6 @@ import XLPagerTabStrip
 class SearchProductVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var popularBtn: UIButton!
-    @IBOutlet weak var newBtn: UIButton!
-    
     let brand = ["Uniqlo", "LMC", "Nike", "라퍼지스토어", "아이오아이", "A-LAND", "BBCCAA"]
     let product = ["양털후리스", "매우매우큰자켓", "에어맥스 조던", "에어맥스 조던1111", "에어맥스 조던2222", "에어맥스 조던333",
                 "?"]
@@ -26,35 +23,38 @@ class SearchProductVC: UIViewController {
         collectionView.dataSource = self;
     }
     
-    
-    @IBAction func popularAction(_ sender: Any) {
-        newBtn.setTitleColor(#colorLiteral(red: 0.4549019608, green: 0.4549019608, blue: 0.4549019608, alpha: 1), for: .normal)
-        popularBtn.setTitleColor(#colorLiteral(red: 0.5169706941, green: 0.1907331347, blue: 0.9285635948, alpha: 1), for: .normal)
-        
-        //***인기순 데이터를 호출하는 통신 구현부***
-        ///////////////////////////////////
-        
-        
-        
-        
-    }
-    
-    
-    
-    @IBAction func newAction(_ sender: Any) {
-        popularBtn.setTitleColor(#colorLiteral(red: 0.4549019608, green: 0.4549019608, blue: 0.4549019608, alpha: 1), for: .normal)
-        newBtn.setTitleColor(#colorLiteral(red: 0.5169706941, green: 0.1907331347, blue: 0.9285635948, alpha: 1), for: .normal)
-        
-        //***최신순 데이터를 호출하는 통신 구현부***
-        ///////////////////////////////////
-        
-        
-    
-    }
 
 }
 
 extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+            
+            case UICollectionView.elementKindSectionHeader:
+                
+                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchCRV", for: indexPath as IndexPath) as! SearchCRV
+                
+                cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
+                cell.isUserInteractionEnabled = true
+                cell.popularBtn.addTarget(self, action: #selector(popularReload), for: .touchUpInside)
+                cell.newBtn.addTarget(self, action: #selector(newReload), for: .touchUpInside)
+                return cell
+            
+            default:
+                assert(false, "Unexpected element kind")
+        }
+        
+    }
+    
+    
+    @objc func popularReload(){
+        print("인기순으로 상품이 정렬 되었습니다!!")
+    }
+    @objc func newReload(){
+        print("신상순으로 상품이 정렬 되었습니다!!")
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return brand.count
@@ -70,6 +70,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         
         return cell
     }
+
     
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //        
@@ -86,8 +87,6 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
 //        }
 //        
 //    }
-    
-    
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

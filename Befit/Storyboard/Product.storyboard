@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N1c-Oo-YIe">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ProductVC-->
+        <scene sceneID="0uf-GK-YT3">
+            <objects>
+                <viewController storyboardIdentifier="ProductVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N1c-Oo-YIe" customClass="ProductVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ym2-Y4-F58">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f0w-ZN-gZh">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <navigationItem title="브랜드 이름" id="a6f-TY-S4x">
+                                        <barButtonItem key="leftBarButtonItem" image="icX" id="JCA-9z-bOo">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <connections>
+                                                <action selector="dismisssAction:" destination="N1c-Oo-YIe" id="h2k-hm-AtK"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" image="sizeCheckButton" id="fko-cP-KSb">
+                                            <connections>
+                                                <action selector="sizeCheckAction:" destination="N1c-Oo-YIe" id="Z8v-mt-mWh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ude-sB-9v8" customClass="WKWebView" customModule="Befit" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <color key="backgroundColor" red="0.36078431372549019" green="0.38823529411764707" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="f0w-ZN-gZh" firstAttribute="trailing" secondItem="zZ1-wK-w7O" secondAttribute="trailing" id="5ob-Rz-qXW"/>
+                            <constraint firstItem="Ude-sB-9v8" firstAttribute="top" secondItem="f0w-ZN-gZh" secondAttribute="bottom" id="8QD-rC-hBS"/>
+                            <constraint firstItem="f0w-ZN-gZh" firstAttribute="top" secondItem="zZ1-wK-w7O" secondAttribute="top" id="AgK-aI-CLI"/>
+                            <constraint firstItem="zZ1-wK-w7O" firstAttribute="bottom" secondItem="Ude-sB-9v8" secondAttribute="bottom" id="Pjo-TA-QuX"/>
+                            <constraint firstItem="Ude-sB-9v8" firstAttribute="leading" secondItem="zZ1-wK-w7O" secondAttribute="leading" id="TWk-jz-1Hm"/>
+                            <constraint firstItem="zZ1-wK-w7O" firstAttribute="trailing" secondItem="Ude-sB-9v8" secondAttribute="trailing" id="bhn-k5-NbD"/>
+                            <constraint firstItem="f0w-ZN-gZh" firstAttribute="leading" secondItem="zZ1-wK-w7O" secondAttribute="leading" id="se8-Tu-aDc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zZ1-wK-w7O"/>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="f0w-ZN-gZh" id="Ov9-Ti-iFR"/>
+                        <outlet property="webView" destination="Ude-sB-9v8" id="hPi-nx-g2R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LfT-d0-xoA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="68" y="125"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icX" width="48" height="48"/>
+        <image name="sizeCheckButton" width="70" height="21"/>
+    </resources>
+</document>
