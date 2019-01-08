@@ -977,7 +977,6 @@
                         <outlet property="birthday" destination="suT-4d-Vu8" id="TSA-y5-4AO"/>
                         <outlet property="deleteBtn" destination="Kji-gv-us2" id="vLf-FM-Peu"/>
                         <outlet property="completeBtn" destination="CnW-f1-hMu" id="RDt-mx-UQD"/>
-                        <outlet property="deleteBtn" destination="SjI-6b-F8c" id="ghX-Fl-47c"/>
                         <outlet property="detailAddress" destination="Ka9-Se-GaZ" id="TtD-R6-xbt"/>
                         <outlet property="phoneNumber" destination="Mrg-sp-yHG" id="NUH-GW-eHK"/>
                         <outlet property="postCodeButton" destination="z1U-Z9-J6z" id="hUR-xa-vo6"/>

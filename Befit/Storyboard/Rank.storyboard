@@ -358,9 +358,6 @@
         <image name="icLikeLine" width="23.666666030883789" height="21"/>
         <image name="logoOutline" width="48" height="48"/>
         <image name="manCovernat" width="130" height="130"/>
-    </scenes>
-    <resources>
-        <image name="logoOutline" width="48" height="48"/>
         <image name="tabRanking" width="22.333333969116211" height="22.666666030883789"/>
     </resources>
 </document>

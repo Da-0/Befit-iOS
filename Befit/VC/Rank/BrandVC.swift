@@ -70,11 +70,11 @@ extension UIImageView {
 
 
 extension BrandVC: UICollectionViewDataSource{
-
+   
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
- 
+
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10

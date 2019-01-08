@@ -16,7 +16,6 @@ class SearchVC: UIViewController {
     @IBOutlet weak var secondView: UIView!
 
     var searchBarActive:Bool = false
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
