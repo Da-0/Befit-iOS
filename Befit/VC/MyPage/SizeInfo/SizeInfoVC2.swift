@@ -116,7 +116,9 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if indexPath.row == ClosetList!.count{
+        guard let closet = ClosetList else {return}
+        
+        if indexPath.row == closet.count{
             //마지막 index는 등록뷰로 이동
             let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
             self.navigationController?.pushViewController(sizeInfoVC3, animated: true)

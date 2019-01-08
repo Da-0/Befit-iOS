@@ -21,9 +21,10 @@ struct BrandSelectService: APIManager, Requestable{
     
     //이니셜로 검색하는 경우 브랜드 리스트를 출력 해주는 api
     func showBrandList(completion: @escaping ([Brand]?) -> Void) {
+        
        let brandInitial = UserDefaults.standard.string(forKey: "brand_initial")!
        let queryURL = URL + "?initial=" + brandInitial
-        print(queryURL)
+    
         gettable(queryURL, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
