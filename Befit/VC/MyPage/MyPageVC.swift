@@ -41,6 +41,10 @@ class MyPageVC: UIViewController {
     
     func network(){
         UserInfoService.shared.showUserInfo { (res) in
+            
+            print("\n<***현재 회원 정보***>")
+            print(res)
+            
             self.userName.text = res.name
             self.userId.text = res.email
             self.gender = res.gender

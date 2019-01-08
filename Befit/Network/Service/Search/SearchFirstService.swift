@@ -15,9 +15,9 @@ struct SearchFirstService: APIManager, Requestable{
     
     let URL = url("/search/firstSearchPage")
     
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
+let headers: HTTPHeaders = [
+    "Authorization" : UserDefaults.standard.string(forKey: "token")!
+]
     
     //검색 첫화면 추천(24개)상품 보여주기
     func showSearchFirstView(completion: @escaping ([Product]) -> Void) {

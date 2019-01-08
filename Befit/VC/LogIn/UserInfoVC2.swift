@@ -161,6 +161,7 @@ class UserInfoVC2: UIViewController {
             
             let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
             let userInfoVC3 = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
+            userInfoVC3?.gender = self.gender
             self.navigationController?.pushViewController(userInfoVC3!, animated: true)
             
         }
@@ -169,12 +170,6 @@ class UserInfoVC2: UIViewController {
     }
 
 }
-
-
-
-
-
-
 //남,여 Tag 번호에 따른 실제 브랜드 Idx
 
 //남성:

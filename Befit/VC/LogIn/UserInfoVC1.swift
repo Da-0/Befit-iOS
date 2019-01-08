@@ -9,9 +9,7 @@
 import UIKit
 
 class UserInfoVC1: UIViewController {
-    
-    let uesrDefault = UserDefaults.standard
-    
+
     @IBOutlet weak var womanImg: UIButton!
     @IBOutlet weak var manImg: UIButton!
     @IBOutlet weak var nextBtn: UIButton!

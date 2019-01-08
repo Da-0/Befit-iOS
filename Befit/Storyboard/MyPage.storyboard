@@ -993,6 +993,30 @@
             </objects>
             <point key="canvasLocation" x="2102" y="870"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Qpe-hJ-6aS">
+            <objects>
+                <viewController id="Ugf-j5-zDu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RhP-Lg-Vsw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FAQ ViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu0-0D-4ln">
+                                <rect key="frame" x="113" y="396" width="149" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="JUS-vm-LiE"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2CM-o9-IP6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2102" y="1739"/>
+        </scene>
         <!--우편번호 찾기-->
         <scene sceneID="1Rb-W0-gKy">
             <objects>

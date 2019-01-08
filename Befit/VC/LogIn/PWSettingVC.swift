@@ -9,8 +9,6 @@
 import UIKit
 
 class PWSettingVC: UIViewController {
-    
-    let userDefault = UserDefaults.standard
 
     @IBOutlet weak var newPWTF: UITextField!
     @IBOutlet weak var newPWCKTF: UITextField!
@@ -19,6 +17,7 @@ class PWSettingVC: UIViewController {
     @IBOutlet weak var okBtn: UIButton!
     
     var keyboardDismissGesture : UITapGestureRecognizer?
+    var userIdx: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,13 +85,10 @@ class PWSettingVC: UIViewController {
     
     
     func network(){
-        
-        let idx = userDefault.integer(forKey: "idx")
-        PWSettingService.shared.setPW(idx: idx, pw: newPWTF.text!, completion:
-            
+    
+        PWSettingService.shared.setPW(idx: userIdx!, pw: newPWTF.text!, completion:
             {[weak self] (res) in
             guard let `self` = self else {return}
-            
             if let status = res.status {
                 switch status {
                     case 200:
