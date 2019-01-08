@@ -105,7 +105,6 @@ class FindPWVC: UIViewController {
     }
     
     func network(){
-        
         let birthday = yearTF.text! + "/" + monthTF.text! + "/" + dayTF.text!
         
         FindPWService.shared.findPW(email: emailTF.text!, name: nameTF.text!, birthday: birthday, completion: {[weak self] (res) in

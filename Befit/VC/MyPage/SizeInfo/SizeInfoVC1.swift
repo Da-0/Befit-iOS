@@ -11,15 +11,13 @@ import UIKit
 class SizeInfoVC1: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var gender: String?
     var categoryList: [Category]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self;
         tableView.dataSource = self;
-        
-        //*****Test용(성별을 gender에 받아오는것에 따라 달리 출력)
-        UserDefaults.standard.set("남", forKey: "gender")
         initGender()
     }
     
@@ -45,11 +43,8 @@ class SizeInfoVC1: UIViewController {
     
     func initGender(){
         
-        if UserDefaults.standard.string(forKey: "gender") == "남" {
-            categoryList = Category.allmen()
-        }else {
-            categoryList = Category.allwomen()
-        }
+        if gender == "남성" { categoryList = Category.allmen()}
+        else { categoryList = Category.allwomen()}
     }
 
 }

@@ -735,6 +735,7 @@
                         <outlet property="btn6" destination="xMy-Bu-1fO" id="BE9-bk-S6k"/>
                         <outlet property="btn7" destination="KR3-vW-yWL" id="80u-G4-Ewe"/>
                         <outlet property="nextBtn" destination="osR-Pu-rXg" id="346-Za-YMG"/>
+                        <outlet property="pageLB" destination="JjL-i7-R3K" id="v4B-nw-Qun"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xp-AN-h3E" userLabel="First Responder" sceneMemberID="firstResponder"/>

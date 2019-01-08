@@ -67,17 +67,22 @@ class UserInfoAdminVC: UIViewController {
             self.userGender.text = res.gender
             self.userPW.text = "**********"
             
+            guard let post = res.post_number else {return}
             guard let address = res.home_address else {return}
             guard let detail = res.detail_address else {return}
             guard let phone = res.phone else {return}
-            guard let post = res.post_number else {return}
-                
+   
+            print(post)
+            print(address)
+            
             self.addressLabel.text = address
             self.detailAddress.text = detail
             self.phoneNumber.text = phone
             self.postCodeLabel.text = post
+            
+            self.postCodeButton.isHidden = true
+            self.postView.isHidden = false
         
-    
             }
         }
 
