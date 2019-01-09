@@ -28,34 +28,15 @@ class SearchVC: UIViewController {
 }
 
 extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearchBarDelegate{
-    
-//    func searchBar(_ searchBar: UISearchBar,
-//                   shouldChangeTextIn range: NSRange,
-//                   replacementText text: String) -> Bool
-//    {
-//        didTapDeleteKey = text.isEmpty
-//
-//        return true
-//    }
-//
-//    func searchBar(_ searchBar: UISearchBar,
-//                   textDidChange searchText: String)
-//    {
-//        if !didTapDeleteKey && searchText.isEmpty {
-//            firstView.isHidden = false
-//            secondView.isHidden = true
-//        }
-//
-//        didTapDeleteKey = false
-//    }
    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText == "" {
+        
+        if searchBar.text == nil || searchText == "" {
             print("UISearchBar.text cleared!")
-            firstView.isHidden = false
+            self.firstView.isHidden = false
+            self.secondView.becomeFirstResponder()
         }
     }
-    
     
     func updateSearchResults(for searchController: UISearchController) {
         print("키보드 입력중...")
@@ -68,10 +49,10 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         self.searchController.searchBar.showsCancelButton = true
        
         self.searchController.dimsBackgroundDuringPresentation = false
+        self.secondView.becomeFirstResponder()
 
         return true
     }
-    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -83,9 +64,6 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         secondView.isHidden = false
         
         
-//        let search = UIStoryboard.init(name: "Search", bundle: nil)
-//        let searchVC2 = search.instantiateViewController(withIdentifier: "SearchVC2") as? SearchVC2
-//        self.navigationController?.pushViewController(searchVC2!, animated: true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -95,7 +73,6 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         
     }
 
-    
     func initSearchBar(){
         
         self.searchController = UISearchController(searchResultsController:  nil)
@@ -114,7 +91,4 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         self.definesPresentationContext = true
         
     }
-    
-        
-        
 }
