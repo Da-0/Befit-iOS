@@ -45,7 +45,8 @@ class SizeInfoVC3: UIViewController {
     
     var commonSize: [CommonSize] = []
     
-    
+    var brandIdx: Int?
+    var categoryIdx: Int?
     var productIdx: Int?
     var productSize: String?
     
@@ -119,7 +120,11 @@ extension SizeInfoVC3 {
     @IBAction func productSelectAction(_ sender: Any) {
         
         let productSelectVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ProductSelectVC")as! ProductSelectVC
+        
         productSelectVC.delegate = self;
+        productSelectVC.brandIdx = self.brandIdx;
+        productSelectVC.categoryIdx = self.categoryIdx;
+        
         self.navigationController?.pushViewController(productSelectVC, animated: true)
         
     }
@@ -214,8 +219,10 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
 
 //Mark: - BrandVCDelegate
 extension SizeInfoVC3 : BrandVCDelegate {
-    func BrandVCResponse(value: String) {
-        self.brandName = value
+    func BrandVCResponse(value: Brand) {
+        self.brandName = value.name_english
+        self.brandIdx = value.idx
+    
     }
 }
 

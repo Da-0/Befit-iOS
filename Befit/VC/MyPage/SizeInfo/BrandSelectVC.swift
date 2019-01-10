@@ -10,7 +10,7 @@ import UIKit
 
 protocol BrandVCDelegate
 {
-    func BrandVCResponse(value: String)
+    func BrandVCResponse(value: Brand)
 }
 
 class BrandSelectVC: UIViewController {
@@ -86,8 +86,8 @@ extension BrandSelectVC : UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let _brand = brand else {return}
-        self.delegate?.BrandVCResponse(value: _brand[indexPath.row].name_english!)
-        userDefault.set(_brand[indexPath.row].idx!, forKey: "brand_idx")    
+        self.delegate?.BrandVCResponse(value: _brand[indexPath.row])
+        //userDefault.set(_brand[indexPath.row].idx!, forKey: "brand_idx")
         self.navigationController?.popViewController(animated: true)
     }
 

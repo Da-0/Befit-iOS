@@ -13,7 +13,8 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     
     
     var searchController : UISearchController!
-
+    var keyword: String?
+    
     override func viewDidLoad() {
         configureButtonBar()
         super.viewDidLoad()
@@ -34,8 +35,8 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     // willMove -> It appears on the parent screen.
     override func willMove(toParent parent: UIViewController?) {
         print(#function)
-        if let `parent` = parent as UIViewController? {
-            print(parent)   // TestScrollViewAndContainerView.ViewController
+        if let `parent` = parent as? SearchVC {
+            parent.delegate = self
         }
     }
     
@@ -52,6 +53,7 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
         
         let child1 = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchProductVC") as! SearchProductVC
+        child1.searchKeyword = self.keyword ?? ""
         let child2 = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchBrandTVC") as! SearchBrandTVC
         
         return [child1, child2]
@@ -118,6 +120,13 @@ extension SearchVC2 : UISearchControllerDelegate, UISearchResultsUpdating,UISear
     
     
     
+}
+
+extension SearchVC2: SearchKeywordDelegate {
+    func didSearch(keyword: String) {
+        self.keyword = keyword
+        self.buttonBarView.reloadData()
+    }
 }
 
 

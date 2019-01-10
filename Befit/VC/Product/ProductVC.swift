@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 class ProductVC: UIViewController, WKNavigationDelegate {
-
+    
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var webView: WKWebView!
     
@@ -37,7 +37,7 @@ class ProductVC: UIViewController, WKNavigationDelegate {
         self.webView.load(URLRequest(url: URL(string: url)!))
         //self.webView.navigationDelegate = self;
     }
-
+    
     @IBAction func dismisssAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }

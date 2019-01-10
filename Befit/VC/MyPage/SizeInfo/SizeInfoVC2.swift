@@ -16,7 +16,7 @@ class SizeInfoVC2: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tabView: UIControl!
     
-    var categoryIdx: Int?
+    var categoryIdx: Int!
     var categoryName: String?
     var ClosetList: [Closet]?
 
@@ -45,7 +45,6 @@ class SizeInfoVC2: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
         
@@ -53,16 +52,17 @@ class SizeInfoVC2: UIViewController {
     
     func network(){
         
-        GetClosetListService.shared.showClosetList(idx: categoryIdx!, completion:{ (clsoetList) in
+        GetClosetListService.shared.showClosetList(idx: categoryIdx, completion:{ (clsoetList) in
             
-            print("현재 카테고리의 인덱스")
-            print(Idx.self)
+            print("\n현재 카테고리의 인덱스")
+            print(self.categoryIdx)
             
             self.ClosetList = clsoetList
             self.collectionView.reloadData()
             
             self.tabView.isHidden = self.ClosetList == nil ?  false : true
             self.collectionView.isHidden = self.ClosetList == nil ? true : false
+            
         })
         
     }
@@ -70,7 +70,7 @@ class SizeInfoVC2: UIViewController {
     @IBAction func tabViewAction(_ sender: Any) {
         
         let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
-    
+        sizeInfoVC3.categoryIdx = self.categoryIdx
         self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
         
     }
@@ -88,13 +88,15 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         guard let closet = ClosetList else {return 1}
+        
+        return closet.count + 1
 
-        if ClosetList == nil {
-            return 1
-        }
-        else{
-            return (ClosetList?.count)! + 1
-        }
+//        if ClosetList == nil {
+//            return 1
+//        }
+//        else{
+//            return (ClosetList?.count)! + 1
+//        }
  
     }
     
@@ -103,7 +105,6 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SizeInfo2CVCell", for: indexPath) as! SizeInfo2CVCell
         guard let closet = ClosetList else {return cell}
-        
         cell.delegate = self;
         
         if indexPath.row == closet.count{
@@ -131,6 +132,7 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
         if indexPath.row == closet.count{
             //마지막 index는 등록뷰로 이동
             let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
+            sizeInfoVC3.categoryIdx = self.categoryIdx
             self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
             
         }
@@ -138,7 +140,6 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
             //내 사이즈 확인뷰로 이동
             let mysizeVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MySizeVC")as! MySizeVC
             mysizeVC.categoryIdx = self.categoryIdx
-             UserDefaults.standard.set(closet[indexPath.row].closet_idx!, forKey: "closet_idx")
             self.navigationController?.pushViewController(mysizeVC, animated: true)
             
         }

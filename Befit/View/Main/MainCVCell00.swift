@@ -10,8 +10,8 @@ import UIKit
 
 class MainCVCell00: UICollectionViewCell {
     
-    
     @IBOutlet weak var brandMainImg: UIImageView!
+    @IBOutlet weak var brandName: UILabel!
     
     @IBOutlet weak var productImg1: UIImageView!
     @IBOutlet weak var productImg2: UIImageView!

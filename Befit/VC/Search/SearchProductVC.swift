@@ -24,15 +24,13 @@ class SearchProductVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
-      
     }
   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
-        searchKeyword = keyword
+//        guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
+//        searchKeyword = keyword
         initSearchProductList1()
-        
     }
     
     func initSearchProductList1(){

@@ -80,7 +80,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
         //iphone사이즈에 따라 동적으로 대응이 가능해진다.
        //let width: CGFloat = (self.collectionView.frame.width - 30) / 2
         //let height: CGFloat =  (self.collectionView.frame.height - 30) / 2
-        return CGSize(width: 167, height: 235)
+        return CGSize(width: 167, height: 239)
     }
     
     
