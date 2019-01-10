@@ -114,6 +114,7 @@
 		A5BA69AC21E1C73300949E42 /* BrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BA69AB21E1C73300949E42 /* BrandVC.swift */; };
 		A5BA69AE21E1DCB200949E42 /* DescriptionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BA69AD21E1DCB200949E42 /* DescriptionVC.swift */; };
 		A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5D2EB5521E09834002C23A7 /* ExtensionControl.swift */; };
+		A5DED4C121E72B1000CB9756 /* BrandProductSorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DED4C021E72B1000CB9756 /* BrandProductSorting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -230,6 +231,7 @@
 		A5BA69AB21E1C73300949E42 /* BrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandVC.swift; sourceTree = "<group>"; };
 		A5BA69AD21E1DCB200949E42 /* DescriptionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionVC.swift; sourceTree = "<group>"; };
 		A5D2EB5521E09834002C23A7 /* ExtensionControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionControl.swift; sourceTree = "<group>"; };
+		A5DED4C021E72B1000CB9756 /* BrandProductSorting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandProductSorting.swift; sourceTree = "<group>"; };
 		C6F1753E98B305F8F0B08C8C /* Pods-Befit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.release.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				5031148421E1E9FB008D81AC /* BrandRankService.swift */,
+				A5DED4C021E72B1000CB9756 /* BrandProductSorting.swift */,
 			);
 			path = Brand;
 			sourceTree = "<group>";
@@ -811,6 +814,7 @@
 				50DAFCEB21E695AD00D4BF2F /* MainCVCell12.swift in Sources */,
 				506E5C5821D60F840016549B /* MyPageTVCell.swift in Sources */,
 				508A8ABB21E7357D000AE141 /* BrandRecService.swift in Sources */,
+				A5DED4C121E72B1000CB9756 /* BrandProductSorting.swift in Sources */,
 				50DD803B21E0BE7E00E6F743 /* SearchVC1.swift in Sources */,
 				506E5C6521D756A50016549B /* SearchVC2.swift in Sources */,
 				A509DD4021E65387009C3DC1 /* SearchProductService.swift in Sources */,

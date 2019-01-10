@@ -21,6 +21,7 @@ class BrandSelectVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "ETC"]
+    
     var selectedAlphabet: String?
     var selectedButton: String?
     
