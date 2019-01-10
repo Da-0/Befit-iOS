@@ -1,10 +1,3 @@
-//
-//  SearchProductVC.swift
-//  Befit
-//
-//  Created by 이충신 on 29/12/2018.
-//  Copyright © 2018 GGOMMI. All rights reserved.
-//
 
 import UIKit
 import XLPagerTabStrip
@@ -24,13 +17,15 @@ class SearchProductVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
+        
     }
-  
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
-//        searchKeyword = keyword
+        guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
+        searchKeyword = keyword
         initSearchProductList1()
+        
     }
     
     func initSearchProductList1(){
@@ -40,16 +35,16 @@ class SearchProductVC: UIViewController {
         SearchProductService.shared.showSearchProductNew(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
             
-//            if status == 200 {
-//                if res.data == nil {
-//                    self.noResultView.isHidden = false
-//                    self.collectionView.isHidden = true
-//                }
-//                else{
-//                    self.noResultView.isHidden = true
-//                    self.collectionView.isHidden = false
-//                }
-//            }
+            //            if status == 200 {
+            //                if res.data == nil {
+            //                    self.noResultView.isHidden = false
+            //                    self.collectionView.isHidden = true
+            //                }
+            //                else{
+            //                    self.noResultView.isHidden = true
+            //                    self.collectionView.isHidden = false
+            //                }
+            //            }
             
             self.searchProductList = res.data
             self.collectionView.reloadData()
@@ -64,17 +59,17 @@ class SearchProductVC: UIViewController {
         
         SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
-
-//            if status == 200 {
-//                if res.data == nil {
-//                    self.noResultView.isHidden = false
-//                    self.collectionView.isHidden = true
-//                }
-//                else{
-//                    self.noResultView.isHidden = true
-//                    self.collectionView.isHidden = false
-//                }
-//            }
+            
+            //            if status == 200 {
+            //                if res.data == nil {
+            //                    self.noResultView.isHidden = false
+            //                    self.collectionView.isHidden = true
+            //                }
+            //                else{
+            //                    self.noResultView.isHidden = true
+            //                    self.collectionView.isHidden = false
+            //                }
+            //            }
             
             self.searchProductList = res.data
             self.collectionView.reloadData()
@@ -124,7 +119,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
             noResultView.isHidden = false
             return 0
         }
-    
+        
         return product.count
     }
     
@@ -133,7 +128,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchProductCVCell", for: indexPath) as! SearchProductCVCell
         guard let product = searchProductList else {return cell}
-    
+        
         cell.brandName.text = product[indexPath.row].brand_Korean_name
         cell.productName.text =  product[indexPath.row].name
         cell.price.text = product[indexPath.row].price
@@ -176,9 +171,3 @@ extension SearchProductVC: IndicatorInfoProvider{
         return IndicatorInfo(title: "상품")
     }
 }
-
-
-
-
-
-
