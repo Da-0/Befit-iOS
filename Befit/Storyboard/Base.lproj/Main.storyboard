@@ -20,14 +20,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="drM-Qi-VgX">
-                        <barButtonItem key="leftBarButtonItem" image="hambugerBar" id="3XI-ym-RkZ">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <connections>
-                                <action selector="categoryAction:" destination="BYZ-38-t0r" id="OsB-un-O0S"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="drM-Qi-VgX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -426,7 +419,6 @@
     </scenes>
     <resources>
         <image name="backArrow" width="32" height="32"/>
-        <image name="hambugerBar" width="36" height="36"/>
         <image name="icLikeLine" width="23.666666030883789" height="21"/>
         <image name="tabHome" width="25.333333969116211" height="24.666666030883789"/>
         <image name="testImage" width="139" height="142"/>

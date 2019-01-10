@@ -10,6 +10,7 @@ import UIKit
 
 class SearchVC: UIViewController {
     
+    let userDefault = UserDefaults.standard
     var searchController : UISearchController!
 
     @IBOutlet weak var firstView: UIView!
@@ -20,7 +21,6 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initSearchBar()
-        
         secondView.isHidden = true
         
     }
@@ -47,7 +47,6 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         firstView.isHidden = true
         secondView.isHidden = true
         self.searchController.searchBar.showsCancelButton = true
-       
         self.searchController.dimsBackgroundDuringPresentation = false
         self.secondView.becomeFirstResponder()
 
@@ -57,6 +56,10 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         print("검색완료!")
+    
+        guard let searchKeyword = searchBar.text else {return}
+        userDefault.set(searchKeyword, forKey: "SearchKeyword")
+
         self.view.endEditing(true)
         self.searchController.searchBar.showsCancelButton = false
         
@@ -65,10 +68,10 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         
         
     }
+
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         firstView.isHidden = false
-        print(firstView.isHidden)
         self.secondView.becomeFirstResponder()
         
     }
