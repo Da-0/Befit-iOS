@@ -139,7 +139,8 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
         else {
             //내 사이즈 확인뷰로 이동
             let mysizeVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MySizeVC")as! MySizeVC
-            mysizeVC.categoryIdx = self.categoryIdx
+            mysizeVC.closetIdx = self.ClosetList?[indexPath.row].closet_idx
+
             self.navigationController?.pushViewController(mysizeVC, animated: true)
             
         }

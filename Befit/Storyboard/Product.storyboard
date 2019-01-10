@@ -63,6 +63,21 @@
             </objects>
             <point key="canvasLocation" x="68" y="125"/>
         </scene>
+        <!--Size CheckVC-->
+        <scene sceneID="p5N-9D-yR3">
+            <objects>
+                <viewController storyboardIdentifier="SizeCheckVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EVM-xQ-7o0" customClass="SizeCheckVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uA9-Ml-IN2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="bLV-TB-JS2"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lib-ga-uue" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994" y="125"/>
+        </scene>
     </scenes>
     <resources>
         <image name="icX" width="48" height="48"/>
