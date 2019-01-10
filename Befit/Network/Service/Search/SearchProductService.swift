@@ -45,7 +45,7 @@ struct SearchProductService: APIManager, Requestable{
         
         guard let token = userDefault.string(forKey: "token") else {return}
         
-        let URL = baseURL + "/papular" + "?name=" + (keyword.utf8EncodedString())
+        let URL = baseURL + "/popular" + "?name=" + (keyword.utf8EncodedString())
         
         let headers: HTTPHeaders = [
             "Authorization" : token
