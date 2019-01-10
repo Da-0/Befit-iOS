@@ -16,9 +16,10 @@ class SizeInfoVC2: UIViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var tabView: UIControl!
     
+    var categoryIdx: Int?
     var categoryName: String?
     var ClosetList: [Closet]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,9 +39,8 @@ class SizeInfoVC2: UIViewController {
         navigationBar.topItem?.title = categoryName
         
         network()
-       
+        collectionView.reloadData()
 
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -52,20 +52,25 @@ class SizeInfoVC2: UIViewController {
     }
     
     func network(){
-        GetClosetListService.shared.showClosetList { (clsoetList) in
+        
+        GetClosetListService.shared.showClosetList(idx: categoryIdx!, completion:{ (clsoetList) in
+            
+            print("현재 카테고리의 인덱스")
+            print(Idx.self)
             
             self.ClosetList = clsoetList
             self.collectionView.reloadData()
             
             self.tabView.isHidden = self.ClosetList == nil ?  false : true
             self.collectionView.isHidden = self.ClosetList == nil ? true : false
-        }
+        })
         
     }
 
     @IBAction func tabViewAction(_ sender: Any) {
         
         let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
+    
         self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
         
     }
@@ -81,6 +86,8 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        guard let closet = ClosetList else {return 1}
 
         if ClosetList == nil {
             return 1
@@ -130,6 +137,8 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
         else {
             //내 사이즈 확인뷰로 이동
             let mysizeVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MySizeVC")as! MySizeVC
+            mysizeVC.categoryIdx = self.categoryIdx
+             UserDefaults.standard.set(closet[indexPath.row].closet_idx!, forKey: "closet_idx")
             self.navigationController?.pushViewController(mysizeVC, animated: true)
             
         }

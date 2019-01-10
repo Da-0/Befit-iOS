@@ -359,5 +359,6 @@
         <image name="logoOutline" width="48" height="48"/>
         <image name="manCovernat" width="130" height="130"/>
         <image name="tabRanking" width="22.333333969116211" height="22.666666030883789"/>
+        <image name="testImage" width="139" height="142"/>
     </resources>
 </document>

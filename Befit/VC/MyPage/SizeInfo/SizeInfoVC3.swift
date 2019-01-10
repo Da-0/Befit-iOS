@@ -35,12 +35,15 @@ class SizeInfoVC3: UIViewController {
     @IBOutlet weak var CproductImg: UIImageView!
     @IBOutlet weak var CproductName: UILabel!
     @IBOutlet weak var sizeTF: UITextField!
+    
     let pickerview = UIPickerView()
     var sizeArray = [String]()
     
     //stackView
     @IBOutlet weak var stackView1: UIStackView!
     @IBOutlet weak var stackView2: UIStackView!
+    
+    var commonSize: [CommonSize] = []
     
     
     var productIdx: Int?
@@ -122,9 +125,6 @@ extension SizeInfoVC3 {
     }
     
     @IBAction func completBtn(_ sender: Any) {
-        
-        print(productIdx)
-        print(productSize)
         
         AddClosetService.shared.addCloset(idx: productIdx!, size: productSize!) { (res) in
             if let status = res.status {
@@ -219,6 +219,8 @@ extension SizeInfoVC3 : BrandVCDelegate {
     }
 }
 
+
+
 //Mark: - BrandVCDelega
 extension SizeInfoVC3: ProductVCDelegate {
     func ProductVCResponse(value: Closet) {
@@ -226,7 +228,9 @@ extension SizeInfoVC3: ProductVCDelegate {
         sizeArray.removeAll()
         
         guard let measureData = value.measure?.toJSON() else {return}
-        let data = measureData.values
+    
+        let _key = measureData.keys
+        
     
         self.CproductImg.imageFromUrl(value.image_url!, defaultImgPath: "")
         self.CproductName.text = value.name
@@ -235,7 +239,23 @@ extension SizeInfoVC3: ProductVCDelegate {
         
         for size in measureData.keys.sorted() {
             sizeArray.append(size)
+            
+            
+            if let LSize = value.measure?.large?.size {
+                commonSize.append(LSize)
+            }
+            
+            if let MSize = value.measure?.medium?.size{
+                commonSize.append(MSize)
+            }
+            
+            if let SSize = value.measure?.small?.size{
+                commonSize.append(SSize)
+            }
+        
+            
         }
+       
         
     }
 }

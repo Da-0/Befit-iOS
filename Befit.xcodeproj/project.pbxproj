@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3B84E94CEB62C9768A62B9C5 /* Pods_Befit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */; };
 		501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F73E421D92BD0000D2F3E /* RankTVCell.swift */; };
+		5025A9B521E5DCEE0088FC9E /* CommonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025A9B421E5DCEE0088FC9E /* CommonSize.swift */; };
 		5031148521E1E9FB008D81AC /* BrandRankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148421E1E9FB008D81AC /* BrandRankService.swift */; };
 		5031148921E1EAC5008D81AC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148821E1EAC5008D81AC /* Brand.swift */; };
 		5031148C21E22A42008D81AC /* LikeBrandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148B21E22A42008D81AC /* LikeBrandService.swift */; };
@@ -34,6 +35,7 @@
 		503114BE21E48812008D81AC /* BrandSelectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114BD21E48812008D81AC /* BrandSelectService.swift */; };
 		503114C021E4881E008D81AC /* ProductSelectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114BF21E4881E008D81AC /* ProductSelectService.swift */; };
 		503114C221E4F9AF008D81AC /* AddClosetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114C121E4F9AF008D81AC /* AddClosetService.swift */; };
+		503114C421E50B8C008D81AC /* GetClosetDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114C321E50B8C008D81AC /* GetClosetDetailService.swift */; };
 		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		504CBAEB21D9DA38008606F7 /* UserInfoAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */; };
 		504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */; };
@@ -78,6 +80,13 @@
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
 		50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */; };
 		50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */; };
+		50DAFCE121E6023800D4BF2F /* MainCVCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */; };
+		50DAFCE321E6024400D4BF2F /* MainCVCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE221E6024400D4BF2F /* MainCVCell2.swift */; };
+		50DAFCE521E60C3300D4BF2F /* MainCVCell0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE421E60C3300D4BF2F /* MainCVCell0.swift */; };
+		50DAFCE721E6783700D4BF2F /* MainCVCell00.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE621E6783700D4BF2F /* MainCVCell00.swift */; };
+		50DAFCE921E67AC500D4BF2F /* MainCVCell11.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE821E67AC500D4BF2F /* MainCVCell11.swift */; };
+		50DAFCEB21E695AD00D4BF2F /* MainCVCell12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCEA21E695AD00D4BF2F /* MainCVCell12.swift */; };
+		50DC961621E60040005505D0 /* MainCRV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DC961521E60040005505D0 /* MainCRV.swift */; };
 		50DD803721E088BD00E6F743 /* CategoryDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803621E088BD00E6F743 /* CategoryDetailVC.swift */; };
 		50DD803921E0890000E6F743 /* CategoryDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803821E0890000E6F743 /* CategoryDetailCVCell.swift */; };
 		50DD803B21E0BE7E00E6F743 /* SearchVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DD803A21E0BE7E00E6F743 /* SearchVC1.swift */; };
@@ -105,6 +114,7 @@
 /* Begin PBXFileReference section */
 		4E9628501C4FE32118E472D1 /* Pods-Befit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.debug.xcconfig"; sourceTree = "<group>"; };
 		501F73E421D92BD0000D2F3E /* RankTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTVCell.swift; sourceTree = "<group>"; };
+		5025A9B421E5DCEE0088FC9E /* CommonSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSize.swift; sourceTree = "<group>"; };
 		5031148421E1E9FB008D81AC /* BrandRankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandRankService.swift; sourceTree = "<group>"; };
 		5031148821E1EAC5008D81AC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		5031148B21E22A42008D81AC /* LikeBrandService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandService.swift; sourceTree = "<group>"; };
@@ -130,6 +140,7 @@
 		503114BD21E48812008D81AC /* BrandSelectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandSelectService.swift; sourceTree = "<group>"; };
 		503114BF21E4881E008D81AC /* ProductSelectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSelectService.swift; sourceTree = "<group>"; };
 		503114C121E4F9AF008D81AC /* AddClosetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClosetService.swift; sourceTree = "<group>"; };
+		503114C321E50B8C008D81AC /* GetClosetDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClosetDetailService.swift; sourceTree = "<group>"; };
 		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoAdminVC.swift; sourceTree = "<group>"; };
 		504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeVC.swift; sourceTree = "<group>"; };
@@ -176,6 +187,13 @@
 		5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVC.swift; sourceTree = "<group>"; };
 		50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoVC1.swift; sourceTree = "<group>"; };
 		50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfo1TVCell.swift; sourceTree = "<group>"; };
+		50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell1.swift; sourceTree = "<group>"; };
+		50DAFCE221E6024400D4BF2F /* MainCVCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell2.swift; sourceTree = "<group>"; };
+		50DAFCE421E60C3300D4BF2F /* MainCVCell0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell0.swift; sourceTree = "<group>"; };
+		50DAFCE621E6783700D4BF2F /* MainCVCell00.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell00.swift; sourceTree = "<group>"; };
+		50DAFCE821E67AC500D4BF2F /* MainCVCell11.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell11.swift; sourceTree = "<group>"; };
+		50DAFCEA21E695AD00D4BF2F /* MainCVCell12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell12.swift; sourceTree = "<group>"; };
+		50DC961521E60040005505D0 /* MainCRV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCRV.swift; sourceTree = "<group>"; };
 		50DD803621E088BD00E6F743 /* CategoryDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailVC.swift; sourceTree = "<group>"; };
 		50DD803821E0890000E6F743 /* CategoryDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailCVCell.swift; sourceTree = "<group>"; };
 		50DD803A21E0BE7E00E6F743 /* SearchVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC1.swift; sourceTree = "<group>"; };
@@ -275,6 +293,7 @@
 				503114A421E37F80008D81AC /* L.swift */,
 				503114A621E37F86008D81AC /* M.swift */,
 				503114A821E37F8D008D81AC /* S.swift */,
+				5025A9B421E5DCEE0088FC9E /* CommonSize.swift */,
 			);
 			path = Size;
 			sourceTree = "<group>";
@@ -302,9 +321,10 @@
 			isa = PBXGroup;
 			children = (
 				503114B921E4771D008D81AC /* GetClosetListService.swift */,
+				503114C321E50B8C008D81AC /* GetClosetDetailService.swift */,
+				503114C121E4F9AF008D81AC /* AddClosetService.swift */,
 				503114BD21E48812008D81AC /* BrandSelectService.swift */,
 				503114BF21E4881E008D81AC /* ProductSelectService.swift */,
-				503114C121E4F9AF008D81AC /* AddClosetService.swift */,
 			);
 			path = SizeInfo;
 			sourceTree = "<group>";
@@ -508,6 +528,13 @@
 			children = (
 				506655D921D26FF900580137 /* CategoryTVCell.swift */,
 				50DD803821E0890000E6F743 /* CategoryDetailCVCell.swift */,
+				50DC961521E60040005505D0 /* MainCRV.swift */,
+				50DAFCE421E60C3300D4BF2F /* MainCVCell0.swift */,
+				50DAFCE621E6783700D4BF2F /* MainCVCell00.swift */,
+				50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */,
+				50DAFCE821E67AC500D4BF2F /* MainCVCell11.swift */,
+				50DAFCEA21E695AD00D4BF2F /* MainCVCell12.swift */,
+				50DAFCE221E6024400D4BF2F /* MainCVCell2.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -739,8 +766,11 @@
 				5068A53321DDD8A000F22E95 /* SizeInfo2CVCell.swift in Sources */,
 				5066558E21D228C900580137 /* Category.swift in Sources */,
 				506655D621D25B1100580137 /* MyPageVC.swift in Sources */,
+				50DAFCE521E60C3300D4BF2F /* MainCVCell0.swift in Sources */,
 				503114BE21E48812008D81AC /* BrandSelectService.swift in Sources */,
+				50DAFCE921E67AC500D4BF2F /* MainCVCell11.swift in Sources */,
 				5031148E21E22A4F008D81AC /* LikeProductService.swift in Sources */,
+				50DAFCE721E6783700D4BF2F /* MainCVCell00.swift in Sources */,
 				A5BA69AE21E1DCB200949E42 /* DescriptionVC.swift in Sources */,
 				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
 				5031149B21E34F31008D81AC /* BrandCRV.swift in Sources */,
@@ -750,8 +780,11 @@
 				506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */,
 				50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */,
 				506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */,
+				503114C421E50B8C008D81AC /* GetClosetDetailService.swift in Sources */,
 				503114B221E3CF64008D81AC /* SetUserInfoService.swift in Sources */,
+				50DAFCE121E6023800D4BF2F /* MainCVCell1.swift in Sources */,
 				503114C021E4881E008D81AC /* ProductSelectService.swift in Sources */,
+				50DAFCEB21E695AD00D4BF2F /* MainCVCell12.swift in Sources */,
 				506E5C5821D60F840016549B /* MyPageTVCell.swift in Sources */,
 				50DD803B21E0BE7E00E6F743 /* SearchVC1.swift in Sources */,
 				506E5C6521D756A50016549B /* SearchVC2.swift in Sources */,
@@ -760,6 +793,7 @@
 				5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
 				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
+				5025A9B521E5DCEE0088FC9E /* CommonSize.swift in Sources */,
 				503114AC21E38714008D81AC /* SearchFirstService.swift in Sources */,
 				50DD805121E1ABAB00E6F743 /* UIViewController+Extensions.swift in Sources */,
 				50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */,
@@ -774,7 +808,9 @@
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				50DD804321E19E6900E6F743 /* NetworkResult.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC3.swift in Sources */,
+				50DAFCE321E6024400D4BF2F /* MainCVCell2.swift in Sources */,
 				5068A53B21DE263C00F22E95 /* ProductSelectVC.swift in Sources */,
+				50DC961621E60040005505D0 /* MainCRV.swift in Sources */,
 				503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */,
 				50DD804721E1AA9F00E6F743 /* Requestable.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
@@ -955,7 +991,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
+				DEVELOPMENT_TEAM = 8E3WW2RPPH;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -975,7 +1011,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
+				DEVELOPMENT_TEAM = 8E3WW2RPPH;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (

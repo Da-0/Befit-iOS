@@ -71,7 +71,7 @@ extension SizeInfoVC1: UITableViewDelegate, UITableViewDataSource {
         
         let sizeInfoVC2 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC2")as! SizeInfoVC2
         
-        UserDefaults.standard.set(categoryList[indexPath.row].idx, forKey: "category_idx")
+        sizeInfoVC2.categoryIdx = categoryList[indexPath.row].idx
         sizeInfoVC2.categoryName = categoryList[indexPath.row].title
         
         self.navigationController?.pushViewController(sizeInfoVC2, animated: true)

@@ -14,6 +14,8 @@ class MySizeVC: UIViewController {
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var size: UILabel!
+    var categoryIdx: Int?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class MySizeVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
+        
+        network()
     
     }
     
@@ -34,9 +38,18 @@ class MySizeVC: UIViewController {
     }
     
     
-    
-    
-    
+    func network(){
+        
+        GetClosetDetailService.shared.showClosetDetail(idx: categoryIdx!, completion: {[weak self] (res) in
+            guard let `self` = self else {return}
+            guard let data = res.data else {return}
+            self.productImg.imageFromUrl(data.image_url!, defaultImgPath: "")
+            self.brandName.text = data.name_english
+            self.productName.text = data.name
+            
+        })
+    }
+
 
     @IBAction func backBtn(_ sender: Any) {
         
