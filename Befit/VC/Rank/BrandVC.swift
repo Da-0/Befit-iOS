@@ -9,15 +9,17 @@
 import UIKit
 
 class BrandVC: UIViewController {
+    
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var brandInfo : Brand!
+    var brandIdx: Int?
+    var productInfo: [Product]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.delegate = self;
+        collectionView.dataSource = self;
         
     }
    
@@ -25,35 +27,46 @@ class BrandVC: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
-        }
+        productListNewInit()
+        
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
-        }
+    }
     
+
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
     
-    @objc
-    func popularReload(){
-        //인기순을 클릭했을때 통신이 일어나는 시점
-        
+    func productListNewInit() {
+        BrandProductSorting.shared.showSortingNew (brandIdx: brandIdx!, completion: { (productData) in
+            self.productInfo = productData
+            print("\n신상순 정렬")
+            print(productData)
+            self.collectionView.reloadData()
+        })
     }
     
-    
-    @objc
-    func newReload(){
-        //신상품순을 클릭했을때 통신이 일어나는 시점
-        
+    func productListPopularInit() {
+        BrandProductSorting.shared.showSortingPopular(brandIdx: brandIdx!, completion: { (productData) in
+            self.productInfo = productData
+            print("\n인기순 정렬")
+            print(productData)
+            self.collectionView.reloadData()
+        })
     }
+    
 }
 
 extension BrandVC: UICollectionViewDataSource{
+    
    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
@@ -64,38 +77,67 @@ extension BrandVC: UICollectionViewDataSource{
         if section == 0 {
             return 1
         }else {
-            return 10
+            guard let product = productInfo else {return 0}
+            return product.count
         }
         
     }
     
+ 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if indexPath.section == 0 {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "BrandDetailCVCell", for: indexPath) as! BrandDetailCVCell
             
             cell1.BrandLogoImg.setRounded()
-            cell1.brandBackGround.image = #imageLiteral(resourceName: "brandBackground")
-            cell1.BrandNameEndglishLB.text = "VANS"
-            cell1.BrandNameKoreanLB.text = "반스"
+            cell1.BrandLogoImg.imageFromUrl(brandInfo.logo_url, defaultImgPath: "")
+            cell1.brandBackGround.imageFromUrl(brandInfo.mainpage_url, defaultImgPath: "")
             
-            cell1.ProductNumLB.text = "PRODUCT" + " ()"
-            cell1.PopularBtn.setTitle("인기순", for: .normal)
-            cell1.NewBtn.setTitle("신상품순", for: .normal)
+            cell1.BrandNameEndglishLB.text = brandInfo.name_english
+            cell1.BrandNameKoreanLB.text = brandInfo.name_korean
+            guard let product = productInfo else {return cell1}
+            cell1.ProductNumLB.text = "PRODUCT (" + "\(product.count)" + ")"
+            
+            cell1.NewBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
+            cell1.PopularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
             
             return cell1
         }
         else {
+            
+            
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
             
+            cell2.backgroundColor = UIColor.white
             
-            cell2.productImg.image = #imageLiteral(resourceName: "testImage")
-            cell2.brandName.text = "헬로월드"
-            cell2.productName.text = "옷옷옷"
-            cell2.price.text = "150,000"
+            cell2.brandName.text = productInfo?[indexPath.row].brand_Korean_name
+            cell2.productName.text = productInfo?[indexPath.row].name
+            cell2.price.text = productInfo?[indexPath.row].price
+            cell2.productImg.imageFromUrl(productInfo?[indexPath.row].image_url, defaultImgPath: "")
             
             return cell2
         }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        productVC.brandName = productInfo?[indexPath.row].brand_English_name
+        productVC.address = productInfo?[indexPath.row].link
+        self.navigationController?.present(productVC, animated: true, completion: nil)
+    }
+    
+    
+    @objc func newBtnClicked(){
+        print("신상버튼")
+        productListNewInit()
+        
+    }
+    
+    @objc func popularBtnClicked(){
+        print("인기버튼")
+        productListPopularInit()
         
     }
     
@@ -103,36 +145,15 @@ extension BrandVC: UICollectionViewDataSource{
 
 
 extension BrandVC: UICollectionViewDelegateFlowLayout{
-    
-    /*
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        switch kind {
-            
-        case UICollectionView.elementKindSectionHeader:
-            
-            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "BrandCRV", for: indexPath as IndexPath) as! BrandCRV
-            
-            cell.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-            cell.isUserInteractionEnabled = true;
-            
-            cell.popularBtn.addTarget(self, action: #selector(popularReload), for: .touchUpInside)
-            cell.newBtn.addTarget(self, action: #selector(newReload), for: .touchUpInside)
-            cell.productAmount.text = "PRODUCT" + " ()"
-            
-            return cell
-            
-        default:
-            assert(false, "Unexpected element kind")
-        }
-        
-    }
-     */
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 0 {
+            // main에서 추천 brand 타고 들어 왔을 때 : 475
+            // ranking : 268
             return CGSize(width: 375, height: 268)
+            
         }
         else {
             //iphone사이즈에 따라 동적으로 대응이 가능해진다.
@@ -170,3 +191,4 @@ extension UIImageView {
         self.layer.masksToBounds = true
     }
 }
+

@@ -8,7 +8,16 @@
 
 import UIKit
 
+//protocol btnActionDelegate: class {
+//    func pressBtn(_ cell: BrandDetailCVCell)
+//}
+
+//protocol btnActionDelegate: class {
+//    func btnTapped(tag: Int)
+//}
+
 class BrandDetailCVCell: UICollectionViewCell {
+    
     
     @IBOutlet weak var brandBackGround: UIImageView!
     @IBOutlet weak var BrandLogoImg: UIImageView!
@@ -18,8 +27,18 @@ class BrandDetailCVCell: UICollectionViewCell {
     @IBOutlet weak var LikeBtn: UIButton!
     
     @IBOutlet weak var ProductNumLB: UILabel!
+    
     @IBOutlet weak var PopularBtn: UIButton!
     @IBOutlet weak var NewBtn: UIButton!
+    
+    
+    @IBAction func populBtnAction(_ sender: UIButton) {
+        
+        PopularBtn.setImage(#imageLiteral(resourceName: "green on"), for: .normal)
+        NewBtn.setImage(#imageLiteral(resourceName: "red off"), for: .normal)
+        
+    }
+    
     
     
 }
