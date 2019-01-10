@@ -11,6 +11,7 @@ import XLPagerTabStrip
 
 class SearchVC2: ButtonBarPagerTabStripViewController  {
     
+    
     var searchController : UISearchController!
 
     override func viewDidLoad() {
@@ -95,7 +96,6 @@ extension SearchVC2 : UISearchControllerDelegate, UISearchResultsUpdating,UISear
     func updateSearchResults(for searchController: UISearchController) {
         print("hello world!")
     }
-    
     
     func initSearchBar(){
         
