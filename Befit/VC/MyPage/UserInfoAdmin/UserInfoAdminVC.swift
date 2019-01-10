@@ -53,7 +53,6 @@ class UserInfoAdminVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
       //  self.navigationController?.navigationBar.isHidden = false
-        
     }
     
 
@@ -84,7 +83,7 @@ class UserInfoAdminVC: UIViewController {
             self.postView.isHidden = false
         
             }
-        }
+    }
 
     @IBAction func unwindFromPostCodeSelectionView(_ sender: UIStoryboardSegue) {
         print(#function)
@@ -128,9 +127,9 @@ class UserInfoAdminVC: UIViewController {
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
-        
-    }
-
+    
+        }
+    
     //우편번호를 수정하기 위해 삭제하는 버튼
     @IBAction func deleteAction(_ sender: Any) {
         
