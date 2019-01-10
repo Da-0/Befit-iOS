@@ -15,4 +15,6 @@ class LikeProductCVCell: UICollectionViewCell {
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var price: UILabel!
     
+    @IBOutlet weak var likeBtn: UIButton!
+    
 }

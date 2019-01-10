@@ -125,7 +125,7 @@
                                                         <constraint firstAttribute="width" constant="34" id="2yb-6z-yvB"/>
                                                         <constraint firstAttribute="height" constant="34" id="3N2-GK-5sx"/>
                                                     </constraints>
-                                                    <state key="normal" image="icLikeLine"/>
+                                                    <state key="normal" image="icLikeFull"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TSK-HK-wlr">
                                                     <rect key="frame" x="10" y="216.66666666666666" width="109" height="14.333333333333343"/>
@@ -156,13 +156,14 @@
                                         <size key="customSize" width="167" height="239"/>
                                         <connections>
                                             <outlet property="brandName" destination="hIj-6Z-0ML" id="cBV-c2-pU4"/>
+                                            <outlet property="likeBtn" destination="Rke-0k-jBF" id="EOo-Ea-wvE"/>
                                             <outlet property="price" destination="TSK-HK-wlr" id="YBR-6i-KkA"/>
                                             <outlet property="productImg" destination="0UJ-r4-xzc" id="h2Z-sE-MyF"/>
                                             <outlet property="productName" destination="yl3-df-8fY" id="6dJ-FI-l6w"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Header" id="Z7E-pw-0Ql">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="LikeProductCRV" reuseIdentifier="LikeProductCRV" id="Z7E-pw-0Ql" customClass="LikeProductCRV" customModule="Befit" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="32"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -173,7 +174,7 @@
                                                 <constraint firstAttribute="width" constant="10" id="yNs-rG-bbq"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="찜한브랜드 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faH-HJ-a0V">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="찜한상품 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faH-HJ-a0V">
                                             <rect key="frame" x="32" y="10" width="94" height="14"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="94" id="5EQ-PC-aST"/>
@@ -190,6 +191,9 @@
                                         <constraint firstItem="faH-HJ-a0V" firstAttribute="centerY" secondItem="0gs-Vd-PLk" secondAttribute="centerY" constant="1" id="qK5-bZ-Dlr"/>
                                         <constraint firstItem="0gs-Vd-PLk" firstAttribute="leading" secondItem="Z7E-pw-0Ql" secondAttribute="leading" constant="19" id="rJ2-AX-Dci"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="likeProductNumbLB" destination="faH-HJ-a0V" id="vfT-2k-ygK"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>

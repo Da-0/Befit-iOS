@@ -14,7 +14,7 @@ class MySizeVC: UIViewController {
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var size: UILabel!
-    var categoryIdx: Int?
+    var closetIdx: Int?
     
     
     override func viewDidLoad() {
@@ -40,12 +40,18 @@ class MySizeVC: UIViewController {
     
     func network(){
         
-        GetClosetDetailService.shared.showClosetDetail(idx: categoryIdx!, completion: {[weak self] (res) in
+        GetClosetDetailService.shared.showClosetDetail(idx: closetIdx!, completion: {[weak self] (res) in
             guard let `self` = self else {return}
             guard let data = res.data else {return}
+            
+            //싱딘 기본정보 (이미지, 이름, 사이즈)
             self.productImg.imageFromUrl(data.image_url!, defaultImgPath: "")
             self.brandName.text = data.name_english
             self.productName.text = data.name
+            self.size.text = data.product_size
+            
+            //하단 측정치 정보
+        
             
         })
     }

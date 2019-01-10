@@ -86,26 +86,38 @@ extension BrandVC: UICollectionViewDataSource{
  
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        //1) 상단부 브랜드 페이지
         if indexPath.section == 0 {
+            
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "BrandDetailCVCell", for: indexPath) as! BrandDetailCVCell
             
-            cell1.BrandLogoImg.setRounded()
             cell1.BrandLogoImg.imageFromUrl(brandInfo.logo_url, defaultImgPath: "")
             cell1.brandBackGround.imageFromUrl(brandInfo.mainpage_url, defaultImgPath: "")
-            
             cell1.BrandNameEndglishLB.text = brandInfo.name_english
             cell1.BrandNameKoreanLB.text = brandInfo.name_korean
+            
+            if brandInfo.likeFlag == 1 {
+                 cell1.LikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            }else{
+                cell1.LikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            }
+            
             guard let product = productInfo else {return cell1}
             cell1.ProductNumLB.text = "PRODUCT (" + "\(product.count)" + ")"
-            
+        
+            //인기순 신상품순 버튼 설정
             cell1.NewBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
             cell1.PopularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
             
+            //브랜드 좋아요 하트 버튼 설정
+            cell1.LikeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+            
             return cell1
         }
+            
+        //2) 하단부 브랜드의 상품 리스트
         else {
-            
-            
+        
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
             
             cell2.backgroundColor = UIColor.white
@@ -119,6 +131,50 @@ extension BrandVC: UICollectionViewDataSource{
         }
         
     }
+    
+    
+    //좋아요가 작동하는 부분
+    @objc func clickLike(_ sender: UIButton){
+        
+        print(sender.tag)
+        
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+             sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            
+            //1) 브랜드 좋아요 취소가 작동하는 부분
+            UnLikeBService.shared.unlike(brandIdx: brandIdx!) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 200 :
+                        print("브랜드 좋아요 취소 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+        }
+            
+        else {
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            
+            //2)브랜드 좋아요가 작동하는 부분
+            LikeBService.shared.like(brandIdx: brandIdx!) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 201 :
+                        print("브랜드 좋아요 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

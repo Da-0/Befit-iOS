@@ -15,6 +15,7 @@ class LikeBrandTVC: UITableViewController {
     
     @IBOutlet weak var likeBrandNumb: UILabel!
     var brandLikeList = [Brand]()
+    var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,17 +52,70 @@ class LikeBrandTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeBrandTVCell", for: indexPath) as! LikeBrandTVCell
         cell.brandImg.imageFromUrl(brand.logo_url!, defaultImgPath: "")
         cell.brandName.text = brand.name_english
-        //cell.likeBtn
+        cell.likeBtn.tag = indexPath.row
+        cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+        cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
     
         return cell
     }
+    
+    
+    
+    //좋아요가 작동하는 부분
+    @objc func clickLike(_ sender: UIButton){
+        
+        print(sender.tag)
+        
+        guard let idx = brandLikeList[sender.tag].idx else {return}
+        
+        if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
+            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull2")
+            
+            //브랜드 좋아요 취소가 작동하는 부분
+            UnLikeBService.shared.unlike(brandIdx: idx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 200 :
+                        print("브랜드 좋아요 취소 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
+            
+        }
+        else {
+            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
+            
+            //브랜드 좋아요가 작동하는 부분
+            LikeBService.shared.like(brandIdx: idx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 201 :
+                        print("브랜드 좋아요 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
+        }
+        
+        sender.setImage(likesImage[sender.tag], for: .normal)
+        
+    }
+    
    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //해당 셀의 브랜드 페이지로 이동 구현 필요.
         
-        
-        
+        let brandVC  = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        brandVC.brandInfo = brandLikeList[indexPath.row]
+        brandVC.brandIdx = brandLikeList[indexPath.row].idx
+        self.navigationController?.pushViewController(brandVC, animated: true)
         
     }
     
@@ -69,13 +123,6 @@ class LikeBrandTVC: UITableViewController {
         return 70
     }
     
-//    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView()
-//        headerView.backgroundColor = UIColor.white
-//        return headerView
-//    }
-    
-
 }
 
 extension LikeBrandTVC: IndicatorInfoProvider{

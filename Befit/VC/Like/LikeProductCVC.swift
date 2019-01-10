@@ -15,6 +15,7 @@ class LikeProductCVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var productLikeList = [Product]()
+    var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,22 +32,20 @@ class LikeProductCVC: UIViewController {
     
     func productListInit() {
         LikeProductService.shared.showProductLike { (productData) in
-           // self.likeBrandNumb.text = "찜한브랜드 " + "\(self.brandLikeList.count)"
             self.productLikeList = productData
             self.collectionView.reloadData()
         }
     }
-    
-    
-    
+
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
             case UICollectionView.elementKindSectionHeader:
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath as IndexPath)
-                headerView.backgroundColor = #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
-                return headerView
+                
+                let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LikeProductCRV", for: indexPath as IndexPath) as! LikeProductCRV
+                cell.likeProductNumbLB.text = "찜한상품 " + "\(productLikeList.count)"
+                return cell
 
             default:
                 assert(false, "Unexpected element kind")
@@ -68,11 +67,72 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
         let product = productLikeList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeProductCVCell", for: indexPath) as! LikeProductCVCell
         
+        cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
         cell.brandName.text = product.brand_Korean_name
         cell.productName.text = product.name
         cell.price.text = product.price
         
+        cell.likeBtn.tag = indexPath.row
+        cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+        cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+    
         return cell
+    }
+
+    
+    //좋아요가 작동하는 부분
+    @objc func clickLike(_ sender: UIButton){
+        
+        print(sender.tag)
+        
+        guard let idx = productLikeList[sender.tag].idx else {return}
+        
+        if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
+            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull2")
+            
+            //상품 좋아요 취소가 작동하는 부분
+            UnLikePService.shared.unlike(productIdx: idx) { (res) in
+                if let status = res.status {
+                    switch status {
+                        case 200 :
+                            print("상품좋아요 취소 성공!")
+                        case 400...600 :
+                            self.simpleAlert(title: "ERROR", message: res.message!)
+                        default: break
+                    }
+                }
+            }
+            
+            
+        }
+        else {
+            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
+            //상품 좋아요가 작동하는 부분
+            LikePService.shared.like(productIdx: idx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 201 :
+                           print("상품좋아요 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
+        }
+        
+        sender.setImage(likesImage[sender.tag], for: .normal)
+    
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
+        productVC.brandName = productLikeList[indexPath.row].brand_English_name
+        productVC.address = productLikeList[indexPath.row].link
+        self.navigationController?.present(productVC, animated: true, completion: nil)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
