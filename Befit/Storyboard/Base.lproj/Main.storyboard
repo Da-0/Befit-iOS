@@ -35,10 +35,10 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="50F-od-bvD">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="50F-od-bvD">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1IS-Ns-ZoS">
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="1IS-Ns-ZoS">
                                                         <size key="itemSize" width="373" height="526"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -46,7 +46,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell00" reuseIdentifier="MainCVCell00" id="au4-1h-CTM" customClass="MainCVCell00" customModule="Befit" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="526"/>
+                                                            <rect key="frame" x="0.0" y="-0.66666666666666663" width="375" height="526"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="526"/>
@@ -137,10 +137,13 @@
                                                             <size key="customSize" width="375" height="526"/>
                                                             <connections>
                                                                 <outlet property="brandMainImg" destination="zSV-dv-nma" id="pCX-Y1-biv"/>
+                                                                <outlet property="brandName" destination="FMk-zw-eNb" id="KeU-I8-bXE"/>
                                                                 <outlet property="productImg1" destination="KPK-Zx-0Sg" id="vMM-sK-dpd"/>
                                                                 <outlet property="productImg2" destination="A3a-E6-BfN" id="25M-xg-hIY"/>
                                                                 <outlet property="productImg3" destination="P9E-OU-8uX" id="u3R-5H-e2j"/>
-                                                                <outlet property="productLB1" destination="xnp-No-gr7" id="DGt-DZ-kan"/>
+                                                                <outlet property="productLB1" destination="kSz-pQ-cOk" id="2Xi-V5-aDh"/>
+                                                                <outlet property="productLB2" destination="xnp-No-gr7" id="wnh-KS-8Mm"/>
+                                                                <outlet property="productLB3" destination="O1e-Er-72L" id="bzP-cp-tyV"/>
                                                             </connections>
                                                         </collectionViewCell>
                                                     </cells>
@@ -165,18 +168,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6mJ-Ni-kJg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="226"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6mJ-Ni-kJg">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="158"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8hs-Pp-7cu">
-                                                        <size key="itemSize" width="50" height="50"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="8hs-Pp-7cu">
+                                                        <size key="itemSize" width="375" height="90"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="50" height="68"/>
+                                                        <size key="footerReferenceSize" width="375" height="68"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell11" reuseIdentifier="MainCVCell11" id="bZ3-Xs-15J" customClass="MainCVCell11" customModule="Befit" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                                            <rect key="frame" x="0.0" y="34" width="375" height="90"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -200,11 +203,11 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                     <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell12" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="MainCVCell12" id="oIL-CG-CeZ" customClass="MainCVCell12" customModule="Befit" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="90" width="375" height="68"/>
+                                                        <rect key="frame" x="375" y="0.0" width="375" height="158"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나를 위한 추천" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cn0-fx-tZ8">
-                                                                <rect key="frame" x="15" y="41" width="80" height="17"/>
+                                                                <rect key="frame" x="15" y="199" width="80" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="80" id="AfK-Sb-G9b"/>
                                                                 </constraints>
@@ -223,7 +226,7 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="6mJ-Ni-kJg" firstAttribute="leading" secondItem="C6u-qA-sEJ" secondAttribute="leading" id="4lZ-bs-eB3"/>
-                                            <constraint firstAttribute="bottom" secondItem="6mJ-Ni-kJg" secondAttribute="bottom" constant="-68" id="Lko-E8-MBS"/>
+                                            <constraint firstAttribute="bottom" secondItem="6mJ-Ni-kJg" secondAttribute="bottom" id="Lko-E8-MBS"/>
                                             <constraint firstAttribute="trailing" secondItem="6mJ-Ni-kJg" secondAttribute="trailing" id="NSI-Rs-SrD"/>
                                             <constraint firstItem="6mJ-Ni-kJg" firstAttribute="top" secondItem="C6u-qA-sEJ" secondAttribute="top" id="uQ4-y4-mXK"/>
                                         </constraints>

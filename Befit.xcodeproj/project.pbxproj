@@ -78,6 +78,8 @@
 		506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6621D7584D0016549B /* SearchProductCVCell.swift */; };
 		506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6821D758680016549B /* SearchBrandTVCell.swift */; };
 		5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */; };
+		508A8AB921E730BD000AE141 /* ProductRecService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508A8AB821E730BD000AE141 /* ProductRecService.swift */; };
+		508A8ABB21E7357D000AE141 /* BrandRecService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508A8ABA21E7357D000AE141 /* BrandRecService.swift */; };
 		50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */; };
 		50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */; };
 		50DAFCE121E6023800D4BF2F /* MainCVCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */; };
@@ -188,6 +190,8 @@
 		506E5C6621D7584D0016549B /* SearchProductCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductCVCell.swift; sourceTree = "<group>"; };
 		506E5C6821D758680016549B /* SearchBrandTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVCell.swift; sourceTree = "<group>"; };
 		5082DF6B21D4AF2900E4135D /* LikeBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandTVC.swift; sourceTree = "<group>"; };
+		508A8AB821E730BD000AE141 /* ProductRecService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecService.swift; sourceTree = "<group>"; };
+		508A8ABA21E7357D000AE141 /* BrandRecService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandRecService.swift; sourceTree = "<group>"; };
 		50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoVC1.swift; sourceTree = "<group>"; };
 		50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfo1TVCell.swift; sourceTree = "<group>"; };
 		50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell1.swift; sourceTree = "<group>"; };
@@ -513,12 +517,12 @@
 			isa = PBXGroup;
 			children = (
 				50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */,
-				A509DD3721E538F9009C3DC1 /* CollectionViewCell.swift */,
 				5068A52E21DD3F4F00F22E95 /* SizeInfoVC2.swift */,
 				5068A53021DD3F7100F22E95 /* SizeInfoVC3.swift */,
 				5068A53821DE262600F22E95 /* BrandSelectVC.swift */,
 				5068A53A21DE263C00F22E95 /* ProductSelectVC.swift */,
 				50DD803E21E0D71D00E6F743 /* MySizeVC.swift */,
+				A509DD3721E538F9009C3DC1 /* CollectionViewCell.swift */,
 			);
 			path = SizeInfo;
 			sourceTree = "<group>";
@@ -581,6 +585,15 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		508A8AB721E730A4000AE141 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				508A8ABA21E7357D000AE141 /* BrandRecService.swift */,
+				508A8AB821E730BD000AE141 /* ProductRecService.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		50DD804021E19E3300E6F743 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,6 +618,7 @@
 		50DD805221E1B1C200E6F743 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				508A8AB721E730A4000AE141 /* Main */,
 				503114AA21E386D4008D81AC /* Search */,
 				5031148221E1E99F008D81AC /* LogIn */,
 				5031148321E1E9AB008D81AC /* Brand */,
@@ -796,6 +810,7 @@
 				503114C021E4881E008D81AC /* ProductSelectService.swift in Sources */,
 				50DAFCEB21E695AD00D4BF2F /* MainCVCell12.swift in Sources */,
 				506E5C5821D60F840016549B /* MyPageTVCell.swift in Sources */,
+				508A8ABB21E7357D000AE141 /* BrandRecService.swift in Sources */,
 				50DD803B21E0BE7E00E6F743 /* SearchVC1.swift in Sources */,
 				506E5C6521D756A50016549B /* SearchVC2.swift in Sources */,
 				A509DD4021E65387009C3DC1 /* SearchProductService.swift in Sources */,
@@ -844,6 +859,7 @@
 				506E5C6721D7584D0016549B /* SearchProductCVCell.swift in Sources */,
 				503114BC21E47962008D81AC /* Closet.swift in Sources */,
 				501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */,
+				508A8AB921E730BD000AE141 /* ProductRecService.swift in Sources */,
 				506E5C5A21D64BA10016549B /* SettingVC.swift in Sources */,
 				5068A53921DE262600F22E95 /* BrandSelectVC.swift in Sources */,
 				504CBAEB21D9DA38008606F7 /* UserInfoAdminVC.swift in Sources */,
@@ -1002,8 +1018,8 @@
 			baseConfigurationReference = 4E9628501C4FE32118E472D1 /* Pods-Befit.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8E3WW2RPPH;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1012,6 +1028,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sopt.Befit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1022,8 +1039,8 @@
 			baseConfigurationReference = C6F1753E98B305F8F0B08C8C /* Pods-Befit.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8E3WW2RPPH;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1032,6 +1049,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sopt.Befit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

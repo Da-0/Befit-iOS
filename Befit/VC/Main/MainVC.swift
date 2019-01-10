@@ -11,11 +11,10 @@ import SideMenuSwift
 
 class MainVC: UIViewController {
     
-
     @IBOutlet weak var collectionView: UICollectionView!
     
     var recommendBrand: [Brand] = []
-    var recommendProduct: [Product] = []
+    var recommendProduct: [Product]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,25 +25,30 @@ class MainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         network()
-        
+        self.collectionView.reloadData()
     }
     
     func network(){
         
         //1) 브랜드 추천 호출
+        BrandRecService.shared.showBrandRec { (res) in
+            guard let brandList = res.data else {return}
+            self.recommendBrand = brandList
+            self.collectionView.reloadData()
+        }
     
         //2) 나를 위한 상품 추천 호출
-        
-        
+        ProductRecService.shared.showProductRec { (res) in
+            self.recommendProduct = res.data
+            self.collectionView.reloadData()
+        }
         
     }
-    
 
     //사이드 메뉴의 나타남
     @IBAction func categoryAction(_ sender: Any) {
         self.sideMenuController?.revealMenu();
     }
-
 
 }
 
@@ -52,31 +56,69 @@ class MainVC: UIViewController {
 extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 3
     }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        
+        if section == 0{
+            return 1
+        }
+        else if section == 1{
+            return 1
+        }else {
+            guard let product = recommendProduct else {return 0}
+            return product.count
+        }
     }
 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == 0
+        
+        //1) 최상단 브랜드 이미지 구현부
+        if indexPath.section == 0
         {
             let cell0 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell0", for: indexPath) as! MainCVCell0
+                cell0.brandInfo += recommendBrand
                 return cell0
         }
-        else if indexPath.row == 1 {
+        
+        //2) Banner 구현부
+        else if indexPath.section == 1 {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell1", for: indexPath) as! MainCVCell1
-    
             return cell1
         }
+            
+        //3) 나를 위한 상품 추천 Cell
         else {
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell2", for: indexPath) as! MainCVCell2
+            
+            guard let productList = recommendProduct else {return cell2}
+            cell2.productImg.imageFromUrl(productList[indexPath.row].image_url, defaultImgPath: "")
+            cell2.brandName.text = productList[indexPath.row].brand_English_name
+            cell2.productName.text = productList[indexPath.row].name
             return cell2
         }
         
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.row == 1 {
+            //아무것도 안일어난다 (맨위의 셀은 브랜드와 상품이동페이지가 나오기때문)
+        }
+            
+        else if indexPath.row == 2 {
+            //배너의 이동
+        }
+            
+            
+        else {
+            let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
+            productVC.brandName = recommendProduct?[indexPath.row].brand_English_name
+            productVC.address = recommendProduct?[indexPath.row].link
+            self.navigationController?.present(productVC, animated: true, completion: nil)
+        }
     }
 
 
@@ -86,10 +128,10 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             // let width: CGFloat = (self.collectionView.frame.width) / 2 - 20
             // let height: CGFloat =  (self.collectionView.frame.height) / 2 - 20
             
-            if indexPath.row == 0 {
+            if indexPath.section == 0 {
                     return CGSize(width: 375, height: 550)
             }
-            else if indexPath.row == 1 {
+            else if indexPath.section == 1 {
                    return CGSize(width: 375, height: 158)
             }
             else {

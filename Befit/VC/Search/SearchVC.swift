@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol SearchKeywordDelegate {
+    func didSearch(keyword: String)
+}
+
 class SearchVC: UIViewController {
     
     let userDefault = UserDefaults.standard
     var searchController : UISearchController!
+    
+    var delegate: SearchKeywordDelegate!
 
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
@@ -65,7 +71,7 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         
         firstView.isHidden = true
         secondView.isHidden = false
-        
+        self.delegate.didSearch(keyword: searchKeyword)
         
     }
 

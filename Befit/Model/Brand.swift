@@ -23,6 +23,7 @@ struct Brand : Mappable {
     var mainpage_url : String?
     var mainfeed_url : String?
     var likeFlag : Int?
+    var products: [Product]?
     
     init?(map: Map) {
         
@@ -42,6 +43,9 @@ struct Brand : Mappable {
         mainpage_url <- map["mainpage_url"]
         mainfeed_url <- map["mainfeed_url"]
         likeFlag <- map["likeFlag"]
+        products <- map["products"]
+        
     }
     
 }
+

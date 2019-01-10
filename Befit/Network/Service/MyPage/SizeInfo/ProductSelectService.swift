@@ -14,16 +14,12 @@ struct ProductSelectService: APIManager, Requestable{
     typealias NetworkData = ResponseArray<Closet>
     static let shared = ProductSelectService()
     
-    
     let URL = url("/closet/brands/")
- 
     
     //해당 카테고리의 등록된 상품 리스트 출력
-    func showProductList(completion: @escaping ([Closet]?) -> Void) {
+    func showProductList(brandIdx: Int, categoryIdx: Int, completion: @escaping ([Closet]?) -> Void) {
         
         guard let token = userdefault.string(forKey: "token") else {return}
-        let brandIdx = userdefault.integer(forKey: "brand_idx")
-        let categoryIdx = userdefault.integer(forKey: "category_idx")
         
         let headers: HTTPHeaders = [
             "Authorization" : token

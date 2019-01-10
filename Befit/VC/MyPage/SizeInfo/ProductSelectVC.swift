@@ -23,6 +23,8 @@ class ProductSelectVC: UIViewController {
     
     var originalCloset = [Closet]()
     var closetList: [Closet]?
+    var categoryIdx: Int?
+    var brandIdx: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +60,12 @@ class ProductSelectVC: UIViewController {
     
     
     func network(){
-        ProductSelectService.shared.showProductList { (closet) in
+        
+        guard let _brandIdx = brandIdx else { return}
+        guard let _categoryIdx = categoryIdx else {return}
+        
+        ProductSelectService.shared.showProductList (brandIdx: _brandIdx, categoryIdx: _categoryIdx, completion: {[weak self] (closet) in
+            guard let `self` = self else {return}
             self.closetList = closet
             self.tableView.reloadData()
             
@@ -66,7 +73,7 @@ class ProductSelectVC: UIViewController {
             for product in closetlist {
                 self.originalCloset.append(product)
             }
-        }
+        })
     }
     
 }

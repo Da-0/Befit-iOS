@@ -149,15 +149,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="4dr-Zw-l6R">
-                                                    <rect key="frame" x="0.0" y="0.0" width="97" height="97"/>
+                                                    <rect key="frame" x="1" y="1" width="95" height="95"/>
                                                 </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstItem="4dr-Zw-l6R" firstAttribute="top" secondItem="e78-QZ-Jjp" secondAttribute="top" id="HY8-9R-rhO"/>
-                                            <constraint firstAttribute="bottom" secondItem="4dr-Zw-l6R" secondAttribute="bottom" id="WQD-ge-lXW"/>
-                                            <constraint firstItem="4dr-Zw-l6R" firstAttribute="leading" secondItem="e78-QZ-Jjp" secondAttribute="leading" id="fRG-re-E7x"/>
-                                            <constraint firstAttribute="trailing" secondItem="4dr-Zw-l6R" secondAttribute="trailing" id="tdz-gO-8Om"/>
+                                            <constraint firstItem="4dr-Zw-l6R" firstAttribute="top" secondItem="e78-QZ-Jjp" secondAttribute="top" constant="1" id="HY8-9R-rhO"/>
+                                            <constraint firstAttribute="bottom" secondItem="4dr-Zw-l6R" secondAttribute="bottom" constant="1" id="WQD-ge-lXW"/>
+                                            <constraint firstItem="4dr-Zw-l6R" firstAttribute="leading" secondItem="e78-QZ-Jjp" secondAttribute="leading" constant="1" id="fRG-re-E7x"/>
+                                            <constraint firstAttribute="trailing" secondItem="4dr-Zw-l6R" secondAttribute="trailing" constant="1" id="tdz-gO-8Om"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="productImg" destination="4dr-Zw-l6R" id="how-Qa-LvU"/>
