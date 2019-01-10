@@ -19,26 +19,20 @@ struct cellData {
 
 class CategoryVC: UIViewController {
     
-    var tableData = [cellData]()
+    var tableData: [cellData] = [
+        cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody","Sweat Shirts","T-Shirts","Onepiece","Jeans","Pants","Slacks", "Short-Pants","Skirts"]),
+        cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody ","Sweat Shirts","T-Shirts","Jeans","Pants","Slacks", "Short-Pants"])
+        ]
 
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
+       super.viewDidLoad()
        tableView.delegate = self;
        tableView.dataSource = self;
+        
        tableView.separatorStyle = .none
        tableView.tableFooterView = UIView()
-       
-        
-        tableData = [
-         cellData(open: false, title: "New", items: nil),
-         cellData(open: false, title: "Best", items: nil),
-         cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Vest","Hoody","Sweat Shirts","T-Shirt","Dress","Jean","Short-Pants","Skirts", "Leggings"]),
-         cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Vest","Hoody","Sweat Shirts","T-Shirt","Jean","Short-Pants"])
-        ]
         
     }
 
@@ -61,23 +55,15 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         }
     }
     
- 
-    
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
         
-        if indexPath.section == 2 || indexPath.section == 3 {
-            
             if indexPath.row == 0 {
-                
                 cell.titleLB.text = tableData[ indexPath.section].title
                 cell.titleLB.font = UIFont.systemFont(ofSize: 20)
                 cell.arrowBtn.image = tableData[indexPath.section].open ?  #imageLiteral(resourceName: "icArrowUp") : #imageLiteral(resourceName: "icArrowDown")
                 cell.titleLB.textColor = tableData[indexPath.section].open ? #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-     
             }
             
             else {
@@ -86,12 +72,6 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 cell.titleLB?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
                 cell.arrowBtn.image = nil
             }
-        
-        }else{
-            cell.titleLB.text = tableData[ indexPath.section].title
-            cell.titleLB.font = UIFont.systemFont(ofSize: 20)
-            
-        }
         
         return cell
 
@@ -116,42 +96,26 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         
         // 열려있는 경우.
         if tableData[indexPath.section].open {
-            
             tableData[indexPath.section].open = false
+            
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
             
             print("\(indexPath.section), \(indexPath.row)")
             
-            print("아우터!!")
-//            let navigationCon = sideMenuController?.contentViewController as! UINavigationController
-//            
-//            let categoryDetailVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CategoryDetailVC")as! CategoryDetailVC
-//            navigationCon.pushViewController(categoryDetailVC, animated: true)
-            
         }
         
         // 닫혀있는 경우.
         else{
+            tableData[indexPath.section].open = true
+            let section = IndexSet.init(integer: indexPath.section)
+            tableView.reloadSections(section, with: .automatic)
+                
+            print("\(indexPath.section), \(indexPath.row)")
+            }
             
-            if indexPath.section == 2 || indexPath.section == 3 {
-                
-                tableData[indexPath.section].open = true
-                let section = IndexSet.init(integer: indexPath.section)
-                tableView.reloadSections(section, with: .automatic)
-                
-                print("\(indexPath.section), \(indexPath.row)")
-                print("Outer!!!"
-                )
-                
-            }
-             
-            //New, Best뷰로 이동
-            else{
-                print("\(indexPath.section), \(indexPath.row)")
-            }
         }
-    }
-
-
 }
+
+
+

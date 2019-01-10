@@ -13,6 +13,7 @@ class MyPageVC: UIViewController {
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var userId: UILabel!
     var gender: String?
+    var brandIdx: [Int] = []
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -48,6 +49,10 @@ class MyPageVC: UIViewController {
             self.userName.text = res.name
             self.userId.text = res.email
             self.gender = res.gender
+            self.brandIdx.append(res.brand1_idx!)
+            self.brandIdx.append(res.brand2_idx!)
+            
+
         }
     }
 }
@@ -76,6 +81,8 @@ extension MyPageVC : UITableViewDelegate, UITableViewDataSource{
                 print("나의 패션 취향 뷰로 이동")
                 let changeBrandVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ChangeBrandVC")as! ChangeBrandVC
                     changeBrandVC.gender = self.gender
+                    changeBrandVC.brandIdx = self.brandIdx
+                
                 self.navigationController?.pushViewController(changeBrandVC, animated: true)
             
             case 1:
