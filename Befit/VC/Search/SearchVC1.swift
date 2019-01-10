@@ -1,11 +1,3 @@
-//
-//  SearchVC1.swift
-//  Befit
-//
-//  Created by 이충신 on 05/01/2019.
-//  Copyright © 2019 GGOMMI. All rights reserved.
-//
-
 import UIKit
 import SNCollectionViewLayout
 
@@ -40,7 +32,7 @@ class SearchVC1: UIViewController {
         snCollectionViewLayout.fixedDivisionCount = 6
         collectionView.collectionViewLayout = snCollectionViewLayout
     }
-
+    
 }
 
 extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
@@ -57,7 +49,7 @@ extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UIColl
         
         return cell
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
