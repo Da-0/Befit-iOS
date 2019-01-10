@@ -9,6 +9,7 @@ class SearchProductVC: UIViewController {
     
     // product model 받아올 변수 선언
     var searchProductList:[Product]? = []
+//    var searchProductList2: [Product]? = []
     var searchKeyword: String = ""
     
     @IBOutlet weak var noResultView: UIView!
@@ -17,7 +18,6 @@ class SearchProductVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +25,7 @@ class SearchProductVC: UIViewController {
         guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
         searchKeyword = keyword
         initSearchProductList1()
+        //initSearchProductList2()
         
     }
     
@@ -35,16 +36,16 @@ class SearchProductVC: UIViewController {
         SearchProductService.shared.showSearchProductNew(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
             
-            //            if status == 200 {
-            //                if res.data == nil {
-            //                    self.noResultView.isHidden = false
-            //                    self.collectionView.isHidden = true
-            //                }
-            //                else{
-            //                    self.noResultView.isHidden = true
-            //                    self.collectionView.isHidden = false
-            //                }
-            //            }
+            if status == 200 {
+                if res.data == nil {
+                    self.noResultView.isHidden = false
+                    self.collectionView.isHidden = true
+                    }
+                else{
+                    self.noResultView.isHidden = true
+                    self.collectionView.isHidden = false
+                }
+            }
             
             self.searchProductList = res.data
             self.collectionView.reloadData()
@@ -59,17 +60,6 @@ class SearchProductVC: UIViewController {
         
         SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
-            
-            //            if status == 200 {
-            //                if res.data == nil {
-            //                    self.noResultView.isHidden = false
-            //                    self.collectionView.isHidden = true
-            //                }
-            //                else{
-            //                    self.noResultView.isHidden = true
-            //                    self.collectionView.isHidden = false
-            //                }
-            //            }
             
             self.searchProductList = res.data
             self.collectionView.reloadData()
@@ -91,7 +81,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
             
             let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchCRV", for: indexPath as IndexPath) as! SearchCRV
             
-            cell.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.backgroundColor =  #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
             cell.isUserInteractionEnabled = true
             cell.popularBtn.addTarget(self, action: #selector(popularReload), for: .touchUpInside)
             cell.newBtn.addTarget(self, action: #selector(newReload), for: .touchUpInside)
@@ -104,12 +94,15 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
     }
     
     
-    @objc func popularReload(){
-        print("인기순으로 상품이 정렬 되었습니다!!")
-        initSearchProductList1()
-    }
+    
     @objc func newReload(){
         print("신상순으로 상품이 정렬 되었습니다!!")
+        initSearchProductList1()
+    }
+    
+    
+    @objc func popularReload(){
+        print("인기순으로 상품이 정렬 되었습니다!!")
         initSearchProductList2()
     }
     
@@ -137,6 +130,17 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let searchProduct = searchProductList else {return}
+        
+        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        productVC.address = searchProduct[indexPath.row].link
+        productVC.brandName = searchProduct[indexPath.row].brand_English_name
+        
+        self.navigationController?.present(productVC, animated: true, completion: nil)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -144,7 +148,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         // let width: CGFloat = (self.collectionView.frame.width ) / 2 - 20
         // let height: CGFloat =  (self.collectionView.frame.height ) / 2 - 20
         
-        return CGSize(width: 167, height: 235)
+        return CGSize(width: 167, height: 239)
     }
     
     

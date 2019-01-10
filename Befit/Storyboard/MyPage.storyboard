@@ -40,10 +40,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lcs3303@naver.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-NE-VX3">
-                                        <rect key="frame" x="43" y="70" width="123" height="27"/>
+                                        <rect key="frame" x="43" y="70" width="243" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="27" id="POa-iC-UZC"/>
-                                            <constraint firstAttribute="width" constant="123" id="UEN-KM-qnW"/>
+                                            <constraint firstAttribute="width" constant="243" id="UEN-KM-qnW"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -209,6 +209,9 @@
                                                             <state key="normal" title="인기순">
                                                                 <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="popularAction:" destination="vRW-we-QMi" eventType="touchUpInside" id="CNa-wP-I5v"/>
+                                                            </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nkJ-m5-WbS" userLabel="barView">
                                                             <rect key="frame" x="305" y="13" width="1" height="13"/>
@@ -229,16 +232,19 @@
                                                             <state key="normal" title="신상품순">
                                                                 <color key="titleColor" red="0.47843137250000001" green="0.21176470589999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
+                                                            <connections>
+                                                                <action selector="newAction:" destination="vRW-we-QMi" eventType="touchUpInside" id="DGL-Kg-OXc"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="98" translatesAutoresizingMaskIntoConstraints="NO" id="tIx-5i-tHf">
-                                                    <rect key="frame" x="32" y="110" width="92" height="92"/>
+                                                    <rect key="frame" x="25" y="110" width="92" height="92"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CcX-oF-8Oq">
-                                                    <rect key="frame" x="45" y="121" width="68" height="64"/>
+                                                    <rect key="frame" x="37" y="121" width="68" height="64"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>

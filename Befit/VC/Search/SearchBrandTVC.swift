@@ -11,9 +11,38 @@ import XLPagerTabStrip
 
 class SearchBrandTVC: UITableViewController {
 
+    let userDefault = UserDefaults.standard
+    
+    // product model 받아올 변수 선언
+    var searchBrandList:[Brand]? = []
+    var searchKeyword: String = ""
+    
+//    @IBOutlet weak var noResultView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
+        searchKeyword = keyword
+        initSearchBrandList()
+    }
+    
+    func initSearchBrandList(){
+        
+        print("입력한 검색어 " + searchKeyword)
+        
+        SearchBrandService.shared.showSearchBrand(keyword: self.searchKeyword) { (res) in
+            guard let status = res.status else {return}
+           
+            self.searchBrandList = res.data
+            self.tableView.reloadData()
+            
+        }
+        
     }
     
     // MARK: - Table view data source
@@ -22,21 +51,27 @@ class SearchBrandTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        guard let brand = searchBrandList else { return 0 }
+        return brand.count
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let brandVC  = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        brandVC.brandInfo = searchBrandList?[indexPath.row]
+        brandVC.brandIdx = searchBrandList?[indexPath.row].idx
+        self.navigationController?.pushViewController(brandVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchBrandTVCell", for: indexPath) as! SearchBrandTVCell
-        cell.brandName.text = "Nike"
+        guard let brand = searchBrandList else {return cell}
+        
+        cell.brandImg.imageFromUrl(brand[indexPath.row].logo_url, defaultImgPath: "")
+        cell.brandName.text = brand[indexPath.row].name_english
         
         
         return cell
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //해당 셀의 브랜드 페이지로 이동 구현 필요.
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

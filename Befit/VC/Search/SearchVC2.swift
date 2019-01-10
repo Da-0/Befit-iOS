@@ -17,13 +17,12 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     override func viewDidLoad() {
         configureButtonBar()
         super.viewDidLoad()
-        initSearchBar()
-        
+       // initSearchBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -96,26 +95,5 @@ extension SearchVC2 : UISearchControllerDelegate, UISearchResultsUpdating,UISear
     func updateSearchResults(for searchController: UISearchController) {
         print("hello world!")
     }
-    
-    func initSearchBar(){
-        
-        self.searchController = UISearchController(searchResultsController:  nil)
-        
-        self.searchController.searchResultsUpdater = self;
-        self.searchController.delegate = self;
-        self.searchController.searchBar.delegate = self;
-        
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.dimsBackgroundDuringPresentation = true
-        self.searchController.searchBar.setValue("취소", forKey: "_cancelButtonText")
-        
-        
-        self.navigationItem.titleView = searchController.searchBar
-        
-        self.definesPresentationContext = true
-    }
-    
-    
-    
     
 }
