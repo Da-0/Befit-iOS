@@ -10,19 +10,30 @@ import Alamofire
 
 struct ProductSelectService: APIManager, Requestable{
     
+    let userdefault = UserDefaults.standard
     typealias NetworkData = ResponseArray<Closet>
     static let shared = ProductSelectService()
     
-    let URL = url("/closet/brands/" + "\(UserDefaults.standard.integer(forKey: "brand_idx"))" + "/category/" + "\(UserDefaults.standard.integer(forKey: "category_idx"))")
     
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
+    let URL = url("/closet/brands/")
+ 
     
     //해당 카테고리의 등록된 상품 리스트 출력
     func showProductList(completion: @escaping ([Closet]?) -> Void) {
-        print(URL)
-        gettable(URL, body: nil, header: headers) { res in
+        
+        guard let token = userdefault.string(forKey: "token") else {return}
+        let brandIdx = userdefault.integer(forKey: "brand_idx")
+        let categoryIdx = userdefault.integer(forKey: "category_idx")
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : token
+        ]
+        
+        
+        let url = URL + "\(brandIdx)" + "/category/" + "\(categoryIdx)"
+        
+        
+        gettable(url, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
                 completion(value.data)

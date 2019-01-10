@@ -10,19 +10,22 @@ import Alamofire
 
 struct BrandSelectService: APIManager, Requestable{
     
+    let userDefault = UserDefaults.standard
     typealias NetworkData = ResponseArray<Brand>
     static let shared = BrandSelectService()
     
     let URL = url("/brands")
     
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
-    
     //이니셜로 검색하는 경우 브랜드 리스트를 출력 해주는 api
     func showBrandList(completion: @escaping ([Brand]?) -> Void) {
         
-       let brandInitial = UserDefaults.standard.string(forKey: "brand_initial")!
+        guard let token = userDefault.string(forKey: "token") else {return}
+        guard let brandInitial = userDefault.string(forKey: "brand_initial") else {return}
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : token
+        ]
+        
        let queryURL = URL + "?initial=" + brandInitial
     
         gettable(queryURL, body: nil, header: headers) { res in

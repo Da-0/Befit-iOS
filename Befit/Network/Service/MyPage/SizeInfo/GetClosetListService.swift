@@ -11,19 +11,26 @@ import Alamofire
 
 struct GetClosetListService: APIManager, Requestable{
     
+    let userDefault = UserDefaults.standard
     typealias NetworkData = ResponseArray<Closet>
     static let shared = GetClosetListService()
     
-    let URL = url("/closet/category/" + "\(UserDefaults.standard.integer(forKey: "category_idx"))")
+    let URL = url("/closet/category/")
     
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
+    
     
     //해당 카테고리의 등록된 옷 리스트 출력
-func showClosetList(completion: @escaping ([Closet]?) -> Void) {
+    func showClosetList(idx: Int, completion: @escaping ([Closet]?) -> Void) {
         
-        gettable(URL, body: nil, header: headers) { res in
+        guard let token = userDefault.string(forKey: "token") else {return}
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : token
+        ]
+        
+        let url = URL + "\(idx)"
+        
+        gettable(url, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
                 completion(value.data)

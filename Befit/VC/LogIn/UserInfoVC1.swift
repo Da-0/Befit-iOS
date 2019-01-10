@@ -17,6 +17,7 @@ class UserInfoVC1: UIViewController {
     var selected: Bool!
     var gender: String?
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

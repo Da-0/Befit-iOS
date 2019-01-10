@@ -11,17 +11,23 @@ import Alamofire
 
 struct UserInfoService: APIManager, Requestable{
     
+    let userDefault = UserDefaults.standard
+    
     typealias NetworkData = ResponseObject<User>
     static let shared = UserInfoService()
     
     let URL = url("/user")
     
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
+
     
     //개인 회원 정보 보여주기
     func showUserInfo(completion: @escaping (User) -> Void) {
+        
+        guard let token = userDefault.string(forKey: "token") else {return}
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : token
+        ]
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
