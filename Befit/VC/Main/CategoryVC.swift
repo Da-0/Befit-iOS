@@ -18,33 +18,41 @@ struct cellData {
 
 
 class CategoryVC: UIViewController {
-    
+    var presentedVC: UIViewController?
+    var dismissJudge: Bool = false
     var tableData: [cellData] = [
         cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody","Sweat Shirts","T-Shirts","Onepiece","Jeans","Pants","Slacks", "Short-Pants","Skirts"]),
         cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody ","Sweat Shirts","T-Shirts","Jeans","Pants","Slacks", "Short-Pants"])
-        ]
-
+    ]
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-       super.viewDidLoad()
-       tableView.delegate = self;
-       tableView.dataSource = self;
+        super.viewDidLoad()
+        tableView.delegate = self;
+        tableView.dataSource = self;
         
-       tableView.separatorStyle = .none
-       tableView.tableFooterView = UIView()
+        tableView.separatorStyle = .none
+        tableView.tableFooterView = UIView()
         
     }
-
+    // HaveTheRain : Back to MainVC Code Start
+    override func viewWillAppear(_ animated: Bool) {
+        if dismissJudge == true {
+            self.sideMenuController?.hideMenu()
+        }
+        self.dismissJudge = false
+    }
+    // HaveTheRain : Back to MainVC Code End
 }
 
 
 extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return tableData.count
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if tableData[section].open {
@@ -59,22 +67,22 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTVCell") as! CategoryTVCell
         
-            if indexPath.row == 0 {
-                cell.titleLB.text = tableData[ indexPath.section].title
-                cell.titleLB.font = UIFont.systemFont(ofSize: 20)
-                cell.arrowBtn.image = tableData[indexPath.section].open ?  #imageLiteral(resourceName: "icArrowUp") : #imageLiteral(resourceName: "icArrowDown")
-                cell.titleLB.textColor = tableData[indexPath.section].open ? #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-            }
+        if indexPath.row == 0 {
+            cell.titleLB.text = tableData[ indexPath.section].title
+            cell.titleLB.font = UIFont.systemFont(ofSize: 20)
+            cell.arrowBtn.image = tableData[indexPath.section].open ?  #imageLiteral(resourceName: "icArrowUp") : #imageLiteral(resourceName: "icArrowDown")
+            cell.titleLB.textColor = tableData[indexPath.section].open ? #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        }
             
-            else {
-                cell.titleLB.text = tableData[indexPath.section].items?[indexPath.row-1]
-                cell.titleLB.font = UIFont.systemFont(ofSize: 14)
-                cell.titleLB?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-                cell.arrowBtn.image = nil
-            }
+        else {
+            cell.titleLB.text = tableData[indexPath.section].items?[indexPath.row-1]
+            cell.titleLB.font = UIFont.systemFont(ofSize: 14)
+            cell.titleLB?.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+            cell.arrowBtn.image = nil
+        }
         
         return cell
-
+        
     }
     
     
@@ -101,20 +109,33 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
             
-            print("\(indexPath.section), \(indexPath.row)")
+            // HaveTheRain : Go To CategoryDetailVC Code Start
+            if indexPath.row >= 1 {
+                let transition = CATransition()
+                transition.duration = 0.5
+                transition.type = CATransitionType.push
+                transition.subtype = CATransitionSubtype.fromRight
+                transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+                view.window!.layer.add(transition, forKey: kCATransition)
+                
+                guard let presentedVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {
+                    return
+                }
+                presentedVC.categoryName = tableData[indexPath.section].items?[indexPath.row - 1]
+                self.dismissJudge = true
+                present(presentedVC, animated: false, completion: nil)
+            }
+            // HaveTheRain : Go To CategoryDetailVC Code End
             
         }
-        
-        // 닫혀있는 경우.
+            
+            // 닫혀있는 경우.
         else{
             tableData[indexPath.section].open = true
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
-                
-            print("\(indexPath.section), \(indexPath.row)")
-            }
-            
         }
+    }
 }
 
 

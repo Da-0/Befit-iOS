@@ -64,5 +64,5 @@ class MainCVCell1: UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
     
     
-
+    
 }

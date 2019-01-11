@@ -16,6 +16,7 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     
     var address: String?
     var brandName: String?
+    var productInfo: Product?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +46,17 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     
     
     @IBAction func sizeCheckAction(_ sender: Any) {
+        
         //사이즈체크 팝업 뷰가 뜹니다.
+        let sizeCheckVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "SizeCheckVC")as! SizeCheckVC
+        sizeCheckVC.productInfo = self.productInfo
+        self.addChild(sizeCheckVC)
+        
+        sizeCheckVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        
+        self.view.addSubview(sizeCheckVC.view)
+        sizeCheckVC.didMove(toParent: self)
+        
     }
     
     

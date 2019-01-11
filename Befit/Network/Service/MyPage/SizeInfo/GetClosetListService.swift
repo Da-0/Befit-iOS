@@ -17,8 +17,7 @@ struct GetClosetListService: APIManager, Requestable{
     
     let URL = url("/closet/category/")
     
-    
-    
+
     //해당 카테고리의 등록된 옷 리스트 출력
     func showClosetList(idx: Int, completion: @escaping ([Closet]?) -> Void) {
         
