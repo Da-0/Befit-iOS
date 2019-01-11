@@ -42,6 +42,8 @@ class SizeInfoVC3: UIViewController {
     //stackView
     @IBOutlet weak var stackView1: UIStackView!
     @IBOutlet weak var stackView2: UIStackView!
+    var upperValue: [String] = []
+    var lowerValue: [String] = []
     
     var commonSize: [CommonSize] = []
     
@@ -199,6 +201,19 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
         let row = pickerview.selectedRow(inComponent: 0)
         sizeTF.text = sizeArray[row]
         productSize = sizeArray[row]
+        
+        
+        //**********************************
+        //이 시점에서 텍스트에 삽입 해 줍니다!!!!!!!!!!!1
+        
+        for data in commonSize {
+           let _data = data.toJSON()
+            
+            
+        }
+        
+        
+        
         view.endEditing(true)
     }
     
@@ -243,23 +258,49 @@ extension SizeInfoVC3: ProductVCDelegate {
         self.productName = value.name
         self.productIdx = value.idx
         
-        for size in measureData.keys.sorted() {
+        
+        print("테스트 = \(measureData.values)")
+        for size in measureData.keys.reversed() {
             sizeArray.append(size)
-            
             if let LSize = value.measure?.large?.size {
                 commonSize.append(LSize)
+                print("LSIZE")
+                print(commonSize)
             }
             
             if let MSize = value.measure?.medium?.size{
                 commonSize.append(MSize)
+                print("MSIZE")
+                print(commonSize)
             }
             
             if let SSize = value.measure?.small?.size{
                 commonSize.append(SSize)
+                print("SSIZE")
+                print(commonSize)
             }
+        }
         
+        
+        for common in commonSize {
+            
+            let realCommon = common.toJSON()
+            
+            for realKey in realCommon.keys {
+                upperValue.append(realKey)
+            }
+            for realValue in realCommon.values{
+                lowerValue.append(realValue as! String)
+            }
             
         }
+        
+        print(commonSize)
+        
+        
+        print("테스트 출력!")
+        print(upperValue)
+        print(lowerValue)
        
         
     }

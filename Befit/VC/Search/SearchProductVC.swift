@@ -30,9 +30,6 @@ class SearchProductVC: UIViewController {
     }
     
     func initSearchProductList1(){
-        
-        print("입력한 검색어 " + searchKeyword)
-        
         SearchProductService.shared.showSearchProductNew(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
             
@@ -55,8 +52,6 @@ class SearchProductVC: UIViewController {
     }
     
     func initSearchProductList2(){
-        
-        print("입력한 검색어 " + searchKeyword)
         
         SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
@@ -96,13 +91,11 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
     
     
     @objc func newReload(){
-        print("신상순으로 상품이 정렬 되었습니다!!")
         initSearchProductList1()
     }
     
     
     @objc func popularReload(){
-        print("인기순으로 상품이 정렬 되었습니다!!")
         initSearchProductList2()
     }
     
@@ -137,7 +130,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         productVC.address = searchProduct[indexPath.row].link
         productVC.brandName = searchProduct[indexPath.row].brand_English_name
-        productVC.productIdx = searchProduct[indexPath.row].idx
+        productVC.productInfo = searchProduct[indexPath.row]
         
         self.navigationController?.present(productVC, animated: true, completion: nil)
     }

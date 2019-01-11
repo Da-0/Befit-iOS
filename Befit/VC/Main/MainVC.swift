@@ -34,7 +34,7 @@ class MainVC: UIViewController {
         BrandRecService.shared.showBrandRec { (res) in
             guard let brandList = res.data else {return}
             self.recommendBrand = brandList
-            print("\(brandList)")
+//            print("\(brandList)")
             self.collectionView.reloadData()
         }
         
@@ -124,7 +124,9 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
             productVC.brandName = recommendProduct?[indexPath.row].brand_English_name
             productVC.address = recommendProduct?[indexPath.row].link
-            productVC.productIdx = recommendProduct?[indexPath.row].idx
+//            productVC.productIdx = recommendProduct?[indexPath.row].idx
+            productVC.productInfo = recommendProduct?[indexPath.row]
+    
             self.navigationController?.present(productVC, animated: true, completion: nil)
         }
     }

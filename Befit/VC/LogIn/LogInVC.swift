@@ -54,7 +54,7 @@ class LogInVC: UIViewController, APIManager {
                         guard let token = res.data?.token else { return}
                         
                          self.userDefault.set(token, forKey: "token")
-                         print("\n토근값 저장:" + self.userDefault.string(forKey: "token")!)
+//                         print("\n토근값 저장:" + self.userDefault.string(forKey: "token")!)
                          let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
                          self.present(mainVC, animated: true, completion: nil)
                          break

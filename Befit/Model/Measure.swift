@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 struct Measure : Mappable {
-    
+    var xLarge: XL?
     var large : L?
     var medium : M?
     var small : S?
@@ -20,6 +20,7 @@ struct Measure : Mappable {
     }
     
     mutating func mapping(map: Map) {
+        xLarge <- map["XL"]
         large <- map["L"]
         medium <- map["M"]
         small <- map["S"]

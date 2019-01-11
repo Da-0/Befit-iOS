@@ -26,14 +26,13 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchBar.text == nil || searchText == "" {
-            print("UISearchBar.text cleared!")
             self.firstView.isHidden = false
             self.secondView.becomeFirstResponder()
         }
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        print("키보드 입력중...")
+//        print("키보드 입력중...")
         
     }
     
@@ -47,8 +46,6 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        print("검색완료!")
         
         guard let searchKeyword = searchBar.text else {return}
         userDefault.set(searchKeyword, forKey: "SearchKeyword")

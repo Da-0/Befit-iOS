@@ -28,10 +28,12 @@ struct ProductSelectService: APIManager, Requestable{
         
         let url = URL + "\(brandIdx)" + "/category/" + "\(categoryIdx)"
         
+        print("spl = \(url)")
         
         gettable(url, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
+                
                 completion(value.data)
             case .error(let error):
                 print(error)

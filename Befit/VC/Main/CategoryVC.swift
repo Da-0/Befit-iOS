@@ -134,8 +134,6 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
             tableData[indexPath.section].open = true
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
-            
-            print("close : " + "\(indexPath.section), \(indexPath.row)")
         }
     }
 }

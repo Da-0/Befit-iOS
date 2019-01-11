@@ -28,6 +28,7 @@ class SizeCheckVC: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     
     //서버통신에 필요한 Idx
+    var productInfo: Product?
     var productIdx: Int?
     var closetIdx: Int?
     var productSize: String?
@@ -48,17 +49,11 @@ class SizeCheckVC: UIViewController {
     
     func network(){
         
-//        GetClosetListService.shared.showClosetList(idx: categoryIdx!) { (closetList) in
-//            guard let closet = closetList else {return}
-//            self.myProductList = closet
-//            self.collectionView.reloadData()
-//        }
+        SizeCheckService.shared.showSizeCheck(closetIdx: closetIdx, productIdx: productIdx, productSize: productSize) { (res) in
+            
+            
     
-        
-        
-    //        SizeCheckService.shared.showSizeCheck(closetIdx: closetIdx, productIdx: productIdx, productSize: productSize) { (res) in
-    //
-    //        }
+        }
         
     }
 

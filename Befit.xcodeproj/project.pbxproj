@@ -42,6 +42,7 @@
 		505E410121E86D5B0058DAAC /* MySizeCheckCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */; };
 		505E410421E87CE70058DAAC /* SizeCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410321E87CE70058DAAC /* SizeCheckService.swift */; };
 		505E410621E8806B0058DAAC /* SizeCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410521E8806B0058DAAC /* SizeCheck.swift */; };
+		505E410821E8CD5C0058DAAC /* XL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410721E8CD5C0058DAAC /* XL.swift */; };
 		5066557721D21FDF00580137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557621D21FDF00580137 /* AppDelegate.swift */; };
 		5066557921D21FDF00580137 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557821D21FDF00580137 /* MainVC.swift */; };
 		5066557C21D21FDF00580137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066557A21D21FDF00580137 /* Main.storyboard */; };
@@ -165,6 +166,7 @@
 		505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySizeCheckCVCell.swift; sourceTree = "<group>"; };
 		505E410321E87CE70058DAAC /* SizeCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckService.swift; sourceTree = "<group>"; };
 		505E410521E8806B0058DAAC /* SizeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheck.swift; sourceTree = "<group>"; };
+		505E410721E8CD5C0058DAAC /* XL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XL.swift; sourceTree = "<group>"; };
 		5066557321D21FDF00580137 /* Befit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Befit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5066557621D21FDF00580137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5066557821D21FDF00580137 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		503114A321E37F4B008D81AC /* Size */ = {
 			isa = PBXGroup;
 			children = (
+				505E410721E8CD5C0058DAAC /* XL.swift */,
 				503114A421E37F80008D81AC /* L.swift */,
 				503114A621E37F86008D81AC /* M.swift */,
 				503114A821E37F8D008D81AC /* S.swift */,
@@ -910,6 +913,7 @@
 				503114B021E3C646008D81AC /* User.swift in Sources */,
 				5031149421E27D0E008D81AC /* SearchCRV.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
+				505E410821E8CD5C0058DAAC /* XL.swift in Sources */,
 				505E410421E87CE70058DAAC /* SizeCheckService.swift in Sources */,
 				503114B421E44F53008D81AC /* ChangeBrandVC.swift in Sources */,
 				5031149E21E36CB9008D81AC /* ProductVC.swift in Sources */,
