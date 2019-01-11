@@ -59,4 +59,47 @@ struct BrandProductSorting : APIManager, Requestable{
         }
         
     }
+
+    
+    // 카테고리 상품 신상품순
+    func showSortingNewCategory (categoryIdx: Int, gender: String, completion: @escaping ([Product]) -> Void) {
+        print("성별")
+        print(gender)
+        
+        let URL = baseURL + "/new/category/" + "\(categoryIdx)" + "?gender=" + (gender.utf8EncodedString())
+        
+        gettable(URL, body: nil, header: headers) { res in
+            switch res {
+                
+            case .success(let value):
+                guard let data = value.data else {return}
+                completion(data)
+            case .error(let error):
+                print(error)
+            }
+        }
+        
+    }
+    
+    // 카테고리 상품 인기순
+    func showSortingPopularCategory (categoryIdx: Int, gender: String, completion: @escaping ([Product]) -> Void) {
+        print("성별")
+        print(gender)
+        
+        let URL = baseURL + "/new/category/" + "\(categoryIdx)" + "?gender=" + (gender.utf8EncodedString())
+        
+        gettable(URL, body: nil, header: headers) { res in
+            switch res {
+                
+            case .success(let value):
+                guard let data = value.data else {return}
+                completion(data)
+            case .error(let error):
+                print(error)
+            }
+        }
+        
+    }
+    
+    
 }

@@ -49,6 +49,13 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" red="0.36078431372549019" green="0.38823529411764707" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
+                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mEw-N0-MIO">
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="xSo-Uf-Va6" kind="embed" id="el8-xr-Id0"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -63,6 +70,7 @@
                         <viewLayoutGuide key="safeArea" id="zZ1-wK-w7O"/>
                     </view>
                     <connections>
+                        <outlet property="loading" destination="mEw-N0-MIO" id="vi7-fS-lME"/>
                         <outlet property="navigationBar" destination="f0w-ZN-gZh" id="Ov9-Ti-iFR"/>
                         <outlet property="webView" destination="Ude-sB-9v8" id="hPi-nx-g2R"/>
                     </connections>
@@ -388,6 +396,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lib-ga-uue" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1037.5999999999999" y="124.8768472906404"/>
+        </scene>
+        <!--LoadVC-->
+        <scene sceneID="eFC-zi-SKm">
+            <objects>
+                <viewController storyboardIdentifier="LoadVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSo-Uf-Va6" customClass="LoadVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5jI-MN-uuh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="690"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iAl-dU-fq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="66" y="882"/>
         </scene>
     </scenes>
     <resources>

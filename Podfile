@@ -13,4 +13,5 @@ target 'Befit' do
 	pod 'SideMenuSwift'
 	pod 'XLPagerTabStrip'
 	pod 'SNCollectionViewLayout'
+    pod 'lottie-ios'
 end

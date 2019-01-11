@@ -106,6 +106,19 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         if tableData[indexPath.section].open {
             tableData[indexPath.section].open = false
             
+            //VC 전환시
+            guard let presentVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {return}
+            
+            
+            presentVC.categoryName = tableData[indexPath.section].items?[indexPath.row-1]
+            
+            presentVC.genderIdx = indexPath.section
+            presentVC.categoryIdx = indexPath.row - 1
+            
+            
+            
+            
+            
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
             

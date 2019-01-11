@@ -10,10 +10,15 @@ import UIKit
 
 class CategoryDetailVC: UIViewController {
     
+    let userDefault = UserDefaults.standard
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationBar!
+
+    var categoryProductList:[Product]? = []
     
     var categoryName: String?
+    var categoryIdx: Int = 0
+    var genderIdx: Int = 0
     
     // HaveTheRain : Back To CategoryVC Code Start
     @IBOutlet weak var backBtn: UIBarButtonItem!
@@ -40,10 +45,51 @@ class CategoryDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationBar.topItem?.title = categoryName
+        
+        initCategoryProductList1()
+        
+    }
+    
+    func initCategoryProductList1(){
+        BrandProductSorting.shared.showSortingNewCategory(categoryIdx: self.categoryIdx, gender: "\(self.genderIdx)") { (product) in
+         
+            self.categoryProductList = product
+            print("\n신상순 정렬")
+            print(product)
+        
+            self.collectionView.reloadData()
+        }
+        
+    }
+    
+    func initCategoryProductList2(){
+        
+        BrandProductSorting.shared.showSortingPopularCategory(categoryIdx: self.categoryIdx, gender: "\(self.genderIdx)") { (product) in
+            
+            self.categoryProductList = product
+            print("\n신상순 정렬")
+            print(product)
+            
+            self.collectionView.reloadData()
+        }
+        
+    }
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @IBAction func backBtn(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
         let backBtnImg = UIImage(named: "backArrow")
         self.backBtn.image = backBtnImg
     }
-    // HaveTheRain : Modified To NavigationBar Code End
+
 }
 
 
@@ -52,16 +98,19 @@ extension CategoryDetailVC: UICollectionViewDataSource{
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let product = categoryProductList else {return 0}
+        return product.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
         
-        cell.productImg.image = #imageLiteral(resourceName: "testImage")
-        cell.brandName.text = "헬로월드"
-        cell.productName.text = "옷옷옷"
-        cell.price.text = "150,000"
+        cell.productImg.imageFromUrl(categoryProductList?[indexPath.row].image_url, defaultImgPath: "")
+            
+            
+        cell.brandName.text = categoryProductList?[indexPath.row].brand_Korean_name
+        cell.productName.text = categoryProductList?[indexPath.row].name
+        cell.price.text = categoryProductList?[indexPath.row].price
         
         return cell
     }

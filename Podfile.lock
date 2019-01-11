@@ -4,6 +4,7 @@ PODS:
     - Alamofire (~> 4.1)
     - ObjectMapper (~> 3.3)
   - Kingfisher (4.10.0)
+  - lottie-ios (2.5.2)
   - ObjectMapper (3.3.0)
   - SideMenuSwift (1.0.0)
   - SNCollectionViewLayout (1.0.1)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireObjectMapper
   - Kingfisher
+  - lottie-ios
   - ObjectMapper
   - SideMenuSwift
   - SNCollectionViewLayout
@@ -23,6 +25,7 @@ SPEC REPOS:
     - Alamofire
     - AlamofireObjectMapper
     - Kingfisher
+    - lottie-ios
     - ObjectMapper
     - SideMenuSwift
     - SNCollectionViewLayout
@@ -32,11 +35,12 @@ SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  lottie-ios: 3fef45d3fabe63e3c7c2eb603dd64ddfffc73062
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   SideMenuSwift: f8567754feb36ade13ffd613f608829f4b86d4b3
   SNCollectionViewLayout: 9991574aa022237c75acf0e3dc890b09aa4e4c31
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: c28a35defb6ddb219d7b3b91e6074e59c007b584
+PODFILE CHECKSUM: 3358600ac58ef7a07bd4816450a4e82e981a20c9
 
 COCOAPODS: 1.5.3
