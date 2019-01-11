@@ -35,6 +35,8 @@ class SizeInfoVC3: UIViewController {
     @IBOutlet weak var CproductImg: UIImageView!
     @IBOutlet weak var CproductName: UILabel!
     @IBOutlet weak var sizeTF: UITextField!
+    //****************
+    var productInformation: Closet?
     
     let pickerview = UIPickerView()
     var sizeArray = [String]()
@@ -43,9 +45,9 @@ class SizeInfoVC3: UIViewController {
     @IBOutlet weak var stackView1: UIStackView!
     @IBOutlet weak var stackView2: UIStackView!
     var upperValue: [String] = []
-    var lowerValue: [String] = []
+    var lowerValue: [String?] = []
     
-    var commonSize: [CommonSize] = []
+    var commonSize = [[String: String?]]()
     
     var brandIdx: Int?
     var categoryIdx: Int?
@@ -104,7 +106,6 @@ class SizeInfoVC3: UIViewController {
     
     }
 
-    
 }
 
 //Mark: - Button Action 관련
@@ -202,14 +203,13 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
         sizeTF.text = sizeArray[row]
         productSize = sizeArray[row]
         
+        guard let measureData = productInformation?.measure?.toJSON() else {return}
         
         //**********************************
         //이 시점에서 텍스트에 삽입 해 줍니다!!!!!!!!!!!1
         
         for data in commonSize {
-           let _data = data.toJSON()
-            
-            
+        
         }
         
         
@@ -245,57 +245,72 @@ extension SizeInfoVC3 : BrandVCDelegate {
 
 //Mark: - BrandVCDelega
 extension SizeInfoVC3: ProductVCDelegate {
+    
     func ProductVCResponse(value: Closet) {
         
         sizeArray.removeAll()
         
-        guard let measureData = value.measure?.toJSON() else {return}
-    
-        let _key = measureData.keys
+        //****************
+        self.productInformation = value
         
         self.CproductImg.imageFromUrl(value.image_url!, defaultImgPath: "")
         self.CproductName.text = value.name
         self.productName = value.name
         self.productIdx = value.idx
         
-        
+        guard let measureData = value.measure?.toJSON() else {return}
+
         print("테스트 = \(measureData.values)")
+        
         for size in measureData.keys.reversed() {
+            
             sizeArray.append(size)
-            if let LSize = value.measure?.large?.size {
-                commonSize.append(LSize)
+            
+            if let XLSize = value.measure?.xLarge?.dictionary {
+                print("XLSIZE")
+                print(commonSize)
+                commonSize.append(XLSize)
+            }
+        
+            if let LSize = value.measure?.large?.dictionary {
                 print("LSIZE")
                 print(commonSize)
+                commonSize.append(LSize)
             }
             
-            if let MSize = value.measure?.medium?.size{
-                commonSize.append(MSize)
+            if let MSize = value.measure?.medium?.dictionary{
                 print("MSIZE")
                 print(commonSize)
+                commonSize.append(MSize)
             }
             
-            if let SSize = value.measure?.small?.size{
-                commonSize.append(SSize)
+            if let SSize = value.measure?.small?.dictionary{
                 print("SSIZE")
                 print(commonSize)
+                commonSize.append(SSize)
             }
         }
+        
+        for realKey in commonSize{
+            
+        }
+        
+        
         
         
         for common in commonSize {
-            
-            let realCommon = common.toJSON()
-            
-            for realKey in realCommon.keys {
+
+            for realKey in common.keys {
                 upperValue.append(realKey)
             }
-            for realValue in realCommon.values{
-                lowerValue.append(realValue as! String)
-            }
             
+            
+            for realValue in common.values{
+                lowerValue.append(realValue)
+            }
+
         }
-        
-        print(commonSize)
+    
         
         
         print("테스트 출력!")

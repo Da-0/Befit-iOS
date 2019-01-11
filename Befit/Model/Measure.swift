@@ -10,6 +10,7 @@ import Foundation
 import ObjectMapper
 
 struct Measure : Mappable {
+    
     var xLarge: XL?
     var large : L?
     var medium : M?

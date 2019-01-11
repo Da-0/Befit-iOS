@@ -90,9 +90,10 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             //2) Banner 구현부
         else if indexPath.section == 1 {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell1", for: indexPath) as! MainCVCell1
+            
             return cell1
         }
-            //3
+            //3)
         else if indexPath.section == 2 {
             let cell12 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell12", for: indexPath) as! MainCVCell12
             return cell12

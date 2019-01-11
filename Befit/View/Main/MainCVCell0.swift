@@ -29,6 +29,7 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView0.dequeueReusableCell(withReuseIdentifier: "MainCVCell00", for: indexPath) as! MainCVCell00
         
         guard let product = brandInfo[indexPath.row].products else {return cell}
@@ -40,14 +41,16 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
         cell.productImg2.imageFromUrl(product[1].image_url, defaultImgPath: "")
         cell.productImg3.imageFromUrl(product[2].image_url, defaultImgPath: "")
         
-        
         cell.productLB1.text = product[0].name
         cell.productLB2.text = product[1].name
         cell.productLB3.text = product[2].name
-        
+    
         
         return cell
+    
     }
+    
+ 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         

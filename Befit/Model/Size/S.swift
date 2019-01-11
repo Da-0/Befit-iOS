@@ -11,15 +11,44 @@ import ObjectMapper
 
 struct S : Mappable {
     
-    var size : CommonSize?
+//    var size : CommonSize?
+    var total : String?
+    var chest : String?
+    var sleeve : String?
+    var shoulder : String?
+    var waist: String?
+    var thigh: String?
+    var crotch: String?
+    var dobla: String?
     
     init?(map: Map) {
     }
     
+    var dictionary: [String: String?] {
+        
+        return ["totalLength": total,
+                "chestSection": chest,
+                "sleeveLength": sleeve,
+                "shoulderWidth": shoulder,
+                "waistSection" : waist,
+                "thighSection" : thigh,
+                "crotch" : crotch,
+                "dobladillosSection" : dobla
+        ]
+    }
+    
     mutating func mapping(map: Map) {
         
-        size <- map["S"]
+//        size <- map["S"]
+        total <- map["totalLength"]
+        chest <- map["chestSection"]
+        sleeve <- map["sleeveLength"]
+        shoulder <- map["shoulderWidth"]
         
+        waist <- map["waistSection"]
+        thigh <- map["thighSection"]
+        crotch <- map["crotch"]
+        dobla <- map["dobladillosSection"]
     }
     
 }
