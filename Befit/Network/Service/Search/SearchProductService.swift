@@ -44,7 +44,10 @@ struct SearchProductService: APIManager, Requestable{
     func showSearchProductPopular(keyword: String, completion: @escaping (NetworkData) -> Void) {
         
         guard let token = userDefault.string(forKey: "token") else {return}
+        let testkeyword = keyword.utf8
         
+        print("아아아아ㅏㅇ아아아ㅏ아앙\(keyword)")
+        print("아아아아ㅏㅇ아아아ㅏ아앙\(testkeyword)")
         let URL = baseURL + "/popular" + "?name=" + (keyword.utf8EncodedString())
         
         let headers: HTTPHeaders = [

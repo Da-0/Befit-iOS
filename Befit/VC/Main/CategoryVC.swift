@@ -14,15 +14,16 @@ struct cellData {
     var open: Bool!
     var title: String!
     var items: [String]?
-    var idx: [Int]?
+    var idx: [Int]!
 }
 
 class CategoryVC: UIViewController {
     var presentedVC: UIViewController?
     var dismissJudge: Bool = false
+    
     var tableData: [cellData] = [
-        cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody","Sweat Shirts","T-Shirts","Onepiece","Jeans","Pants","Slacks", "Short-Pants","Skirts"], idx: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]),
-        cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody ","Sweat Shirts","T-Shirts","Jeans","Pants","Slacks", "Short-Pants"], idx: [0,1,2,3,4,5,6,7,9,10,11])
+        cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody","Sweat Shirts","T-Shirts","Onepiece","Jeans","Pants","Slacks", "Short-Pants","Skirts"], idx: [0,1,2,3,4,5,6,7,8,9,10,11,12,13]),
+        cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody ","Sweat Shirts","T-Shirts","Jeans","Pants","Slacks", "Short-Pants"], idx: [0,1,2,3,4,5,6,7,9,10,11,12])
     ]
     
     @IBOutlet weak var tableView: UITableView!
@@ -86,9 +87,6 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     
-    
-    
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             return CGFloat(60)
@@ -106,19 +104,6 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         if tableData[indexPath.section].open {
             tableData[indexPath.section].open = false
             
-            //VC 전환시
-            guard let presentVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {return}
-            
-            
-            presentVC.categoryName = tableData[indexPath.section].items?[indexPath.row-1]
-            
-            presentVC.genderIdx = indexPath.section
-            presentVC.categoryIdx = indexPath.row - 1
-            
-            
-            
-            
-            
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
             
@@ -134,8 +119,8 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 guard let presentedVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {
                     return
                 }
-                
-                //presentedVC.categoryidx = tableData[indexPath.section].idx?[indexPath.row-1]
+                presentedVC.genderIdx = indexPath.section
+                presentedVC.categoryIdx = tableData[indexPath.section].idx[indexPath.row-1]
                 presentedVC.categoryName = tableData[indexPath.section].items?[indexPath.row - 1]
                 
                 self.dismissJudge = true
@@ -153,6 +138,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         }
     }
 }
+
 
 
 
