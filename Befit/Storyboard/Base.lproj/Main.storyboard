@@ -289,7 +289,7 @@
                                                                             <constraint firstAttribute="height" constant="254" id="jta-IV-rz7"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-aZ-uIA">
+                                                                    <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hqx-aZ-uIA">
                                                                         <rect key="frame" x="73" y="37" width="240" height="288"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="288" id="BBA-rr-wqk"/>
@@ -303,14 +303,14 @@
                                                                             <constraint firstAttribute="width" constant="95" id="GAs-S3-N3f"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fD0-Ac-3nz">
+                                                                    <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fD0-Ac-3nz">
                                                                         <rect key="frame" x="140" y="380" width="95" height="95"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="95" id="1HN-Fs-Iof"/>
                                                                             <constraint firstAttribute="width" constant="95" id="SHf-YW-cE3"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tQP-FM-PzK">
+                                                                    <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tQP-FM-PzK">
                                                                         <rect key="frame" x="245" y="380" width="95" height="95"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="95" id="U3X-ZT-eAG"/>

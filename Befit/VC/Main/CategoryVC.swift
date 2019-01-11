@@ -14,15 +14,15 @@ struct cellData {
     var open: Bool!
     var title: String!
     var items: [String]?
+    var idx: [Int]?
 }
-
 
 class CategoryVC: UIViewController {
     var presentedVC: UIViewController?
     var dismissJudge: Bool = false
     var tableData: [cellData] = [
-        cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody","Sweat Shirts","T-Shirts","Onepiece","Jeans","Pants","Slacks", "Short-Pants","Skirts"]),
-        cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody ","Sweat Shirts","T-Shirts","Jeans","Pants","Slacks", "Short-Pants"])
+        cellData(open: false, title: "Women", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody","Sweat Shirts","T-Shirts","Onepiece","Jeans","Pants","Slacks", "Short-Pants","Skirts"], idx: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14]),
+        cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody ","Sweat Shirts","T-Shirts","Jeans","Pants","Slacks", "Short-Pants"], idx: [0,1,2,3,4,5,6,7,9,10,11])
     ]
     
     @IBOutlet weak var tableView: UITableView!
@@ -134,7 +134,10 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 guard let presentedVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {
                     return
                 }
+                
+                //presentedVC.categoryidx = tableData[indexPath.section].idx?[indexPath.row-1]
                 presentedVC.categoryName = tableData[indexPath.section].items?[indexPath.row - 1]
+                
                 self.dismissJudge = true
                 present(presentedVC, animated: false, completion: nil)
             }

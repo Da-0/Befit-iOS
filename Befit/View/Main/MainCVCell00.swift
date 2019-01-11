@@ -23,21 +23,21 @@ class MainCVCell00: UICollectionViewCell {
     
     override func awakeFromNib() {
         
+        let tapGestureRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+    
         productImg1.isUserInteractionEnabled = true
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        productImg1.addGestureRecognizer(tapGestureRecognizer)
+        productImg2.isUserInteractionEnabled = true
+        productImg3.isUserInteractionEnabled = true
+        
+        productImg1.addGestureRecognizer(tapGestureRecognizer1)
+
     }
     
     
     @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-        let tappedImage = tapGestureRecognizer.view as! UIImageView
-        // Your action
-        
-        
-        
-        
-        
+    
     }
+
     
     
     
