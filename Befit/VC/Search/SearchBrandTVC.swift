@@ -32,9 +32,7 @@ class SearchBrandTVC: UITableViewController {
     }
     
     func initSearchBrandList(){
-        
-        print("입력한 검색어 " + searchKeyword)
-        
+            
         SearchBrandService.shared.showSearchBrand(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
            

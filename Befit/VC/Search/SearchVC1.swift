@@ -61,7 +61,9 @@ extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UIColl
         
         productVC.address = link
         productVC.brandName = brandName
-        print(brandName)
+        productVC.productInfo = searchProduct
+        
+//        print(brandName)
         
         self.navigationController?.present(productVC, animated: true, completion: nil)
         

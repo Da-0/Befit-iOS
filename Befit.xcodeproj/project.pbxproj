@@ -39,6 +39,10 @@
 		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		504CBAEB21D9DA38008606F7 /* UserInfoAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */; };
 		504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */; };
+		505E410121E86D5B0058DAAC /* MySizeCheckCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */; };
+		505E410421E87CE70058DAAC /* SizeCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410321E87CE70058DAAC /* SizeCheckService.swift */; };
+		505E410621E8806B0058DAAC /* SizeCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410521E8806B0058DAAC /* SizeCheck.swift */; };
+		505E410821E8CD5C0058DAAC /* XL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410721E8CD5C0058DAAC /* XL.swift */; };
 		5066557721D21FDF00580137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557621D21FDF00580137 /* AppDelegate.swift */; };
 		5066557921D21FDF00580137 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557821D21FDF00580137 /* MainVC.swift */; };
 		5066557C21D21FDF00580137 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5066557A21D21FDF00580137 /* Main.storyboard */; };
@@ -161,6 +165,10 @@
 		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoAdminVC.swift; sourceTree = "<group>"; };
 		504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeVC.swift; sourceTree = "<group>"; };
+		505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySizeCheckCVCell.swift; sourceTree = "<group>"; };
+		505E410321E87CE70058DAAC /* SizeCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckService.swift; sourceTree = "<group>"; };
+		505E410521E8806B0058DAAC /* SizeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheck.swift; sourceTree = "<group>"; };
+		505E410721E8CD5C0058DAAC /* XL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XL.swift; sourceTree = "<group>"; };
 		5066557321D21FDF00580137 /* Befit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Befit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5066557621D21FDF00580137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5066557821D21FDF00580137 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -333,6 +341,7 @@
 		503114A321E37F4B008D81AC /* Size */ = {
 			isa = PBXGroup;
 			children = (
+				505E410721E8CD5C0058DAAC /* XL.swift */,
 				503114A421E37F80008D81AC /* L.swift */,
 				503114A621E37F86008D81AC /* M.swift */,
 				503114A821E37F8D008D81AC /* S.swift */,
@@ -372,6 +381,14 @@
 				503114BF21E4881E008D81AC /* ProductSelectService.swift */,
 			);
 			path = SizeInfo;
+			sourceTree = "<group>";
+		};
+		505E410221E87CC90058DAAC /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				505E410321E87CE70058DAAC /* SizeCheckService.swift */,
+			);
+			path = Product;
 			sourceTree = "<group>";
 		};
 		5066556A21D21FDF00580137 = {
@@ -448,6 +465,7 @@
 				5031149F21E37EC5008D81AC /* Product.swift */,
 				503114BB21E47962008D81AC /* Closet.swift */,
 				503114A121E37ED9008D81AC /* Measure.swift */,
+				505E410521E8806B0058DAAC /* SizeCheck.swift */,
 				503114A321E37F4B008D81AC /* Size */,
 			);
 			path = Model;
@@ -606,6 +624,7 @@
 				5068A53421DDDA2500F22E95 /* SizeInfo3TVCell.swift */,
 				5068A53E21DE29E900F22E95 /* BrandSelectTVCell.swift */,
 				5068A53C21DE29DB00F22E95 /* ProductSelectTVCell.swift */,
+				505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -660,6 +679,7 @@
 				5031148321E1E9AB008D81AC /* Brand */,
 				5031148A21E22A0C008D81AC /* Like */,
 				503114B521E4517E008D81AC /* MyPage */,
+				505E410221E87CC90058DAAC /* Product */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -821,6 +841,7 @@
 				50DD804921E1AACA00E6F743 /* Token.swift in Sources */,
 				5031148C21E22A42008D81AC /* LikeBrandService.swift in Sources */,
 				506655D821D25E4900580137 /* CategoryVC.swift in Sources */,
+				505E410121E86D5B0058DAAC /* MySizeCheckCVCell.swift in Sources */,
 				50DD803721E088BD00E6F743 /* CategoryDetailVC.swift in Sources */,
 				503114A021E37EC5008D81AC /* Product.swift in Sources */,
 				50DD804D21E1AAFC00E6F743 /* ResponseArray.swift in Sources */,
@@ -883,6 +904,7 @@
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				50DD804321E19E6900E6F743 /* NetworkResult.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC3.swift in Sources */,
+				505E410621E8806B0058DAAC /* SizeCheck.swift in Sources */,
 				50DAFCE321E6024400D4BF2F /* MainCVCell2.swift in Sources */,
 				507D139E21E79F5100937A6D /* UnLikeBService.swift in Sources */,
 				5068A53B21DE263C00F22E95 /* ProductSelectVC.swift in Sources */,
@@ -901,6 +923,8 @@
 				503114B021E3C646008D81AC /* User.swift in Sources */,
 				5031149421E27D0E008D81AC /* SearchCRV.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
+				505E410821E8CD5C0058DAAC /* XL.swift in Sources */,
+				505E410421E87CE70058DAAC /* SizeCheckService.swift in Sources */,
 				503114B421E44F53008D81AC /* ChangeBrandVC.swift in Sources */,
 				5031149E21E36CB9008D81AC /* ProductVC.swift in Sources */,
 				5068A53121DD3F7100F22E95 /* SizeInfoVC3.swift in Sources */,

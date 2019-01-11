@@ -46,8 +46,7 @@ class BrandVC: UIViewController {
     func productListNewInit() {
         BrandProductSorting.shared.showSortingNew (brandIdx: brandIdx!, completion: { (productData) in
             self.productInfo = productData
-            print("\n신상순 정렬")
-            print(productData)
+
             self.collectionView.reloadData()
         })
     }
@@ -55,8 +54,7 @@ class BrandVC: UIViewController {
     func productListPopularInit() {
         BrandProductSorting.shared.showSortingPopular(brandIdx: brandIdx!, completion: { (productData) in
             self.productInfo = productData
-            print("\n인기순 정렬")
-            print(productData)
+        
             self.collectionView.reloadData()
         })
     }
@@ -181,6 +179,7 @@ extension BrandVC: UICollectionViewDataSource{
         let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         productVC.brandName = productInfo?[indexPath.row].brand_English_name
         productVC.address = productInfo?[indexPath.row].link
+        productVC.productInfo = productInfo?[indexPath.row]
         self.navigationController?.present(productVC, animated: true, completion: nil)
     }
     

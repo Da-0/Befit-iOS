@@ -154,7 +154,7 @@ class UserInfoVC2: UIViewController {
         
         if selectedCount == 2 {
             
-            print(brandIdx)
+//            print(brandIdx)
             
             userDefault.set(brandIdx[0], forKey: "brand1_idx")
             userDefault.set(brandIdx[1], forKey: "brand2_idx")

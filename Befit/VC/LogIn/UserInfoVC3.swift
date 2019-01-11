@@ -163,7 +163,7 @@ class UserInfoVC3: UIViewController {
         SignUpService.shared.signUp(email: emailTF.text!, pw: passwordCkTF.text!, gender: gender!, name: nameTF.text!, brand1: brand1, brand2: brand2, birthday: birthday, completion: {[weak self] (res) in
             guard let `self` = self else {return}
             if res == "회원가입 성공" {
-                print(res)
+//                print(res)
                 self.dismiss(animated: true, completion: nil)
             }
         })

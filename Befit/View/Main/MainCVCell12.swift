@@ -8,6 +8,9 @@
 
 import UIKit
 
-class MainCVCell12: UICollectionReusableView {
-        
+import UIKit
+
+class MainCVCell12: UICollectionViewCell {
+    @IBOutlet weak var headerLabel: UILabel!
+    
 }

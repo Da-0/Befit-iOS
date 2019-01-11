@@ -20,18 +20,30 @@ class CategoryDetailVC: UIViewController {
     var categoryIdx: Int = 0
     var genderIdx: Int = 0
     
+    // HaveTheRain : Back To CategoryVC Code Start
+    @IBOutlet weak var backBtn: UIBarButtonItem!
+    @IBAction func backBtnAction(_ sender: Any) {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        dismiss(animated: false, completion: nil)
+    }
+    // HaveTheRain : Back To CategoryVC Code End
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
         
     }
-
     
+    // HaveTheRain : Modified To NavigationBar Code Start
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        self.tabBarController?.tabBar.isHidden = true
         navigationBar.topItem?.title = categoryName
         
         initCategoryProductList1()
@@ -74,8 +86,10 @@ class CategoryDetailVC: UIViewController {
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
+        let backBtnImg = UIImage(named: "backArrow")
+        self.backBtn.image = backBtnImg
+    }
+
 }
 
 
