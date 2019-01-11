@@ -116,6 +116,8 @@
 		A509DD3821E538F9009C3DC1 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DD3721E538F9009C3DC1 /* CollectionViewCell.swift */; };
 		A509DD4021E65387009C3DC1 /* SearchProductService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DD3F21E65387009C3DC1 /* SearchProductService.swift */; };
 		A509DD4221E67BA4009C3DC1 /* BrandDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A509DD4121E67BA4009C3DC1 /* BrandDetailCVCell.swift */; };
+		A51C952721E86F99008727E1 /* LoadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51C952621E86F99008727E1 /* LoadVC.swift */; };
+		A51C952D21E8AEA0008727E1 /* material_wave_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A51C952C21E8AEA0008727E1 /* material_wave_loading.json */; };
 		A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CD921D87F2100C2B6F2 /* PWSettingVC.swift */; };
 		A59B1CDC21D9BA6E00C2B6F2 /* FindPWVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59B1CDB21D9BA6E00C2B6F2 /* FindPWVC.swift */; };
 		A5BA69AC21E1C73300949E42 /* BrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BA69AB21E1C73300949E42 /* BrandVC.swift */; };
@@ -239,6 +241,8 @@
 		A509DD3721E538F9009C3DC1 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		A509DD3F21E65387009C3DC1 /* SearchProductService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductService.swift; sourceTree = "<group>"; };
 		A509DD4121E67BA4009C3DC1 /* BrandDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandDetailCVCell.swift; sourceTree = "<group>"; };
+		A51C952621E86F99008727E1 /* LoadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadVC.swift; sourceTree = "<group>"; };
+		A51C952C21E8AEA0008727E1 /* material_wave_loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = material_wave_loading.json; sourceTree = "<group>"; };
 		A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumLight.ttf; sourceTree = "<group>"; };
 		A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumBold.ttf; sourceTree = "<group>"; };
 		A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KoPubDotumMedium.ttf; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 		5031149C21E36ABD008D81AC /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				A51C952621E86F99008727E1 /* LoadVC.swift */,
 				5031149D21E36CB9008D81AC /* ProductVC.swift */,
 				508DF10221E7DCBC001118B9 /* SizeCheckVC.swift */,
 			);
@@ -465,6 +470,7 @@
 		5066558C21D2235A00580137 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A51C952C21E8AEA0008727E1 /* material_wave_loading.json */,
 				A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */,
 				A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */,
 				A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */,
@@ -739,6 +745,7 @@
 				506655CE21D259F200580137 /* Like.storyboard in Resources */,
 				5031149621E34A6F008D81AC /* Brand.storyboard in Resources */,
 				506655C921D258FA00580137 /* Rank.storyboard in Resources */,
+				A51C952D21E8AEA0008727E1 /* material_wave_loading.json in Resources */,
 				5066559221D22A8900580137 /* LogIn.storyboard in Resources */,
 				506655D321D25AD100580137 /* MyPage.storyboard in Resources */,
 				5066558121D21FE000580137 /* LaunchScreen.storyboard in Resources */,
@@ -766,6 +773,7 @@
 				"${BUILT_PRODUCTS_DIR}/SNCollectionViewLayout/SNCollectionViewLayout.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenuSwift/SideMenuSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/XLPagerTabStrip/XLPagerTabStrip.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -776,6 +784,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SNCollectionViewLayout.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XLPagerTabStrip.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -807,6 +816,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51C952721E86F99008727E1 /* LoadVC.swift in Sources */,
 				50DD804521E1AA5800E6F743 /* APIManager.swift in Sources */,
 				50DD804921E1AACA00E6F743 /* Token.swift in Sources */,
 				5031148C21E22A42008D81AC /* LikeBrandService.swift in Sources */,

@@ -11,6 +11,7 @@ import WebKit
 
 class ProductVC: UIViewController, WKNavigationDelegate {
     
+    @IBOutlet weak var loading: UIView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var webView: WKWebView!
     
@@ -19,11 +20,16 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        loading.isHidden = false
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationBar.topItem?.title = brandName
+        
         self.request(url: "https://" + address!)
     }
     
@@ -34,13 +40,29 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     
     // 현재 webView에서 받아온 URL 페이지를 로드한다.
     func request(url: String) {
+        
         self.webView.load(URLRequest(url: URL(string: url)!))
+        
         //self.webView.navigationDelegate = self;
     }
     
     @IBAction func dismisssAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+//    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+//        print("startttt")
+//        //        loading.isHidden = false
+//        //        webView.isHidden = true
+//    }
+//
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        //        loading.isHidden = true
+//        //        webView.isHidden = false
+//        print("finishhhhhhh")
+//        loading.delete(loading)
+//
+//    }
     
     
     

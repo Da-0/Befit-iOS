@@ -24,6 +24,7 @@ class CategoryVC: UIViewController {
         cellData(open: false, title: "Men", items: ["Outer","Jacket","Coat","Shirts","Knits","Hoody ","Sweat Shirts","T-Shirts","Jeans","Pants","Slacks", "Short-Pants"])
         ]
 
+
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -97,6 +98,19 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
         // 열려있는 경우.
         if tableData[indexPath.section].open {
             tableData[indexPath.section].open = false
+            
+            //VC 전환시
+            guard let presentVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {return}
+            
+            
+            presentVC.categoryName = tableData[indexPath.section].items?[indexPath.row-1]
+            
+            presentVC.genderIdx = indexPath.section
+            presentVC.categoryIdx = indexPath.row - 1
+            
+            
+            
+            
             
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
