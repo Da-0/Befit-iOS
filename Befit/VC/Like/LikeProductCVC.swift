@@ -131,6 +131,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
         productVC.brandName = productLikeList[indexPath.row].brand_English_name
         productVC.address = productLikeList[indexPath.row].link
+        productVC.productIdx = productLikeList[indexPath.row].idx
         self.navigationController?.present(productVC, animated: true, completion: nil)
         
     }

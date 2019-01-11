@@ -12,8 +12,22 @@ class CategoryDetailVC: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationBar!
-
+    
     var categoryName: String?
+    
+    // HaveTheRain : Back To CategoryVC Code Start
+    @IBOutlet weak var backBtn: UIBarButtonItem!
+    @IBAction func backBtnAction(_ sender: Any) {
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        dismiss(animated: false, completion: nil)
+    }
+    // HaveTheRain : Back To CategoryVC Code End
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,28 +35,15 @@ class CategoryDetailVC: UIViewController {
         collectionView.dataSource = self;
         
     }
-
     
+    // HaveTheRain : Modified To NavigationBar Code Start
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.isHidden = true
-        self.tabBarController?.tabBar.isHidden = true
         navigationBar.topItem?.title = categoryName
-     
-        
+        let backBtnImg = UIImage(named: "backArrow")
+        self.backBtn.image = backBtnImg
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-        self.tabBarController?.tabBar.isHidden = false
-    }
-    
-    @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-    
-    
+    // HaveTheRain : Modified To NavigationBar Code End
 }
 
 

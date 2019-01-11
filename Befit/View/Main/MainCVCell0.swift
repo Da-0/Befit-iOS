@@ -20,31 +20,26 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
         collectionView0.delegate = self;
         collectionView0.dataSource = self;
         collectionView0.reloadData()
-    
+        
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        print("\n커스텀 셀에서 받은 브랜드의 정보입니다!!!")
-        print(brandInfo)
-        
         return brandInfo.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView0.dequeueReusableCell(withReuseIdentifier: "MainCVCell00", for: indexPath) as! MainCVCell00
-        //guard let brand = brandInfo else {return cell}
+        
         guard let product = brandInfo[indexPath.row].products else {return cell}
         
-        cell.brandMainImg.imageFromUrl(brandInfo[indexPath.row].mainpage_url, defaultImgPath: "")
+        cell.brandMainImg.imageFromUrl(brandInfo[indexPath.row].mainfeed_url, defaultImgPath: "")
         cell.brandName.text = brandInfo[indexPath.row].name_english
         
         cell.productImg1.imageFromUrl(product[0].image_url, defaultImgPath: "")
         cell.productImg2.imageFromUrl(product[1].image_url, defaultImgPath: "")
         cell.productImg3.imageFromUrl(product[2].image_url, defaultImgPath: "")
-    
+        
         
         cell.productLB1.text = product[0].name
         cell.productLB2.text = product[1].name
@@ -55,10 +50,7 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    
-        return CGSize(width: 375, height: 525)
+        
+        return CGSize(width: 375, height: 526)
     }
-    
-
-    
 }

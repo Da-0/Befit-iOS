@@ -238,7 +238,6 @@ extension SizeInfoVC3: ProductVCDelegate {
     
         let _key = measureData.keys
         
-    
         self.CproductImg.imageFromUrl(value.image_url!, defaultImgPath: "")
         self.CproductName.text = value.name
         self.productName = value.name
@@ -246,7 +245,6 @@ extension SizeInfoVC3: ProductVCDelegate {
         
         for size in measureData.keys.sorted() {
             sizeArray.append(size)
-            
             
             if let LSize = value.measure?.large?.size {
                 commonSize.append(LSize)

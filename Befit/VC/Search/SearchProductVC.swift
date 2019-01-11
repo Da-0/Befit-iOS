@@ -137,6 +137,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         productVC.address = searchProduct[indexPath.row].link
         productVC.brandName = searchProduct[indexPath.row].brand_English_name
+        productVC.productIdx = searchProduct[indexPath.row].idx
         
         self.navigationController?.present(productVC, animated: true, completion: nil)
     }
