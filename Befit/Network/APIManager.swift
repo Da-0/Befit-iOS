@@ -12,7 +12,7 @@ extension APIManager {
     
     // http://를 명시해주지 않으면 1002 ERROR가 발생한다.
     static func url(_ path: String) -> String {
-        return "http://13.209.168.93:8080" + path
+        return "http://13.209.168.93:8081" + path
     }
     func gsno(_ value : String?) -> String{
         return value ?? ""

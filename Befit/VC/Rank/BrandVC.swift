@@ -63,8 +63,6 @@ class BrandVC: UIViewController {
 
 extension BrandVC: UICollectionViewDataSource{
     
-   
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }

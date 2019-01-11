@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="HiJ-FB-0j4">
-                                <rect key="frame" x="0.0" y="44" width="375" height="768"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="befit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P4s-nR-evq">
                                 <rect key="frame" x="140.33333333333334" y="209" width="94.666666666666657" height="53"/>
@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="height" constant="53" id="eFZ-eD-XQc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="44"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" 이메일" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0Q6-ZV-MTE">
@@ -44,12 +44,12 @@
                                     <constraint firstAttribute="height" constant="46" id="8W6-qz-9Ht"/>
                                     <constraint firstAttribute="width" constant="274" id="bYM-Q8-ZR1"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
@@ -58,25 +58,25 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="274" id="GjY-FU-JVa"/>
                                 </constraints>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="_placeholderLabel.textColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iOV-83-Hjs">
                                 <rect key="frame" x="34.666666666666657" y="547" width="306" height="55"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="306" id="BJ4-kN-gjD"/>
                                     <constraint firstAttribute="height" constant="55" id="FL6-Ju-fZg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="19"/>
                                 <state key="normal" title="로그인">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="loginBtn:" destination="29Z-zX-oXX" eventType="touchUpInside" id="4ki-D1-ObR"/>
@@ -84,7 +84,7 @@
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1O-Ak-2LE" userLabel="barView">
                                 <rect key="frame" x="38" y="462" width="299" height="1"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="hnq-6y-Yg1"/>
                                     <constraint firstAttribute="width" constant="299" id="iZh-2R-hJu"/>
@@ -92,7 +92,7 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YgX-qe-1Mo" userLabel="barView">
                                 <rect key="frame" x="38.333333333333343" y="523" width="299" height="1"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="299" id="QtJ-Ki-qgg"/>
                                     <constraint firstAttribute="height" constant="1" id="lPb-9K-SU4"/>
@@ -105,7 +105,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="26"/>
                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                         <state key="normal" title="회원가입">
-                                            <color key="titleColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <segue destination="2Q6-HW-RhY" kind="show" id="GNT-gJ-Qiw"/>
@@ -115,7 +115,7 @@
                                         <rect key="frame" x="80.999999999999986" y="0.0" width="67.000000000000014" height="26"/>
                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                         <state key="normal" title="비밀번호 찾기">
-                                            <color key="titleColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <segue destination="IGC-xR-UzA" kind="show" id="Pml-QS-grV"/>
@@ -142,7 +142,7 @@
                                 </constraints>
                             </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swy-nt-vHk">
-                                <rect key="frame" x="304" y="395" width="51" height="31"/>
+                                <rect key="frame" x="294" y="395" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="ewK-st-tuP"/>
                                     <constraint firstAttribute="width" constant="49" id="rCO-0o-ya7"/>
@@ -150,13 +150,13 @@
                                 <color key="onTintColor" red="0.47843137250000001" green="0.21176470589999999" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="자동로그인" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZ0-65-cLw">
-                                <rect key="frame" x="252" y="404" width="44" height="12"/>
+                                <rect key="frame" x="250" y="404" width="44" height="12"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="12" id="Dt6-nE-t1G"/>
                                     <constraint firstAttribute="width" constant="44" id="pXq-AS-VGb"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="10"/>
-                                <color key="textColor" red="0.47450980392156861" green="0.47450980392156861" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -172,23 +172,23 @@
                             <constraint firstItem="YgX-qe-1Mo" firstAttribute="top" secondItem="9Ux-f9-u9j" secondAttribute="bottom" constant="13" id="Jkt-cN-qus"/>
                             <constraint firstItem="P4s-nR-evq" firstAttribute="top" secondItem="F2e-M6-17l" secondAttribute="top" constant="165" id="Khf-30-FyA"/>
                             <constraint firstItem="WFq-If-Sce" firstAttribute="leading" secondItem="9Ux-f9-u9j" secondAttribute="trailing" constant="5.6666666666667425" id="Lnm-fY-r4e"/>
-                            <constraint firstItem="Swy-nt-vHk" firstAttribute="leading" secondItem="uZ0-65-cLw" secondAttribute="trailing" constant="8" symbolic="YES" id="MjL-vw-gHi"/>
+                            <constraint firstItem="Swy-nt-vHk" firstAttribute="leading" secondItem="uZ0-65-cLw" secondAttribute="trailing" id="MjL-vw-gHi"/>
                             <constraint firstItem="P4s-nR-evq" firstAttribute="centerX" secondItem="F2e-M6-17l" secondAttribute="centerX" id="PCn-H0-8N1"/>
                             <constraint firstItem="HiJ-FB-0j4" firstAttribute="leading" secondItem="9Ux-f9-u9j" secondAttribute="trailing" constant="-61" id="T6o-dE-XEH"/>
                             <constraint firstItem="KnS-7i-5Fs" firstAttribute="leading" secondItem="F2e-M6-17l" secondAttribute="leading" constant="113.67" id="UQV-BQ-V6l"/>
                             <constraint firstItem="0Q6-ZV-MTE" firstAttribute="centerY" secondItem="jDX-tH-yRo" secondAttribute="centerY" id="Yax-VT-2Hp"/>
                             <constraint firstItem="iOV-83-Hjs" firstAttribute="centerX" secondItem="KnS-7i-5Fs" secondAttribute="centerX" id="ZXO-Gy-Go3"/>
-                            <constraint firstItem="HiJ-FB-0j4" firstAttribute="top" secondItem="F2e-M6-17l" secondAttribute="top" id="c4t-Uu-SRi"/>
+                            <constraint firstItem="HiJ-FB-0j4" firstAttribute="top" secondItem="Wbg-Qr-QHb" secondAttribute="top" id="c4t-Uu-SRi"/>
                             <constraint firstItem="WFq-If-Sce" firstAttribute="centerY" secondItem="9Ux-f9-u9j" secondAttribute="centerY" id="eUQ-Dh-OgL"/>
                             <constraint firstItem="HiJ-FB-0j4" firstAttribute="leading" secondItem="jDX-tH-yRo" secondAttribute="trailing" constant="-61" id="frS-oD-gDY"/>
                             <constraint firstItem="F2e-M6-17l" firstAttribute="bottom" secondItem="KnS-7i-5Fs" secondAttribute="bottom" constant="126" id="g61-9b-B8X"/>
                             <constraint firstAttribute="bottom" secondItem="HiJ-FB-0j4" secondAttribute="bottom" id="h6H-Pb-BXd"/>
-                            <constraint firstItem="HiJ-FB-0j4" firstAttribute="leading" secondItem="F2e-M6-17l" secondAttribute="leading" id="hkt-yV-I0w"/>
+                            <constraint firstItem="HiJ-FB-0j4" firstAttribute="leading" secondItem="Wbg-Qr-QHb" secondAttribute="leading" id="hkt-yV-I0w"/>
                             <constraint firstItem="iOV-83-Hjs" firstAttribute="top" secondItem="YgX-qe-1Mo" secondAttribute="bottom" constant="23" id="mRE-ac-QOM"/>
                             <constraint firstItem="0Q6-ZV-MTE" firstAttribute="top" secondItem="Swy-nt-vHk" secondAttribute="bottom" constant="-10" id="mWR-3C-x1b"/>
                             <constraint firstItem="F2e-M6-17l" firstAttribute="trailing" secondItem="KnS-7i-5Fs" secondAttribute="trailing" constant="113.33" id="pLM-Gg-ftm"/>
                             <constraint firstAttribute="trailing" secondItem="HiJ-FB-0j4" secondAttribute="trailing" id="tRb-No-Mlz"/>
-                            <constraint firstItem="Swy-nt-vHk" firstAttribute="leading" secondItem="HiJ-FB-0j4" secondAttribute="trailing" constant="-71" id="vHX-CJ-kDc"/>
+                            <constraint firstItem="Swy-nt-vHk" firstAttribute="leading" secondItem="HiJ-FB-0j4" secondAttribute="trailing" constant="-81" id="vHX-CJ-kDc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="F2e-M6-17l"/>
                     </view>
@@ -200,7 +200,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s3J-ue-uAl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3942" y="488"/>
+            <point key="canvasLocation" x="-3943.1999999999998" y="487.6847290640394"/>
         </scene>
         <!--User InfoVC3-->
         <scene sceneID="0nG-Gp-PbP">
@@ -1032,12 +1032,12 @@
     </scenes>
     <resources>
         <image name="backArrow" width="32" height="32"/>
-        <image name="background" width="376" height="768"/>
+        <image name="background" width="375" height="812"/>
         <image name="icGrayarrow" width="48" height="48"/>
         <image name="icLeftArrowBlack" width="32" height="32"/>
-        <image name="icLogin" width="23" height="23"/>
+        <image name="icLogin" width="25" height="25"/>
         <image name="icManNotouch" width="68" height="65"/>
-        <image name="icPassword" width="24" height="26"/>
+        <image name="icPassword" width="26" height="28.333333969116211"/>
         <image name="icWomanNotouch" width="50" height="86"/>
         <image name="icX" width="48" height="48"/>
         <image name="icYearsClick" width="22" height="23"/>

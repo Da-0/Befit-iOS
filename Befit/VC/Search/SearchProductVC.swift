@@ -5,11 +5,12 @@ import XLPagerTabStrip
 class SearchProductVC: UIViewController {
     
     let userDefault = UserDefaults.standard
+    
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     // product model 받아올 변수 선언
     var searchProductList:[Product]? = []
-//    var searchProductList2: [Product]? = []
     var searchKeyword: String = ""
     
     @IBOutlet weak var noResultView: UIView!
@@ -27,10 +28,12 @@ class SearchProductVC: UIViewController {
         initSearchProductList1()
         //initSearchProductList2()
         
+        
     }
     
     func initSearchProductList1(){
-        SearchProductService.shared.showSearchProductNew(keyword: self.searchKeyword) { (res) in
+        
+        SearchProductService.shared.showSearchProductNew(keyword: searchKeyword) { (res) in
             guard let status = res.status else {return}
             
             if status == 200 {

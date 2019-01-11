@@ -19,6 +19,8 @@ class CategoryDetailVC: UIViewController {
     var categoryName: String?
     var categoryIdx: Int = 0
     var genderIdx: Int = 0
+    var genderTxt: String = ""
+    var productIdx: Int?
     
     // HaveTheRain : Back To CategoryVC Code Start
     @IBOutlet weak var backBtn: UIBarButtonItem!
@@ -45,13 +47,22 @@ class CategoryDetailVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationBar.topItem?.title = categoryName
+        let backBtnImg = #imageLiteral(resourceName: "backArrow")
+        self.backBtn.image = backBtnImg
+        
+        if genderIdx == 0 {
+            genderTxt = "w"
+        }else {
+            genderTxt = "m"
+        }
         
         initCategoryProductList1()
         
     }
     
     func initCategoryProductList1(){
-        BrandProductSorting.shared.showSortingNewCategory(categoryIdx: self.categoryIdx, gender: "\(self.genderIdx)") { (product) in
+        
+        BrandProductSorting.shared.showSortingNewCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
          
             self.categoryProductList = product
             print("\n신상순 정렬")
@@ -64,35 +75,30 @@ class CategoryDetailVC: UIViewController {
     
     func initCategoryProductList2(){
         
-        BrandProductSorting.shared.showSortingPopularCategory(categoryIdx: self.categoryIdx, gender: "\(self.genderIdx)") { (product) in
+        BrandProductSorting.shared.showSortingPopularCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
             
             self.categoryProductList = product
-            print("\n신상순 정렬")
+            print("\n인기순 정렬")
             print(product)
             
             self.collectionView.reloadData()
         }
         
     }
-    
-    
-    
+
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
     }
     
-    @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
-        let backBtnImg = UIImage(named: "backArrow")
-        self.backBtn.image = backBtnImg
-    }
+//    @IBAction func backBtn(_ sender: Any) {
+//        self.navigationController?.popViewController(animated: true)
+//    }
+        
 
 }
-
-
 
 extension CategoryDetailVC: UICollectionViewDataSource{
     
@@ -103,20 +109,116 @@ extension CategoryDetailVC: UICollectionViewDataSource{
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
         
+        if categoryProductList?[indexPath.row].product_like == 1 {
+            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+        }else{
+            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+        }
+        
+        cell.backgroundColor = UIColor.white
+        
         cell.productImg.imageFromUrl(categoryProductList?[indexPath.row].image_url, defaultImgPath: "")
-            
-            
+        
         cell.brandName.text = categoryProductList?[indexPath.row].brand_Korean_name
         cell.productName.text = categoryProductList?[indexPath.row].name
         cell.price.text = categoryProductList?[indexPath.row].price
         
+        
+        
+        //브랜드 좋아요 하트 버튼 설정
+        cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+        cell.likeBtn.tag = indexPath.row
+        
+        
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategorySortingCVCell", for: indexPath as IndexPath) as! CategorySortingCVCell
+//            cell.likeProductNumbLB.text = "찜한상품 " + "\(productLikeList.count)"
+            
+            //인기순 신상품순 버튼 설정
+            cell.NewBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
+            cell.PopularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
+            
+            return cell
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
+        
+    }
+   
+    @objc func newBtnClicked(){
+        print("신상버튼")
+        initCategoryProductList1()
+        
+    }
+    
+    @objc func popularBtnClicked(){
+        print("인기버튼")
+        initCategoryProductList2()
+        
+    }
     
     
+    //좋아요가 작동하는 부분
+    @objc func clickLike(_ sender: UIButton){
+        
+        print(sender.tag)
+        
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            
+            //1) 브랜드 좋아요 취소가 작동하는 부분
+            UnLikePService.shared.unlike(productIdx: productIdx!) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 200 :
+                        print("상품 좋아요 취소 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+        }
+            
+        else {
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            
+            //2)브랜드 좋아요가 작동하는 부분
+            LikePService.shared.like(productIdx: productIdx!) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 201 :
+                        print("상품 좋아요 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        productVC.brandName = categoryProductList?[indexPath.row].brand_English_name
+        productVC.address = categoryProductList?[indexPath.row].link
+        productVC.productInfo = categoryProductList?[indexPath.row]
+        self.navigationController?.present(productVC, animated: true, completion: nil)
+    }
     
     
 }

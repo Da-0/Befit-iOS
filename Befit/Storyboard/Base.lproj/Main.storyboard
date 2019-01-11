@@ -652,7 +652,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8ZI-cF-pgo">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CategorySortingCVCell" reuseIdentifier="CategorySortingCVCell" id="8ZI-cF-pgo" customClass="CategorySortingCVCell" customModule="Befit" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -662,6 +662,9 @@
                                             <state key="normal" title="인기순">
                                                 <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="popularAction:" destination="8ZI-cF-pgo" eventType="touchUpInside" id="lSf-OM-iHv"/>
+                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2k-VI-kzM">
                                             <rect key="frame" x="313" y="8" width="42" height="27"/>
@@ -669,6 +672,9 @@
                                             <state key="normal" title="신상품순">
                                                 <color key="titleColor" red="0.47843137250000001" green="0.21176470589999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="newAction:" destination="8ZI-cF-pgo" eventType="touchUpInside" id="Qn5-dn-god"/>
+                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2c-9q-JFe" userLabel="barView">
                                             <rect key="frame" x="303" y="15" width="1" height="13"/>
@@ -688,6 +694,10 @@
                                         <constraint firstItem="L2k-VI-kzM" firstAttribute="leading" secondItem="h2c-9q-JFe" secondAttribute="trailing" constant="9" id="qsp-pM-4FU"/>
                                         <constraint firstItem="h2c-9q-JFe" firstAttribute="centerY" secondItem="L2k-VI-kzM" secondAttribute="centerY" id="wUJ-Eh-YWH"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="NewBtn" destination="L2k-VI-kzM" id="NcB-Ru-A49"/>
+                                        <outlet property="PopularBtn" destination="40O-ct-5TL" id="jmi-7N-WPr"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMS-JD-5qJ">
@@ -718,14 +728,14 @@
                         <viewLayoutGuide key="safeArea" id="8jC-dj-pAz"/>
                     </view>
                     <connections>
-                        <outlet property="backBtn" destination="yb3-cl-Wtp" id="Ygq-XH-iZa"/>
+                        <outlet property="backBtn" destination="yb3-cl-Wtp" id="2CX-Bb-MQc"/>
                         <outlet property="collectionView" destination="rgc-24-3nT" id="kJO-Cw-18A"/>
                         <outlet property="navigationBar" destination="KMS-JD-5qJ" id="FT9-3Q-4OY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3T-f0-pJA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="977" y="-591"/>
+            <point key="canvasLocation" x="976.79999999999995" y="-591.13300492610836"/>
         </scene>
     </scenes>
     <resources>
