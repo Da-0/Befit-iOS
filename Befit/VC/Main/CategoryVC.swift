@@ -17,8 +17,6 @@ struct cellData {
     var idx: [Int]!
 }
 
-
-
 class CategoryVC: UIViewController {
     var presentedVC: UIViewController?
     var dismissJudge: Bool = false

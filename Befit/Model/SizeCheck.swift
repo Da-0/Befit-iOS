@@ -11,7 +11,7 @@ import ObjectMapper
 
 struct SizeCheck : Mappable {
     
-    var commonSize : CommonSize?
+//    var commonSize : CommonSize?
     var percent : String?
     var my_url : String?
     var compare_url : String?
@@ -20,8 +20,8 @@ struct SizeCheck : Mappable {
         
     }
     mutating func mapping(map: Map) {
-        
-        commonSize <- map["measure"]
+       
+//        commonSize <- map["measure"]
         percent <- map["percent"]
         my_url <- map["my_url"]
         compare_url <- map["compare_url"]
