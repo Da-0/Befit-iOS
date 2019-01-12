@@ -38,7 +38,7 @@ class UserInfoVC3: UIViewController {
     var yearsTillNow : [String] {
         var years = [String]()
         for i in 1960...2019 {
-            years.append("\(i)년")
+            years.append("\(i)")
         }
         return years
     }
@@ -46,8 +46,7 @@ class UserInfoVC3: UIViewController {
     var monthsTillNow : [String] {
         var month = [String]()
         for i in 1...12 {
-            
-            month.append("\(i)월")
+            month.append("\(i)")
         }
         return month
     }
@@ -55,7 +54,7 @@ class UserInfoVC3: UIViewController {
     var daysTillNow : [String] {
         var days = [String]()
         for i in 1...31 {
-            days.append("\(i)일")
+            days.append("\(i)")
         }
         return days
     }

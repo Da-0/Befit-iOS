@@ -44,7 +44,6 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
         cell.productLB1.text = product[0].name
         cell.productLB2.text = product[1].name
         cell.productLB3.text = product[2].name
-    
         
         return cell
     

@@ -36,24 +36,39 @@ class MainCVCell1: UICollectionViewCell, UICollectionViewDataSource, UICollectio
         return CGSize(width: 375, height: 90)
     }
     
-    
-    
-    //FooterView 설정
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        switch kind {
-            
-        case UICollectionView.elementKindSectionHeader:
-            let cell = collectionView1.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MainCVCell12", for: indexPath as IndexPath) as! MainCVCell12
-            
-            cell.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            return cell
-            
-        default:
-            assert(false, "Unexpected element kind")
-        }
+//        let productVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "LogInVC") as! LogInVC
+//        
+        
+        
+//        productVC.brandName = recommendProduct?[indexPath.row].brand_English_name
+//        productVC.address = recommendProduct?[indexPath.row].link
+//        //            productVC.productIdx = recommendProduct?[indexPath.row].idx
+//        productVC.productInfo = recommendProduct?[indexPath.row]
+//
+
         
     }
+    
+    
+    
+//    //FooterView 설정
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//
+//        switch kind {
+//
+//        case UICollectionView.elementKindSectionHeader:
+//            let cell = collectionView1.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "MainCVCell12", for: indexPath as IndexPath) as! MainCVCell12
+//
+//            cell.backgroundColor =  #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+//            return cell
+//
+//        default:
+//            assert(false, "Unexpected element kind")
+//        }
+//
+//    }
     
     
     
