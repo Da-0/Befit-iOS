@@ -27,6 +27,9 @@ class SizeCheckVC: UIViewController {
     //하단 페이지 컨트롤(갯수는 동적으로 변경)
     @IBOutlet weak var pageControl: UIPageControl!
     
+    //데모 모델
+    var demo = ["유니클로 JK오버핏 L" , "라퍼지스토어 790EMC M", "87MM SeoulEdition M"]
+    
     //서버통신에 필요한 Idx
     var productInfo: Product?
     var productIdx: Int?
@@ -93,7 +96,8 @@ extension SizeCheckVC: UIPickerViewDelegate,UIPickerViewDataSource{
 
     @objc func selectedPicker(){
         let row = pickerView.selectedRow(inComponent: 0)
-        productTF.text = myProductList[row].name
+        productTF.text = demo[row]
+        //myProductList[row].name
         view.endEditing(true)
     }
     
@@ -103,14 +107,16 @@ extension SizeCheckVC: UIPickerViewDelegate,UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
-        return myProductList.count
+    
+        return demo.count
+        //return myProductList.count
         
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        return myProductList[row].name
+        return demo[row]
+       //return myProductList[row].name
     }
     
     
@@ -169,7 +175,6 @@ extension SizeCheckVC: UITextFieldDelegate {
 
 
 extension SizeCheckVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

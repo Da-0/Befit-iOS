@@ -55,6 +55,12 @@ class SizeInfoVC3: UIViewController {
     var productSize: String?
     
     
+    @IBOutlet weak var LB1: UILabel!
+    @IBOutlet weak var LB2: UILabel!
+    @IBOutlet weak var LB3: UILabel!
+    @IBOutlet weak var LB4: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         completeBtn.tintColor = .clear
@@ -202,6 +208,10 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
         let row = pickerview.selectedRow(inComponent: 0)
         sizeTF.text = sizeArray[row]
         productSize = sizeArray[row]
+        LB1.text = "\(Int.random(in: 55...65))"
+        LB2.text = "\(Int.random(in: 50...55))"
+        LB3.text = "\(Int.random(in: 38...60))"
+        LB4.text = "\(Int.random(in: 40...50))"
         
         guard let measureData = productInformation?.measure?.toJSON() else {return}
         

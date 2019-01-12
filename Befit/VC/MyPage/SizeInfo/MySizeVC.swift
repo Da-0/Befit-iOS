@@ -15,6 +15,11 @@ class MySizeVC: UIViewController {
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var size: UILabel!
     var closetIdx: Int?
+
+    @IBOutlet weak var LB1: UILabel!
+    @IBOutlet weak var LB2: UILabel!
+    @IBOutlet weak var LB3: UILabel!
+    @IBOutlet weak var LB4: UILabel!
     
     
     override func viewDidLoad() {
@@ -28,6 +33,7 @@ class MySizeVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = true
         
         network()
+        randomValue()
     
     }
     
@@ -61,4 +67,23 @@ class MySizeVC: UIViewController {
         
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+
+extension MySizeVC {
+    
+    func randomValue(){
+    
+        LB1.text = "\(Int.random(in: 55...70))"
+        LB2.text = "\(Int.random(in: 50...65))"
+        LB3.text = "\(Int.random(in: 32...45))"
+        LB4.text = "\(Int.random(in: 40...55))"
+        
+    }
+    
+    
+    
+    
+    
+    
 }
