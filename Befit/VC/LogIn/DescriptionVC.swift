@@ -57,9 +57,13 @@ class DescriptionVC: UIViewController, UIScrollViewDelegate {
     }
     
     
+    
+    
+    
 
     @objc func downBtnTapped (){
         let loginVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "LogInVC") as! LogInVC
+
         self.present(loginVC, animated: true, completion: nil)
         
     }
