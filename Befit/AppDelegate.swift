@@ -17,12 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        
         //SideMenu 적용.
         SideMenuController.preferences.basic.menuWidth = 320
         SideMenuController.preferences.basic.statusBarBehavior = .hideOnMenu
         SideMenuController.preferences.basic.enablePanGesture = true
         SideMenuController.preferences.basic.supportedOrientations = .portrait
+        
+        Thread.sleep(forTimeInterval: 2.0)
         
         return true
     }

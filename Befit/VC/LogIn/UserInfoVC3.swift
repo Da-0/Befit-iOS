@@ -46,6 +46,7 @@ class UserInfoVC3: UIViewController {
     var monthsTillNow : [String] {
         var month = [String]()
         for i in 1...12 {
+            
             month.append("\(i)월")
         }
         return month
@@ -164,6 +165,7 @@ class UserInfoVC3: UIViewController {
             guard let `self` = self else {return}
             if res == "회원가입 성공" {
 //                print(res)
+                self.nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
                 self.dismiss(animated: true, completion: nil)
             }
         })
