@@ -101,8 +101,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="KnS-7i-5Fs">
                                 <rect key="frame" x="113.66666666666669" y="626" width="148" height="26"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3O-MU-siD">
-                                        <rect key="frame" x="0.0" y="0.0" width="43" height="26"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3O-MU-siD">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="26"/>
                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                         <state key="normal" title="회원가입">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -111,8 +111,8 @@
                                             <segue destination="2Q6-HW-RhY" kind="show" id="GNT-gJ-Qiw"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIf-2X-BVJ">
-                                        <rect key="frame" x="81.999999999999986" y="0.0" width="66.000000000000014" height="26"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIf-2X-BVJ">
+                                        <rect key="frame" x="80.999999999999986" y="0.0" width="67.000000000000014" height="26"/>
                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                         <state key="normal" title="비밀번호 찾기">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -141,7 +141,7 @@
                                     <constraint firstAttribute="width" constant="23" id="QBe-dB-cxX"/>
                                 </constraints>
                             </imageView>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swy-nt-vHk">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Swy-nt-vHk">
                                 <rect key="frame" x="296" y="395" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="ewK-st-tuP"/>

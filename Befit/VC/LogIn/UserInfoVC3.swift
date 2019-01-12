@@ -37,7 +37,7 @@ class UserInfoVC3: UIViewController {
     
     var yearsTillNow : [String] {
         var years = [String]()
-        for i in 1960...2019 {
+        for i in (1960...2019).reversed() {
             years.append("\(i)")
         }
         return years
@@ -134,7 +134,22 @@ class UserInfoVC3: UIViewController {
         
     }
     
-    @objc func completeWrite() {
+//    func completeWrite() {
+//        
+//        guard nameTF.text?.isEmpty != true else {return}
+//        guard yearTF.text?.isEmpty != true else {return}
+//        guard monthTF.text?.isEmpty != true else {return}
+//        guard dayTF.text?.isEmpty != true else {return}
+//        guard emailTF.text?.isEmpty != true else {return}
+//        guard passwordTF.text?.isEmpty != true else {return}
+//        guard passwordCkTF.text?.isEmpty != true else {return}
+//        
+//        nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+//    }
+    
+    
+    
+    @IBAction func nextAction(_ sender: Any) {
         
         guard nameTF.text?.isEmpty != true else {return}
         guard yearTF.text?.isEmpty != true else {return}
@@ -143,11 +158,8 @@ class UserInfoVC3: UIViewController {
         guard emailTF.text?.isEmpty != true else {return}
         guard passwordTF.text?.isEmpty != true else {return}
         guard passwordCkTF.text?.isEmpty != true else {return}
-    }
-    
-    
-    
-    @IBAction func nextAction(_ sender: Any) {
+        
+        nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
         
         network()
     }
@@ -162,9 +174,9 @@ class UserInfoVC3: UIViewController {
         
         SignUpService.shared.signUp(email: emailTF.text!, pw: passwordCkTF.text!, gender: gender!, name: nameTF.text!, brand1: brand1, brand2: brand2, birthday: birthday, completion: {[weak self] (res) in
             guard let `self` = self else {return}
+            
             if res == "회원가입 성공" {
-//                print(res)
-                self.nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+                //self.nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
                 self.dismiss(animated: true, completion: nil)
             }
         })
@@ -270,6 +282,11 @@ extension UserInfoVC3: UITextFieldDelegate, UIGestureRecognizerDelegate {
         textField.resignFirstResponder()
         self.view.endEditing(true)
         return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.tag == 6 {
+            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+        }
     }
     
     func setKeyboardSetting() {
