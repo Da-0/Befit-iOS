@@ -213,10 +213,25 @@ extension CategoryDetailVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        print("셀이 클릭되었습니다!!!!")
+        print(indexPath.row)
+        
+        let categoryProduct = categoryProductList?[indexPath.row]
+        
         let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-        productVC.brandName = categoryProductList?[indexPath.row].brand_English_name
-        productVC.address = categoryProductList?[indexPath.row].link
-        productVC.productInfo = categoryProductList?[indexPath.row]
+        
+        guard let link = categoryProduct?.link else {return}
+        guard let brandName = categoryProduct?.brand_English_name else {return}
+        
+        productVC.address = link
+        productVC.brandName = brandName
+        productVC.productInfo = categoryProduct
+        
+        print(productVC.address)
+        print(productVC.brandName)
+        print(productVC.productInfo)
+        
+        //이 부분 수정 필요
         self.navigationController?.present(productVC, animated: true, completion: nil)
     }
     

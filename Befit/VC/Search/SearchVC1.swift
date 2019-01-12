@@ -63,7 +63,7 @@ extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UIColl
         productVC.brandName = brandName
         productVC.productInfo = searchProduct
         
-//        print(brandName)
+        print("셀렉됨")
         
         self.navigationController?.present(productVC, animated: true, completion: nil)
         

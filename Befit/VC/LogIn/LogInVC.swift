@@ -25,6 +25,9 @@ class LogInVC: UIViewController, APIManager {
         setupTap()
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
         
+//        let descVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "DescriptionVC") as! DescriptionVC
+//        self.present(descVC, animated: true, completion: nil)
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

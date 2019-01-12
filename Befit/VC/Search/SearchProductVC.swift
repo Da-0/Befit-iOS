@@ -55,7 +55,6 @@ class SearchProductVC: UIViewController {
     }
     
     func initSearchProductList2(){
-        
         SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
             guard let status = res.status else {return}
             
