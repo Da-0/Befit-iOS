@@ -117,7 +117,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchProductCVCell", for: indexPath) as! SearchProductCVCell
         guard let product = searchProductList else {return cell}
         
-        cell.brandName.text = product[indexPath.row].brand_Korean_name
+        cell.brandName.text = product[indexPath.row].name_korean
         cell.productName.text =  product[indexPath.row].name
         cell.price.text = product[indexPath.row].price
         cell.productImg.imageFromUrl(product[indexPath.row].image_url, defaultImgPath: "")
@@ -131,7 +131,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         productVC.address = searchProduct[indexPath.row].link
-        productVC.brandName = searchProduct[indexPath.row].brand_English_name
+        productVC.brandName = searchProduct[indexPath.row].name_English
         productVC.productInfo = searchProduct[indexPath.row]
         
         self.navigationController?.present(productVC, animated: true, completion: nil)

@@ -122,7 +122,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         
         cell.productImg.imageFromUrl(categoryProductList?[indexPath.row].image_url, defaultImgPath: "")
         
-        cell.brandName.text = categoryProductList?[indexPath.row].brand_Korean_name
+        cell.brandName.text = categoryProductList?[indexPath.row].name_korean
         cell.productName.text = categoryProductList?[indexPath.row].name
         cell.price.text = categoryProductList?[indexPath.row].price
         
@@ -221,7 +221,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         
         guard let link = categoryProduct?.link else {return}
-        guard let brandName = categoryProduct?.brand_English_name else {return}
+        guard let brandName = categoryProduct?.name_English else {return}
         
         productVC.address = link
         productVC.brandName = brandName

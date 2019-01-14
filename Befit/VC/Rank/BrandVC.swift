@@ -118,7 +118,7 @@ extension BrandVC: UICollectionViewDataSource{
             
             cell2.backgroundColor = UIColor.white
             
-            cell2.brandName.text = productInfo?[indexPath.row].brand_Korean_name
+            cell2.brandName.text = productInfo?[indexPath.row].name_korean
             cell2.productName.text = productInfo?[indexPath.row].name
             cell2.price.text = productInfo?[indexPath.row].price
             cell2.productImg.imageFromUrl(productInfo?[indexPath.row].image_url, defaultImgPath: "")
@@ -175,7 +175,7 @@ extension BrandVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-        productVC.brandName = productInfo?[indexPath.row].brand_English_name
+        productVC.brandName = productInfo?[indexPath.row].name_English
         productVC.address = productInfo?[indexPath.row].link
         productVC.productInfo = productInfo?[indexPath.row]
         self.navigationController?.present(productVC, animated: true, completion: nil)

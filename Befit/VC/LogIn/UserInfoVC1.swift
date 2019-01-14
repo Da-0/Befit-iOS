@@ -5,7 +5,9 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-// 성별 선택 뷰
+//  LogIn.Storyboard
+//  1)회원가입 단계에서 성별을 선택하는 뷰
+
 import UIKit
 
 class UserInfoVC1: UIViewController {
@@ -17,15 +19,17 @@ class UserInfoVC1: UIViewController {
     var selected: Bool!
     var gender: String?
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //네비게이션 바 설정
+        navigationBarSetting()
+    }
+    
+    func navigationBarSetting(){
         self.navigationController!.navigationBar.barTintColor = UIColor.white
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-
     }
     
     //성별 선택시 이미지 변환
@@ -47,7 +51,6 @@ class UserInfoVC1: UIViewController {
     }
     
     @IBAction func manBtn(_ sender: Any) {
-        
         
         if !manImg.isSelected {
             manImg.isSelected = true

@@ -5,29 +5,25 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  LogIn.Storyboard
+//  0)아이디와 패스워드를 입력하는 뷰
 
 import UIKit
 
 class LogInVC: UIViewController, APIManager {
+    
+    let userDefault = UserDefaults.standard
 
     @IBOutlet weak var emailTF: UITextField!
     @IBOutlet weak var pwTF: UITextField!
-    
-    let userDefault = UserDefaults.standard
     @IBOutlet weak var switchBtn: UISwitch!
     
      var keyboardDismissGesture : UITapGestureRecognizer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setKeyboardSetting()
-        setupTap()
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
-        
-//        let descVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "DescriptionVC") as! DescriptionVC
-//        self.present(descVC, animated: true, completion: nil)
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -43,6 +39,7 @@ class LogInVC: UIViewController, APIManager {
         }
         
         network()
+        
     }
     
     
@@ -59,8 +56,11 @@ class LogInVC: UIViewController, APIManager {
                          let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
                          self.present(mainVC, animated: true, completion: nil)
                          break
+                    
                     case 400:
                         self.simpleAlert(title: "Error", message: "아이디 또는 패스워드가 일치하지 않습니다!")
+                    break
+                    
                     case 401, 500, 600 :
                         self.simpleAlert(title: "Error", message: res.message!)
                         break
@@ -73,26 +73,30 @@ class LogInVC: UIViewController, APIManager {
     }
     
     @IBAction func unwind(_ sender: UIStoryboardSegue){
+        
     }
 
+
+    @IBAction func autoLogin(_ sender: UISwitch) {
+        if sender.isOn {
+            print("자동로그인 켰습니다!")
+        }
+        else{
+            print("자동로그인 껐습니다!")
+        }
+    }
+    
+    
+    
+    
+    
 }
 
 
 //MARK: - 키보드 대응 및 뷰 탭
 extension LogInVC: UITextFieldDelegate, UIGestureRecognizerDelegate {
     
-    
-    func setupTap() {
-        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        self.view.addGestureRecognizer(viewTap)
-    }
-    
-    //뷰를 탭하면 edit 상태를 끝낸다
-    @objc func viewTapped() {
-        self.view.endEditing(true)
-    }
-    
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -101,6 +105,10 @@ extension LogInVC: UITextFieldDelegate, UIGestureRecognizerDelegate {
         textField.resignFirstResponder()
         self.view.endEditing(true)
         return true
+    }
+    
+    @objc func tapBackground() {
+        self.view.endEditing(true)
     }
     
     func setKeyboardSetting() {
@@ -117,8 +125,7 @@ extension LogInVC: UITextFieldDelegate, UIGestureRecognizerDelegate {
         adjustKeyboardDismissGesture(isKeyboardVisible: false)
         self.view.frame.origin.y = 0
     }
-    
-    
+
     
     func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
         if isKeyboardVisible {
@@ -134,7 +141,5 @@ extension LogInVC: UITextFieldDelegate, UIGestureRecognizerDelegate {
         }
     }
     
-    @objc func tapBackground() {
-        self.view.endEditing(true)
-    }
+
 }

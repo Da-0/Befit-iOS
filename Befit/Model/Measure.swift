@@ -17,7 +17,6 @@ struct Measure : Mappable {
     var small : S?
     
     init?(map: Map) {
-        
     }
     
     mutating func mapping(map: Map) {

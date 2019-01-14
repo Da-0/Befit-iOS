@@ -1,21 +1,20 @@
 //
-//  Token.swift
+//  Idx.swift
 //  Befit
 //
-//  Created by 이충신 on 06/01/2019.
+//  Created by 이충신 on 14/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
-
 import ObjectMapper
 
-struct Token: Mappable {
+struct Idx: Mappable {
     
-    var token: String?
-
+    var idx: Int?
+    
     init?(map: Map) {}
     
     mutating func mapping(map: Map) {
-        token <- map["token"]
+        idx <- map["idx"]
     }
 }
 
