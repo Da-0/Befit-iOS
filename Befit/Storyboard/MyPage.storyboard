@@ -29,7 +29,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgq-Vx-79c">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="133"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 이충신" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-yD-0Jo">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="befit" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2z-yD-0Jo">
                                         <rect key="frame" x="38" y="35" width="105" height="27"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="105" id="5Up-q7-zL6"/>
@@ -39,12 +39,8 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lcs3303@naver.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-NE-VX3">
-                                        <rect key="frame" x="43" y="70" width="243" height="27"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="27" id="POa-iC-UZC"/>
-                                            <constraint firstAttribute="width" constant="243" id="UEN-KM-qnW"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="befit-kr@sopt.org" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9B0-NE-VX3">
+                                        <rect key="frame" x="38" y="70" width="243" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -52,11 +48,13 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="9B0-NE-VX3" firstAttribute="leading" secondItem="tgq-Vx-79c" secondAttribute="leading" constant="43" id="FG5-Am-dVO"/>
                                     <constraint firstItem="X2z-yD-0Jo" firstAttribute="top" secondItem="tgq-Vx-79c" secondAttribute="top" constant="35" id="OlA-WL-mhi"/>
                                     <constraint firstAttribute="height" constant="133" id="RZk-7a-hYe"/>
-                                    <constraint firstItem="9B0-NE-VX3" firstAttribute="top" secondItem="X2z-yD-0Jo" secondAttribute="bottom" constant="8" id="iJy-4L-M1X"/>
                                     <constraint firstItem="X2z-yD-0Jo" firstAttribute="leading" secondItem="tgq-Vx-79c" secondAttribute="leading" constant="38" id="kDc-Uc-BO1"/>
+                                    <constraint firstItem="9B0-NE-VX3" firstAttribute="leading" secondItem="X2z-yD-0Jo" secondAttribute="leading" id="tcs-3W-d3V"/>
+                                    <constraint firstAttribute="bottom" secondItem="9B0-NE-VX3" secondAttribute="bottom" constant="36" id="tiX-HW-n72"/>
+                                    <constraint firstItem="9B0-NE-VX3" firstAttribute="top" secondItem="X2z-yD-0Jo" secondAttribute="bottom" constant="8" symbolic="YES" id="wdL-0a-4WB"/>
+                                    <constraint firstAttribute="trailing" secondItem="9B0-NE-VX3" secondAttribute="trailing" constant="94" id="yZx-Ru-29m"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gmx-uJ-E2w">
@@ -71,26 +69,29 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 나의 패션 취향" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDG-cy-h7D">
-                                                    <rect key="frame" x="34" y="16.333333333333332" width="326" height="16.999999999999996"/>
+                                                    <rect key="frame" x="34" y="16" width="302" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="302" id="lXz-Ub-PTJ"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hwi-mU-jkv">
-                                                    <rect key="frame" x="34" y="45" width="302" height="1"/>
+                                                    <rect key="frame" x="34" y="45.666666666666664" width="302" height="1"/>
                                                     <color key="backgroundColor" red="0.4392156862745098" green="0.4392156862745098" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="302" id="ALT-L1-S0e"/>
-                                                        <constraint firstAttribute="height" constant="1" id="Pyo-BC-gdY"/>
+                                                        <constraint firstAttribute="height" constant="1" id="Vdd-4j-cjV"/>
+                                                        <constraint firstAttribute="width" constant="302" id="x3j-dw-eWM"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="FDG-cy-h7D" firstAttribute="leading" secondItem="hwi-mU-jkv" secondAttribute="leading" id="I9U-bU-vUh"/>
-                                                <constraint firstItem="hwi-mU-jkv" firstAttribute="top" secondItem="FDG-cy-h7D" secondAttribute="bottom" constant="11.666666666666671" id="NbQ-Gf-hof"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="FDG-cy-h7D" secondAttribute="trailing" id="dFE-40-4hp"/>
-                                                <constraint firstItem="FDG-cy-h7D" firstAttribute="centerY" secondItem="UpF-L5-pvF" secondAttribute="centerY" id="exf-aQ-pLg"/>
-                                                <constraint firstItem="FDG-cy-h7D" firstAttribute="leading" secondItem="UpF-L5-pvF" secondAttribute="leading" constant="34" id="kQs-gj-Uf3"/>
+                                                <constraint firstAttribute="bottom" secondItem="hwi-mU-jkv" secondAttribute="bottom" constant="3" id="K2g-H7-0oV"/>
+                                                <constraint firstItem="hwi-mU-jkv" firstAttribute="top" secondItem="FDG-cy-h7D" secondAttribute="bottom" constant="11.666666666666664" id="knC-5V-HyF"/>
+                                                <constraint firstItem="FDG-cy-h7D" firstAttribute="leading" secondItem="UpF-L5-pvF" secondAttribute="leading" constant="34" id="oag-hU-tnz"/>
+                                                <constraint firstItem="hwi-mU-jkv" firstAttribute="leading" secondItem="UpF-L5-pvF" secondAttribute="leading" constant="34" id="ujD-mA-GnN"/>
+                                                <constraint firstItem="FDG-cy-h7D" firstAttribute="centerY" secondItem="UpF-L5-pvF" secondAttribute="centerY" id="yxe-Ov-gCb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -122,8 +123,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="gmx-uJ-E2w" id="2O7-su-XdZ"/>
-                        <outlet property="userEmail" destination="9B0-NE-VX3" id="Y6H-RJ-hpR"/>
-                        <outlet property="userName" destination="X2z-yD-0Jo" id="tz4-4G-TKe"/>
+                        <outlet property="userEmail" destination="9B0-NE-VX3" id="Rzt-jw-yhd"/>
+                        <outlet property="userName" destination="X2z-yD-0Jo" id="7lc-GN-XIJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oz7-DB-Uad" userLabel="First Responder" sceneMemberID="firstResponder"/>
