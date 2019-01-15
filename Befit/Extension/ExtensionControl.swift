@@ -27,6 +27,8 @@ extension UITextField {
     }
 }
 
+
+//MARK: - UTF8 인코딩
 extension String {
 
     func utf8EncodedString()-> String {
@@ -34,7 +36,28 @@ extension String {
         let text = String(data: messageData!, encoding: .utf8)
         return text!
     }
+}
+
+
+
+
+//MARK: - 정규화
+extension String {
     
+    public func validationEmail() -> Bool {
+        let emailRegex = "^.+@([A-Za-z0-0-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        
+        return predicate.evaluate(with: self)
+        
+    }
+    
+   public func validationPassword() -> Bool {
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,20}$"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        
+        return predicate.evaluate(with: self)
+    }
     
     
 }

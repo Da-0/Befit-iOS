@@ -270,7 +270,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="email"/>
                                 <connections>
                                     <action selector="emailAction:" destination="UUj-U2-Kug" eventType="editingDidEnd" id="eaT-Ql-Ron"/>
                                 </connections>
@@ -460,7 +460,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" textContentType="name"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -502,50 +502,59 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="성별을 선택하세요" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piJ-eL-wJN">
-                                <rect key="frame" x="96.666666666666671" y="200" width="181.66666666666663" height="27.666666666666657"/>
+                                <rect key="frame" x="96.666666666666671" y="189.33333333333334" width="181.66666666666663" height="27.666666666666657"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="27.666666666666657" id="dJs-H2-vvg"/>
+                                    <constraint firstAttribute="width" constant="181.66666666666663" id="ewX-vT-30P"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="25"/>
                                 <color key="textColor" red="0.023529411760000001" green="0.023529411760000001" blue="0.023529411760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbH-Bb-T9T">
-                                <rect key="frame" x="86" y="379" width="50" height="86"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="ZLM-nW-KqS"/>
-                                    <constraint firstAttribute="width" constant="50" id="dcY-Dv-cnn"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="icWomanNotouch"/>
-                                <connections>
-                                    <action selector="womanBtn:" destination="3of-eu-Z6o" eventType="touchUpInside" id="Cp5-JU-sFI"/>
-                                </connections>
-                            </button>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="109" translatesAutoresizingMaskIntoConstraints="NO" id="dcZ-3P-mwM">
-                                <rect key="frame" x="94" y="492" width="179" height="22"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wm-E4-HWG">
+                                <rect key="frame" x="61.666666666666657" y="318.66666666666669" width="251.99999999999997" height="175"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="여성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzr-fa-aOd">
-                                        <rect key="frame" x="0.0" y="0.0" width="35" height="22"/>
-                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="20"/>
-                                        <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="남성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfZ-mI-1uL">
-                                        <rect key="frame" x="144" y="0.0" width="35" height="22"/>
-                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="20"/>
-                                        <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="113" translatesAutoresizingMaskIntoConstraints="NO" id="dcZ-3P-mwM">
+                                        <rect key="frame" x="28" y="133" width="183" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="여성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lzr-fa-aOd">
+                                                <rect key="frame" x="0.0" y="0.0" width="35" height="22"/>
+                                                <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="20"/>
+                                                <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="남성" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfZ-mI-1uL">
+                                                <rect key="frame" x="148" y="0.0" width="35" height="22"/>
+                                                <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="20"/>
+                                                <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.098039215690000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UbH-Bb-T9T">
+                                        <rect key="frame" x="20" y="20" width="50" height="86"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="icWomanNotouch"/>
+                                        <connections>
+                                            <action selector="womanBtn:" destination="3of-eu-Z6o" eventType="touchUpInside" id="7Oh-BB-SiZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pP-Pg-3LM">
+                                        <rect key="frame" x="164" y="38" width="68" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button" image="icManNotouch"/>
+                                        <connections>
+                                            <action selector="manBtn:" destination="3of-eu-Z6o" eventType="touchUpInside" id="nD6-Aj-E8V"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1pP-Pg-3LM">
-                                <rect key="frame" x="230" y="397" width="68" height="65"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="68" id="0k6-ce-kox"/>
-                                    <constraint firstAttribute="height" constant="65" id="dY6-B0-ayP"/>
+                                    <constraint firstAttribute="width" constant="252" id="DgA-cE-cyf"/>
+                                    <constraint firstAttribute="height" constant="175" id="K4d-CN-H6u"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="icManNotouch"/>
-                                <connections>
-                                    <action selector="manBtn:" destination="3of-eu-Z6o" eventType="touchUpInside" id="8Xl-8M-qzy"/>
-                                </connections>
-                            </button>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHN-Gd-3Gm">
                                 <rect key="frame" x="173.33333333333334" y="761" width="28.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="18"/>
@@ -566,18 +575,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dcZ-3P-mwM" firstAttribute="leading" secondItem="hpM-gs-53L" secondAttribute="leading" constant="94" id="0R5-AS-USy"/>
                             <constraint firstAttribute="bottom" secondItem="KHN-Gd-3Gm" secondAttribute="bottom" constant="31" id="39W-Ds-r0U"/>
-                            <constraint firstItem="piJ-eL-wJN" firstAttribute="centerX" secondItem="hpM-gs-53L" secondAttribute="centerX" id="80e-Y3-Dae"/>
                             <constraint firstAttribute="bottom" secondItem="c7a-Vu-Fxj" secondAttribute="bottom" constant="28" id="9aq-cW-sJq"/>
                             <constraint firstItem="c7a-Vu-Fxj" firstAttribute="leading" secondItem="KHN-Gd-3Gm" secondAttribute="trailing" constant="95" id="BuH-wo-EqT"/>
-                            <constraint firstItem="hpM-gs-53L" firstAttribute="trailing" secondItem="dcZ-3P-mwM" secondAttribute="trailing" constant="102" id="CcK-EU-v6J"/>
-                            <constraint firstItem="piJ-eL-wJN" firstAttribute="top" secondItem="hpM-gs-53L" secondAttribute="top" constant="112" id="Mty-Ic-Gch"/>
-                            <constraint firstItem="hpM-gs-53L" firstAttribute="trailing" secondItem="1pP-Pg-3LM" secondAttribute="trailing" constant="77" id="SZT-sP-Gmb"/>
-                            <constraint firstItem="KHN-Gd-3Gm" firstAttribute="top" secondItem="dcZ-3P-mwM" secondAttribute="bottom" constant="247" id="Uxi-5W-9hu"/>
-                            <constraint firstItem="UbH-Bb-T9T" firstAttribute="leading" secondItem="hpM-gs-53L" secondAttribute="leading" constant="86" id="XlS-Bt-Uyw"/>
-                            <constraint firstItem="dcZ-3P-mwM" firstAttribute="top" secondItem="1pP-Pg-3LM" secondAttribute="bottom" constant="30" id="Z4D-Lp-Y9z"/>
-                            <constraint firstItem="dcZ-3P-mwM" firstAttribute="top" secondItem="UbH-Bb-T9T" secondAttribute="bottom" constant="27" id="d2O-NZ-MSt"/>
+                            <constraint firstItem="piJ-eL-wJN" firstAttribute="centerY" secondItem="cqD-pj-Bqu" secondAttribute="centerY" multiplier="0.5:1" id="D11-PV-Gps"/>
+                            <constraint firstItem="9wm-E4-HWG" firstAttribute="centerY" secondItem="cqD-pj-Bqu" secondAttribute="centerY" id="E0H-Tf-3LZ"/>
+                            <constraint firstItem="9wm-E4-HWG" firstAttribute="centerX" secondItem="cqD-pj-Bqu" secondAttribute="centerX" id="EEN-ki-svO"/>
+                            <constraint firstItem="piJ-eL-wJN" firstAttribute="centerX" secondItem="cqD-pj-Bqu" secondAttribute="centerX" id="nve-zJ-Ral"/>
                             <constraint firstItem="KHN-Gd-3Gm" firstAttribute="centerX" secondItem="hpM-gs-53L" secondAttribute="centerX" id="zhV-07-NAX"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="hpM-gs-53L"/>
@@ -591,14 +595,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="manImg" destination="1pP-Pg-3LM" id="vgE-a4-o7z"/>
+                        <outlet property="manBtn" destination="1pP-Pg-3LM" id="dn9-eB-YRA"/>
                         <outlet property="nextBtn" destination="c7a-Vu-Fxj" id="3iz-AO-gbg"/>
-                        <outlet property="womanImg" destination="UbH-Bb-T9T" id="bij-8p-d6y"/>
+                        <outlet property="womanBtn" destination="UbH-Bb-T9T" id="GuM-1G-fCK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OWa-dC-aKa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1676" y="-41"/>
+            <point key="canvasLocation" x="-1676" y="-41.379310344827587"/>
         </scene>
         <!--User InfoVC2-->
         <scene sceneID="UFS-Th-cgq">
@@ -608,26 +612,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="2/3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjL-i7-R3K">
-                                <rect key="frame" x="171" y="762" width="34" height="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2/3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JjL-i7-R3K">
+                                <rect key="frame" x="170" y="760" width="35" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="gwf-FX-R0s"/>
+                                    <constraint firstAttribute="width" constant="35" id="ui4-kh-3lq"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTI-ir-jKa">
+                                <rect key="frame" x="220" y="246" width="133" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="manRomanticcrown"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="bN7-70-UWs"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hc-QL-gtH">
                                 <rect key="frame" x="77" y="215" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="manThisisneverthat"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="Wqt-GY-DEx"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sTI-ir-jKa">
-                                <rect key="frame" x="220" y="246" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="manRomanticcrown"/>
-                                <connections>
-                                    <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="bN7-70-UWs"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleAspectFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f2t-Ft-2yY">
@@ -639,7 +647,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4A4-NN-prO">
-                                <rect key="frame" x="119" y="361" width="130" height="130"/>
+                                <rect key="frame" x="119" y="361" width="133" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="manLiberteng"/>
                                 <connections>
@@ -654,20 +662,20 @@
                                     <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="WF2-Zj-TID"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvA-18-B0d">
-                                <rect key="frame" x="18" y="472" width="130" height="130"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="manAnderssonbell"/>
-                                <connections>
-                                    <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="D5e-ef-zt1"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xMy-Bu-1fO">
                                 <rect key="frame" x="171" y="504" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="manInsilence"/>
                                 <connections>
                                     <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="OtQ-Hr-Q2P"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GvA-18-B0d">
+                                <rect key="frame" x="18" y="472" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="manAnderssonbell"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="D5e-ef-zt1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KR3-vW-yWL">
@@ -678,12 +686,15 @@
                                     <action selector="buttonClick:" destination="qrh-LX-sgn" eventType="touchUpInside" id="4fx-BQ-avx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osR-Pu-rXg">
-                                <rect key="frame" x="300" y="736" width="48" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="osR-Pu-rXg">
+                                <rect key="frame" x="296" y="736" width="48" height="48"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" none="YES"/>
                                 </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="39a-bV-wA9"/>
+                                    <constraint firstAttribute="width" constant="48" id="AOm-xz-1r3"/>
+                                </constraints>
                                 <state key="normal" image="icGrayarrow"/>
                                 <connections>
                                     <action selector="nextAction:" destination="qrh-LX-sgn" eventType="touchUpInside" id="Sod-93-0Nj"/>
@@ -718,12 +729,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JjL-i7-R3K" firstAttribute="centerX" secondItem="0gQ-WB-GBJ" secondAttribute="centerX" id="MdR-VI-Hha"/>
+                            <constraint firstItem="JjL-i7-R3K" firstAttribute="bottom" secondItem="q5e-Vi-Jzc" secondAttribute="bottom" constant="-31" id="Ega-Np-fUt"/>
                             <constraint firstItem="Hxd-iz-yJn" firstAttribute="centerX" secondItem="0gQ-WB-GBJ" secondAttribute="centerX" id="Pyi-Z8-jov"/>
-                            <constraint firstItem="JjL-i7-R3K" firstAttribute="bottom" secondItem="0gQ-WB-GBJ" secondAttribute="bottom" constant="3" id="Qvf-9j-kTj"/>
                             <constraint firstItem="TBv-pr-fao" firstAttribute="leading" secondItem="0gQ-WB-GBJ" secondAttribute="leading" id="SrW-iT-IBp"/>
                             <constraint firstItem="Hxd-iz-yJn" firstAttribute="top" secondItem="TBv-pr-fao" secondAttribute="bottom" constant="28" id="ZFG-KF-eUm"/>
                             <constraint firstItem="TBv-pr-fao" firstAttribute="top" secondItem="0gQ-WB-GBJ" secondAttribute="top" id="bA7-UJ-eVA"/>
+                            <constraint firstItem="osR-Pu-rXg" firstAttribute="leading" secondItem="JjL-i7-R3K" secondAttribute="trailing" constant="91" id="fIw-BJ-3wq"/>
+                            <constraint firstItem="0gQ-WB-GBJ" firstAttribute="trailing" secondItem="osR-Pu-rXg" secondAttribute="trailing" constant="31" id="ht3-kr-D5g"/>
+                            <constraint firstItem="osR-Pu-rXg" firstAttribute="bottom" secondItem="q5e-Vi-Jzc" secondAttribute="bottom" constant="-28" id="oJL-UF-KrQ"/>
                             <constraint firstAttribute="trailing" secondItem="TBv-pr-fao" secondAttribute="trailing" id="t2Q-5C-6S7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="0gQ-WB-GBJ"/>
@@ -738,7 +751,6 @@
                         <outlet property="btn6" destination="xMy-Bu-1fO" id="BE9-bk-S6k"/>
                         <outlet property="btn7" destination="KR3-vW-yWL" id="80u-G4-Ewe"/>
                         <outlet property="nextBtn" destination="osR-Pu-rXg" id="346-Za-YMG"/>
-                        <outlet property="pageLB" destination="JjL-i7-R3K" id="v4B-nw-Qun"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Xp-AN-h3E" userLabel="First Responder" sceneMemberID="firstResponder"/>

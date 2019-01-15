@@ -5,13 +5,17 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-// 브랜드 선택 뷰
+//  LogIn.Storyboard
+//  2)회원가입 단계에서 선호 브랜드를 선택하는 뷰
 
 import UIKit
 
 class UserInfoVC2: UIViewController {
     
     let userDefault = UserDefaults.standard
+    var brandIdx: [Int] = []
+    var gender: String?
+    
     
     var btnArray: [UIButton] = [UIButton]()
     @IBOutlet weak var btn0: UIButton!
@@ -22,12 +26,7 @@ class UserInfoVC2: UIViewController {
     @IBOutlet weak var btn5: UIButton!
     @IBOutlet weak var btn6: UIButton!
     @IBOutlet weak var btn7: UIButton!
-    
     @IBOutlet weak var nextBtn: UIButton!
-    @IBOutlet weak var pageLB: UILabel!
-    
-    var brandIdx: [Int] = []
-    var gender: String?
     
     //Buttons Images
     let menUnselected: [UIImage] = [#imageLiteral(resourceName: "manThisisneverthat"),#imageLiteral(resourceName: "manRomanticcrown"),#imageLiteral(resourceName: "manIstkunst"),#imageLiteral(resourceName: "manLiberteng"),#imageLiteral(resourceName: "manCovernat"),#imageLiteral(resourceName: "manAnderssonbell"),#imageLiteral(resourceName: "manInsilence"),#imageLiteral(resourceName: "manCritic")]
@@ -39,7 +38,6 @@ class UserInfoVC2: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initBtn()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -135,15 +133,16 @@ class UserInfoVC2: UIViewController {
             }
             
         }
-            
+        
+        //selected count == 2
         else {
             
-            if sender.isSelected == true{
+            if sender.isSelected == true {
                 sender.imageView!.image = menUnselected[sender.tag]
                 sender.isSelected = false
                 brandIdx.removeLast()
                 selectedCount -= 1
-                nextBtn.setImage( #imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+                nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
                 
             }
         }
@@ -153,16 +152,14 @@ class UserInfoVC2: UIViewController {
     @IBAction func nextAction(_ sender: Any) {
         
         if selectedCount == 2 {
+
+            let userInfoVC3 =  UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC3") as! UserInfoVC3
             
-//            print(brandIdx)
+            userInfoVC3.gender = self.gender
+            userInfoVC3.brandIdx1 = self.brandIdx[0]
+            userInfoVC3.brandIdx2 = self.brandIdx[1]
             
-            userDefault.set(brandIdx[0], forKey: "brand1_idx")
-            userDefault.set(brandIdx[1], forKey: "brand2_idx")
-            
-            let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
-            let userInfoVC3 = logIn.instantiateViewController(withIdentifier: "UserInfoVC3") as? UserInfoVC3
-            userInfoVC3?.gender = self.gender
-            self.navigationController?.pushViewController(userInfoVC3!, animated: true)
+            self.navigationController?.pushViewController(userInfoVC3, animated: true)
             
         }
         
@@ -170,6 +167,9 @@ class UserInfoVC2: UIViewController {
     }
 
 }
+
+
+
 //남,여 Tag 번호에 따른 실제 브랜드 Idx
 
 //남성:

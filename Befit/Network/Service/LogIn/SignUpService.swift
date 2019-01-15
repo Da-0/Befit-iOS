@@ -19,7 +19,7 @@ struct SignUpService: APIManager, Requestable{
     ]
     
     //회원가입 api
-    func signUp(email: String, pw: String, gender: String, name: String, brand1: Int, brand2: Int, birthday: String, completion: @escaping (String) -> Void) {
+    func signUp(email: String, pw: String, gender: String, name: String, brand1: Int, brand2: Int, birthday: String, completion: @escaping (NetworkData) -> Void) {
         
         let body = [
             "email" : email,
@@ -34,7 +34,7 @@ struct SignUpService: APIManager, Requestable{
         postable(URL, body: body, header: headers) { res in
             switch res {
             case .success(let value):
-               completion(value.message!)
+                completion(value)
             case .error(let error):
                 print(error)
             }
