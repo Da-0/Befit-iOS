@@ -14,7 +14,7 @@ class BrandVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var brandInfo : Brand!
     var brandIdx: Int?
-    var productInfo: [Product]?
+    var productList: [Product]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,26 +37,8 @@ class BrandVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
-
     @IBAction func backAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-    }
-    
-    
-    func productListNewInit() {
-        BrandProductSorting.shared.showSortingNew (brandIdx: brandIdx!, completion: { (productData) in
-            self.productInfo = productData
-
-            self.collectionView.reloadData()
-        })
-    }
-    
-    func productListPopularInit() {
-        BrandProductSorting.shared.showSortingPopular(brandIdx: brandIdx!, completion: { (productData) in
-            self.productInfo = productData
-        
-            self.collectionView.reloadData()
-        })
     }
     
 }
@@ -66,17 +48,14 @@ extension BrandVC: UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
-
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if section == 0 {
-            return 1
-        }else {
-            guard let product = productInfo else {return 0}
+        if section == 0 {return 1}
+        else {
+            guard let product = productList else {return 0}
             return product.count
         }
-        
     }
     
  
@@ -92,22 +71,16 @@ extension BrandVC: UICollectionViewDataSource{
             cell1.BrandNameEndglishLB.text = brandInfo.name_english
             cell1.BrandNameKoreanLB.text = brandInfo.name_korean
             
-            if brandInfo.likeFlag == 1 {
-                 cell1.LikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-            }else{
-                cell1.LikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
-            }
+            if brandInfo.likeFlag == 1 {cell1.LikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)}
+            else{cell1.LikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)}
             
-            guard let product = productInfo else {return cell1}
+            guard let product = productList else {return cell1}
+            
+            cell1.LikeBtn.addTarget(self, action: #selector(clickBLike(_:)), for: .touchUpInside)
             cell1.ProductNumLB.text = "PRODUCT (" + "\(product.count)" + ")"
-        
-            //인기순 신상품순 버튼 설정
             cell1.NewBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
             cell1.PopularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
-            
-            //브랜드 좋아요 하트 버튼 설정
-            cell1.LikeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
-            
+          
             return cell1
         }
             
@@ -115,27 +88,78 @@ extension BrandVC: UICollectionViewDataSource{
         else {
         
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
-            
-            cell2.backgroundColor = UIColor.white
-            
-            cell2.brandName.text = productInfo?[indexPath.row].name_korean
-            cell2.productName.text = productInfo?[indexPath.row].name
-            cell2.price.text = productInfo?[indexPath.row].price
-            cell2.productImg.imageFromUrl(productInfo?[indexPath.row].image_url, defaultImgPath: "")
+        
+            cell2.brandName.text = productList?[indexPath.row].name_korean
+            cell2.productName.text = productList?[indexPath.row].name
+            cell2.price.text = productList?[indexPath.row].price
+            cell2.likeBtn.addTarget(self, action: #selector(clickPLike(_:)), for: .touchUpInside)
+            cell2.likeBtn.tag = indexPath.row
+            cell2.productImg.imageFromUrl(productList?[indexPath.row].image_url, defaultImgPath: "")
             
             return cell2
         }
         
     }
     
-    
-    //좋아요가 작동하는 부분
-    @objc func clickLike(_ sender: UIButton){
+    @objc func newBtnClicked(){
+        productListNewInit()
         
+    }
+    
+    @objc func popularBtnClicked(){
+        productListPopularInit()
+        
+    }
+    
+    func productListNewInit() {
+        BrandProductSorting.shared.showSortingNew (brandIdx: brandIdx!, completion: { (productData) in
+            self.productList = productData
+            self.collectionView.reloadData()
+        })
+    }
+    
+    func productListPopularInit() {
+        BrandProductSorting.shared.showSortingPopular(brandIdx: brandIdx!, completion: { (productData) in
+            self.productList = productData
+            self.collectionView.reloadData()
+        })
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        //상단부 클릭시 브랜드의 홈페이지로 이동
+        if indexPath.section == 0 {
+            let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+            productVC.brandName = brandInfo.name_english
+            productVC.address = brandInfo.link
+            productVC.brandHome = true
+            self.navigationController?.present(productVC, animated: true, completion: nil)
+        }
+        //하단부 클릭시 상품의 페이지몰로 이동
+        else {
+            let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+            productVC.brandName = productList?[indexPath.row].name_English
+            productVC.address = productList?[indexPath.row].link
+            productVC.productInfo = productList?[indexPath.row]
+            self.navigationController?.present(productVC, animated: true, completion: nil)
+        }
+        
+    }
+    
+}
+
+
+
+//MARK: - 좋아요 클릭 기능
+extension BrandVC {
+    
+    //1. 브랜드 좋아요
+    @objc func clickBLike(_ sender: UIButton){
+        
+        //1) 브랜드 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
-             sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
-            
-            //1) 브랜드 좋아요 취소가 작동하는 부분
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
             UnLikeBService.shared.unlike(brandIdx: brandIdx!) { (res) in
                 if let status = res.status {
                     switch status {
@@ -148,11 +172,9 @@ extension BrandVC: UICollectionViewDataSource{
                 }
             }
         }
-            
+        //2) 브랜드 좋아요가 작동하는 부분
         else {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-            
-            //2)브랜드 좋아요가 작동하는 부분
             LikeBService.shared.like(brandIdx: brandIdx!) { (res) in
                 if let status = res.status {
                     switch status {
@@ -170,33 +192,46 @@ extension BrandVC: UICollectionViewDataSource{
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    
+    //2. 상품 좋아요 관련
+    @objc func clickPLike(_ sender: UIButton){
         
-        if indexPath.section == 0 {
-            let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-            productVC.brandName = brandInfo.name_english
-            productVC.address = brandInfo.link
-            productVC.brandHome = true
-            print("브랜드의 링크 = " + brandInfo.link!)
-            self.navigationController?.present(productVC, animated: true, completion: nil)
+        guard let productIdx = productList?[sender.tag].idx else {return}
+        
+        //1) 상품 좋아요 취소가 작동하는 부분
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            
+            UnLikePService.shared.unlike(productIdx: productIdx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 200 :
+                        print("상품 좋아요 취소 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
         }
+            
+        //2) 상품 좋아요가 작동하는 부분
         else {
-            let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-            productVC.brandName = productInfo?[indexPath.row].name_English
-            productVC.address = productInfo?[indexPath.row].link
-            productVC.productInfo = productInfo?[indexPath.row]
-            self.navigationController?.present(productVC, animated: true, completion: nil)
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            
+            LikePService.shared.like(productIdx: productIdx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 201 :
+                        print("상품 좋아요 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
         }
-    }
-    
-    
-    @objc func newBtnClicked(){
-        productListNewInit()
-        
-    }
-    
-    @objc func popularBtnClicked(){
-        productListPopularInit()
         
     }
     
@@ -242,12 +277,4 @@ extension BrandVC: UICollectionViewDelegateFlowLayout{
 }
 
 
-extension UIImageView {
-    
-    func setRounded() {
-        self.layer.cornerRadius = (self.frame.width / 2)
-        //instead of let radius = CGRectGetWidth(self.frame) / 2
-        self.layer.masksToBounds = true
-    }
-}
 

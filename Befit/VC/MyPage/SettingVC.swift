@@ -33,6 +33,8 @@ class SettingVC: UIViewController {
         }
         else{
             print("자동로그인 OFF!")
+            userDefault.removeObject(forKey: "pw")
+            userDefault.removeObject(forKey: "id")
         }
     }
     

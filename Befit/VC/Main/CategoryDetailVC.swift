@@ -145,7 +145,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
 
         guard let productIdx = productList?[sender.tag].idx else {return}
         
-         //1) 브랜드 좋아요 취소가 작동하는 부분
+         //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
         
@@ -162,7 +162,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
             }
         }
             
-        //2)브랜드 좋아요가 작동하는 부분
+        //2)상품 좋아요가 작동하는 부분
         else {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
             
