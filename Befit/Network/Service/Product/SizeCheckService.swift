@@ -11,7 +11,7 @@ import Alamofire
 struct SizeCheckService: APIManager, Requestable{
     
     let userDefault = UserDefaults.standard
-    typealias NetworkData = ResponseObject<SizeCheck>
+    typealias NetworkData = ResponseObject<Token>
     static let shared = SizeCheckService()
     
     func showSizeCheck(closetIdx: Int? ,productIdx: Int?, productSize: String?, completion: @escaping (NetworkData) -> Void) {

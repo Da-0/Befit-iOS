@@ -5,7 +5,8 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-//  회원 가입 뷰
+//  LogIn.Storyboard
+//  3)회원가입 단계에서 개인 정보를 입력하는 뷰
 
 import UIKit
 
@@ -13,32 +14,42 @@ class UserInfoVC3: UIViewController {
     
     let userDefault = UserDefaults.standard
     
+    //Name
     @IBOutlet weak var nameTF: UITextField!
     
+    //Birthday
     @IBOutlet weak var yearTF: UITextField!
     @IBOutlet weak var monthTF: UITextField!
     @IBOutlet weak var dayTF: UITextField!
+    
+    //Email
+    @IBOutlet weak var emailTF: UITextField!
+    @IBOutlet weak var duplicationLB: UILabel!
+    
+    //PW
+    @IBOutlet weak var passwordTF: UITextField!
+    @IBOutlet weak var passwordNoticeLB: UILabel!
+    @IBOutlet weak var passwordCkTF: UITextField!
+    @IBOutlet weak var correctLB: UILabel!
+    var pwCheck: Bool = false
+    
+    //brand preferences
+    var brandIdx1: Int?
+    var brandIdx2: Int?
+
+    @IBOutlet weak var nextBtn: UIButton!
     
     let pickerView1 = UIPickerView()
     let pickerView2 = UIPickerView()
     let pickerView3 = UIPickerView()
     
-    @IBOutlet weak var emailTF: UITextField!
-    @IBOutlet weak var duplicationLB: UILabel!
-    @IBOutlet weak var passwordTF: UITextField!
-    @IBOutlet weak var passwordNoticeLB: UILabel!
-    @IBOutlet weak var passwordCkTF: UITextField!
-    @IBOutlet weak var correctLB: UILabel!
-    
-    @IBOutlet weak var nextBtn: UIButton!
     var gender: String?
-    
     var keyboardDismissGesture : UITapGestureRecognizer?
     
     var yearsTillNow : [String] {
         var years = [String]()
         for i in (1960...2019).reversed() {
-            years.append("\(i)")
+            years.append("\(i)년")
         }
         return years
     }
@@ -46,7 +57,7 @@ class UserInfoVC3: UIViewController {
     var monthsTillNow : [String] {
         var month = [String]()
         for i in 1...12 {
-            month.append("\(i)")
+            month.append("\(i)월")
         }
         return month
     }
@@ -54,16 +65,14 @@ class UserInfoVC3: UIViewController {
     var daysTillNow : [String] {
         var days = [String]()
         for i in 1...31 {
-            days.append("\(i)")
+            days.append("\(i)일")
         }
         return days
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setKeyboardSetting()
-        setupTap()
         initPicker()
         
     }
@@ -85,71 +94,82 @@ class UserInfoVC3: UIViewController {
     }
     
     
+    @IBAction func nextAction(_ sender: Any) {
+        if pwCheck == false {
+            simpleAlert(title: "Error", message: "비밀번호 입력을 확인해 주세요")
+        }
+        else{
+            network()
+        }
+    }
     
-    // 이메일 정규화
+    func network(){
+        
+        let year = yearTF.text?.dropLast()
+        let month = monthTF.text?.dropLast()
+        let day = dayTF.text?.dropLast()
+        
+        let birthday = "\(year!)" + "/" + "\(month!)" + "/" + "\(day!)"
+       
+        SignUpService.shared.signUp(email: emailTF.text!, pw: passwordCkTF.text!, gender: gender!, name: nameTF.text!, brand1: brandIdx1!, brand2: brandIdx2!, birthday: birthday, completion: {[weak self] (res) in
+            guard let `self` = self else {return}
+            
+            guard let status = res.status else {return}
+            
+            switch status {
+                case 201:
+                    self.dismiss(animated: true, completion: nil)
+                case 409:
+                    self.simpleAlert(title: "Error", message: res.message!)
+                    self.duplicationLB.isHidden = false
+                    self.duplicationLB.text = "중복"
+                case 400,500,600:
+                    self.simpleAlert(title: "Error", message: res.message!)
+                default: break
+            }
+        })
+    }
+    
+}
+
+
+//MARK: - 정규화 작업(TextField)
+extension UserInfoVC3 {
+    
+    
+    //이메일 정규화
     @IBAction func emailAction(_ sender: Any) {
         
-        if emailTF.text?.validationEmail() == true {
-            duplicationLB.text?.removeAll()
-        }
-        else {
-            duplicationLB.isHidden = false
-            duplicationLB.text?.removeAll()
-            duplicationLB.text?.append("형식오류")
-        }
+        guard let check = emailTF.text?.validationEmail() else {return}
         
+        duplicationLB.isHidden = check ? true : false
+        duplicationLB.text = check ? "" : "형식오류"
+    
     }
     
-    // 비밀번호 정규화
+    //비밀번호 정규화
     @IBAction func pwAction(_ sender: Any) {
         
-        if passwordTF.text?.validationPassword() == true {
-            passwordCkTF.isEnabled = true
-            passwordNoticeLB.textColor =   #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5)
-        }
-        else {
-            passwordCkTF.isEnabled = false
-            passwordNoticeLB.textColor =  #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1)
-            
-        }
+        guard let check = passwordTF.text?.validationPassword() else {return}
+        
+        passwordCkTF.isEnabled = check ? true : false
+        passwordNoticeLB.textColor = check ? #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) : #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1)
+        pwCheck = check ? true : false
         
     }
     
-    // 비밀번호 확인
+    //비밀번호 일치여부 확인
     @IBAction func pwCkAction(_ sender: Any) {
+        let check = passwordTF.text == passwordCkTF.text
+        correctLB.isHidden = false
+        correctLB.text = check ? "일치" : "불일치"
+        pwCheck = check ? true : false
         
-        if passwordTF.text != passwordCkTF.text {
-            correctLB.isHidden = false
-            correctLB.text?.removeAll()
-            correctLB.text?.append("불일치")
-            passwordCkTF.clearButtonMode = .never
-            
-        }
-            // 일치
-        else {
-            correctLB.isHidden = false
-            correctLB.text?.removeAll()
-            correctLB.text?.append("일치")
-        }
-        
+        changeNextBtn()
     }
     
-//    func completeWrite() {
-//        
-//        guard nameTF.text?.isEmpty != true else {return}
-//        guard yearTF.text?.isEmpty != true else {return}
-//        guard monthTF.text?.isEmpty != true else {return}
-//        guard dayTF.text?.isEmpty != true else {return}
-//        guard emailTF.text?.isEmpty != true else {return}
-//        guard passwordTF.text?.isEmpty != true else {return}
-//        guard passwordCkTF.text?.isEmpty != true else {return}
-//        
-//        nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
-//    }
     
-    
-    
-    @IBAction func nextAction(_ sender: Any) {
+    func changeNextBtn(){
         
         guard nameTF.text?.isEmpty != true else {return}
         guard yearTF.text?.isEmpty != true else {return}
@@ -159,32 +179,19 @@ class UserInfoVC3: UIViewController {
         guard passwordTF.text?.isEmpty != true else {return}
         guard passwordCkTF.text?.isEmpty != true else {return}
         
-        nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
-        
-        network()
+        if pwCheck == true {
+            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+        }
+        else{
+            nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+        }
     }
     
-    
-    func network(){
-    
-        let brand1 = userDefault.integer(forKey: "brand1_idx")
-        let brand2 = userDefault.integer(forKey: "brand2_idx")
-        
-        let birthday = yearTF.text! + "/" + monthTF.text! + "/" + dayTF.text!
-        
-        SignUpService.shared.signUp(email: emailTF.text!, pw: passwordCkTF.text!, gender: gender!, name: nameTF.text!, brand1: brand1, brand2: brand2, birthday: birthday, completion: {[weak self] (res) in
-            guard let `self` = self else {return}
-            
-            if res == "회원가입 성공" {
-                //self.nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
-                self.dismiss(animated: true, completion: nil)
-            }
-        })
-    }
     
 }
 
-//MARK: - picker
+
+//MARK: - Picker
 extension UserInfoVC3: UIPickerViewDelegate,UIPickerViewDataSource{
     
     func initPicker() {
@@ -262,18 +269,6 @@ extension UserInfoVC3: UIPickerViewDelegate,UIPickerViewDataSource{
 //MARK: - 키보드 대응 및 뷰 탭
 extension UserInfoVC3: UITextFieldDelegate, UIGestureRecognizerDelegate {
     
-    
-    func setupTap() {
-        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
-        self.view.addGestureRecognizer(viewTap)
-    }
-    
-    //뷰를 탭하면 edit 상태를 끝낸다
-    @objc func viewTapped() {
-        self.view.endEditing(true)
-    }
-    
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -282,11 +277,6 @@ extension UserInfoVC3: UITextFieldDelegate, UIGestureRecognizerDelegate {
         textField.resignFirstResponder()
         self.view.endEditing(true)
         return true
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if textField.tag == 6 {
-            nextBtn.setImage(#imageLiteral(resourceName: "icPurplearrow"), for: .normal)
-        }
     }
     
     func setKeyboardSetting() {
@@ -303,8 +293,6 @@ extension UserInfoVC3: UITextFieldDelegate, UIGestureRecognizerDelegate {
         adjustKeyboardDismissGesture(isKeyboardVisible: false)
         self.view.frame.origin.y = 0
     }
-    
-    
     
     func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
         if isKeyboardVisible {
@@ -327,22 +315,3 @@ extension UserInfoVC3: UITextFieldDelegate, UIGestureRecognizerDelegate {
 
 
 
-//MARK: - 정규화
-extension String {
-    
-    func validationEmail() -> Bool {
-        let emailRegex = "^.+@([A-Za-z0-0-]+\\.)+[A-Za-z]{2}[A-Za-z]*$"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        
-        return predicate.evaluate(with: self)
-        
-    }
-    
-    func validationPassword() -> Bool {
-        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[$@$!%*#?&])[A-Za-z\\d$@$!%*#?&]{8,20}$"
-        let predicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        
-        return predicate.evaluate(with: self)
-    }
-    
-}

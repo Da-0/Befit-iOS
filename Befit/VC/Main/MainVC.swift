@@ -104,7 +104,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
             guard let productList = recommendProduct else {return cell2}
             cell2.productImg.imageFromUrl(productList[indexPath.row].image_url, defaultImgPath: "")
-            cell2.brandName.text = productList[indexPath.row].brand_English_name
+            cell2.brandName.text = productList[indexPath.row].name_English
             cell2.productName.text = productList[indexPath.row].name
             return cell2
         }
@@ -123,7 +123,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         }
         else {
             let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
-            productVC.brandName = recommendProduct?[indexPath.row].brand_English_name
+            productVC.brandName = recommendProduct?[indexPath.row].name_English
             productVC.address = recommendProduct?[indexPath.row].link
 //            productVC.productIdx = recommendProduct?[indexPath.row].idx
             productVC.productInfo = recommendProduct?[indexPath.row]

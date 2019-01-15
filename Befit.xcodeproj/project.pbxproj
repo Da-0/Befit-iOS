@@ -36,12 +36,12 @@
 		503114C021E4881E008D81AC /* ProductSelectService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114BF21E4881E008D81AC /* ProductSelectService.swift */; };
 		503114C221E4F9AF008D81AC /* AddClosetService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114C121E4F9AF008D81AC /* AddClosetService.swift */; };
 		503114C421E50B8C008D81AC /* GetClosetDetailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114C321E50B8C008D81AC /* GetClosetDetailService.swift */; };
+		50373B7621EC8D4C0005153E /* Idx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50373B7521EC8D4C0005153E /* Idx.swift */; };
 		503DF98D21D88A12001F950D /* SearchBrandTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503DF98C21D88A12001F950D /* SearchBrandTVC.swift */; };
 		504CBAEB21D9DA38008606F7 /* UserInfoAdminVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */; };
 		504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */; };
 		505E410121E86D5B0058DAAC /* MySizeCheckCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */; };
 		505E410421E87CE70058DAAC /* SizeCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410321E87CE70058DAAC /* SizeCheckService.swift */; };
-		505E410621E8806B0058DAAC /* SizeCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410521E8806B0058DAAC /* SizeCheck.swift */; };
 		505E410821E8CD5C0058DAAC /* XL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410721E8CD5C0058DAAC /* XL.swift */; };
 		5066557721D21FDF00580137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557621D21FDF00580137 /* AppDelegate.swift */; };
 		5066557921D21FDF00580137 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557821D21FDF00580137 /* MainVC.swift */; };
@@ -163,12 +163,12 @@
 		503114BF21E4881E008D81AC /* ProductSelectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSelectService.swift; sourceTree = "<group>"; };
 		503114C121E4F9AF008D81AC /* AddClosetService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClosetService.swift; sourceTree = "<group>"; };
 		503114C321E50B8C008D81AC /* GetClosetDetailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClosetDetailService.swift; sourceTree = "<group>"; };
+		50373B7521EC8D4C0005153E /* Idx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idx.swift; sourceTree = "<group>"; };
 		503DF98C21D88A12001F950D /* SearchBrandTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVC.swift; sourceTree = "<group>"; };
 		504CBAEA21D9DA38008606F7 /* UserInfoAdminVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoAdminVC.swift; sourceTree = "<group>"; };
 		504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeVC.swift; sourceTree = "<group>"; };
 		505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySizeCheckCVCell.swift; sourceTree = "<group>"; };
 		505E410321E87CE70058DAAC /* SizeCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckService.swift; sourceTree = "<group>"; };
-		505E410521E8806B0058DAAC /* SizeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheck.swift; sourceTree = "<group>"; };
 		505E410721E8CD5C0058DAAC /* XL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XL.swift; sourceTree = "<group>"; };
 		5066557321D21FDF00580137 /* Befit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Befit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5066557621D21FDF00580137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -416,9 +416,9 @@
 			children = (
 				5066557621D21FDF00580137 /* AppDelegate.swift */,
 				5066558821D2230D00580137 /* Storyboard */,
+				5066558B21D2232800580137 /* VC */,
 				5066558A21D2231D00580137 /* Model */,
 				5066558921D2231500580137 /* View */,
-				5066558B21D2232800580137 /* VC */,
 				50DD804021E19E3300E6F743 /* Network */,
 				5066558C21D2235A00580137 /* Resources */,
 				50DD804121E19E4B00E6F743 /* Extension */,
@@ -461,13 +461,13 @@
 				50DD804A21E1AAE400E6F743 /* ResponseObject.swift */,
 				50DD804C21E1AAFC00E6F743 /* ResponseArray.swift */,
 				50DD804821E1AACA00E6F743 /* Token.swift */,
-				5066558D21D228C900580137 /* Category.swift */,
 				503114AF21E3C646008D81AC /* User.swift */,
+				50373B7521EC8D4C0005153E /* Idx.swift */,
+				5066558D21D228C900580137 /* Category.swift */,
 				5031148821E1EAC5008D81AC /* Brand.swift */,
 				5031149F21E37EC5008D81AC /* Product.swift */,
 				503114BB21E47962008D81AC /* Closet.swift */,
 				503114A121E37ED9008D81AC /* Measure.swift */,
-				505E410521E8806B0058DAAC /* SizeCheck.swift */,
 				503114A321E37F4B008D81AC /* Size */,
 			);
 			path = Model;
@@ -490,11 +490,11 @@
 		5066558C21D2235A00580137 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A51C952C21E8AEA0008727E1 /* material_wave_loading.json */,
 				A59B1C9621D34EC600C2B6F2 /* KoPubDotumBold.ttf */,
 				A59B1C9521D34EC600C2B6F2 /* KoPubDotumLight.ttf */,
 				A59B1C9721D34EC600C2B6F2 /* KoPubDotumMedium.ttf */,
 				A5DED4C621E7D59000CB9756 /* data.json */,
+				A51C952C21E8AEA0008727E1 /* material_wave_loading.json */,
 				5066557D21D21FE000580137 /* Assets.xcassets */,
 				5066558221D21FE000580137 /* Info.plist */,
 			);
@@ -864,6 +864,7 @@
 				50DAFCE721E6783700D4BF2F /* MainCVCell00.swift in Sources */,
 				A5BA69AE21E1DCB200949E42 /* DescriptionVC.swift in Sources */,
 				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
+				50373B7621EC8D4C0005153E /* Idx.swift in Sources */,
 				5031149B21E34F31008D81AC /* BrandCRV.swift in Sources */,
 				50DD804B21E1AAE400E6F743 /* ResponseObject.swift in Sources */,
 				503114AE21E3C5F7008D81AC /* UserInfoService.swift in Sources */,
@@ -908,7 +909,6 @@
 				506655D121D25A4A00580137 /* LikeVC.swift in Sources */,
 				50DD804321E19E6900E6F743 /* NetworkResult.swift in Sources */,
 				506655BC21D2547500580137 /* UserInfoVC3.swift in Sources */,
-				505E410621E8806B0058DAAC /* SizeCheck.swift in Sources */,
 				50DAFCE321E6024400D4BF2F /* MainCVCell2.swift in Sources */,
 				507D139E21E79F5100937A6D /* UnLikeBService.swift in Sources */,
 				5068A53B21DE263C00F22E95 /* ProductSelectVC.swift in Sources */,
@@ -1098,7 +1098,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
+				DEVELOPMENT_TEAM = 8E3WW2RPPH;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1120,7 +1120,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7ZCA7Z3DUW;
+				DEVELOPMENT_TEAM = 8E3WW2RPPH;
 				INFOPLIST_FILE = "$(SRCROOT)/Befit/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (

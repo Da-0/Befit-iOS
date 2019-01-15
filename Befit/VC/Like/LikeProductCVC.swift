@@ -68,7 +68,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeProductCVCell", for: indexPath) as! LikeProductCVCell
         
         cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
-        cell.brandName.text = product.brand_Korean_name
+        cell.brandName.text = product.name_korean
         cell.productName.text = product.name
         cell.price.text = product.price
         
@@ -127,7 +127,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
-        productVC.brandName = productLikeList[indexPath.row].brand_English_name
+        productVC.brandName = productLikeList[indexPath.row].name_English
         productVC.address = productLikeList[indexPath.row].link
 //        productVC.productIdx = productLikeList[indexPath.row].idx
         self.navigationController?.present(productVC, animated: true, completion: nil)
