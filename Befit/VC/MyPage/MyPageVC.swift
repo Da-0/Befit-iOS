@@ -39,6 +39,8 @@ class MyPageVC: UIViewController {
     func network(){
         UserInfoService.shared.showUserInfo { (res) in
             
+            //현재 로그인 한 유저의 정보
+            
             print("\n<***현재 회원 정보***>")
             print("idx = \(res.idx!)")
             print("email = \(res.email!)")
@@ -47,7 +49,14 @@ class MyPageVC: UIViewController {
             print("name = \(res.name!)")
             print("brand1 = \(res.brand1_idx!)")
             print("brand2 = \(res.brand2_idx!)")
-            print("birth = \(res.birthday!)\n")
+            print("birth = \(res.birthday!)")
+            
+            guard let address = res.home_address, let detail = res.detail_address, let phone = res.phone, let post = res.post_number
+            else {return}
+            print("postcode = " + post)
+            print("adress = " + address + " " + detail)
+            print("phone = " + phone)
+            
             
             self.userName.text = res.name
             self.userEmail.text = res.email

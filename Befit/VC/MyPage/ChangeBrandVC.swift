@@ -8,6 +8,28 @@
 //  MyPage.storyboard
 //  선호브랜드 재선택 뷰
 
+//남,여 Tag 번호에 따른 실제 브랜드 Idx
+
+//남성:
+//0. THISISNEVERTHAT 17.
+//1. ROMANTIC CROWN 12
+//2. IST KUNST 18
+//3. LIBERTENG 10
+//4. COVERNAT 7
+//5. ANDERSSON BELL 9
+//6. INSILENCE 22
+//7. CRITIC 14
+
+//여성:
+//0. THISISNEVERTHAT 17
+//1. ROMANTIC CROWN 12
+//2. MINAV 2    ***************
+//3. LAFUDGESTORE 3   ***************
+//4. MORE OR LESS 32   ***************
+//5. ANDERSSON BELL 9
+//6. OiOi 37     ***************
+//7. CRITIC 14
+
 import UIKit
 
 class ChangeBrandVC: UIViewController {
@@ -74,8 +96,10 @@ class ChangeBrandVC: UIViewController {
             }
         }
         
-            for selected in brandIdx {
-                switch selected {
+       for selected in brandIdx {
+            
+            switch selected {
+                
                 case 17:
                     btnArray[0].setImage(menSelected[0], for: .selected)
                     btnArray[0].isSelected = true
@@ -102,7 +126,7 @@ class ChangeBrandVC: UIViewController {
                      btnArray[7].isSelected = true
                 default: break
                 }
-            }
+        }
    
     
 
@@ -208,27 +232,7 @@ class ChangeBrandVC: UIViewController {
 
 
 
-//남,여 Tag 번호에 따른 실제 브랜드 Idx
 
-//남성:
-//0. THISISNEVERTHAT 17.
-//1. ROMANTIC CROWN 12
-//2. IST KUNST 18
-//3. LIBERTENG 10
-//4. COVERNAT 7
-//5. ANDERSSON BELL 9
-//6. INSILENCE 22
-//7. CRITIC 14
-
-//여성:
-//0. THISISNEVERTHAT 17
-//1. ROMANTIC CROWN 12
-//2. MINAV 2    ***************
-//3. LAFUDGESTORE 3   ***************
-//4. MORE OR LESS 32   ***************
-//5. ANDERSSON BELL 9
-//6. OiOi 37     ***************
-//7. CRITIC 14
 
 
 
