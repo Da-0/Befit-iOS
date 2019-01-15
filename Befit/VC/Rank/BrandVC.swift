@@ -132,8 +132,6 @@ extension BrandVC: UICollectionViewDataSource{
     //좋아요가 작동하는 부분
     @objc func clickLike(_ sender: UIButton){
         
-        print(sender.tag)
-        
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
              sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
             
@@ -174,22 +172,30 @@ extension BrandVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-        productVC.brandName = productInfo?[indexPath.row].name_English
-        productVC.address = productInfo?[indexPath.row].link
-        productVC.productInfo = productInfo?[indexPath.row]
-        self.navigationController?.present(productVC, animated: true, completion: nil)
+        if indexPath.section == 0 {
+            let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+            productVC.brandName = brandInfo.name_english
+            productVC.address = brandInfo.link
+            productVC.brandHome = true
+            print("브랜드의 링크 = " + brandInfo.link!)
+            self.navigationController?.present(productVC, animated: true, completion: nil)
+        }
+        else {
+            let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+            productVC.brandName = productInfo?[indexPath.row].name_English
+            productVC.address = productInfo?[indexPath.row].link
+            productVC.productInfo = productInfo?[indexPath.row]
+            self.navigationController?.present(productVC, animated: true, completion: nil)
+        }
     }
     
     
     @objc func newBtnClicked(){
-        print("신상버튼")
         productListNewInit()
         
     }
     
     @objc func popularBtnClicked(){
-        print("인기버튼")
         productListPopularInit()
         
     }
@@ -209,21 +215,20 @@ extension BrandVC: UICollectionViewDelegateFlowLayout{
             
         }
         else {
-            //iphone사이즈에 따라 동적으로 대응이 가능해진다.
-            // let width: CGFloat = (self.collectionView.frame.width ) / 2 - 20
-            // let height: CGFloat =  (self.collectionView.frame.height ) / 2 - 20
             return CGSize(width: 167, height: 235)
         }
         
    }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 9
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         
         return 9
-        
+    
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         if section == 0 {
@@ -240,7 +245,8 @@ extension BrandVC: UICollectionViewDelegateFlowLayout{
 extension UIImageView {
     
     func setRounded() {
-        self.layer.cornerRadius = (self.frame.width / 2) //instead of let radius = CGRectGetWidth(self.frame) / 2
+        self.layer.cornerRadius = (self.frame.width / 2)
+        //instead of let radius = CGRectGetWidth(self.frame) / 2
         self.layer.masksToBounds = true
     }
 }

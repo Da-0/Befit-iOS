@@ -46,11 +46,14 @@ class SettingVC: UIViewController {
             
             let okAction = UIAlertAction(title: "확인", style: .default) {
                 _ in
-                UserDefaults.standard.removeObject(forKey: "token")
                 
-                print("token 삭제후 UserDefault 값 확인")
-                print(self.userDefault.string(forKey: "token"))
+                UserDefaults.standard.removeObject(forKey: "token")
+                UserDefaults.standard.removeObject(forKey: "id")
+                UserDefaults.standard.removeObject(forKey: "pw")
                 UserDefaults.standard.synchronize()
+                
+                print("token 삭제후 UserDefault 값 = " + "\(self.userDefault.string(forKey: "token"))")
+                
                 self.performSegue(withIdentifier: "GoToLogin", sender: self)
             }
             
