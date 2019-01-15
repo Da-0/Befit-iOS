@@ -66,7 +66,7 @@ class SettingVC: UIViewController {
 
     @IBAction func signoutBtn(_ sender: Any) {
         
-        print("회원탈탈탈!")
+        print("회원을 탈퇴하였습니다!")
         
     }
 }
