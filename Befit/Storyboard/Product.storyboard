@@ -72,6 +72,7 @@
                     <connections>
                         <outlet property="loading" destination="mEw-N0-MIO" id="vi7-fS-lME"/>
                         <outlet property="navigationBar" destination="f0w-ZN-gZh" id="Ov9-Ti-iFR"/>
+                        <outlet property="sizeCheckBtn" destination="fko-cP-KSb" id="Abr-NO-9G6"/>
                         <outlet property="webView" destination="Ude-sB-9v8" id="hPi-nx-g2R"/>
                     </connections>
                 </viewController>

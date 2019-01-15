@@ -5,6 +5,8 @@
 //  Created by 박다영 on 30/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  LogIn.storyboard
+//  계정 비밀번호 재설정 뷰
 
 import UIKit
 
@@ -21,19 +23,7 @@ class PWSettingVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         newPWTF.addTarget(self, action: #selector(didEndOnExit(_:)), for: UIControl.Event.editingDidEndOnExit)
-
-        setKeyboardSetting()
-        
-        // 텍스트필드 borderColor
-        newPWTF.setCustom()
-        newPWCKTF.setCustom()
-        
-        
-        // 텍스트필드 padding
-        newPWTF.setLeftPaddingPoints(14)
-        newPWCKTF.setLeftPaddingPoints(14)
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,8 +38,8 @@ class PWSettingVC: UIViewController {
     
     
     @IBAction func passwordRegex(_ sender: Any) {
-        if let check = newPWTF.text?.validationEmail(){
-            newPWCKTF.isEnabled = check ? true : false
+        if let check = newPWTF.text?.validationEmail() {
+//            newPWCKTF.isEnabled = check ? true : false
             passwordNoticeLB.textColor = check ? #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) : #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1)
         }
     }
@@ -59,7 +49,6 @@ class PWSettingVC: UIViewController {
         // password 불일치 시
         if newPWTF.text != newPWCKTF.text {
             disagreeLB.isHidden = false
-            newPWCKTF.clearButtonMode = .never
             okBtn.isEnabled = false
         }
         // 일치
@@ -118,64 +107,19 @@ extension PWSettingVC: UITextFieldDelegate {
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
-        
         self.view.endEditing(true)
         return true
     }
     
-    func setKeyboardSetting() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-    }
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        adjustKeyboardDismissGesture(isKeyboardVisible: true)
-//        self.view.frame.origin.y = -110
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        adjustKeyboardDismissGesture(isKeyboardVisible: false)
-//        self.view.frame.origin.y = 0
-    }
-    
-    
-    
-    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
-        if isKeyboardVisible {
-            if keyboardDismissGesture == nil {
-                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
-                view.addGestureRecognizer(keyboardDismissGesture!)
-            }
-        } else {
-            if keyboardDismissGesture != nil {
-                view.removeGestureRecognizer(keyboardDismissGesture!)
-                keyboardDismissGesture = nil
-            }
-        }
-    }
     
     @objc func tapBackground() {
         self.view.endEditing(true)
     }
     
     @objc func didEndOnExit(_ sender: UITextField) {
-        // 각각 한줄 한줄 input 값을 입력하고, 엔터키를 누르면, 바로 아래의 textfield로 넘어감.
         if sender === newPWTF {
             newPWCKTF.becomeFirstResponder()
         }
-        // 리턴을 누르면, accountcheckPassword 필드로 커서가 이동을 한다.
-        //accountCheckPassWord.becomeFirstResponder()
-//        print("exit")
     }
 }
 
-//
-//extension UITextField {
-//
-//    func setLeftPaddingPoints(_ amount:CGFloat){
-//        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: amount, height: self.frame.size.height))
-//        self.leftView = paddingView
-//        self.leftViewMode = .always
-//    }
-//
-//}
