@@ -24,6 +24,10 @@ class LogInVC: UIViewController, APIManager {
         super.viewDidLoad()
         setKeyboardSetting()
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
+        
+        if let uid = userDefault.string(forKey: "id"), let upw = userDefault.string(forKey: "pw"){
+        autoLogIn(uid, upw)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,6 +46,25 @@ class LogInVC: UIViewController, APIManager {
         
     }
     
+    func autoLogIn(_ uid: String,_ upw: String){
+      
+        LoginService.shared.login(email: uid, password: upw, completion: {[weak self] (res) in
+            
+            guard let `self` = self else {return}
+            if let status = res.status {
+                switch status {
+                case 200 :
+                    guard let token = res.data?.token else { return}
+                    self.userDefault.set(token, forKey: "token")
+                    let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
+                    self.present(mainVC, animated: true, completion: nil)
+                    break
+                default:
+                    break
+                }
+            }
+        })
+    }
     
     func network(){
         
@@ -80,9 +103,13 @@ class LogInVC: UIViewController, APIManager {
     @IBAction func autoLogin(_ sender: UISwitch) {
         if sender.isOn {
             print("자동로그인 켰습니다!")
+            userDefault.set(emailTF.text!, forKey: "id")
+            userDefault.set(pwTF.text!, forKey: "pw")
         }
         else{
             print("자동로그인 껐습니다!")
+            userDefault.removeObject(forKey: "id")
+            userDefault.removeObject(forKey: "pw")
         }
     }
     

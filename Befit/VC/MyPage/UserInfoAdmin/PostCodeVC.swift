@@ -5,6 +5,8 @@
 //  Created by 이충신 on 31/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  MyPage.storyboard
+//  우편번호 찾기 뷰
 
 import UIKit
 import WebKit
@@ -45,7 +47,8 @@ class PostCodeVC: UIViewController, WKScriptMessageHandler, WKNavigationDelegate
         
         guard
             let url = URL(string: "https://trilliwon.github.io/postcode/"),
-            let webView = webView else { return }
+            let webView = webView
+        else { return }
         
         let request = URLRequest(url: url)
         webView.load(request)
@@ -68,6 +71,7 @@ class PostCodeVC: UIViewController, WKScriptMessageHandler, WKNavigationDelegate
                 
                 //우편번호 검색 이전(버튼만 보여준다)
                 destination.postCodeButton.isHidden = addressBool ? false : true
+                
                 //우편번호 검색완료 이후
                 destination.postView.isHidden = addressBool ? true : false
 
@@ -90,6 +94,10 @@ class PostCodeVC: UIViewController, WKScriptMessageHandler, WKNavigationDelegate
         
     }
     
+    
+    
+    
+    //Mark: - Indicator Animating
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         indicator.startAnimating()

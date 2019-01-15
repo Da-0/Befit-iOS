@@ -5,6 +5,30 @@
 //  Created by 이충신 on 08/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  MyPage.storyboard
+//  선호브랜드 재선택 뷰
+
+//남,여 Tag 번호에 따른 실제 브랜드 Idx
+
+//남성:
+//0. THISISNEVERTHAT 17.
+//1. ROMANTIC CROWN 12
+//2. IST KUNST 18
+//3. LIBERTENG 10
+//4. COVERNAT 7
+//5. ANDERSSON BELL 9
+//6. INSILENCE 22
+//7. CRITIC 14
+
+//여성:
+//0. THISISNEVERTHAT 17
+//1. ROMANTIC CROWN 12
+//2. MINAV 2    ***************
+//3. LAFUDGESTORE 3   ***************
+//4. MORE OR LESS 32   ***************
+//5. ANDERSSON BELL 9
+//6. OiOi 37     ***************
+//7. CRITIC 14
 
 import UIKit
 
@@ -31,7 +55,7 @@ class ChangeBrandVC: UIViewController {
     var menSelected:[UIImage] = [#imageLiteral(resourceName: "manSelectThisisneverthat"),#imageLiteral(resourceName: "manSelectRomanticcrown"),#imageLiteral(resourceName: "manSelectIstkunst"),#imageLiteral(resourceName: "manSelectLiberteng"),#imageLiteral(resourceName: "manSelectCovernat"),#imageLiteral(resourceName: "manSelectAnderssonbell"),#imageLiteral(resourceName: "manSelectInsilence"),#imageLiteral(resourceName: "manSelectCritic")]
     let womenUnselected: [UIImage] = [#imageLiteral(resourceName: "womanThisisneverthat"),#imageLiteral(resourceName: "womanRomanticCrwon"),#imageLiteral(resourceName: "womanMinav"),#imageLiteral(resourceName: "womanLafudgestore"),#imageLiteral(resourceName: "womanMoreOrLess"),#imageLiteral(resourceName: "womanAnderssonBell"),#imageLiteral(resourceName: "womanOioi"),#imageLiteral(resourceName: "womanCritic")]
     var womenSelected:[UIImage] = [#imageLiteral(resourceName: "womanSelectThisisneverthat"),#imageLiteral(resourceName: "womanSelectRomanticCrown"),#imageLiteral(resourceName: "womanSelectMinav"),#imageLiteral(resourceName: "womanSelectLafudgestore"),#imageLiteral(resourceName: "womanSelectMoreOrLess"),#imageLiteral(resourceName: "womanSelectAnderssonBell"),#imageLiteral(resourceName: "womanSelectOioi"),#imageLiteral(resourceName: "womanSelectCritic")]
-    var selectedCount = 0
+    var selectedCount = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,21 +94,49 @@ class ChangeBrandVC: UIViewController {
                 btn.setImage(womenUnselected[btn.tag], for: .normal)
                 menSelected = womenSelected
             }
-            
         }
         
+       for selected in brandIdx {
+            
+            switch selected {
+                
+                case 17:
+                    btnArray[0].setImage(menSelected[0], for: .selected)
+                    btnArray[0].isSelected = true
+                case 12:
+                    btnArray[1].setImage(menSelected[1], for: .selected)
+                     btnArray[1].isSelected = true
+                case 2,18:
+                    btnArray[2].setImage(menSelected[2], for: .selected)
+                     btnArray[2].isSelected = true
+                case 10,3:
+                    btnArray[3].setImage(menSelected[3], for: .selected)
+                     btnArray[3].isSelected = true
+                case 7,32 :
+                    btnArray[4].setImage(menSelected[4], for: .selected)
+                     btnArray[4].isSelected = true
+                case 9:
+                    btnArray[5].setImage(menSelected[5], for: .selected)
+                     btnArray[5].isSelected = true
+                case 22,37:
+                    btnArray[6].setImage(menSelected[6], for: .selected)
+                     btnArray[6].isSelected = true
+                case 14:
+                    btnArray[7].setImage(menSelected[7], for: .selected)
+                     btnArray[7].isSelected = true
+                default: break
+                }
+        }
+   
+    
+
     }
     
     @IBAction func backAction(_ sender: Any) {
         
         if selectedCount == 2 {
-            
-            print(brandIdx)
-            
-            userDefault.set(brandIdx[0], forKey: "brand1_idx")
-            userDefault.set(brandIdx[1], forKey: "brand2_idx")
-            
-            ChangeBrandService.shared.setBrand(brand1: userDefault.integer(forKey: "brand1_idx"), brand2: userDefault.integer(forKey: "brand2_idx")) { (res) in
+        
+            ChangeBrandService.shared.setBrand(brand1: brandIdx[0], brand2: brandIdx[1]) { (res) in
                 
                 if let status = res.status {
                     switch status {
@@ -180,27 +232,7 @@ class ChangeBrandVC: UIViewController {
 
 
 
-//남,여 Tag 번호에 따른 실제 브랜드 Idx
 
-//남성:
-//0. THISISNEVERTHAT 17.
-//1. ROMANTIC CROWN 12
-//2. IST KUNST 18
-//3. LIBERTENG 10
-//4. COVERNAT 7
-//5. ANDERSSON BELL 9
-//6. INSILENCE 22
-//7. CRITIC 14
-
-//여성:
-//0. THISISNEVERTHAT 17
-//1. ROMANTIC CROWN 12
-//2. MINAV 2    ***************
-//3. LAFUDGESTORE 3   ***************
-//4. MORE OR LESS 32   ***************
-//5. ANDERSSON BELL 9
-//6. OiOi 37     ***************
-//7. CRITIC 14
 
 
 

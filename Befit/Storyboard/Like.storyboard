@@ -211,6 +211,7 @@
                     </view>
                     <connections>
                         <outlet property="collectionView" destination="hEe-Z2-LBD" id="z6a-uV-SF1"/>
+                        <outlet property="tabbarHeight" destination="0AZ-gB-qOv" id="n6u-UW-tmS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RA6-ze-Ayu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -262,13 +263,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="69.666666666666671"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchKnits" translatesAutoresizingMaskIntoConstraints="NO" id="2e6-QQ-uOS">
-                                            <rect key="frame" x="28" y="11" width="48" height="48"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="48" id="Vxj-Q8-fDu"/>
-                                                <constraint firstAttribute="width" constant="48" id="eNU-Hz-Kdr"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vans" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gik-Gd-CVl">
                                             <rect key="frame" x="96" y="24.333333333333329" width="211" height="21"/>
                                             <constraints>
@@ -287,18 +281,34 @@
                                             </constraints>
                                             <state key="normal" image="icLikeFull"/>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoOutline" translatesAutoresizingMaskIntoConstraints="NO" id="51g-DV-Zob">
+                                            <rect key="frame" x="28" y="11" width="48" height="48"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="48" id="9BH-7A-THX"/>
+                                                <constraint firstAttribute="height" constant="48" id="XnW-8Q-72L"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rzp-GJ-0Mn">
+                                            <rect key="frame" x="35" y="20" width="34" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="3Cx-lh-Xhg"/>
+                                                <constraint firstAttribute="width" constant="34" id="Jsy-1X-9mY"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="2e6-QQ-uOS" firstAttribute="centerY" secondItem="JWL-X7-hcM" secondAttribute="centerY" id="02f-Rh-NYx"/>
                                         <constraint firstItem="xow-F6-t2o" firstAttribute="top" secondItem="JWL-X7-hcM" secondAttribute="top" constant="18" id="71a-WA-bKc"/>
+                                        <constraint firstItem="51g-DV-Zob" firstAttribute="centerY" secondItem="JWL-X7-hcM" secondAttribute="centerY" id="HjH-Yp-nHv"/>
                                         <constraint firstAttribute="trailing" secondItem="xow-F6-t2o" secondAttribute="trailing" constant="20" id="NsF-Px-gxz"/>
-                                        <constraint firstItem="2e6-QQ-uOS" firstAttribute="leading" secondItem="JWL-X7-hcM" secondAttribute="leading" constant="28" id="RjU-NL-M64"/>
-                                        <constraint firstItem="gik-Gd-CVl" firstAttribute="leading" secondItem="2e6-QQ-uOS" secondAttribute="trailing" constant="20" id="h1T-ee-TQp"/>
-                                        <constraint firstItem="gik-Gd-CVl" firstAttribute="centerY" secondItem="2e6-QQ-uOS" secondAttribute="centerY" id="hDd-Vw-pG3"/>
+                                        <constraint firstItem="51g-DV-Zob" firstAttribute="leading" secondItem="JWL-X7-hcM" secondAttribute="leading" constant="28" id="TtN-dq-srA"/>
+                                        <constraint firstItem="gik-Gd-CVl" firstAttribute="centerY" secondItem="51g-DV-Zob" secondAttribute="centerY" id="UC1-RZ-6OJ"/>
+                                        <constraint firstItem="rzp-GJ-0Mn" firstAttribute="leading" secondItem="JWL-X7-hcM" secondAttribute="leading" constant="35" id="j1Y-Zk-e4V"/>
+                                        <constraint firstItem="rzp-GJ-0Mn" firstAttribute="top" secondItem="JWL-X7-hcM" secondAttribute="top" constant="20" id="uU7-B5-s0h"/>
+                                        <constraint firstItem="gik-Gd-CVl" firstAttribute="leading" secondItem="51g-DV-Zob" secondAttribute="trailing" constant="20" id="xjG-B8-tOC"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="brandImg" destination="2e6-QQ-uOS" id="oUI-Cp-OxS"/>
+                                    <outlet property="brandImg" destination="rzp-GJ-0Mn" id="wiC-Mg-EvJ"/>
                                     <outlet property="brandName" destination="gik-Gd-CVl" id="ma9-Ez-7n9"/>
                                     <outlet property="likeBtn" destination="xow-F6-t2o" id="cEM-ld-KtD"/>
                                 </connections>
@@ -343,7 +353,7 @@
     <resources>
         <image name="icLikeFull" width="34" height="34"/>
         <image name="icLikeLine" width="23.666666030883789" height="21"/>
-        <image name="searchKnits" width="48" height="48"/>
+        <image name="logoOutline" width="48" height="48"/>
         <image name="testImage" width="139" height="142"/>
     </resources>
 </document>

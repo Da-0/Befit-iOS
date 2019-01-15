@@ -18,53 +18,45 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     var address: String?
     var brandName: String?
     var productInfo: Product?
+    var brandHome: Bool = false
+    @IBOutlet weak var sizeCheckBtn: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        loading.isHidden = false
-        
-        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationBar.topItem?.title = brandName
         
-        self.request(url: "https://" + address!)
+        //브랜드 홈페이지 보여주는 경우
+        if brandHome {
+            self.request(url: address!)
+            sizeCheckBtn.isEnabled = false
+            sizeCheckBtn.image = nil
+            
+        }
+        //상품 페이지를 보야주는 경우
+        else {
+            self.request(url: "https://" + address!)
+            
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
     }
     
-    
     // 현재 webView에서 받아온 URL 페이지를 로드한다.
     func request(url: String) {
-        
         self.webView.load(URLRequest(url: URL(string: url)!))
-        
-        //self.webView.navigationDelegate = self;
     }
     
     @IBAction func dismisssAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    
-//    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-//        print("startttt")
-//        //        loading.isHidden = false
-//        //        webView.isHidden = true
-//    }
-//
-//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        //        loading.isHidden = true
-//        //        webView.isHidden = false
-//        print("finishhhhhhh")
-//        loading.delete(loading)
-//
-//    }
-    
     
     
     @IBAction func sizeCheckAction(_ sender: Any) {
@@ -81,8 +73,20 @@ class ProductVC: UIViewController, WKNavigationDelegate {
         
     }
     
-    
-    
-    
-    
 }
+
+
+//    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+//        print("startttt")
+//        //        loading.isHidden = false
+//        //        webView.isHidden = true
+//    }
+//
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        //        loading.isHidden = true
+//        //        webView.isHidden = false
+//        print("finishhhhhhh")
+//        loading.delete(loading)
+//
+//    }
+

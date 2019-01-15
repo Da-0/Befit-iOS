@@ -11,9 +11,9 @@ import UIKit
 class MyPageVC: UIViewController {
 
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var userId: UILabel!
+    @IBOutlet weak var userEmail: UILabel!
     var gender: String?
-    var brandIdx: [Int] = []
+    var brandIdx: [Int] = [0,0]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -30,9 +30,47 @@ class MyPageVC: UIViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 375, height: 20))
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         network()
+    
+    }
+    
+  
+    func network(){
+        
+        UserInfoService.shared.showUserInfo { (res) in
+            
+         
+            //현재 로그인 한 유저의 정보
+            print("\n<***현재 회원 정보***>")
+            print("idx = \(res.idx!)")
+            print("email = \(res.email!)")
+            print("pw = \(res.password!)")
+            print("gender = \(res.gender!)")
+            print("name = \(res.name!)")
+            print("brand1 = \(res.brand1_idx!)")
+            print("brand2 = \(res.brand2_idx!)")
+            print("birth = \(res.birthday!)")
+      
+            self.userName.text = res.name
+            self.userEmail.text = res.email
+            self.gender = res.gender
+            
+            self.brandIdx[0] = res.brand1_idx!
+            self.brandIdx[1] = res.brand2_idx!
+            
+            
+            //정보의 일부가 없으면 guard let으로 빠져나갈 수 있기때문에 코드 순서 변경하면 안됨
+            guard let address = res.home_address, let detail = res.detail_address, let phone = res.phone, let post = res.post_number
+                else {return}
+            
+            print("postcode = " + post)
+            print("adress = " + address + " " + detail)
+            print("phone = " + phone + "\n")
+            
+        }
     }
     
     @IBAction func settingBtn(_ sender: Any) {
@@ -40,21 +78,7 @@ class MyPageVC: UIViewController {
         self.navigationController?.present(settingVC, animated: true, completion: nil)
     }
     
-    func network(){
-        UserInfoService.shared.showUserInfo { (res) in
-            
-            print("\n<***현재 회원 정보***>")
-            print(res)
-            
-            self.userName.text = res.name
-            self.userId.text = res.email
-            self.gender = res.gender
-            self.brandIdx.append(res.brand1_idx!)
-            self.brandIdx.append(res.brand2_idx!)
-            
 
-        }
-    }
 }
 
 
@@ -78,30 +102,25 @@ extension MyPageVC : UITableViewDelegate, UITableViewDataSource{
         switch indexPath.row {
             
             case 0:
-                print("나의 패션 취향 뷰로 이동")
                 let changeBrandVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ChangeBrandVC")as! ChangeBrandVC
                     changeBrandVC.gender = self.gender
                     changeBrandVC.brandIdx = self.brandIdx
-                
-                self.navigationController?.pushViewController(changeBrandVC, animated: true)
+                    self.navigationController?.pushViewController(changeBrandVC, animated: true)
             
             case 1:
-                print("나의 사이즈정보 뷰로 이동")
                 let sizeInfoVC1 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC1")as! SizeInfoVC1
-                sizeInfoVC1.gender = self.gender
-                self.navigationController?.pushViewController(sizeInfoVC1, animated: true)
+                    sizeInfoVC1.gender = self.gender
+                    self.navigationController?.pushViewController(sizeInfoVC1, animated: true)
             
             case 2:
-                print("통합회원정보 관리 뷰로 이동")
-                
                 let userInfoAdminVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "UserInfoAdminVC")as! UserInfoAdminVC
-                self.navigationController?.present(userInfoAdminVC, animated: true, completion: nil)
-            
+                    self.navigationController?.present(userInfoAdminVC, animated: true, completion: nil)
+
             case 3:
-                print("고객센터 뷰로 이동")
-            default:
-                break
-            }
+                    print("고객센터 뷰로 이동")
+            default: break
+        
+        }
         
      }
     
