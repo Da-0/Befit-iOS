@@ -13,6 +13,7 @@ import XLPagerTabStrip
 
 class LikeProductCVC: UIViewController {
 
+    @IBOutlet weak var tabbarHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     var productLikeList = [Product]()
     var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
@@ -21,6 +22,7 @@ class LikeProductCVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
+        tabbarHeight.constant = (self.tabBarController?.tabBar.frame.size.height)!
        
     }
     
@@ -136,9 +138,6 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //iphone사이즈에 따라 동적으로 대응이 가능해진다.
-       //let width: CGFloat = (self.collectionView.frame.width - 30) / 2
-        //let height: CGFloat =  (self.collectionView.frame.height - 30) / 2
         return CGSize(width: 167, height: 239)
     }
     
@@ -148,7 +147,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
