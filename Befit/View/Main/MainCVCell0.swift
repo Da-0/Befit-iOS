@@ -41,9 +41,9 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
         cell.productImg2.imageFromUrl(product[1].image_url, defaultImgPath: "")
         cell.productImg3.imageFromUrl(product[2].image_url, defaultImgPath: "")
         
-        cell.productLB1.text = product[0].name
-        cell.productLB2.text = product[1].name
-        cell.productLB3.text = product[2].name
+        cell.productLB1.text = product[0].price
+        cell.productLB2.text = product[1].price
+        cell.productLB3.text = product[2].price
         
         return cell
     
