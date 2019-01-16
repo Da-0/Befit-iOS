@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="KoPubDotumBold.ttf">
+            <string>KoPubDotumBold</string>
+        </array>
         <array key="KoPubDotumMedium.ttf">
             <string>KoPubDotumMedium</string>
         </array>
@@ -220,14 +223,14 @@
                                 <rect key="frame" x="0.0" y="39" width="375" height="739"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noSearch" translatesAutoresizingMaskIntoConstraints="NO" id="mex-xl-rSO">
-                                        <rect key="frame" x="129.66666666666666" y="173" width="116" height="124"/>
+                                        <rect key="frame" x="129.66666666666666" y="120" width="116" height="124"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="124" id="F21-Zh-JXp"/>
                                             <constraint firstAttribute="width" constant="116" id="Jo7-11-h0C"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="검색 결과가 없습니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHW-ar-09n">
-                                        <rect key="frame" x="128.66666666666666" y="309" width="118" height="16"/>
+                                        <rect key="frame" x="128.66666666666666" y="256" width="118" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="PH7-V2-wdx"/>
                                             <constraint firstAttribute="width" constant="118" id="Zu3-i5-ubj"/>
@@ -239,7 +242,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="mex-xl-rSO" firstAttribute="top" secondItem="8U8-lX-ITM" secondAttribute="top" constant="173" id="5ym-wU-eWM"/>
+                                    <constraint firstItem="mex-xl-rSO" firstAttribute="top" secondItem="8U8-lX-ITM" secondAttribute="top" constant="120" id="5ym-wU-eWM"/>
                                     <constraint firstItem="ZHW-ar-09n" firstAttribute="centerX" secondItem="mex-xl-rSO" secondAttribute="centerX" id="789-z2-ada"/>
                                     <constraint firstItem="ZHW-ar-09n" firstAttribute="top" secondItem="mex-xl-rSO" secondAttribute="bottom" constant="12" id="Gsy-DY-yeH"/>
                                     <constraint firstItem="mex-xl-rSO" firstAttribute="centerX" secondItem="8U8-lX-ITM" secondAttribute="centerX" id="h7o-EM-Rwt"/>
@@ -248,7 +251,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ooU-3W-HfI">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vum-bq-Sye">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="vum-bq-Sye">
                                     <size key="itemSize" width="167" height="239"/>
                                     <size key="headerReferenceSize" width="50" height="40"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -270,35 +273,35 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xlb-el-cQX">
-                                                    <rect key="frame" x="9" y="173" width="117" height="12"/>
+                                                    <rect key="frame" x="10" y="175" width="117" height="9"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="117" id="uUV-0D-oF8"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="8"/>
                                                     <color key="textColor" white="0.0" alpha="0.45000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jIT-ae-DBN">
-                                                    <rect key="frame" x="10" y="217" width="117" height="13"/>
+                                                    <rect key="frame" x="10" y="218" width="117" height="13"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="13" id="RgQ-8T-taw"/>
                                                         <constraint firstAttribute="width" constant="117" id="hVe-2x-jNq"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFF-Ox-zH9">
-                                                    <rect key="frame" x="10" y="189" width="117" height="14.333333333333343"/>
+                                                    <rect key="frame" x="10" y="188" width="117" height="11"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="117" id="nyM-so-7lr"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jt-SE-hzP">
-                                                    <rect key="frame" x="131" y="177" width="34" height="34"/>
+                                                    <rect key="frame" x="131" y="176" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="34" id="Qob-hQ-f7N"/>
                                                         <constraint firstAttribute="height" constant="34" id="lbm-wo-0V0"/>
@@ -317,10 +320,10 @@
                                             <constraint firstAttribute="trailing" secondItem="bvF-6A-jtq" secondAttribute="trailing" id="Ucf-AY-7gI"/>
                                             <constraint firstItem="bvF-6A-jtq" firstAttribute="leading" secondItem="apa-Uj-ezh" secondAttribute="leading" id="ZbQ-ls-zVX"/>
                                             <constraint firstItem="bvF-6A-jtq" firstAttribute="top" secondItem="apa-Uj-ezh" secondAttribute="top" id="euB-zW-yqX"/>
-                                            <constraint firstItem="Xlb-el-cQX" firstAttribute="leading" secondItem="apa-Uj-ezh" secondAttribute="leading" constant="9" id="fmI-qy-KvX"/>
-                                            <constraint firstItem="Xlb-el-cQX" firstAttribute="top" secondItem="bvF-6A-jtq" secondAttribute="bottom" constant="6" id="gRn-gi-EOx"/>
-                                            <constraint firstItem="7jt-SE-hzP" firstAttribute="top" secondItem="bvF-6A-jtq" secondAttribute="bottom" constant="10" id="gal-iM-acL"/>
-                                            <constraint firstAttribute="bottom" secondItem="jIT-ae-DBN" secondAttribute="bottom" constant="9" id="sGV-MZ-Rvk"/>
+                                            <constraint firstItem="Xlb-el-cQX" firstAttribute="leading" secondItem="apa-Uj-ezh" secondAttribute="leading" constant="10" id="fmI-qy-KvX"/>
+                                            <constraint firstItem="Xlb-el-cQX" firstAttribute="top" secondItem="bvF-6A-jtq" secondAttribute="bottom" constant="8" id="gRn-gi-EOx"/>
+                                            <constraint firstItem="7jt-SE-hzP" firstAttribute="top" secondItem="bvF-6A-jtq" secondAttribute="bottom" constant="9" id="gal-iM-acL"/>
+                                            <constraint firstAttribute="bottom" secondItem="jIT-ae-DBN" secondAttribute="bottom" constant="8" id="sGV-MZ-Rvk"/>
                                             <constraint firstItem="YFF-Ox-zH9" firstAttribute="top" secondItem="Xlb-el-cQX" secondAttribute="bottom" constant="4" id="uZW-E9-njq"/>
                                             <constraint firstAttribute="trailing" secondItem="7jt-SE-hzP" secondAttribute="trailing" constant="2" id="xkf-O0-g2I"/>
                                             <constraint firstItem="bvF-6A-jtq" firstAttribute="top" secondItem="apa-Uj-ezh" secondAttribute="top" id="y9Y-ZV-9Ok"/>
@@ -328,6 +331,7 @@
                                         <size key="customSize" width="167" height="239"/>
                                         <connections>
                                             <outlet property="brandName" destination="Xlb-el-cQX" id="LmX-L1-fnF"/>
+                                            <outlet property="likeBtn" destination="7jt-SE-hzP" id="sOW-CK-uK8"/>
                                             <outlet property="price" destination="jIT-ae-DBN" id="LjZ-bj-MUj"/>
                                             <outlet property="productImg" destination="bvF-6A-jtq" id="g2R-V8-Vc1"/>
                                             <outlet property="productName" destination="YFF-Ox-zH9" id="OpM-Qn-lPe"/>

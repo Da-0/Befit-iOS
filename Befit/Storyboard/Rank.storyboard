@@ -325,18 +325,18 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m0D-Ed-5iC">
-                                                    <rect key="frame" x="10" y="216" width="130" height="13"/>
+                                                    <rect key="frame" x="10" y="216" width="113" height="13"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="wyu-WV-6xN"/>
+                                                        <constraint firstAttribute="width" constant="113" id="wyu-WV-6xN"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34N-nx-whk">
-                                                    <rect key="frame" x="10" y="188" width="130" height="11"/>
+                                                    <rect key="frame" x="10" y="188" width="113" height="11"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="TRU-qZ-Pfp"/>
+                                                        <constraint firstAttribute="width" constant="113" id="TRU-qZ-Pfp"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="10"/>
                                                     <nil key="textColor"/>
@@ -351,9 +351,9 @@
                                                     <state key="normal" image="icLikeFull2"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1gp-IX-nhU">
-                                                    <rect key="frame" x="10" y="175" width="130" height="9"/>
+                                                    <rect key="frame" x="10" y="175" width="113" height="9"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="3zD-3c-e9e"/>
+                                                        <constraint firstAttribute="width" constant="113" id="3zD-3c-e9e"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="8"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>

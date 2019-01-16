@@ -20,27 +20,25 @@ class LoadVC: UIViewController ,URLSessionDownloadDelegate {
         
         // Create Boat Animation
         boatAnimation = LOTAnimationView(name: "material_wave_loading")
+        
         // Set view to full screen, aspectFit
         boatAnimation!.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         boatAnimation!.contentMode = .scaleAspectFill
         boatAnimation!.frame = view.bounds
+        
         // Add the Animation
         view.addSubview(boatAnimation!)
         
-//        let button = UIButton(type: .system)
-//        button.setTitle("Start Download", for: .normal)
-//        button.sizeToFit()
-//        button.center = view.center
-//        button.addTarget(self, action: #selector(startDownload(button:)), for: .touchUpInside)
-//        view.addSubview(button)
         
         // The center of the screen, where the boat will start
         let screenCenter = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+        
         // The center one screen height above the screen. Where the boat will end up when the download completes
         let offscreenCenter = CGPoint(x: view.bounds.midX, y: -view.bounds.midY)
         
         // Convert points into animation view coordinate space.
         let boatStartPoint = boatAnimation!.convert(screenCenter, toKeypathLayer: LOTKeypath(string: "Boat"))
+        
         let boatEndPoint = boatAnimation!.convert(offscreenCenter, toKeypathLayer: LOTKeypath(string: "Boat"))
         
         // Set up out interpolator, to be driven by the download callback
@@ -56,20 +54,9 @@ class LoadVC: UIViewController ,URLSessionDownloadDelegate {
 
     }
     
-//    @objc func startDownload(button: UIButton) {
-//        button.isHidden = true
-//        createDownloadTask()
-//    }
-    
-//    func createDownloadTask() {
-//        let downloadRequest = URLRequest(url: URL(string: "https://upload.wikimedia.org/wikipedia/commons/8/8f/Whole_world_-_land_and_oceans_12000.jpg")!)
-//        let session = URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.main)
-//
-//        downloadTask = session.downloadTask(with: downloadRequest)
-//        downloadTask!.resume()
-//    }
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
         // Pause the animation and disable looping.
         boatAnimation!.pause()
         boatAnimation!.loopAnimation = false

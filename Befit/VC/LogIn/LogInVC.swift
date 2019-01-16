@@ -55,6 +55,7 @@ class LogInVC: UIViewController, APIManager {
                 switch status {
                 case 200 :
                     guard let token = res.data?.token else { return}
+                    print("토근값 = " + token + "\n")
                     self.userDefault.set(token, forKey: "token")
                     let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
                     self.present(mainVC, animated: true, completion: nil)
@@ -75,6 +76,7 @@ class LogInVC: UIViewController, APIManager {
                 switch status {
                     case 200 :
                         guard let token = res.data?.token else { return}
+                         print("토근값 = " + token + "\n")
                          self.userDefault.set(token, forKey: "token")
                          let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
                          self.present(mainVC, animated: true, completion: nil)

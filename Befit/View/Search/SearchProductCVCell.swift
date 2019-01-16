@@ -14,5 +14,6 @@ class SearchProductCVCell: UICollectionViewCell {
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var price: UILabel!
-
+    @IBOutlet weak var likeBtn: UIButton!
+    
 }

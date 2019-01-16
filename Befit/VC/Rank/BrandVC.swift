@@ -250,7 +250,7 @@ extension BrandVC: UICollectionViewDelegateFlowLayout{
             
         }
         else {
-            return CGSize(width: 167, height: 235)
+            return CGSize(width: 167, height: 239)
         }
         
    }

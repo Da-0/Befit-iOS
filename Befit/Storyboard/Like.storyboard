@@ -8,6 +8,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="KoPubDotumMedium.ttf">
+            <string>KoPubDotumMedium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--찜-->
         <scene sceneID="QFn-6z-Tch">
@@ -105,22 +110,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brand" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIj-6Z-0ML">
-                                                    <rect key="frame" x="10" y="177" width="113" height="9.6666666666666572"/>
+                                                    <rect key="frame" x="10" y="175" width="113" height="9"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="113" id="x8n-k3-Oz1"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                                    <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="8"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yl3-df-8fY">
-                                                    <rect key="frame" x="10" y="188" width="113" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                    <rect key="frame" x="10" y="188" width="113" height="11"/>
+                                                    <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="10"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rke-0k-jBF">
-                                                    <rect key="frame" x="123" y="183" width="34" height="34"/>
+                                                    <rect key="frame" x="133" y="176" width="34" height="34"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="34" id="2yb-6z-yvB"/>
                                                         <constraint firstAttribute="height" constant="34" id="3N2-GK-5sx"/>
@@ -145,12 +150,12 @@
                                             <constraint firstItem="0UJ-r4-xzc" firstAttribute="top" secondItem="fhG-20-28t" secondAttribute="top" id="4n1-lS-fwK"/>
                                             <constraint firstItem="TSK-HK-wlr" firstAttribute="leading" secondItem="fhG-20-28t" secondAttribute="leading" constant="10" id="59w-hK-Ncl"/>
                                             <constraint firstItem="0UJ-r4-xzc" firstAttribute="leading" secondItem="fhG-20-28t" secondAttribute="leading" id="AbF-By-Jo4"/>
-                                            <constraint firstItem="hIj-6Z-0ML" firstAttribute="top" secondItem="0UJ-r4-xzc" secondAttribute="bottom" constant="10" id="CTn-c8-lCn"/>
+                                            <constraint firstItem="hIj-6Z-0ML" firstAttribute="top" secondItem="0UJ-r4-xzc" secondAttribute="bottom" constant="8" id="CTn-c8-lCn"/>
                                             <constraint firstAttribute="bottom" secondItem="TSK-HK-wlr" secondAttribute="bottom" constant="8" id="D6u-30-R3E"/>
-                                            <constraint firstAttribute="trailing" secondItem="Rke-0k-jBF" secondAttribute="trailing" constant="10" id="Esb-XZ-au2"/>
-                                            <constraint firstItem="Rke-0k-jBF" firstAttribute="top" secondItem="0UJ-r4-xzc" secondAttribute="bottom" constant="16" id="Gp9-Wd-zFD"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rke-0k-jBF" secondAttribute="trailing" id="Esb-XZ-au2"/>
+                                            <constraint firstItem="Rke-0k-jBF" firstAttribute="top" secondItem="0UJ-r4-xzc" secondAttribute="bottom" constant="9" id="Gp9-Wd-zFD"/>
                                             <constraint firstItem="hIj-6Z-0ML" firstAttribute="leading" secondItem="fhG-20-28t" secondAttribute="leading" constant="10" id="HOU-S3-nuc"/>
-                                            <constraint firstItem="yl3-df-8fY" firstAttribute="top" secondItem="hIj-6Z-0ML" secondAttribute="bottom" constant="1.3300000000000001" id="NsB-ep-hkI"/>
+                                            <constraint firstItem="yl3-df-8fY" firstAttribute="top" secondItem="hIj-6Z-0ML" secondAttribute="bottom" constant="4" id="NsB-ep-hkI"/>
                                             <constraint firstItem="yl3-df-8fY" firstAttribute="leading" secondItem="fhG-20-28t" secondAttribute="leading" constant="10" id="nCh-uN-yK0"/>
                                         </constraints>
                                         <size key="customSize" width="167" height="239"/>
