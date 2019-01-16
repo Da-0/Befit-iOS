@@ -28,13 +28,13 @@ class MainVC: UIViewController {
         self.collectionView.reloadData()
     }
     
+    
     func network(){
         
         //1) 브랜드 추천 호출
         BrandRecService.shared.showBrandRec { (res) in
             guard let brandList = res.data else {return}
             self.recommendBrand = brandList
-//            print("\(brandList)")
             self.collectionView.reloadData()
         }
         
@@ -46,7 +46,7 @@ class MainVC: UIViewController {
         
     }
     
-    //사이드 메뉴의 나타남
+    
     @IBAction func categoryAction(_ sender: Any) {
         self.sideMenuController?.revealMenu();
     }
@@ -83,6 +83,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         {
             let cell0 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell0", for: indexPath) as! MainCVCell0
             cell0.brandInfo = recommendBrand
+            cell0.delegate = self;
             cell0.collectionView0.reloadData()
             return cell0
         }
@@ -93,7 +94,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
             return cell1
         }
-            //3)
+            //3)나를 위한 추천 레이블 있는 곳(기능X) ->  변경이 필요
         else if indexPath.section == 2 {
             let cell12 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell12", for: indexPath) as! MainCVCell12
             return cell12
@@ -109,34 +110,36 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             return cell2
         }
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+       
         // row가 아니라 session으로 변경 필요
-        if indexPath.row == 1 {
+        if indexPath.section == 0 {
             //아무것도 안일어난다 (맨위의 셀은 브랜드와 상품이동페이지가 나오기때문)
         }
             
-        else if indexPath.row == 2 {
+        else if indexPath.section == 1 {
             //배너의 이동
         }
-        else if indexPath.row == 3 {
+        else if indexPath.section == 2 {
             //배너의 이동
         }
         else {
+            
             let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
             productVC.brandName = recommendProduct?[indexPath.row].name_English
             productVC.address = recommendProduct?[indexPath.row].link
-//            productVC.productIdx = recommendProduct?[indexPath.row].idx
+            // productVC.productIdx = recommendProduct?[indexPath.row].idx
             productVC.productInfo = recommendProduct?[indexPath.row]
     
             self.navigationController?.present(productVC, animated: true, completion: nil)
+            
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //iphone사이즈에 따라 동적으로 대응이 가능해진다.
-        // let width: CGFloat = (self.collectionView.frame.width) / 2 - 20
-        // let height: CGFloat =  (self.collectionView.frame.height) / 2 - 20
         
         if indexPath.section == 0 {
             return CGSize(width: 375, height: 525)
@@ -165,4 +168,34 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
+}
+
+extension MainVC: customCellDelegate {
+  
+    
+    func mainBrandPressed(cell: MainCVCell0, idx: Int) {
+        
+        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
+        
+            productVC.brandName = self.recommendBrand[idx].name_english
+            productVC.address = self.recommendBrand[idx].link
+            productVC.brandHome = true
+
+        self.present(productVC, animated: true, completion: nil)
+    }
+    
+    
+    
+    func brandProductsPressed(cell: MainCVCell0, idx: Int) {
+        
+        let bid = Int(idx/3)
+        let pid = idx % 3
+        
+        print(recommendBrand[bid].products?[pid].price)
+        
+        //VC의 전환을 일으키면 됨 (브랜드 뷰로)
+        
+    }
+    
+    
 }
