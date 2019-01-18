@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3B84E94CEB62C9768A62B9C5 /* Pods_Befit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BE1C5D46AEA35680C9E2CCD /* Pods_Befit.framework */; };
+		500030E921F079EC00B46780 /* PBrandDetailCVCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500030E821F079EC00B46780 /* PBrandDetailCVCell2.swift */; };
+		500030EB21F197CA00B46780 /* BannerBrandService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500030EA21F197CA00B46780 /* BannerBrandService.swift */; };
 		501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F73E421D92BD0000D2F3E /* RankTVCell.swift */; };
+		501F971921F05A2C0087E775 /* PBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F971821F05A2C0087E775 /* PBrandVC.swift */; };
+		501F971B21F05BC20087E775 /* PBrandDetailCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F971A21F05BC20087E775 /* PBrandDetailCVCell.swift */; };
 		5025A9B521E5DCEE0088FC9E /* CommonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025A9B421E5DCEE0088FC9E /* CommonSize.swift */; };
 		5031148521E1E9FB008D81AC /* BrandRankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148421E1E9FB008D81AC /* BrandRankService.swift */; };
 		5031148921E1EAC5008D81AC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148821E1EAC5008D81AC /* Brand.swift */; };
@@ -135,7 +139,11 @@
 
 /* Begin PBXFileReference section */
 		4E9628501C4FE32118E472D1 /* Pods-Befit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Befit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Befit/Pods-Befit.debug.xcconfig"; sourceTree = "<group>"; };
+		500030E821F079EC00B46780 /* PBrandDetailCVCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBrandDetailCVCell2.swift; sourceTree = "<group>"; };
+		500030EA21F197CA00B46780 /* BannerBrandService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerBrandService.swift; sourceTree = "<group>"; };
 		501F73E421D92BD0000D2F3E /* RankTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTVCell.swift; sourceTree = "<group>"; };
+		501F971821F05A2C0087E775 /* PBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBrandVC.swift; sourceTree = "<group>"; };
+		501F971A21F05BC20087E775 /* PBrandDetailCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PBrandDetailCVCell.swift; sourceTree = "<group>"; };
 		5025A9B421E5DCEE0088FC9E /* CommonSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSize.swift; sourceTree = "<group>"; };
 		5031148421E1E9FB008D81AC /* BrandRankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandRankService.swift; sourceTree = "<group>"; };
 		5031148821E1EAC5008D81AC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
@@ -521,6 +529,7 @@
 				5066557821D21FDF00580137 /* MainVC.swift */,
 				506655D721D25E4900580137 /* CategoryVC.swift */,
 				50DD803621E088BD00E6F743 /* CategoryDetailVC.swift */,
+				501F971821F05A2C0087E775 /* PBrandVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -605,6 +614,8 @@
 				50DAFCEA21E695AD00D4BF2F /* MainCVCell12.swift */,
 				50DAFCE221E6024400D4BF2F /* MainCVCell2.swift */,
 				A51C952E21E8F900008727E1 /* CategorySortingCVCell.swift */,
+				501F971A21F05BC20087E775 /* PBrandDetailCVCell.swift */,
+				500030E821F079EC00B46780 /* PBrandDetailCVCell2.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -648,6 +659,7 @@
 			children = (
 				508A8ABA21E7357D000AE141 /* BrandRecService.swift */,
 				508A8AB821E730BD000AE141 /* ProductRecService.swift */,
+				500030EA21F197CA00B46780 /* BannerBrandService.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -871,6 +883,7 @@
 				5031148921E1EAC5008D81AC /* Brand.swift in Sources */,
 				506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */,
 				50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */,
+				501F971B21F05BC20087E775 /* PBrandDetailCVCell.swift in Sources */,
 				506E5C5221D5D7240016549B /* LikeProductCVCell.swift in Sources */,
 				A51C952F21E8F900008727E1 /* CategorySortingCVCell.swift in Sources */,
 				503114C421E50B8C008D81AC /* GetClosetDetailService.swift in Sources */,
@@ -885,10 +898,12 @@
 				50DD803B21E0BE7E00E6F743 /* SearchVC1.swift in Sources */,
 				506E5C6521D756A50016549B /* SearchVC2.swift in Sources */,
 				508DF0FF21E7A676001118B9 /* LikeBService.swift in Sources */,
+				500030E921F079EC00B46780 /* PBrandDetailCVCell2.swift in Sources */,
 				A509DD4021E65387009C3DC1 /* SearchProductService.swift in Sources */,
 				503114B721E4519C008D81AC /* ChangeBrandService.swift in Sources */,
 				506655DA21D26FF900580137 /* CategoryTVCell.swift in Sources */,
 				5082DF6C21D4AF2900E4135D /* LikeBrandTVC.swift in Sources */,
+				500030EB21F197CA00B46780 /* BannerBrandService.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
 				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
 				5025A9B521E5DCEE0088FC9E /* CommonSize.swift in Sources */,
@@ -896,6 +911,7 @@
 				503114AC21E38714008D81AC /* SearchFirstService.swift in Sources */,
 				50DD805121E1ABAB00E6F743 /* UIViewController+Extensions.swift in Sources */,
 				50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */,
+				501F971921F05A2C0087E775 /* PBrandVC.swift in Sources */,
 				A5BA69AC21E1C73300949E42 /* BrandVC.swift in Sources */,
 				503114A521E37F80008D81AC /* L.swift in Sources */,
 				A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */,

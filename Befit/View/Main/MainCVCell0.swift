@@ -24,6 +24,7 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
     
 
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         collectionView0.delegate = self;
         collectionView0.dataSource = self;

@@ -377,11 +377,11 @@
                                         </constraints>
                                         <size key="customSize" width="167" height="239"/>
                                         <connections>
-                                            <outlet property="brandName" destination="1gp-IX-nhU" id="UN8-5e-8TL"/>
-                                            <outlet property="likeBtn" destination="LhZ-cO-l6H" id="Nzk-k0-IN3"/>
-                                            <outlet property="price" destination="m0D-Ed-5iC" id="lF0-7q-KpD"/>
-                                            <outlet property="productImg" destination="yNY-2P-3Qg" id="Y1G-E0-8Fy"/>
-                                            <outlet property="productName" destination="34N-nx-whk" id="9Ah-iR-rAw"/>
+                                            <outlet property="brandName" destination="1gp-IX-nhU" id="pN0-HB-clR"/>
+                                            <outlet property="likeBtn" destination="LhZ-cO-l6H" id="Znb-M9-CjK"/>
+                                            <outlet property="price" destination="m0D-Ed-5iC" id="nlX-vD-Zts"/>
+                                            <outlet property="productImg" destination="yNY-2P-3Qg" id="ii0-Te-Wok"/>
+                                            <outlet property="productName" destination="34N-nx-whk" id="avE-J8-fXb"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -29,6 +29,7 @@ struct LoginService: APIManager, Requestable {
         postable(loginURL, body: body, header: headers) { res in
             switch res {
             case .success(let value):
+                print(value)
                 completion(value)
             case .error(let error):
                 print(error)

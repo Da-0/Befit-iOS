@@ -49,7 +49,7 @@ class LogInVC: UIViewController, APIManager {
     func autoLogIn(_ uid: String,_ upw: String){
       
         LoginService.shared.login(email: uid, password: upw, completion: {[weak self] (res) in
-            
+         
             guard let `self` = self else {return}
             if let status = res.status {
                 switch status {
@@ -68,7 +68,7 @@ class LogInVC: UIViewController, APIManager {
     }
     
     func network(){
-        
+
         LoginService.shared.login(email: emailTF.text!, password: pwTF.text!, completion: {[weak self] (res) in
             guard let `self` = self else {return}
            
