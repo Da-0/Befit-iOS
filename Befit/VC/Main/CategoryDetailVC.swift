@@ -135,8 +135,9 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         if productList?[indexPath.row].product_like == 1 {
             cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
         }else{
-            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
         }
+        
 
         return cell
     }
@@ -147,7 +148,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         
          //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
-            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
         
             UnLikePService.shared.unlike(productIdx: productIdx) { (res) in
                 if let status = res.status {

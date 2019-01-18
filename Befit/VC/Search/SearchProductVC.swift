@@ -75,7 +75,7 @@ extension SearchProductVC: UICollectionViewDataSource {
         
         //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
-            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
             
             UnLikePService.shared.unlike(productIdx: productIdx) { (res) in
                 if let status = res.status {

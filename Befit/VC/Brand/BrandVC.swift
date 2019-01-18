@@ -76,7 +76,7 @@ extension BrandVC: UICollectionViewDataSource{
             cell1.brandLikeBtn.addTarget(self, action: #selector(clickBLike(_:)), for: .touchUpInside)
             
             if brandInfo.likeFlag == 1 {cell1.brandLikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)}
-            else{cell1.brandLikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)}
+            else{cell1.brandLikeBtn.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)}
             
             return cell1
             
@@ -182,7 +182,7 @@ extension BrandVC {
         
         //1) 브랜드 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
-            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
             UnLikeBService.shared.unlike(brandIdx: brandIdx!) { (res) in
                 if let status = res.status {
                     switch status {
@@ -223,7 +223,7 @@ extension BrandVC {
         
         //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
-            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
             
             UnLikePService.shared.unlike(productIdx: productIdx) { (res) in
                 if let status = res.status {

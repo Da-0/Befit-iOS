@@ -69,7 +69,7 @@ class LikeBrandTVC: UITableViewController {
         guard let idx = brandLikeList[sender.tag].idx else {return}
         
         if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull2")
+            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
             
             //브랜드 좋아요 취소가 작동하는 부분
             UnLikeBService.shared.unlike(brandIdx: idx) { (res) in

@@ -336,7 +336,7 @@
         <scene sceneID="Yzr-Lw-toe">
             <objects>
                 <navigationController storyboardIdentifier="LikeNavi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8hp-nu-oN1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="찜" image="icLikeLine" id="teM-aq-K7Y">
+                    <tabBarItem key="tabBarItem" title="찜" image="tabLike" id="teM-aq-K7Y">
                         <color key="badgeColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -357,8 +357,8 @@
     </scenes>
     <resources>
         <image name="icLikeFull" width="34" height="34"/>
-        <image name="icLikeLine" width="23.666666030883789" height="21"/>
         <image name="logoOutline" width="48" height="48"/>
+        <image name="tabLike" width="23.666666030883789" height="21"/>
         <image name="testImage" width="139" height="142"/>
     </resources>
 </document>

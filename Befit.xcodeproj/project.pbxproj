@@ -281,6 +281,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		500030F121F1ACD100B46780 /* Brand */ = {
+			isa = PBXGroup;
+			children = (
+				501F971821F05A2C0087E775 /* BrandVC.swift */,
+			);
+			path = Brand;
+			sourceTree = "<group>";
+		};
 		501F73E321D92BB3000D2F3E /* Rank */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +492,7 @@
 				506655CA21D2590C00580137 /* Rank */,
 				506655CF21D25A3400580137 /* Like */,
 				506655D421D25AFB00580137 /* MyPage */,
+				500030F121F1ACD100B46780 /* Brand */,
 				5031149C21E36ABD008D81AC /* Product */,
 			);
 			path = VC;
@@ -523,7 +532,6 @@
 				5066557821D21FDF00580137 /* MainVC.swift */,
 				506655D721D25E4900580137 /* CategoryVC.swift */,
 				50DD803621E088BD00E6F743 /* CategoryDetailVC.swift */,
-				501F971821F05A2C0087E775 /* BrandVC.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";

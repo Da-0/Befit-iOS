@@ -88,7 +88,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
         guard let idx = productLikeList[sender.tag].idx else {return}
         
         if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull2")
+            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
             
             //상품 좋아요 취소가 작동하는 부분
             UnLikePService.shared.unlike(productIdx: idx) { (res) in

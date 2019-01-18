@@ -692,6 +692,7 @@
                                         <constraint firstItem="h2c-9q-JFe" firstAttribute="leading" secondItem="40O-ct-5TL" secondAttribute="trailing" constant="9" id="EGQ-qY-g0x"/>
                                         <constraint firstAttribute="trailing" secondItem="L2k-VI-kzM" secondAttribute="trailing" constant="20" id="ObE-p4-dGi"/>
                                         <constraint firstItem="L2k-VI-kzM" firstAttribute="centerY" secondItem="8ZI-cF-pgo" secondAttribute="centerY" id="Xhp-wf-DMp"/>
+                                        <constraint firstItem="40O-ct-5TL" firstAttribute="leading" secondItem="8ZI-cF-pgo" secondAttribute="leading" constant="262" id="cAX-4R-Mbq"/>
                                         <constraint firstItem="L2k-VI-kzM" firstAttribute="leading" secondItem="h2c-9q-JFe" secondAttribute="trailing" constant="9" id="qsp-pM-4FU"/>
                                         <constraint firstItem="h2c-9q-JFe" firstAttribute="centerY" secondItem="L2k-VI-kzM" secondAttribute="centerY" id="wUJ-Eh-YWH"/>
                                     </constraints>
@@ -940,7 +941,7 @@ AAAAAAAAAAAALHU
 </mutableData>
         </image>
         <image name="hambugerBar" width="36" height="36"/>
-        <image name="icLikeLine" width="23.666666030883789" height="21"/>
+        <image name="icLikeLine" width="34" height="34"/>
         <image name="tabHome" width="25.333333969116211" height="24.666666030883789"/>
         <image name="testImage" width="139" height="142"/>
     </resources>

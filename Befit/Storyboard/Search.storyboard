@@ -306,7 +306,7 @@
                                                         <constraint firstAttribute="width" constant="34" id="Qob-hQ-f7N"/>
                                                         <constraint firstAttribute="height" constant="34" id="lbm-wo-0V0"/>
                                                     </constraints>
-                                                    <state key="normal" image="icLikeFull2"/>
+                                                    <state key="normal" image="icLikeLine"/>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -468,7 +468,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="icLikeFull2" width="34" height="34"/>
+        <image name="icLikeLine" width="34" height="34"/>
         <image name="logoOutline" width="48" height="48"/>
         <image name="noSearch" width="91.333335876464844" height="108.33333587646484"/>
         <image name="tabSearch" width="24" height="24"/>

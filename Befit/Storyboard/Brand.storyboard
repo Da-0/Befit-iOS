@@ -176,9 +176,10 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FT-co-gH4">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0FT-co-gH4">
                                                             <rect key="frame" x="186" y="86.333333333333329" width="104" height="13.333333333333329"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="13.33" id="0o3-0D-qZi"/>
                                                                 <constraint firstAttribute="width" constant="104" id="vRO-dN-2h1"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
@@ -225,14 +226,13 @@
                                                         <constraint firstItem="DV5-6C-636" firstAttribute="leading" secondItem="93Y-iN-PTo" secondAttribute="trailing" constant="15" id="KJy-dt-TJ0"/>
                                                         <constraint firstItem="0FT-co-gH4" firstAttribute="leading" secondItem="93Y-iN-PTo" secondAttribute="trailing" constant="15" id="L5R-kv-lb4"/>
                                                         <constraint firstAttribute="height" constant="172" id="RkF-i7-pTh"/>
-                                                        <constraint firstAttribute="bottom" secondItem="0Mh-kk-oOK" secondAttribute="bottom" constant="41" id="Wyd-dJ-2pN"/>
                                                         <constraint firstItem="2mJ-57-a4f" firstAttribute="top" secondItem="DV5-6C-636" secondAttribute="bottom" constant="17.329999999999998" id="ao5-59-bbo"/>
                                                         <constraint firstItem="lmp-bR-Iau" firstAttribute="top" secondItem="DV5-6C-636" secondAttribute="bottom" constant="15" id="d5W-NX-93R"/>
-                                                        <constraint firstItem="0Mh-kk-oOK" firstAttribute="top" secondItem="0FT-co-gH4" secondAttribute="bottom" constant="17.333333333333329" id="fUw-C7-jDH"/>
                                                         <constraint firstItem="lmp-bR-Iau" firstAttribute="leading" secondItem="93Y-iN-PTo" secondAttribute="trailing" constant="15" id="nTS-AI-7U4"/>
                                                         <constraint firstAttribute="width" constant="338" id="nZI-06-e4U"/>
                                                         <constraint firstItem="DV5-6C-636" firstAttribute="top" secondItem="O65-fz-Dv9" secondAttribute="top" constant="41" id="ngo-Ds-ZGR"/>
                                                         <constraint firstItem="93Y-iN-PTo" firstAttribute="leading" secondItem="O65-fz-Dv9" secondAttribute="leading" constant="1" id="r1w-3W-cYH"/>
+                                                        <constraint firstItem="0Mh-kk-oOK" firstAttribute="top" secondItem="0FT-co-gH4" secondAttribute="bottom" constant="17.333333333333343" id="uN6-1C-OXL"/>
                                                         <constraint firstAttribute="bottom" secondItem="93Y-iN-PTo" secondAttribute="bottom" constant="1" id="y9L-fA-hTB"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -340,10 +340,10 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-LC-tmj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Product" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOh-LC-tmj">
                                                     <rect key="frame" x="10" y="188" width="109" height="11"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="11" id="0yf-4Y-BfG"/>
+                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="11" id="0yf-4Y-BfG"/>
                                                         <constraint firstAttribute="width" constant="109" id="hXJ-0k-Kaj"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="10"/>
@@ -375,12 +375,12 @@
                                             <constraint firstItem="QKB-P4-i44" firstAttribute="top" secondItem="Ega-iU-XyJ" secondAttribute="bottom" constant="8" id="Mdr-wK-1FA"/>
                                             <constraint firstItem="AOh-LC-tmj" firstAttribute="top" secondItem="QKB-P4-i44" secondAttribute="bottom" constant="4" id="PPv-p4-3Ra"/>
                                             <constraint firstItem="GvT-0P-Hyh" firstAttribute="leading" secondItem="uI5-s2-56Q" secondAttribute="leading" constant="10" id="Qdp-kp-3IV"/>
-                                            <constraint firstItem="GvT-0P-Hyh" firstAttribute="top" secondItem="AOh-LC-tmj" secondAttribute="bottom" constant="18" id="R3j-q5-TtL"/>
                                             <constraint firstAttribute="trailing" secondItem="Ega-iU-XyJ" secondAttribute="trailing" id="Wgy-UR-Vte"/>
                                             <constraint firstItem="AOh-LC-tmj" firstAttribute="leading" secondItem="uI5-s2-56Q" secondAttribute="leading" constant="10" id="Zg1-bW-N6t"/>
                                             <constraint firstItem="hlG-Ph-p2B" firstAttribute="top" secondItem="Ega-iU-XyJ" secondAttribute="bottom" constant="9" id="baz-bB-wsp"/>
                                             <constraint firstItem="Ega-iU-XyJ" firstAttribute="top" secondItem="uI5-s2-56Q" secondAttribute="top" id="d5N-uX-EQx"/>
                                             <constraint firstAttribute="trailing" secondItem="hlG-Ph-p2B" secondAttribute="trailing" id="fJE-dH-ETM"/>
+                                            <constraint firstAttribute="bottom" secondItem="GvT-0P-Hyh" secondAttribute="bottom" constant="8" id="kLT-tj-3tv"/>
                                         </constraints>
                                         <size key="customSize" width="167" height="239"/>
                                         <connections>
@@ -418,7 +418,7 @@
     <resources>
         <image name="98" width="110" height="110"/>
         <image name="backArrow" width="32" height="32"/>
-        <image name="icLikeLine" width="23.666666030883789" height="21"/>
+        <image name="icLikeLine" width="34" height="34"/>
         <image name="testImage" width="139" height="142"/>
     </resources>
 </document>
