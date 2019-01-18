@@ -77,7 +77,7 @@ extension SearchProductVC: UICollectionViewDataSource {
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
             
-            UnLikePService.shared.unlike(productIdx: productIdx) { (res) in
+            LikePService.shared.unlike(productIdx: productIdx) { (res) in
                 if let status = res.status {
                     switch status {
                     case 200 :

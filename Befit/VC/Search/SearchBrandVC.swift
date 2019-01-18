@@ -1,5 +1,5 @@
 //
-//  SearchBrandTVC.swift
+//  SearchBrandVC.swift
 //  Befit
 //
 //  Created by 이충신 on 30/12/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 
-class SearchBrandTVC: UITableViewController {
+class SearchBrandVC: UITableViewController {
 
     let userDefault = UserDefaults.standard
     
@@ -72,7 +72,7 @@ class SearchBrandTVC: UITableViewController {
     }
 }
 
-extension SearchBrandTVC: IndicatorInfoProvider{
+extension SearchBrandVC: IndicatorInfoProvider{
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "브랜드")

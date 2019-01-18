@@ -8,10 +8,10 @@
 
 import Alamofire
 
-struct LikeBrandService: APIManager, Requestable{
+struct showLikeBListService: APIManager, Requestable{
     
     typealias NetworkData = ResponseArray<Brand>
-    static let shared = LikeBrandService()
+    static let shared = showLikeBListService()
     
     let URL = url("/likes/brands")
     

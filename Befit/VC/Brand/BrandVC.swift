@@ -63,12 +63,12 @@ extension BrandVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //1) 상단부 브랜드 페이지
+        
+        //1) 상단부: 브랜드 정보
         if indexPath.section == 0 {
             
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "BrandCVCell1", for: indexPath) as! BrandCVCell1
             
-            //상단부
             cell1.brandLogoImg.imageFromUrl(brandInfo.logo_url, defaultImgPath: "")
             cell1.brandBackGround.imageFromUrl(brandInfo.mainpage_url, defaultImgPath: "")
             cell1.brandNameEnglishLB.text = brandInfo.name_english
@@ -82,32 +82,32 @@ extension BrandVC: UICollectionViewDataSource{
             
         }
             
-       //2) 중간부
+        //2) 중간부: 메인에서 들어올때만 나타나는 선택한 상품
         else if indexPath.section == 1 {
             
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "BrandCVCell2", for: indexPath) as! BrandCVCell2
             
+            //브랜드의 선택한 상품
             if let pInfo = productInfo  {
-            
-                //중간부
                 cell2.productImg.imageFromUrl(pInfo.image_url, defaultImgPath: "")
                 cell2.productBrand.text = brandInfo.name_korean
                 cell2.productName.text = pInfo.name
                 cell2.price.text = pInfo.price
-                
+                cell2.brandProductLikeBtn.addTarget(self, action: #selector(clickBPLike(_:)), for: .touchUpInside)
             }
             
-            //하단부
-            guard let product = productList else {return cell2}
-            cell2.productNumLB.text = "PRODUCT (" + "\(product.count)" + ")"
-            cell2.newBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
-            cell2.popularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
+            //상품갯수 및 버튼
+            if let pList = productList {
+                cell2.productNumLB.text = "PRODUCT (" + "\(pList.count)" + ")"
+                cell2.newBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
+                cell2.popularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
+            }
             
             return cell2
             
         }
             
-            //2) 하단부 브랜드의 상품 리스트
+        //3) 하단부: 브랜드의 상품리스트
         else {
             
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
@@ -135,14 +135,14 @@ extension BrandVC: UICollectionViewDataSource{
     }
     
     func productListNewInit() {
-        BrandProductSorting.shared.showSortingNew (brandIdx: brandIdx!, completion: { (productData) in
+        ProductSortingService.shared.showSortingNew (brandIdx: brandIdx!, completion: { (productData) in
             self.productList = productData
             self.collectionView.reloadData()
         })
     }
     
     func productListPopularInit() {
-        BrandProductSorting.shared.showSortingPopular(brandIdx: brandIdx!, completion: { (productData) in
+        ProductSortingService.shared.showSortingPopular(brandIdx: brandIdx!, completion: { (productData) in
             self.productList = productData
             self.collectionView.reloadData()
         })
@@ -159,13 +159,25 @@ extension BrandVC: UICollectionViewDataSource{
             productVC.address = brandInfo.link
             productVC.brandHome = true
         }
+        
+        //중간부 클릭시 브랜드의 홈페이지로 이동
+        else if indexPath.section == 1 {
+            productVC.brandName = brandInfo.name_english
+            productVC.address = productInfo?.link
+            productVC.productInfo = productInfo
+            productVC.brandHome = false
+            
+        }
+        
         //하단부 클릭시 상품의 페이지몰로 이동
         else {
             productVC.brandName = productList?[indexPath.row].name_English
             productVC.address = productList?[indexPath.row].link
             productVC.productInfo = productList?[indexPath.row]
+            productVC.brandHome = false
            
         }
+        
          self.navigationController?.present(productVC, animated: true, completion: nil)
         
     }
@@ -183,7 +195,8 @@ extension BrandVC {
         //1) 브랜드 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
-            UnLikeBService.shared.unlike(brandIdx: brandIdx!) { (res) in
+            
+            LikeBService.shared.unlike(brandIdx: brandIdx!) { (res) in
                 if let status = res.status {
                     switch status {
                     case 200 :
@@ -198,6 +211,7 @@ extension BrandVC {
             //2) 브랜드 좋아요가 작동하는 부분
         else {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            
             LikeBService.shared.like(brandIdx: brandIdx!) { (res) in
                 if let status = res.status {
                     switch status {
@@ -216,7 +230,7 @@ extension BrandVC {
     
     
     
-    //2. 상품 좋아요 관련
+    //2. 상품 좋아요
     @objc func clickPLike(_ sender: UIButton){
         
         guard let productIdx = productList?[sender.tag].idx else {return}
@@ -225,7 +239,7 @@ extension BrandVC {
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
             
-            UnLikePService.shared.unlike(productIdx: productIdx) { (res) in
+            LikePService.shared.unlike(productIdx: productIdx) { (res) in
                 if let status = res.status {
                     switch status {
                     case 200 :
@@ -238,11 +252,53 @@ extension BrandVC {
             }
         }
             
-            //2) 상품 좋아요가 작동하는 부분
+        //2) 상품 좋아요가 작동하는 부분
         else {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
             
             LikePService.shared.like(productIdx: productIdx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 201 :
+                        print("상품 좋아요 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
+    
+    //3. 브랜드의 선택된 상품 좋아요
+    @objc func clickBPLike(_ sender: UIButton){
+        
+        
+        //1) 상품 좋아요 취소가 작동하는 부분
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
+            
+            LikePService.shared.unlike(productIdx: (productInfo?.idx)!) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 200 :
+                        print("상품 좋아요 취소 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+        }
+            
+        //2) 상품 좋아요가 작동하는 부분
+        else {
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            
+            LikePService.shared.like(productIdx: (productInfo?.idx)!) { (res) in
                 if let status = res.status {
                     switch status {
                     case 201 :

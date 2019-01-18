@@ -33,7 +33,7 @@ class LikeProductCVC: UIViewController {
     
     
     func productListInit() {
-        LikeProductService.shared.showProductLike { (productData) in
+        showLikePListService.shared.showProductLike { (productData) in
             self.productLikeList = productData
             self.collectionView.reloadData()
         }
@@ -91,7 +91,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
             likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
             
             //상품 좋아요 취소가 작동하는 부분
-            UnLikePService.shared.unlike(productIdx: idx) { (res) in
+            LikePService.shared.unlike(productIdx: idx) { (res) in
                 if let status = res.status {
                     switch status {
                         case 200 :

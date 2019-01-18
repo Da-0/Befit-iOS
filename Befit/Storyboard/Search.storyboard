@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ijU-Zq-L96" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="106"/>
+            <point key="canvasLocation" x="1510" y="106"/>
         </scene>
         <!--SearchVC1-->
         <scene sceneID="Apm-uP-Xrt">
@@ -183,7 +183,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juS-ex-STh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1692" y="795"/>
+            <point key="canvasLocation" x="1510" y="794"/>
         </scene>
         <!--상품검색-->
         <scene sceneID="xnC-qb-nwq">
@@ -343,7 +343,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YXi-9C-KxD">
-                                            <rect key="frame" x="284" y="6.6666666666666679" width="32" height="27.000000000000004"/>
+                                            <rect key="frame" x="509" y="6.6666666666666679" width="32" height="27.000000000000004"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="32" id="0y3-SK-xfG"/>
                                                 <constraint firstAttribute="height" constant="27" id="GNC-fG-Bbs"/>
@@ -357,7 +357,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPg-VY-2n5">
-                                            <rect key="frame" x="325" y="6.6666666666666679" width="42" height="27.000000000000004"/>
+                                            <rect key="frame" x="550" y="6.6666666666666679" width="42" height="27.000000000000004"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="42" id="AK9-d8-qph"/>
                                                 <constraint firstAttribute="height" constant="27" id="ZZT-Cy-CqO"/>
@@ -404,12 +404,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gvw-WZ-WcI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2656.8000000000002" y="105.66502463054188"/>
+            <point key="canvasLocation" x="2418" y="105"/>
         </scene>
-        <!--Search BrandTVC-->
+        <!--Search BrandVC-->
         <scene sceneID="VHa-yo-ILb">
             <objects>
-                <tableViewController storyboardIdentifier="SearchBrandTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xVK-g8-CgA" customClass="SearchBrandTVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchBrandVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xVK-g8-CgA" customClass="SearchBrandVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="kOJ-JA-tpB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -464,7 +464,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KdY-ek-dzk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3334" y="106"/>
+            <point key="canvasLocation" x="3284" y="106"/>
         </scene>
     </scenes>
     <resources>
