@@ -181,7 +181,7 @@ extension MainVC: customCellDelegate {
     //맨 위 브랜드 사진 클릭
     func mainBrandPressed(cell: MainCVCell0, idx: Int) {
         
-        let brandVC = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+        let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
             brandVC.brandInfo = recommendBrand[idx]
             brandVC.brandIdx = recommendBrand[idx].idx
 
@@ -194,12 +194,12 @@ extension MainVC: customCellDelegate {
         let bid = Int(idx/3)
         let pid = idx % 3
 
-        let pBrandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "PBrandVC") as! PBrandVC
-        pBrandVC.brandInfo = recommendBrand[bid]
-        pBrandVC.productInfo = recommendBrand[bid].products?[pid]
-        pBrandVC.brandIdx = recommendBrand[bid].idx
+        let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+        brandVC.brandInfo = recommendBrand[bid]
+        brandVC.productInfo = recommendBrand[bid].products?[pid]
+        brandVC.brandIdx = recommendBrand[bid].idx
         
-        self.navigationController?.pushViewController(pBrandVC, animated: true)
+        self.navigationController?.pushViewController(brandVC, animated: true)
         
     }
     
@@ -220,14 +220,14 @@ extension MainVC: customCellDelegate2 {
                 self.present(productVC, animated: true, completion: nil)
                 break
             case 1:
-                let brandVC = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+                let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
                 brandVC.brandIdx = 33
                 brandVC.brandInfo = bannerBrandInfo1
                 
                 self.navigationController?.pushViewController(brandVC, animated: true)
                 break
             case 2:
-                let brandVC = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+                let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
                 brandVC.brandIdx = 21
                 brandVC.brandInfo = bannerBrandInfo2
                 

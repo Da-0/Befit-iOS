@@ -112,7 +112,7 @@ class LikeBrandTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let brandVC  = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = brandLikeList[indexPath.row]
         brandVC.brandIdx = brandLikeList[indexPath.row].idx
         self.navigationController?.pushViewController(brandVC, animated: true)

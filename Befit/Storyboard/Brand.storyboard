@@ -21,7 +21,7 @@
         <!--BrandVC-->
         <scene sceneID="ZBg-s1-f48">
             <objects>
-                <viewController storyboardIdentifier="PBrandVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EAY-rP-fzx" customClass="PBrandVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BrandVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EAY-rP-fzx" customClass="BrandVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4du-8o-az9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PBrandDetailCVCell" reuseIdentifier="PBrandDetailCVCell" id="0u4-If-2fD" customClass="PBrandDetailCVCell" customModule="Befit" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="BrandCVCell1" reuseIdentifier="BrandCVCell1" id="0u4-If-2fD" customClass="BrandCVCell1" customModule="Befit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="228"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -137,14 +137,14 @@
                                         </constraints>
                                         <size key="customSize" width="375" height="228"/>
                                         <connections>
-                                            <outlet property="brandBackGround" destination="lJ1-sS-SSu" id="7gf-J3-p9t"/>
-                                            <outlet property="brandLogoImg" destination="h5D-Zd-XZh" id="fL8-qE-KzR"/>
-                                            <outlet property="brandNameEnglishLB" destination="3ID-bE-3Oa" id="DXS-cM-mPO"/>
-                                            <outlet property="brandNameKoreanLB" destination="L2V-qf-d8g" id="WfF-Hp-dw1"/>
-                                            <outlet property="likeBtn1" destination="Icx-5y-vhb" id="iFf-Bb-Bfz"/>
+                                            <outlet property="brandBackGround" destination="lJ1-sS-SSu" id="KhG-kV-l1c"/>
+                                            <outlet property="brandLikeBtn" destination="Icx-5y-vhb" id="P5a-fe-cEI"/>
+                                            <outlet property="brandLogoImg" destination="h5D-Zd-XZh" id="kHO-mp-OYw"/>
+                                            <outlet property="brandNameEnglishLB" destination="3ID-bE-3Oa" id="F1l-dc-7Xs"/>
+                                            <outlet property="brandNameKoreanLB" destination="L2V-qf-d8g" id="009-HL-XCy"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="PBrandDetailCVCell2" reuseIdentifier="PBrandDetailCVCell2" id="IYu-kK-PHp" customClass="PBrandDetailCVCell2" customModule="Befit" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="BrandCVCell2" reuseIdentifier="BrandCVCell2" id="IYu-kK-PHp" customClass="BrandCVCell2" customModule="Befit" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="228" width="375" height="247"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -255,7 +255,7 @@
                                                                 <color key="titleColor" red="0.4549019608" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="popularAction:" destination="IYu-kK-PHp" eventType="touchUpInside" id="ERg-wT-ahm"/>
+                                                                <action selector="popularAction:" destination="IYu-kK-PHp" eventType="touchUpInside" id="KcN-Sq-kIV"/>
                                                             </connections>
                                                         </button>
                                                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4DB-hE-bNF" userLabel="barView">
@@ -281,7 +281,7 @@
                                                                 <color key="titleColor" red="0.47843137250000001" green="0.21176470589999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="newAction:" destination="IYu-kK-PHp" eventType="touchUpInside" id="6ln-Mx-sMW"/>
+                                                                <action selector="newAction:" destination="IYu-kK-PHp" eventType="touchUpInside" id="FyU-LX-ieg"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -305,15 +305,15 @@
                                         </constraints>
                                         <size key="customSize" width="375" height="247"/>
                                         <connections>
-                                            <outlet property="likeBtn2" destination="2mJ-57-a4f" id="qZd-9C-vD0"/>
-                                            <outlet property="newBtn" destination="tmD-yC-hmP" id="Fxr-dI-RNN"/>
-                                            <outlet property="popularBtn" destination="e1i-0j-RG2" id="XEk-PE-pjo"/>
-                                            <outlet property="price" destination="0Mh-kk-oOK" id="gEe-qJ-Ggp"/>
-                                            <outlet property="productBrand" destination="lmp-bR-Iau" id="C4O-uQ-UB5"/>
-                                            <outlet property="productImg" destination="93Y-iN-PTo" id="DAD-bz-ASl"/>
-                                            <outlet property="productName" destination="0FT-co-gH4" id="tZj-El-ey3"/>
-                                            <outlet property="productNumLB" destination="3cA-Zz-qua" id="gY9-5r-Qdx"/>
-                                            <outlet property="productView" destination="O65-fz-Dv9" id="DKf-gw-qW4"/>
+                                            <outlet property="brandProductLikeBtn" destination="2mJ-57-a4f" id="iIY-Zc-4jT"/>
+                                            <outlet property="newBtn" destination="tmD-yC-hmP" id="8Xa-gc-OvU"/>
+                                            <outlet property="popularBtn" destination="e1i-0j-RG2" id="ADK-9q-nkp"/>
+                                            <outlet property="price" destination="0Mh-kk-oOK" id="ONG-NI-Tor"/>
+                                            <outlet property="productBrand" destination="lmp-bR-Iau" id="yfl-1X-UOF"/>
+                                            <outlet property="productImg" destination="93Y-iN-PTo" id="Qje-0E-G9T"/>
+                                            <outlet property="productName" destination="0FT-co-gH4" id="eOf-g7-H1i"/>
+                                            <outlet property="productNumLB" destination="3cA-Zz-qua" id="z25-G9-5j6"/>
+                                            <outlet property="productView" destination="O65-fz-Dv9" id="ddg-UP-UnX"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" restorationIdentifier="CategoryDetailCVCell" reuseIdentifier="CategoryDetailCVCell" id="uI5-s2-56Q" customClass="CategoryDetailCVCell" customModule="Befit" customModuleProvider="target">

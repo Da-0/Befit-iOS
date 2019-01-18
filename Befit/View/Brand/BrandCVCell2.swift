@@ -1,5 +1,5 @@
 //
-//  PBrandDetailCVCell2.swift
+//  BrandCVCell2.swift
 //  Befit
 //
 //  Created by 이충신 on 17/01/2019.
@@ -8,14 +8,14 @@
 
 import UIKit
 
-class PBrandDetailCVCell2: UICollectionViewCell {
+class BrandCVCell2: UICollectionViewCell {
     
     //중간 상품 정보 뿌분
     @IBOutlet weak var productImg: UIImageView!
     @IBOutlet weak var productBrand: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var price: UILabel!
-    @IBOutlet weak var likeBtn2: UIButton!
+    @IBOutlet weak var brandProductLikeBtn: UIButton!
     
     @IBOutlet weak var productView: UIView!
     
