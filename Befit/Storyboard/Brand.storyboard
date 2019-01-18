@@ -316,7 +316,7 @@
                                             <outlet property="productView" destination="O65-fz-Dv9" id="ddg-UP-UnX"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" restorationIdentifier="CategoryDetailCVCell" reuseIdentifier="CategoryDetailCVCell" id="uI5-s2-56Q" customClass="CategoryDetailCVCell" customModule="Befit" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" restorationIdentifier="ProductCVCell" reuseIdentifier="ProductCVCell" id="uI5-s2-56Q" customClass="ProductCVCell" customModule="Befit" customModuleProvider="target">
                                         <rect key="frame" x="104" y="475" width="167" height="239"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

@@ -48,6 +48,7 @@ class MainVC: UIViewController {
         }
         
         //3) 배너 광고에 대한 브랜드 호출
+        
         BannerBrandService.shared.showBannerBrand(idx: 33) { (res) in
                 guard let brandInfo = res.data else {return}
                 self.bannerBrandInfo1 = brandInfo
@@ -101,27 +102,29 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             return cell0
         }
             
-            //2) Banner 구현부
+        //2) Banner 구현부
         else if indexPath.section == 1 {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell1", for: indexPath) as! MainCVCell1
             cell1.delegate = self;
             cell1.collectionView1.reloadData()
             return cell1
         }
-            //3)나를 위한 추천 레이블 있는 곳(기능X) ->  변경이 필요
-        else if indexPath.section == 2 {
-            let cell12 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell12", for: indexPath) as! MainCVCell12
-            return cell12
-        }
-            //4) 나를 위한 상품 추천 Cell
-        else {
-            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell2", for: indexPath) as! MainCVCell2
             
-            guard let productList = recommendProduct else {return cell2}
-            cell2.productImg.imageFromUrl(productList[indexPath.row].image_url, defaultImgPath: "")
-            cell2.brandName.text = productList[indexPath.row].name_English
-            cell2.productName.text = productList[indexPath.row].name
+        //3)나를 위한 추천 레이블(기능X)
+        else if indexPath.section == 2{
+            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell2", for: indexPath) as! MainCVCell2
             return cell2
+        }
+            
+        //4) 나를 위한 상품 추천 Cell
+        else  {
+            let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell3", for: indexPath) as! MainCVCell3
+            
+            guard let productList = recommendProduct else {return cell3}
+            cell3.productImg.imageFromUrl(productList[indexPath.row].image_url, defaultImgPath: "")
+            cell3.brandName.text = productList[indexPath.row].name_English
+            cell3.productName.text = productList[indexPath.row].name
+            return cell3
         }
     }
     
@@ -131,6 +134,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if indexPath.section == 0 {}
         else if indexPath.section == 1 {}
         else if indexPath.section == 2 {}
+            
         else {
             let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
             productVC.brandName = recommendProduct?[indexPath.row].name_English

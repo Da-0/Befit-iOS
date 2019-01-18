@@ -76,10 +76,10 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             
-            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategorySortingCVCell", for: indexPath as IndexPath) as! CategorySortingCVCell
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewPopularSortingCRV", for: indexPath as IndexPath) as! NewPopularSortingCRV
             
-            cell.NewBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
-            cell.PopularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
+            cell.newBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
+            cell.popularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
             
             return cell
             
@@ -122,7 +122,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
      
         cell.productImg.imageFromUrl(productList?[indexPath.row].image_url, defaultImgPath: "")
         cell.brandName.text = productList?[indexPath.row].name_korean

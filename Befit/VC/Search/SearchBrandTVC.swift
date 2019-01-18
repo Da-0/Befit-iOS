@@ -13,11 +13,8 @@ class SearchBrandTVC: UITableViewController {
 
     let userDefault = UserDefaults.standard
     
-    // product model 받아올 변수 선언
     var searchBrandList:[Brand]? = []
     var searchKeyword: String = ""
-    
-//    @IBOutlet weak var noResultView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +31,6 @@ class SearchBrandTVC: UITableViewController {
     func initSearchBrandList(){
             
         SearchBrandService.shared.showSearchBrand(keyword: self.searchKeyword) { (res) in
-            guard let status = res.status else {return}
-           
             self.searchBrandList = res.data
             self.tableView.reloadData()
             

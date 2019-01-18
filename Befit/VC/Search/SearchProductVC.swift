@@ -43,7 +43,7 @@ extension SearchProductVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchProductCVCell", for: indexPath) as! SearchProductCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
         guard let product = productList else {return cell}
         
         cell.brandName.text = product[indexPath.row].name_korean
@@ -122,7 +122,7 @@ extension SearchProductVC:  UICollectionViewDelegateFlowLayout {
             
         case UICollectionView.elementKindSectionHeader:
             
-            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchCRV", for: indexPath as IndexPath) as! SearchCRV
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewPopularSortingCRV", for: indexPath as IndexPath) as! NewPopularSortingCRV
             
             cell.backgroundColor =  #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
             cell.isUserInteractionEnabled = true
@@ -167,7 +167,6 @@ extension SearchProductVC:  UICollectionViewDelegateFlowLayout {
     
     func initSearchProductList2(){
         SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
-            guard let status = res.status else {return}
             self.productList = res.data
             self.collectionView.reloadData()
         }

@@ -67,7 +67,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let product = productLikeList[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LikeProductCVCell", for: indexPath) as! LikeProductCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
         
         cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
         cell.brandName.text = product.name_korean

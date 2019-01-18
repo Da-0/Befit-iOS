@@ -8,10 +8,6 @@
 
 import UIKit
 
-//protocol customCellDelgate2 : class {
-//     func sharePressed(cell: MainCVCell00)
-//}
-
 class MainCVCell00: UICollectionViewCell {
     
     @IBOutlet weak var brandMainImg: UIImageView!
@@ -24,14 +20,6 @@ class MainCVCell00: UICollectionViewCell {
     @IBOutlet weak var productLB1: UILabel!
     @IBOutlet weak var productLB2: UILabel!
     @IBOutlet weak var productLB3: UILabel!
-    
-//    var delegate: customCellDelgate2?
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        delegate?.sharePressed(cell: self)
-        
-    }
     
 }
 

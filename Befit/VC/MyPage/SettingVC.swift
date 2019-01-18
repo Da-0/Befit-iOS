@@ -54,8 +54,6 @@ class SettingVC: UIViewController {
                 UserDefaults.standard.removeObject(forKey: "pw")
                 UserDefaults.standard.synchronize()
                 
-                print("token 삭제후 UserDefault 값 = " + "\(self.userDefault.string(forKey: "token"))")
-                
                 self.performSegue(withIdentifier: "GoToLogin", sender: self)
             }
             

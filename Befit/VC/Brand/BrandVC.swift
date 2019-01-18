@@ -110,7 +110,7 @@ extension BrandVC: UICollectionViewDataSource{
             //2) 하단부 브랜드의 상품 리스트
         else {
             
-            let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
+            let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
             
             cell3.brandName.text = productList?[indexPath.row].name_korean
             cell3.productName.text = productList?[indexPath.row].name
