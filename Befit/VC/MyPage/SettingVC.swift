@@ -33,6 +33,8 @@ class SettingVC: UIViewController {
         }
         else{
             print("자동로그인 OFF!")
+            userDefault.removeObject(forKey: "pw")
+            userDefault.removeObject(forKey: "id")
         }
     }
     
@@ -51,8 +53,6 @@ class SettingVC: UIViewController {
                 UserDefaults.standard.removeObject(forKey: "id")
                 UserDefaults.standard.removeObject(forKey: "pw")
                 UserDefaults.standard.synchronize()
-                
-                print("token 삭제후 UserDefault 값 = " + "\(self.userDefault.string(forKey: "token"))")
                 
                 self.performSegue(withIdentifier: "GoToLogin", sender: self)
             }

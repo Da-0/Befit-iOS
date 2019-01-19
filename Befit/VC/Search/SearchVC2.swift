@@ -33,17 +33,11 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     // willMove -> It appears on the parent screen.
     override func willMove(toParent parent: UIViewController?) {
         print(#function)
-        if let `parent` = parent as UIViewController? {
-//            print(parent)   // TestScrollViewAndContainerView.ViewController
-        }
     }
     
     // It appears on the parent screen. -> didMove
     override func didMove(toParent parent: UIViewController?) {
 //        print(#function)
-        if let `parent` = parent as UIViewController? {
-//            print(parent)
-        }
     }
     
     
@@ -51,7 +45,7 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
         
         let child1 = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchProductVC") as! SearchProductVC
-        let child2 = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchBrandTVC") as! SearchBrandTVC
+        let child2 = UIStoryboard(name: "Search", bundle: nil).instantiateViewController(withIdentifier: "SearchBrandVC") as! SearchBrandVC
         
         return [child1, child2]
     }

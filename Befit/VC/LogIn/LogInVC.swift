@@ -49,12 +49,13 @@ class LogInVC: UIViewController, APIManager {
     func autoLogIn(_ uid: String,_ upw: String){
       
         LoginService.shared.login(email: uid, password: upw, completion: {[weak self] (res) in
-            
+         
             guard let `self` = self else {return}
             if let status = res.status {
                 switch status {
                 case 200 :
                     guard let token = res.data?.token else { return}
+                    print("토근값 = " + token + "\n")
                     self.userDefault.set(token, forKey: "token")
                     let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
                     self.present(mainVC, animated: true, completion: nil)
@@ -67,7 +68,7 @@ class LogInVC: UIViewController, APIManager {
     }
     
     func network(){
-        
+
         LoginService.shared.login(email: emailTF.text!, password: pwTF.text!, completion: {[weak self] (res) in
             guard let `self` = self else {return}
            
@@ -75,6 +76,7 @@ class LogInVC: UIViewController, APIManager {
                 switch status {
                     case 200 :
                         guard let token = res.data?.token else { return}
+                         print("토근값 = " + token + "\n")
                          self.userDefault.set(token, forKey: "token")
                          let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
                          self.present(mainVC, animated: true, completion: nil)

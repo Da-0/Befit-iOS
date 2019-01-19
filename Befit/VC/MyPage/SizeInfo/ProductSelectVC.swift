@@ -68,7 +68,6 @@ class ProductSelectVC: UIViewController {
             guard let `self` = self else {return}
             self.closetList = closet
             self.tableView.reloadData()
-            print("productselectVC = \(closet)")
             guard let closetlist = self.closetList else {return}
             for product in closetlist {
                 self.originalCloset.append(product)

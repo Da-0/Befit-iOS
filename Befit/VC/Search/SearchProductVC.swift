@@ -5,12 +5,9 @@ import XLPagerTabStrip
 class SearchProductVC: UIViewController {
     
     let userDefault = UserDefaults.standard
-    
-
     @IBOutlet weak var collectionView: UICollectionView!
+    var productList: [Product]?
     
-    // product model 받아올 변수 선언
-    var searchProductList:[Product]? = []
     var searchKeyword: String = ""
     
     @IBOutlet weak var noResultView: UIView!
@@ -26,49 +23,98 @@ class SearchProductVC: UIViewController {
         guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
         searchKeyword = keyword
         initSearchProductList1()
-        //initSearchProductList2()
-        
-        
     }
-    
-    func initSearchProductList1(){
-        
-        SearchProductService.shared.showSearchProductNew(keyword: searchKeyword) { (res) in
-            guard let status = res.status else {return}
-            
-            if status == 200 {
-                if res.data == nil {
-                    self.noResultView.isHidden = false
-                    self.collectionView.isHidden = true
-                    }
-                else{
-                    self.noResultView.isHidden = true
-                    self.collectionView.isHidden = false
-                }
-            }
-            
-            self.searchProductList = res.data
-            self.collectionView.reloadData()
-            
-        }
-        
-    }
-    
-    func initSearchProductList2(){
-        SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
-            guard let status = res.status else {return}
-            
-            self.searchProductList = res.data
-            self.collectionView.reloadData()
-            
-        }
-        
-    }
-    
     
 }
 
-extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SearchProductVC: UICollectionViewDataSource {
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        guard let product = productList else {
+            noResultView.isHidden = false
+            return 0
+        }
+        
+        return product.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
+        guard let product = productList else {return cell}
+        
+        cell.brandName.text = product[indexPath.row].name_korean
+        cell.productName.text =  product[indexPath.row].name
+        cell.price.text = product[indexPath.row].price
+        cell.productImg.imageFromUrl(product[indexPath.row].image_url, defaultImgPath: "")
+        cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+        cell.likeBtn.tag = indexPath.row
+        
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        guard let searchProduct = productList else {return}
+        
+        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        productVC.address = searchProduct[indexPath.row].link
+        productVC.brandName = searchProduct[indexPath.row].name_English
+        productVC.productInfo = searchProduct[indexPath.row]
+        
+        self.navigationController?.present(productVC, animated: true, completion: nil)
+    }
+    
+    @objc func clickLike(_ sender: UIButton){
+        
+        guard let productIdx = productList?[sender.tag].idx else {return}
+        
+        //1) 상품 좋아요 취소가 작동하는 부분
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
+            
+            LikePService.shared.unlike(productIdx: productIdx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 200 :
+                        print("상품 좋아요 취소 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+        }
+            
+            //2)상품 좋아요가 작동하는 부분
+        else {
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            
+            LikePService.shared.like(productIdx: productIdx) { (res) in
+                if let status = res.status {
+                    switch status {
+                    case 201 :
+                        print("상품 좋아요 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: break
+                    }
+                }
+            }
+            
+        }
+        
+    }
+
+    
+}
+
+extension SearchProductVC:  UICollectionViewDelegateFlowLayout {
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
@@ -76,7 +122,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
             
         case UICollectionView.elementKindSectionHeader:
             
-            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SearchCRV", for: indexPath as IndexPath) as! SearchCRV
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewPopularSortingCRV", for: indexPath as IndexPath) as! NewPopularSortingCRV
             
             cell.backgroundColor =  #colorLiteral(red: 0.9215686275, green: 0.9215686275, blue: 0.9215686275, alpha: 1)
             cell.isUserInteractionEnabled = true
@@ -90,8 +136,6 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         
     }
     
-    
-    
     @objc func newReload(){
         initSearchProductList1()
     }
@@ -101,49 +145,34 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         initSearchProductList2()
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        guard let product = searchProductList else {
-            noResultView.isHidden = false
-            return 0
+    func initSearchProductList1(){
+        SearchProductService.shared.showSearchProductNew(keyword: searchKeyword) { (res) in
+            guard let status = res.status else {return}
+            if status == 200 {
+                if res.data == nil {
+                    self.noResultView.isHidden = false
+                    self.collectionView.isHidden = true
+                }
+                else{
+                    self.noResultView.isHidden = true
+                    self.collectionView.isHidden = false
+                }
+            }
+            self.productList = res.data
+            self.collectionView.reloadData()
+            
         }
         
-        return product.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchProductCVCell", for: indexPath) as! SearchProductCVCell
-        guard let product = searchProductList else {return cell}
-        
-        cell.brandName.text = product[indexPath.row].name_korean
-        cell.productName.text =  product[indexPath.row].name
-        cell.price.text = product[indexPath.row].price
-        cell.productImg.imageFromUrl(product[indexPath.row].image_url, defaultImgPath: "")
-        
-        return cell
+    func initSearchProductList2(){
+        SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
+            self.productList = res.data
+            self.collectionView.reloadData()
+        }
     }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let searchProduct = searchProductList else {return}
-        
-        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-        productVC.address = searchProduct[indexPath.row].link
-        productVC.brandName = searchProduct[indexPath.row].name_English
-        productVC.productInfo = searchProduct[indexPath.row]
-        
-        self.navigationController?.present(productVC, animated: true, completion: nil)
-    }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        //iphone사이즈에 따라 동적으로 대응이 가능해진다.
-        // let width: CGFloat = (self.collectionView.frame.width ) / 2 - 20
-        // let height: CGFloat =  (self.collectionView.frame.height ) / 2 - 20
-        
         return CGSize(width: 167, height: 239)
     }
     
@@ -153,7 +182,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
+        return 9
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -161,9 +190,7 @@ extension SearchProductVC: UICollectionViewDataSource, UICollectionViewDelegateF
         return UIEdgeInsets(top: 0, left: 15, bottom: 15, right: 15)
     }
     
-    
 }
-
 
 extension SearchProductVC: IndicatorInfoProvider{
     

@@ -20,6 +20,7 @@ class MyPageVC: UIViewController {
     let tableData = ["나의 패션 취향", "나의 사이즈 정보", "통합회원정보관리", "고객센터"]
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         tableView.delegate = self;
@@ -60,7 +61,6 @@ class MyPageVC: UIViewController {
             
             self.brandIdx[0] = res.brand1_idx!
             self.brandIdx[1] = res.brand2_idx!
-            
             
             //정보의 일부가 없으면 guard let으로 빠져나갈 수 있기때문에 코드 순서 변경하면 안됨
             guard let address = res.home_address, let detail = res.detail_address, let phone = res.phone, let post = res.post_number

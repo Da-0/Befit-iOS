@@ -30,7 +30,7 @@ class LikeBrandTVC: UITableViewController {
     }
     
     func brandListInit() {
-        LikeBrandService.shared.showBrandLike { (brandData) in
+        showLikeBListService.shared.showBrandLike { (brandData) in
             self.likeBrandNumb.text = "찜한브랜드 " + "\(self.brandLikeList.count)"
             self.brandLikeList = brandData
             self.tableView.reloadData()
@@ -64,15 +64,13 @@ class LikeBrandTVC: UITableViewController {
     //좋아요가 작동하는 부분
     @objc func clickLike(_ sender: UIButton){
         
-        print(sender.tag)
-        
         guard let idx = brandLikeList[sender.tag].idx else {return}
         
         if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull2")
+            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
             
-            //브랜드 좋아요 취소가 작동하는 부분
-            UnLikeBService.shared.unlike(brandIdx: idx) { (res) in
+            //1)브랜드 좋아요 취소가 작동하는 부분
+            LikeBService.shared.unlike(brandIdx: idx) { (res) in
                 if let status = res.status {
                     switch status {
                     case 200 :
@@ -86,10 +84,11 @@ class LikeBrandTVC: UITableViewController {
             
             
         }
+            
         else {
             likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
             
-            //브랜드 좋아요가 작동하는 부분
+            //2)브랜드 좋아요가 작동하는 부분
             LikeBService.shared.like(brandIdx: idx) { (res) in
                 if let status = res.status {
                     switch status {
@@ -112,7 +111,7 @@ class LikeBrandTVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let brandVC  = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = brandLikeList[indexPath.row]
         brandVC.brandIdx = brandLikeList[indexPath.row].idx
         self.navigationController?.pushViewController(brandVC, animated: true)

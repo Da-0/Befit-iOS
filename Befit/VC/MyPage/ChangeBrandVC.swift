@@ -125,19 +125,18 @@ class ChangeBrandVC: UIViewController {
                     btnArray[7].setImage(menSelected[7], for: .selected)
                      btnArray[7].isSelected = true
                 default: break
-                }
+                
+            }
         }
    
-    
-
     }
+    
     
     @IBAction func backAction(_ sender: Any) {
         
         if selectedCount == 2 {
         
             ChangeBrandService.shared.setBrand(brand1: brandIdx[0], brand2: brandIdx[1]) { (res) in
-                
                 if let status = res.status {
                     switch status {
                         case 200 :

@@ -1,16 +1,17 @@
 //
-//  LikeProductCVCell.swift
+//  ProductCVCell.swift
 //  Befit
 //
-//  Created by 이충신 on 28/12/2018.
-//  Copyright © 2018 GGOMMI. All rights reserved.
+//  Created by 이충신 on 18/01/2019.
+//  Copyright © 2019 GGOMMI. All rights reserved.
 //
 
 import UIKit
 
-class LikeProductCVCell: UICollectionViewCell {
+class ProductCVCell: UICollectionViewCell {
     
     @IBOutlet weak var productImg: UIImageView!
+    
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var price: UILabel!

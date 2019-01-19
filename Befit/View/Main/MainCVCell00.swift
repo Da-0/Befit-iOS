@@ -21,26 +21,10 @@ class MainCVCell00: UICollectionViewCell {
     @IBOutlet weak var productLB2: UILabel!
     @IBOutlet weak var productLB3: UILabel!
     
-    override func awakeFromNib() {
-        
-        let tapGestureRecognizer1 = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-    
-        productImg1.isUserInteractionEnabled = true
-        productImg2.isUserInteractionEnabled = true
-        productImg3.isUserInteractionEnabled = true
-        
-        productImg1.addGestureRecognizer(tapGestureRecognizer1)
-
-    }
-    
-    
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer){
-    
-    }
-
-    
-    
-    
-    
-    
 }
+
+
+
+
+
+

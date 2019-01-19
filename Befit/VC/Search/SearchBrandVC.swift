@@ -1,5 +1,5 @@
 //
-//  SearchBrandTVC.swift
+//  SearchBrandVC.swift
 //  Befit
 //
 //  Created by 이충신 on 30/12/2018.
@@ -9,15 +9,12 @@
 import UIKit
 import XLPagerTabStrip
 
-class SearchBrandTVC: UITableViewController {
+class SearchBrandVC: UITableViewController {
 
     let userDefault = UserDefaults.standard
     
-    // product model 받아올 변수 선언
     var searchBrandList:[Brand]? = []
     var searchKeyword: String = ""
-    
-//    @IBOutlet weak var noResultView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +31,6 @@ class SearchBrandTVC: UITableViewController {
     func initSearchBrandList(){
             
         SearchBrandService.shared.showSearchBrand(keyword: self.searchKeyword) { (res) in
-            guard let status = res.status else {return}
-           
             self.searchBrandList = res.data
             self.tableView.reloadData()
             
@@ -54,7 +49,7 @@ class SearchBrandTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let brandVC  = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = searchBrandList?[indexPath.row]
         brandVC.brandIdx = searchBrandList?[indexPath.row].idx
         self.navigationController?.pushViewController(brandVC, animated: true)
@@ -77,7 +72,7 @@ class SearchBrandTVC: UITableViewController {
     }
 }
 
-extension SearchBrandTVC: IndicatorInfoProvider{
+extension SearchBrandVC: IndicatorInfoProvider{
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "브랜드")

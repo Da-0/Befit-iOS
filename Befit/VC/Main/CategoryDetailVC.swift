@@ -76,10 +76,10 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         switch kind {
         case UICollectionView.elementKindSectionHeader:
             
-            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CategorySortingCVCell", for: indexPath as IndexPath) as! CategorySortingCVCell
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewPopularSortingCRV", for: indexPath as IndexPath) as! NewPopularSortingCRV
             
-            cell.NewBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
-            cell.PopularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
+            cell.newBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
+            cell.popularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
             
             return cell
             
@@ -100,14 +100,14 @@ extension CategoryDetailVC: UICollectionViewDataSource{
     }
     
     func initCategoryProductList1(){
-        BrandProductSorting.shared.showSortingNewCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
+        ProductSortingService.shared.showSortingNewCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
             self.productList = product
             self.collectionView.reloadData()
         }
     }
     
     func initCategoryProductList2(){
-        BrandProductSorting.shared.showSortingPopularCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
+        ProductSortingService.shared.showSortingPopularCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
             self.productList = product
             self.collectionView.reloadData()
         }
@@ -122,7 +122,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryDetailCVCell", for: indexPath) as! CategoryDetailCVCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
      
         cell.productImg.imageFromUrl(productList?[indexPath.row].image_url, defaultImgPath: "")
         cell.brandName.text = productList?[indexPath.row].name_korean
@@ -135,8 +135,9 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         if productList?[indexPath.row].product_like == 1 {
             cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
         }else{
-            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
         }
+        
 
         return cell
     }
@@ -145,11 +146,11 @@ extension CategoryDetailVC: UICollectionViewDataSource{
 
         guard let productIdx = productList?[sender.tag].idx else {return}
         
-         //1) 브랜드 좋아요 취소가 작동하는 부분
+         //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
-            sender.setImage(#imageLiteral(resourceName: "icLikeFull2"), for: .normal)
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
         
-            UnLikePService.shared.unlike(productIdx: productIdx) { (res) in
+           LikePService.shared.unlike(productIdx: productIdx) { (res) in
                 if let status = res.status {
                     switch status {
                     case 200 :
@@ -162,7 +163,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
             }
         }
             
-        //2)브랜드 좋아요가 작동하는 부분
+        //2)상품 좋아요가 작동하는 부분
         else {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
             

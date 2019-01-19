@@ -59,7 +59,7 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let brandVC  = UIStoryboard(name: "Rank", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = brandRankList[indexPath.row]
         brandVC.brandIdx = brandRankList[indexPath.row].idx
         self.navigationController?.pushViewController(brandVC, animated: true)
