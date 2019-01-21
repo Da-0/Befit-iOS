@@ -10,7 +10,7 @@ import UIKit
 
 protocol ProductVCDelegate
 {
-    func ProductVCResponse(value: Closet)
+    func ProductVCResponse(value: Product)
 }
 
 class ProductSelectVC: UIViewController {
@@ -21,8 +21,8 @@ class ProductSelectVC: UIViewController {
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var tableView: UITableView!
     
-    var originalCloset = [Closet]()
-    var closetList: [Closet]?
+    var originalProduct = [Product]()
+    var productList: [Product]?
     var categoryIdx: Int?
     var brandIdx: Int?
 
@@ -64,13 +64,13 @@ class ProductSelectVC: UIViewController {
         guard let _brandIdx = brandIdx else { return}
         guard let _categoryIdx = categoryIdx else {return}
         
-        ProductSelectService.shared.showProductList (brandIdx: _brandIdx, categoryIdx: _categoryIdx, completion: {[weak self] (closet) in
+        ProductSelectService.shared.showProductList (brandIdx: _brandIdx, categoryIdx: _categoryIdx, completion: {[weak self] (product) in
             guard let `self` = self else {return}
-            self.closetList = closet
+            self.productList = product
             self.tableView.reloadData()
-            guard let closetlist = self.closetList else {return}
-            for product in closetlist {
-                self.originalCloset.append(product)
+            guard let plist = self.productList else {return}
+            for product in plist {
+                self.originalProduct.append(product)
             }
         })
     }
@@ -87,22 +87,22 @@ extension ProductSelectVC: UITextFieldDelegate {
     
     @objc func searchRecords(_ textField: UITextField){
     
-       self.closetList?.removeAll()
+       self.productList?.removeAll()
         
         if textField.text?.count != 0 {
             
-            for product in originalCloset {
+            for product in originalProduct {
                 if let productToSearch = textField.text {
                     let range = product.name!.lowercased().range(of: productToSearch, options: .caseInsensitive, range: nil, locale: nil)
-                    if range != nil {self.closetList?.append(product)}
+                    if range != nil {self.productList?.append(product)}
                 }
             }
             
         }
             
         else {
-            for product in originalCloset {
-                closetList?.append(product)
+            for product in originalProduct {
+                productList?.append(product)
             }
         }
         
@@ -118,24 +118,24 @@ extension ProductSelectVC : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let closet = closetList else {return 0}
-        return closet.count
+        guard let product = productList else {return 0}
+        return product.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductSelectTVCell", for: indexPath) as! ProductSelectTVCell
-        guard let closet = closetList else {return cell}
+        guard let product = productList else {return cell}
         
-            cell.textLB.text = closet[indexPath.row].name
+            cell.textLB.text = product[indexPath.row].name
         
         return cell
         
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let closet = closetList else {return}
-        self.delegate?.ProductVCResponse(value: closet[indexPath.row])
+        guard let product = productList else {return}
+        self.delegate?.ProductVCResponse(value: product[indexPath.row])
         self.navigationController?.popViewController(animated: true)
         }
     

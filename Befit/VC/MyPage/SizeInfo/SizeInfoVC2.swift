@@ -9,6 +9,7 @@
 // 콜렉션뷰에서 의류를 선택하는 뷰
 
 import UIKit
+import QuartzCore
 
 class SizeInfoVC2: UIViewController {
     
@@ -54,9 +55,6 @@ class SizeInfoVC2: UIViewController {
         
         GetClosetListService.shared.showClosetList(idx: categoryIdx, completion:{ (clsoetList) in
             
-            print("\n현재 카테고리의 인덱스")
-            print(self.categoryIdx)
-            
             self.ClosetList = clsoetList
             self.collectionView.reloadData()
             
@@ -90,13 +88,6 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
         guard let closet = ClosetList else {return 1}
         
         return closet.count + 1
-
-//        if ClosetList == nil {
-//            return 1
-//        }
-//        else{
-//            return (ClosetList?.count)! + 1
-//        }
  
     }
     
@@ -118,6 +109,10 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
             cell.brandName.text = closet[indexPath.row].name_korean
             cell.productName.text = closet[indexPath.row].name
         }
+        
+   
+        cell.layer.borderColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        cell.layer.borderWidth = 0.5
 
         return cell
         
@@ -130,6 +125,7 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
         guard let closet = ClosetList else {return}
         
         if indexPath.row == closet.count{
+            
             //마지막 index는 등록뷰로 이동
             let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
             sizeInfoVC3.categoryIdx = self.categoryIdx
@@ -137,6 +133,7 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
             
         }
         else {
+            
             //내 사이즈 확인뷰로 이동
             let mysizeVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MySizeVC")as! MySizeVC
             mysizeVC.closetIdx = self.ClosetList?[indexPath.row].closet_idx
@@ -197,7 +194,7 @@ extension SizeInfoVC2: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: 186, height: 279)
+        return CGSize(width: 187, height: 280)
     }
     
     
