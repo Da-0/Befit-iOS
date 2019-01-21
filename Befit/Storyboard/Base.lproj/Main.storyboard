@@ -257,14 +257,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell0" reuseIdentifier="MainCVCell0" id="RDe-HA-IBT" customClass="MainCVCell0" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zyw-Us-KQ3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zyw-Us-KQ3">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="APf-XX-IAw">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -274,7 +274,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell00" reuseIdentifier="MainCVCell00" id="fyr-We-FXE" customClass="MainCVCell00" customModule="Befit" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
+                                                            <rect key="frame" x="0.0" y="1" width="375" height="525"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
@@ -389,21 +389,45 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uI8-dt-cOr" userLabel="pageControl">
+                                                    <rect key="frame" x="35" y="527" width="340" height="3"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYU-Cn-7iq">
+                                                            <rect key="frame" x="0.0" y="0.0" width="113" height="3"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="113" id="FRk-X7-dAL"/>
+                                                                <constraint firstAttribute="height" constant="3" id="vjK-FN-XmL"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="3" id="2OO-LM-elW"/>
+                                                        <constraint firstItem="vYU-Cn-7iq" firstAttribute="leading" secondItem="uI8-dt-cOr" secondAttribute="leading" id="3O2-iG-wUi"/>
+                                                        <constraint firstAttribute="width" constant="340" id="Biu-UM-OYv"/>
+                                                        <constraint firstAttribute="bottom" secondItem="vYU-Cn-7iq" secondAttribute="bottom" id="T9H-KY-6fp"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="Zyw-Us-KQ3" secondAttribute="bottom" id="3hQ-ap-T37"/>
+                                            <constraint firstAttribute="bottom" secondItem="uI8-dt-cOr" secondAttribute="bottom" constant="20" id="7bR-8Q-mb8"/>
+                                            <constraint firstItem="uI8-dt-cOr" firstAttribute="top" secondItem="Zyw-Us-KQ3" secondAttribute="bottom" id="NSW-f6-Zir"/>
                                             <constraint firstAttribute="trailing" secondItem="Zyw-Us-KQ3" secondAttribute="trailing" id="T1b-gI-cXa"/>
                                             <constraint firstItem="Zyw-Us-KQ3" firstAttribute="leading" secondItem="RDe-HA-IBT" secondAttribute="leading" id="VL5-2B-A2w"/>
                                             <constraint firstItem="Zyw-Us-KQ3" firstAttribute="top" secondItem="RDe-HA-IBT" secondAttribute="top" id="ejq-XQ-GGe"/>
+                                            <constraint firstItem="uI8-dt-cOr" firstAttribute="leading" secondItem="RDe-HA-IBT" secondAttribute="leading" constant="35" id="rrh-Vc-HEh"/>
                                         </constraints>
-                                        <size key="customSize" width="375" height="525"/>
+                                        <size key="customSize" width="375" height="550"/>
                                         <connections>
                                             <outlet property="collectionView0" destination="Zyw-Us-KQ3" id="GUR-av-pDY"/>
+                                            <outlet property="pagerLeftCons" destination="3O2-iG-wUi" id="QuX-ui-mtz"/>
+                                            <outlet property="pagerView" destination="uI8-dt-cOr" id="kgK-yi-J3o"/>
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell1" reuseIdentifier="MainCVCell1" id="Zvw-oT-zlj" customClass="MainCVCell1" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="525" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="550" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -427,12 +451,12 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner0" translatesAutoresizingMaskIntoConstraints="NO" id="nsn-gg-tJs">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+                                                                        <rect key="frame" x="0.0" y="5" width="375" height="85"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstItem="nsn-gg-tJs" firstAttribute="top" secondItem="w8a-PG-CqS" secondAttribute="top" id="47W-e3-GdJ"/>
+                                                                <constraint firstItem="nsn-gg-tJs" firstAttribute="top" secondItem="w8a-PG-CqS" secondAttribute="top" constant="5" id="47W-e3-GdJ"/>
                                                                 <constraint firstAttribute="trailing" secondItem="nsn-gg-tJs" secondAttribute="trailing" id="9ov-is-Px0"/>
                                                                 <constraint firstAttribute="bottom" secondItem="nsn-gg-tJs" secondAttribute="bottom" id="fxc-i0-T3K"/>
                                                                 <constraint firstItem="nsn-gg-tJs" firstAttribute="leading" secondItem="w8a-PG-CqS" secondAttribute="leading" id="xch-gH-eOs"/>
@@ -458,7 +482,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell2" reuseIdentifier="MainCVCell2" id="fDI-e4-vYu" customClass="MainCVCell2" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="615" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="640" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -466,7 +490,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="나를 위한 추천" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9hh-za-7tU">
                                                     <rect key="frame" x="20" y="43" width="99" height="17"/>
-                                                    <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -484,7 +508,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell3" reuseIdentifier="MainCVCell3" id="bvY-Qu-utv" customClass="MainCVCell3" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="93.666666666666671" y="685" width="188" height="256"/>
+                                        <rect key="frame" x="93.666666666666671" y="710" width="188" height="256"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="188" height="256"/>

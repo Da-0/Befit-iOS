@@ -11,13 +11,13 @@ import Alamofire
 struct ProductSelectService: APIManager, Requestable{
     
     let userdefault = UserDefaults.standard
-    typealias NetworkData = ResponseArray<Closet>
+    typealias NetworkData = ResponseArray<Product>
     static let shared = ProductSelectService()
     
     let URL = url("/closet/brands/")
     
     //해당 카테고리의 등록된 상품 리스트 출력
-    func showProductList(brandIdx: Int, categoryIdx: Int, completion: @escaping ([Closet]?) -> Void) {
+    func showProductList(brandIdx: Int, categoryIdx: Int, completion: @escaping ([Product]?) -> Void) {
         
         guard let token = userdefault.string(forKey: "token") else {return}
         
@@ -33,7 +33,6 @@ struct ProductSelectService: APIManager, Requestable{
         gettable(url, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
-                
                 completion(value.data)
             case .error(let error):
                 print(error)

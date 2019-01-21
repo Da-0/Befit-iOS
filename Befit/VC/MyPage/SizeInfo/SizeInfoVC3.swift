@@ -35,30 +35,37 @@ class SizeInfoVC3: UIViewController {
     @IBOutlet weak var CproductImg: UIImageView!
     @IBOutlet weak var CproductName: UILabel!
     @IBOutlet weak var sizeTF: UITextField!
+   
     //****************
-    var productInformation: Closet?
-    
+    var productInformation: Product?
     let pickerview = UIPickerView()
     var sizeArray = [String]()
+    var realValueArray = [[String: Any]]()
+    @IBOutlet weak var stackView: UIStackView!
     
-    //stackView
-    @IBOutlet weak var stackView1: UIStackView!
-    @IBOutlet weak var stackView2: UIStackView!
-    var upperValue: [String] = []
-    var lowerValue: [String?] = []
-    
-    var commonSize = [[String: String?]]()
     
     var brandIdx: Int?
     var categoryIdx: Int?
     var productIdx: Int?
     var productSize: String?
+    var idx: Int = 0
     
+    @IBOutlet weak var fourthStack: UIStackView!
+    @IBOutlet weak var fifthStack: UIStackView!
     
-    @IBOutlet weak var LB1: UILabel!
-    @IBOutlet weak var LB2: UILabel!
-    @IBOutlet weak var LB3: UILabel!
-    @IBOutlet weak var LB4: UILabel!
+    @IBOutlet weak var LB00: UILabel!
+    @IBOutlet weak var LB01: UILabel!
+    @IBOutlet weak var LB02: UILabel!
+    @IBOutlet weak var LB03: UILabel!
+    @IBOutlet weak var LB04: UILabel!
+    var LB0Array = [UILabel]()
+    
+    @IBOutlet weak var LB10: UILabel!
+    @IBOutlet weak var LB11: UILabel!
+    @IBOutlet weak var LB12: UILabel!
+    @IBOutlet weak var LB13: UILabel!
+    @IBOutlet weak var LB14: UILabel!
+    var LB1Array = [UILabel]()
     
     
     override func viewDidLoad() {
@@ -66,10 +73,28 @@ class SizeInfoVC3: UIViewController {
         completeBtn.tintColor = .clear
         completeBtn.isEnabled = false
         
+        stackView.isHidden = true
+        
         sizeTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
         sizeTF.delegate = self;
         initPicker()
+        setLB()
         
+    }
+    
+    func setLB(){
+        
+        LB0Array.append(LB00)
+        LB0Array.append(LB01)
+        LB0Array.append(LB02)
+        LB0Array.append(LB03)
+        LB0Array.append(LB04)
+        
+        LB1Array.append(LB10)
+        LB1Array.append(LB11)
+        LB1Array.append(LB12)
+        LB1Array.append(LB13)
+        LB1Array.append(LB14)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -208,22 +233,61 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
         let row = pickerview.selectedRow(inComponent: 0)
         sizeTF.text = sizeArray[row]
         productSize = sizeArray[row]
-        LB1.text = "\(Int.random(in: 55...65))"
-        LB2.text = "\(Int.random(in: 50...55))"
-        LB3.text = "\(Int.random(in: 38...60))"
-        LB4.text = "\(Int.random(in: 40...50))"
+     
+        let key = realValueArray[row].keys
+        let value = realValueArray[row].values
         
-        guard let measureData = productInformation?.measure?.toJSON() else {return}
+        self.stackView.isHidden = false
         
-        //**********************************
-        //이 시점에서 텍스트에 삽입 해 줍니다!!!!!!!!!!!1
-        
-        for data in commonSize {
-        
+        if value.count == 3 {
+            fourthStack.isHidden = true
+            fifthStack.isHidden = true
+        }
+        if value.count == 4 {
+            fifthStack.isHidden = true
         }
         
         
+        for k in key {
+            switch k {
+                case "totalLength":
+                    self.LB0Array[self.idx].text = "총장"
+                    break
+                case "chestSection":
+                    self.LB0Array[self.idx].text = "가슴 단면"
+                    break
+                case "shoulderWidth":
+                    self.LB0Array[self.idx].text = "어깨 너비"
+                    break
+                case "sleeveLength":
+                    self.LB0Array[self.idx].text = "소매 길이"
+                    break
+                case "waistSection":
+                    self.LB0Array[self.idx].text = "허리 단면"
+                    break
+                case "thighSection":
+                    self.LB0Array[self.idx].text = "허벅지 단면"
+                    break
+                case "crotch":
+                    self.LB0Array[self.idx].text = "밑위"
+                    break
+                case "dobladillosSection":
+                    self.LB0Array[self.idx].text = "밑단 단면"
+                    break
+            default:
+                break
+            }
+            idx += 1
+        }
         
+        idx = 0
+        
+        for v in value {
+           self.LB1Array[self.idx].text =  v as? String
+            idx += 1
+        }
+        
+        idx = 0
         view.endEditing(true)
     }
     
@@ -256,11 +320,11 @@ extension SizeInfoVC3 : BrandVCDelegate {
 //Mark: - BrandVCDelega
 extension SizeInfoVC3: ProductVCDelegate {
     
-    func ProductVCResponse(value: Closet) {
+    func ProductVCResponse(value: Product) {
         
         sizeArray.removeAll()
+        realValueArray.removeAll()
         
-        //****************
         self.productInformation = value
         
         self.CproductImg.imageFromUrl(value.image_url!, defaultImgPath: "")
@@ -268,66 +332,19 @@ extension SizeInfoVC3: ProductVCDelegate {
         self.productName = value.name
         self.productIdx = value.idx
         
-        guard let measureData = value.measure?.toJSON() else {return}
-
-        print("테스트 = \(measureData.values)")
+        guard let measureData = value.measure1?.toJSON() else {return}
+        print("\n key값 = \(measureData.keys)")
+        print(" value값 = \(measureData.values)")
         
-        for size in measureData.keys.reversed() {
-            
+   
+        for size in measureData.keys {
             sizeArray.append(size)
-            
-            if let XLSize = value.measure?.xLarge?.dictionary {
-                print("XLSIZE")
-                print(commonSize)
-                commonSize.append(XLSize)
-            }
-        
-            if let LSize = value.measure?.large?.dictionary {
-                print("LSIZE")
-                print(commonSize)
-                commonSize.append(LSize)
-            }
-            
-            if let MSize = value.measure?.medium?.dictionary{
-                print("MSIZE")
-                print(commonSize)
-                commonSize.append(MSize)
-            }
-            
-            if let SSize = value.measure?.small?.dictionary{
-                print("SSIZE")
-                print(commonSize)
-                commonSize.append(SSize)
-            }
         }
         
-        for realKey in commonSize{
-            
+        for values in measureData.values {
+            realValueArray.append(values as! [String : Any])
         }
-        
-        
-        
-        
-        for common in commonSize {
 
-            for realKey in common.keys {
-                upperValue.append(realKey)
-            }
-            
-            
-            for realValue in common.values{
-                lowerValue.append(realValue)
-            }
-
-        }
-    
-        
-        
-        print("테스트 출력!")
-        print(upperValue)
-        print(lowerValue)
-       
-        
     }
 }
 

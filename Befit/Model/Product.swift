@@ -19,7 +19,7 @@ struct Product : Mappable {
     var brand_idx : Int?
     var date : String?
     var link : String?
-    var measure : Measure?
+    var measure1 : Measure1?
     var like_score : Int?
     var product_like : Int?
     var name_korean : String?
@@ -39,7 +39,7 @@ struct Product : Mappable {
         brand_idx <- map["brand_idx"]
         date <- map["date"]
         link <- map["link"]
-        measure <- map["measure"]
+        measure1 <- map["measure"]
         like_score <- map["like_score"]
         product_like <- map["product_like"]
         name_korean <- map["name_korean"]

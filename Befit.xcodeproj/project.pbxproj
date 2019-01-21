@@ -13,7 +13,6 @@
 		500030F021F1A6F700B46780 /* BrandCVCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500030EF21F1A6F700B46780 /* BrandCVCell2.swift */; };
 		501F73E521D92BD0000D2F3E /* RankTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F73E421D92BD0000D2F3E /* RankTVCell.swift */; };
 		501F971921F05A2C0087E775 /* BrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501F971821F05A2C0087E775 /* BrandVC.swift */; };
-		5025A9B521E5DCEE0088FC9E /* CommonSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5025A9B421E5DCEE0088FC9E /* CommonSize.swift */; };
 		5031148521E1E9FB008D81AC /* BrandRankService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148421E1E9FB008D81AC /* BrandRankService.swift */; };
 		5031148921E1EAC5008D81AC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148821E1EAC5008D81AC /* Brand.swift */; };
 		5031148C21E22A42008D81AC /* showLikeBListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031148B21E22A42008D81AC /* showLikeBListService.swift */; };
@@ -22,10 +21,7 @@
 		5031149821E34A80008D81AC /* Product.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5031149721E34A80008D81AC /* Product.storyboard */; };
 		5031149E21E36CB9008D81AC /* ProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031149D21E36CB9008D81AC /* ProductVC.swift */; };
 		503114A021E37EC5008D81AC /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5031149F21E37EC5008D81AC /* Product.swift */; };
-		503114A221E37ED9008D81AC /* Measure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114A121E37ED9008D81AC /* Measure.swift */; };
-		503114A521E37F80008D81AC /* L.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114A421E37F80008D81AC /* L.swift */; };
-		503114A721E37F86008D81AC /* M.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114A621E37F86008D81AC /* M.swift */; };
-		503114A921E37F8D008D81AC /* S.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114A821E37F8D008D81AC /* S.swift */; };
+		503114A221E37ED9008D81AC /* Measure2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114A121E37ED9008D81AC /* Measure2.swift */; };
 		503114AC21E38714008D81AC /* SearchFirstService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114AB21E38714008D81AC /* SearchFirstService.swift */; };
 		503114AE21E3C5F7008D81AC /* UserInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114AD21E3C5F7008D81AC /* UserInfoService.swift */; };
 		503114B021E3C646008D81AC /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503114AF21E3C646008D81AC /* User.swift */; };
@@ -44,7 +40,6 @@
 		504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */; };
 		505E410121E86D5B0058DAAC /* MySizeCheckCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */; };
 		505E410421E87CE70058DAAC /* SizeCheckService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410321E87CE70058DAAC /* SizeCheckService.swift */; };
-		505E410821E8CD5C0058DAAC /* XL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505E410721E8CD5C0058DAAC /* XL.swift */; };
 		5065274C21F1CD15005CC508 /* ProductSortingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065274B21F1CD15005CC508 /* ProductSortingService.swift */; };
 		5066557721D21FDF00580137 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557621D21FDF00580137 /* AppDelegate.swift */; };
 		5066557921D21FDF00580137 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5066557821D21FDF00580137 /* MainVC.swift */; };
@@ -91,6 +86,7 @@
 		508DF10321E7DCBC001118B9 /* SizeCheckVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DF10221E7DCBC001118B9 /* SizeCheckVC.swift */; };
 		50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */; };
 		50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */; };
+		50D596D621F5FBC30082B4CA /* Measure1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D596D521F5FBC20082B4CA /* Measure1.swift */; };
 		50DAFCE121E6023800D4BF2F /* MainCVCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */; };
 		50DAFCE321E6024400D4BF2F /* MainCVCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE221E6024400D4BF2F /* MainCVCell3.swift */; };
 		50DAFCE521E60C3300D4BF2F /* MainCVCell0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE421E60C3300D4BF2F /* MainCVCell0.swift */; };
@@ -134,7 +130,6 @@
 		500030EF21F1A6F700B46780 /* BrandCVCell2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCVCell2.swift; sourceTree = "<group>"; };
 		501F73E421D92BD0000D2F3E /* RankTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankTVCell.swift; sourceTree = "<group>"; };
 		501F971821F05A2C0087E775 /* BrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandVC.swift; sourceTree = "<group>"; };
-		5025A9B421E5DCEE0088FC9E /* CommonSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonSize.swift; sourceTree = "<group>"; };
 		5031148421E1E9FB008D81AC /* BrandRankService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandRankService.swift; sourceTree = "<group>"; };
 		5031148821E1EAC5008D81AC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		5031148B21E22A42008D81AC /* showLikeBListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showLikeBListService.swift; sourceTree = "<group>"; };
@@ -143,10 +138,7 @@
 		5031149721E34A80008D81AC /* Product.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Product.storyboard; sourceTree = "<group>"; };
 		5031149D21E36CB9008D81AC /* ProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVC.swift; sourceTree = "<group>"; };
 		5031149F21E37EC5008D81AC /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		503114A121E37ED9008D81AC /* Measure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
-		503114A421E37F80008D81AC /* L.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L.swift; sourceTree = "<group>"; };
-		503114A621E37F86008D81AC /* M.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = M.swift; sourceTree = "<group>"; };
-		503114A821E37F8D008D81AC /* S.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = S.swift; sourceTree = "<group>"; };
+		503114A121E37ED9008D81AC /* Measure2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measure2.swift; sourceTree = "<group>"; };
 		503114AB21E38714008D81AC /* SearchFirstService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFirstService.swift; sourceTree = "<group>"; };
 		503114AD21E3C5F7008D81AC /* UserInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoService.swift; sourceTree = "<group>"; };
 		503114AF21E3C646008D81AC /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -165,7 +157,6 @@
 		504CBAEC21D9DA46008606F7 /* PostCodeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCodeVC.swift; sourceTree = "<group>"; };
 		505E410021E86D5B0058DAAC /* MySizeCheckCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySizeCheckCVCell.swift; sourceTree = "<group>"; };
 		505E410321E87CE70058DAAC /* SizeCheckService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckService.swift; sourceTree = "<group>"; };
-		505E410721E8CD5C0058DAAC /* XL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XL.swift; sourceTree = "<group>"; };
 		5065274B21F1CD15005CC508 /* ProductSortingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSortingService.swift; sourceTree = "<group>"; };
 		5066557321D21FDF00580137 /* Befit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Befit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5066557621D21FDF00580137 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +205,7 @@
 		508DF10221E7DCBC001118B9 /* SizeCheckVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheckVC.swift; sourceTree = "<group>"; };
 		50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoVC1.swift; sourceTree = "<group>"; };
 		50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfo1TVCell.swift; sourceTree = "<group>"; };
+		50D596D521F5FBC20082B4CA /* Measure1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measure1.swift; sourceTree = "<group>"; };
 		50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell1.swift; sourceTree = "<group>"; };
 		50DAFCE221E6024400D4BF2F /* MainCVCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell3.swift; sourceTree = "<group>"; };
 		50DAFCE421E60C3300D4BF2F /* MainCVCell0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell0.swift; sourceTree = "<group>"; };
@@ -330,18 +322,6 @@
 				508DF10221E7DCBC001118B9 /* SizeCheckVC.swift */,
 			);
 			path = Product;
-			sourceTree = "<group>";
-		};
-		503114A321E37F4B008D81AC /* Size */ = {
-			isa = PBXGroup;
-			children = (
-				505E410721E8CD5C0058DAAC /* XL.swift */,
-				503114A421E37F80008D81AC /* L.swift */,
-				503114A621E37F86008D81AC /* M.swift */,
-				503114A821E37F8D008D81AC /* S.swift */,
-				5025A9B421E5DCEE0088FC9E /* CommonSize.swift */,
-			);
-			path = Size;
 			sourceTree = "<group>";
 		};
 		503114AA21E386D4008D81AC /* Search */ = {
@@ -461,8 +441,8 @@
 				5031148821E1EAC5008D81AC /* Brand.swift */,
 				5031149F21E37EC5008D81AC /* Product.swift */,
 				503114BB21E47962008D81AC /* Closet.swift */,
-				503114A121E37ED9008D81AC /* Measure.swift */,
-				503114A321E37F4B008D81AC /* Size */,
+				50D596D521F5FBC20082B4CA /* Measure1.swift */,
+				503114A121E37ED9008D81AC /* Measure2.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -885,13 +865,11 @@
 				500030EB21F197CA00B46780 /* BannerBrandService.swift in Sources */,
 				5066557921D21FDF00580137 /* MainVC.swift in Sources */,
 				506E5C5621D5D8080016549B /* LikeProductCVC.swift in Sources */,
-				5025A9B521E5DCEE0088FC9E /* CommonSize.swift in Sources */,
 				A509DD3821E538F9009C3DC1 /* CollectionViewCell.swift in Sources */,
 				503114AC21E38714008D81AC /* SearchFirstService.swift in Sources */,
 				50DD805121E1ABAB00E6F743 /* UIViewController+Extensions.swift in Sources */,
 				50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */,
 				501F971921F05A2C0087E775 /* BrandVC.swift in Sources */,
-				503114A521E37F80008D81AC /* L.swift in Sources */,
 				A5D2EB5621E09834002C23A7 /* ExtensionControl.swift in Sources */,
 				508DF10121E7A683001118B9 /* LikePService.swift in Sources */,
 				506655C021D2548A00580137 /* UserInfoVC2.swift in Sources */,
@@ -909,17 +887,15 @@
 				503DF98D21D88A12001F950D /* SearchBrandVC.swift in Sources */,
 				50DD804721E1AA9F00E6F743 /* Requestable.swift in Sources */,
 				506655C721D257CF00580137 /* SearchVC.swift in Sources */,
-				503114A221E37ED9008D81AC /* Measure.swift in Sources */,
+				503114A221E37ED9008D81AC /* Measure2.swift in Sources */,
 				5068A53F21DE29E900F22E95 /* BrandSelectTVCell.swift in Sources */,
 				A59B1CDA21D87F2100C2B6F2 /* PWSettingVC.swift in Sources */,
 				5031148521E1E9FB008D81AC /* BrandRankService.swift in Sources */,
 				504CBAED21D9DA46008606F7 /* PostCodeVC.swift in Sources */,
 				A5DED4C321E7922600CB9756 /* SearchBrandService.swift in Sources */,
 				503114BA21E4771D008D81AC /* GetClosetListService.swift in Sources */,
-				503114A721E37F86008D81AC /* M.swift in Sources */,
 				503114B021E3C646008D81AC /* User.swift in Sources */,
 				506655BA21D2546900580137 /* LogInVC.swift in Sources */,
-				505E410821E8CD5C0058DAAC /* XL.swift in Sources */,
 				505E410421E87CE70058DAAC /* SizeCheckService.swift in Sources */,
 				503114B421E44F53008D81AC /* ChangeBrandVC.swift in Sources */,
 				5031149E21E36CB9008D81AC /* ProductVC.swift in Sources */,
@@ -940,7 +916,7 @@
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
 				50DD803F21E0D71D00E6F743 /* MySizeVC.swift in Sources */,
 				5068A53521DDDA2500F22E95 /* SizeInfo3TVCell.swift in Sources */,
-				503114A921E37F8D008D81AC /* S.swift in Sources */,
+				50D596D621F5FBC30082B4CA /* Measure1.swift in Sources */,
 				50DD805621E1C5D400E6F743 /* FindPWService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,7 +15,7 @@ class LikeProductCVC: UIViewController {
 
     @IBOutlet weak var tabbarHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
-    var productLikeList = [Product]()
+    var productLikeList: [Product]?
     var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
     
     override func viewDidLoad() {
@@ -33,11 +33,22 @@ class LikeProductCVC: UIViewController {
     
     
     func productListInit() {
-        showLikePListService.shared.showProductLike { (productData) in
-            self.productLikeList = productData
-            self.collectionView.reloadData()
+        showLikePListService.shared.showProductLike { (value) in
+            guard let status = value.status else {return}
+            
+            switch status {
+            case 200:
+                if value.data == nil { self.productLikeList = nil}
+                else{ self.productLikeList = value.data}
+                self.collectionView.reloadData()
+                
+            default:
+                break
+            }
         }
     }
+    
+
 
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -46,7 +57,7 @@ class LikeProductCVC: UIViewController {
             case UICollectionView.elementKindSectionHeader:
                 
                 let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "LikeProductCRV", for: indexPath as IndexPath) as! LikeProductCRV
-                cell.likeProductNumbLB.text = "찜한상품 " + "\(productLikeList.count)"
+                cell.likeProductNumbLB.text = "찜한상품 " + "\(gino(productLikeList?.count))"
                 return cell
 
             default:
@@ -61,18 +72,26 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-        return productLikeList.count
+        if productLikeList == nil {
+            return 0
+        }
+        else {
+            return (productLikeList?.count)!
+            
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let product = productLikeList[indexPath.row]
+       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
         
+        if let product = productLikeList?[indexPath.row] {
         cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
         cell.brandName.text = product.name_korean
         cell.productName.text = product.name
         cell.price.text = product.price
+        }
         
         cell.likeBtn.tag = indexPath.row
         cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
@@ -85,7 +104,7 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     //좋아요가 작동하는 부분
     @objc func clickLike(_ sender: UIButton){
         
-        guard let idx = productLikeList[sender.tag].idx else {return}
+        guard let idx = productLikeList?[sender.tag].idx else {return}
         
         if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
             likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
@@ -129,8 +148,8 @@ extension LikeProductCVC: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
-        productVC.brandName = productLikeList[indexPath.row].name_English
-        productVC.address = productLikeList[indexPath.row].link
+        productVC.brandName = productLikeList?[indexPath.row].name_English
+        productVC.address = productLikeList?[indexPath.row].link
 //        productVC.productIdx = productLikeList[indexPath.row].idx
         self.navigationController?.present(productVC, animated: true, completion: nil)
         

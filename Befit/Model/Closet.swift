@@ -19,7 +19,7 @@ struct Closet : Mappable {
     var image_url : String?
     var product_category_index : Int?
     var product_size : String?
-    var measure : Measure?
+    var measure2 : Measure2?
     
     init?(map: Map) {
         
@@ -35,7 +35,7 @@ struct Closet : Mappable {
         image_url <- map["image_url"]
         product_category_index <- map["product_category_index"]
         product_size <- map["product_size"]
-        measure <- map["measure"]
+        measure2 <- map["measure"]
     }
     
 }

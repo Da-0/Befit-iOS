@@ -125,10 +125,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rke-0k-jBF">
-                                                    <rect key="frame" x="133" y="176" width="34" height="34"/>
+                                                    <rect key="frame" x="124" y="173" width="40" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="34" id="2yb-6z-yvB"/>
-                                                        <constraint firstAttribute="height" constant="34" id="3N2-GK-5sx"/>
+                                                        <constraint firstAttribute="height" constant="60" id="1lb-26-QGe"/>
+                                                        <constraint firstAttribute="width" constant="40" id="x1n-fX-3RQ"/>
                                                     </constraints>
                                                     <state key="normal" image="icLikeFull"/>
                                                 </button>
@@ -152,10 +152,10 @@
                                             <constraint firstItem="0UJ-r4-xzc" firstAttribute="leading" secondItem="fhG-20-28t" secondAttribute="leading" id="AbF-By-Jo4"/>
                                             <constraint firstItem="hIj-6Z-0ML" firstAttribute="top" secondItem="0UJ-r4-xzc" secondAttribute="bottom" constant="8" id="CTn-c8-lCn"/>
                                             <constraint firstAttribute="bottom" secondItem="TSK-HK-wlr" secondAttribute="bottom" constant="8" id="D6u-30-R3E"/>
-                                            <constraint firstAttribute="trailing" secondItem="Rke-0k-jBF" secondAttribute="trailing" id="Esb-XZ-au2"/>
-                                            <constraint firstItem="Rke-0k-jBF" firstAttribute="top" secondItem="0UJ-r4-xzc" secondAttribute="bottom" constant="9" id="Gp9-Wd-zFD"/>
                                             <constraint firstItem="hIj-6Z-0ML" firstAttribute="leading" secondItem="fhG-20-28t" secondAttribute="leading" constant="10" id="HOU-S3-nuc"/>
                                             <constraint firstItem="yl3-df-8fY" firstAttribute="top" secondItem="hIj-6Z-0ML" secondAttribute="bottom" constant="4" id="NsB-ep-hkI"/>
+                                            <constraint firstItem="Rke-0k-jBF" firstAttribute="top" secondItem="0UJ-r4-xzc" secondAttribute="bottom" constant="6" id="aHq-FE-d2h"/>
+                                            <constraint firstAttribute="trailing" secondItem="Rke-0k-jBF" secondAttribute="trailing" constant="3" id="bG7-BW-Kpu"/>
                                             <constraint firstItem="yl3-df-8fY" firstAttribute="leading" secondItem="fhG-20-28t" secondAttribute="leading" constant="10" id="nCh-uN-yK0"/>
                                         </constraints>
                                         <size key="customSize" width="167" height="239"/>
@@ -278,14 +278,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xow-F6-t2o">
-                                            <rect key="frame" x="321" y="18" width="34" height="34"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="34" id="HNx-Ue-o8b"/>
-                                                <constraint firstAttribute="height" constant="34" id="f85-39-RUT"/>
-                                            </constraints>
-                                            <state key="normal" image="icLikeFull"/>
-                                        </button>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoOutline" translatesAutoresizingMaskIntoConstraints="NO" id="51g-DV-Zob">
                                             <rect key="frame" x="28" y="11" width="48" height="48"/>
                                             <constraints>
@@ -300,14 +292,22 @@
                                                 <constraint firstAttribute="width" constant="34" id="Jsy-1X-9mY"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xow-F6-t2o">
+                                            <rect key="frame" x="320" y="10" width="50" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="3Gz-eC-yFX"/>
+                                                <constraint firstAttribute="height" constant="50" id="T4T-e9-vPh"/>
+                                            </constraints>
+                                            <state key="normal" image="icLikeFull"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="xow-F6-t2o" firstAttribute="top" secondItem="JWL-X7-hcM" secondAttribute="top" constant="18" id="71a-WA-bKc"/>
                                         <constraint firstItem="51g-DV-Zob" firstAttribute="centerY" secondItem="JWL-X7-hcM" secondAttribute="centerY" id="HjH-Yp-nHv"/>
-                                        <constraint firstAttribute="trailing" secondItem="xow-F6-t2o" secondAttribute="trailing" constant="20" id="NsF-Px-gxz"/>
+                                        <constraint firstItem="xow-F6-t2o" firstAttribute="centerY" secondItem="JWL-X7-hcM" secondAttribute="centerY" id="ND9-Lm-uOx"/>
                                         <constraint firstItem="51g-DV-Zob" firstAttribute="leading" secondItem="JWL-X7-hcM" secondAttribute="leading" constant="28" id="TtN-dq-srA"/>
                                         <constraint firstItem="gik-Gd-CVl" firstAttribute="centerY" secondItem="51g-DV-Zob" secondAttribute="centerY" id="UC1-RZ-6OJ"/>
                                         <constraint firstItem="rzp-GJ-0Mn" firstAttribute="leading" secondItem="JWL-X7-hcM" secondAttribute="leading" constant="35" id="j1Y-Zk-e4V"/>
+                                        <constraint firstAttribute="trailing" secondItem="xow-F6-t2o" secondAttribute="trailing" constant="5" id="oVw-OF-RXQ"/>
                                         <constraint firstItem="rzp-GJ-0Mn" firstAttribute="top" secondItem="JWL-X7-hcM" secondAttribute="top" constant="20" id="uU7-B5-s0h"/>
                                         <constraint firstItem="gik-Gd-CVl" firstAttribute="leading" secondItem="51g-DV-Zob" secondAttribute="trailing" constant="20" id="xjG-B8-tOC"/>
                                     </constraints>
@@ -325,6 +325,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="headerView" destination="tlv-bg-iL9" id="lzO-ON-kzO"/>
                         <outlet property="likeBrandNumb" destination="UUF-ZU-db9" id="b3q-EC-eZ5"/>
                     </connections>
                 </tableViewController>
