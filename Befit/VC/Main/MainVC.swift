@@ -149,7 +149,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 0 {
-            return CGSize(width: 375, height: 525)
+            return CGSize(width: 375, height: 550)  // 525에서 변경
         }
         else if indexPath.section == 1 {
             return CGSize(width: 375, height: 90)
