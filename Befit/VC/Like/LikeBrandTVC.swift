@@ -13,8 +13,9 @@ import XLPagerTabStrip
 
 class LikeBrandTVC: UITableViewController {
     
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var likeBrandNumb: UILabel!
-    var brandLikeList = [Brand]()
+    var brandLikeList: [Brand]?
     var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
     
     override func viewDidLoad() {
@@ -30,10 +31,20 @@ class LikeBrandTVC: UITableViewController {
     }
     
     func brandListInit() {
-        showLikeBListService.shared.showBrandLike { (brandData) in
-            self.likeBrandNumb.text = "찜한브랜드 " + "\(self.brandLikeList.count)"
-            self.brandLikeList = brandData
-            self.tableView.reloadData()
+        showLikeBListService.shared.showBrandLike { (value) in
+            
+            guard let status = value.status else {return}
+            
+            switch status {
+                case 200:
+                    if value.data == nil { self.brandLikeList = nil}
+                    else{ self.brandLikeList = value.data}
+                    self.tableView.reloadData()
+                
+                default:
+                    break
+            }
+            
         }
     }
 
@@ -43,18 +54,31 @@ class LikeBrandTVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return brandLikeList.count
+        if brandLikeList == nil {
+            self.likeBrandNumb.text = "찜한브랜드 0"
+            return 0
+        }
+        else {
+            self.likeBrandNumb.text = "찜한브랜드 " + "\(gino(brandLikeList?.count))"
+            return (brandLikeList?.count)!
+            
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let brand = brandLikeList[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeBrandTVCell", for: indexPath) as! LikeBrandTVCell
-        cell.brandImg.imageFromUrl(brand.logo_url!, defaultImgPath: "")
-        cell.brandName.text = brand.name_english
-        cell.likeBtn.tag = indexPath.row
-        cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-        cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+        
+        if let brands = brandLikeList?[indexPath.row] {
+        
+            cell.brandImg.imageFromUrl(brands.logo_url!, defaultImgPath: "")
+            cell.brandName.text = brands.name_english
+            cell.likeBtn.tag = indexPath.row
+            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+      
+        }
     
         return cell
     }
@@ -64,7 +88,7 @@ class LikeBrandTVC: UITableViewController {
     //좋아요가 작동하는 부분
     @objc func clickLike(_ sender: UIButton){
         
-        guard let idx = brandLikeList[sender.tag].idx else {return}
+        guard let idx = brandLikeList?[sender.tag].idx else {return}
         
         if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
             likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
@@ -112,8 +136,8 @@ class LikeBrandTVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
-        brandVC.brandInfo = brandLikeList[indexPath.row]
-        brandVC.brandIdx = brandLikeList[indexPath.row].idx
+        brandVC.brandInfo = brandLikeList?[indexPath.row]
+        brandVC.brandIdx = brandLikeList?[indexPath.row].idx
         self.navigationController?.pushViewController(brandVC, animated: true)
         
     }

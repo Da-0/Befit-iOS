@@ -20,13 +20,12 @@ struct showLikePListService: APIManager, Requestable{
     ]
     
     //좋아요한 상품 보여주기
-    func showProductLike(completion: @escaping ([Product]) -> Void) {
+    func showProductLike(completion: @escaping (NetworkData) -> Void) {
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
-                guard let data = value.data else {return}
-                completion(data)
+                completion(value)
             case .error(let error):
                 print(error)
             }

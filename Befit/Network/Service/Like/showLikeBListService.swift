@@ -20,13 +20,12 @@ struct showLikeBListService: APIManager, Requestable{
     ]
     
     //좋아요한 브랜드 보여주기
-    func showBrandLike(completion: @escaping ([Brand]) -> Void) {
+    func showBrandLike(completion: @escaping (NetworkData) -> Void) {
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
-                guard let data = value.data else {return}
-                completion(data)
+                completion(value)
             case .error(let error):
                 print(error)
             }
