@@ -34,7 +34,6 @@ class MySizeVC: UIViewController {
     @IBOutlet weak var fifthStack: UIStackView!
     
     var keyCount: Int?
-    var idx = 0
 
     
     override func viewDidLoad() {
@@ -43,6 +42,7 @@ class MySizeVC: UIViewController {
     }
     
     func setLabel(){
+        
         LB0Array.append(LB00)
         LB0Array.append(LB01)
         LB0Array.append(LB02)
@@ -89,57 +89,56 @@ class MySizeVC: UIViewController {
           
             guard let keys = data.measure2?.toJSON().keys else {return}
             guard let values = data.measure2?.toJSON().values else {return}
-            print("\n date masure = " + "\(data.measure2!)")
-            print("\n data real keys =  \(keys)")
-            print("\n data real value =  \(values)")
+            
+            print("<등록된 내 사이즈 정보>")
+            print("\n 측정지 값들 = " + "\(data.measure2!)")
+            print("\n 추출 Key값들 =  \(keys)")
+            print("\n 추출 Value값들 =  \(values)")
             
             if keys.count == 3 {
                 self.fourthStack.isHidden = true
-                self.fifthStack.isHidden = true
+            self.fifthStack.isHidden = true
             }
             if keys.count == 4 {
                 self.fifthStack.isHidden = true
             }
             
-            for val in values {
-                self.LB1Array[self.idx].text = val as? String
-                self.idx += 1
+            for (idx, val) in values.enumerated() {
+                self.LB1Array[idx].text = val as? String
             }
+        
             
-            self.idx = 0
-            
-            for key in keys {
+            for (idx, key) in keys.enumerated() {
                 
-                switch key as? String {
+                switch key {
                     case "chestSection":
-                       self.LB0Array[self.idx].text = "가슴 단면"
+                        self.LB0Array[idx].text = BodyPart.chest.rawValue
                         break
                     case "totalLength":
-                        self.LB0Array[self.idx].text = "총장"
+                        self.LB0Array[idx].text = BodyPart.total.rawValue
                         break
                     case "shoulderWidth":
-                        self.LB0Array[self.idx].text = "어깨 너비"
+                        self.LB0Array[idx].text = BodyPart.shoulder.rawValue
                         break
                     case "sleeveLength":
-                        self.LB0Array[self.idx].text = "소매 길이"
+                        self.LB0Array[idx].text = BodyPart.sleeve.rawValue
                         break
                     case "waistSection":
-                        self.LB0Array[self.idx].text = "허리 단면"
+                        self.LB0Array[idx].text = BodyPart.waist.rawValue
                         break
                     case "thighSection":
-                        self.LB0Array[self.idx].text = "허벅지 단면"
+                        self.LB0Array[idx].text = BodyPart.thigh.rawValue
                         break
                     case "crotch":
-                        self.LB0Array[self.idx].text = "밑위"
+                        self.LB0Array[idx].text = BodyPart.crotch.rawValue
                         break
-                    case "dobladillosSection":
-                        self.LB0Array[self.idx].text = "밑단 단면"
+                    case "dobladilloSection":
+                        self.LB0Array[idx].text = BodyPart.dobla.rawValue
                         break
                     default:
-                        break
+                    break
                 }
                 
-                self.idx += 1
             }
         
         })

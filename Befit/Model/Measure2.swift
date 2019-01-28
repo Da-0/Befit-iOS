@@ -24,6 +24,7 @@ struct Measure2 : Mappable {
     
     
     init?(map: Map) {
+        
     }
     
     mutating func mapping(map: Map) {
@@ -36,8 +37,10 @@ struct Measure2 : Mappable {
         thigh <- map["thighSection"]
         crotch <- map["crotch"]
         dobla <- map["dobladillosSection"]
+
     }
     
 }
+
 
 

@@ -39,6 +39,7 @@ class CategoryVC: UIViewController {
     }
     // HaveTheRain : Back to MainVC Code Start
     override func viewWillAppear(_ animated: Bool) {
+        
         if dismissJudge == true {
             self.sideMenuController?.hideMenu()
         }
@@ -100,15 +101,18 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let sections = indexPath.section
+        let rows = indexPath.row
+        
         // 열려있는 경우.
-        if tableData[indexPath.section].open {
-            tableData[indexPath.section].open = false
+        if tableData[sections].open {
+            tableData[sections].open = false
             
             let section = IndexSet.init(integer: indexPath.section)
             tableView.reloadSections(section, with: .automatic)
             
             // HaveTheRain : Go To CategoryDetailVC Code Start
-            if indexPath.row >= 1 {
+            if rows >= 1 {
                 let transition = CATransition()
                 transition.duration = 0.5
                 transition.type = CATransitionType.push
@@ -119,9 +123,9 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 guard let presentedVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {
                     return
                 }
-                presentedVC.genderIdx = indexPath.section
-                presentedVC.categoryIdx = tableData[indexPath.section].idx[indexPath.row-1]
-                presentedVC.categoryName = tableData[indexPath.section].items?[indexPath.row - 1]
+                presentedVC.genderIdx = sections
+                presentedVC.categoryIdx = tableData[sections].idx[rows-1]
+                presentedVC.categoryName = tableData[sections].items?[rows - 1]
                 
                 self.dismissJudge = true
                 present(presentedVC, animated: false, completion: nil)
@@ -130,11 +134,12 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
             
         }
             
-            // 닫혀있는 경우.
+        // 닫혀있는 경우.
         else{
-            tableData[indexPath.section].open = true
-            let section = IndexSet.init(integer: indexPath.section)
+            tableData[sections].open = true
+            let section = IndexSet.init(integer: sections)
             tableView.reloadSections(section, with: .automatic)
+    
         }
     }
 }

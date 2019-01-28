@@ -36,7 +36,6 @@ class SizeInfoVC3: UIViewController {
     @IBOutlet weak var CproductName: UILabel!
     @IBOutlet weak var sizeTF: UITextField!
    
-    //****************
     var productInformation: Product?
     let pickerview = UIPickerView()
     var sizeArray = [String]()

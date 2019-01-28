@@ -87,6 +87,7 @@
 		50B9A7CF21DB2F6E0088E02D /* SizeInfoVC1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */; };
 		50B9A7D121DB30D50088E02D /* SizeInfo1TVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */; };
 		50D596D621F5FBC30082B4CA /* Measure1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D596D521F5FBC20082B4CA /* Measure1.swift */; };
+		50D596D821F86CF90082B4CA /* SizeCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D596D721F86CF90082B4CA /* SizeCheck.swift */; };
 		50DAFCE121E6023800D4BF2F /* MainCVCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */; };
 		50DAFCE321E6024400D4BF2F /* MainCVCell3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE221E6024400D4BF2F /* MainCVCell3.swift */; };
 		50DAFCE521E60C3300D4BF2F /* MainCVCell0.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50DAFCE421E60C3300D4BF2F /* MainCVCell0.swift */; };
@@ -206,6 +207,7 @@
 		50B9A7CE21DB2F6E0088E02D /* SizeInfoVC1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfoVC1.swift; sourceTree = "<group>"; };
 		50B9A7D021DB30D50088E02D /* SizeInfo1TVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeInfo1TVCell.swift; sourceTree = "<group>"; };
 		50D596D521F5FBC20082B4CA /* Measure1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Measure1.swift; sourceTree = "<group>"; };
+		50D596D721F86CF90082B4CA /* SizeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCheck.swift; sourceTree = "<group>"; };
 		50DAFCE021E6023800D4BF2F /* MainCVCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell1.swift; sourceTree = "<group>"; };
 		50DAFCE221E6024400D4BF2F /* MainCVCell3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell3.swift; sourceTree = "<group>"; };
 		50DAFCE421E60C3300D4BF2F /* MainCVCell0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCVCell0.swift; sourceTree = "<group>"; };
@@ -443,6 +445,7 @@
 				503114BB21E47962008D81AC /* Closet.swift */,
 				50D596D521F5FBC20082B4CA /* Measure1.swift */,
 				503114A121E37ED9008D81AC /* Measure2.swift */,
+				50D596D721F86CF90082B4CA /* SizeCheck.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -914,6 +917,7 @@
 				500030EE21F1A68000B46780 /* BrandCVCell1.swift in Sources */,
 				5065274C21F1CD15005CC508 /* ProductSortingService.swift in Sources */,
 				5066557721D21FDF00580137 /* AppDelegate.swift in Sources */,
+				50D596D821F86CF90082B4CA /* SizeCheck.swift in Sources */,
 				50DD803F21E0D71D00E6F743 /* MySizeVC.swift in Sources */,
 				5068A53521DDDA2500F22E95 /* SizeInfo3TVCell.swift in Sources */,
 				50D596D621F5FBC30082B4CA /* Measure1.swift in Sources */,

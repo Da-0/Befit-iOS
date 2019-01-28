@@ -19,11 +19,11 @@ struct GetClosetListService: APIManager, Requestable{
     
 
     //해당 카테고리의 등록된 옷 리스트 출력
-    func showClosetList(idx: Int, completion: @escaping ([Closet]?) -> Void) {
+    func showClosetList(idx: Int, completion: @escaping (NetworkData) -> Void) {
         
         guard let token = userDefault.string(forKey: "token") else {return}
         
-        let headers: HTTPHeaders = [
+    let headers: HTTPHeaders = [
             "Authorization" : token
         ]
         
@@ -32,7 +32,7 @@ struct GetClosetListService: APIManager, Requestable{
         gettable(url, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
-                completion(value.data)
+                completion(value)
             case .error(let error):
                 print(error)
             }

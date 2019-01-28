@@ -58,6 +58,8 @@ class MainVC: UIViewController {
             self.bannerBrandInfo2 = brandInfo
         }
         
+        
+        
     
     }
     
@@ -137,10 +139,12 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             
         else {
             let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
-            productVC.brandName = recommendProduct?[indexPath.row].name_English
-            productVC.address = recommendProduct?[indexPath.row].link
-            productVC.productInfo = recommendProduct?[indexPath.row]
-            // productVC.productIdx = recommendProduct?[indexPath.row].idx
+            guard let product = recommendProduct?[indexPath.row] else {return}
+            
+            productVC.brandName = product.name_English
+            productVC.address = product.link
+            productVC.productInfo = product
+            
             self.navigationController?.present(productVC, animated: true, completion: nil)
             
         }
@@ -227,14 +231,12 @@ extension MainVC: customCellDelegate2 {
                 let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
                 brandVC.brandIdx = 33
                 brandVC.brandInfo = bannerBrandInfo1
-                
                 self.navigationController?.pushViewController(brandVC, animated: true)
                 break
             case 2:
                 let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
                 brandVC.brandIdx = 21
                 brandVC.brandInfo = bannerBrandInfo2
-                
                 self.navigationController?.pushViewController(brandVC, animated: true)
                 break
             default:

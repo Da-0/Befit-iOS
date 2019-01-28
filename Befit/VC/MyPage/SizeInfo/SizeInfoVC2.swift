@@ -53,9 +53,9 @@ class SizeInfoVC2: UIViewController {
     
     func network(){
         
-        GetClosetListService.shared.showClosetList(idx: categoryIdx, completion:{ (clsoetList) in
+        GetClosetListService.shared.showClosetList(idx: categoryIdx, completion:{ (res) in
             
-            self.ClosetList = clsoetList
+            self.ClosetList = res.data
             self.collectionView.reloadData()
             
             self.tabView.isHidden = self.ClosetList == nil ?  false : true

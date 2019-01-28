@@ -19,6 +19,9 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     var address: String?
     var brandName: String?
     var productInfo: Product?
+    var closetIdx: Int?
+    var productSize: String?
+    
     var brandHome: Bool = false
     @IBOutlet weak var sizeCheckBtn: UIBarButtonItem!
     
@@ -78,6 +81,7 @@ class ProductVC: UIViewController, WKNavigationDelegate {
         //상품 페이지를 보야주는 경우
         else {
             self.request(url: "https://" + address!)
+            print("url = " + "https://" + address!)
             
         }
         
@@ -102,6 +106,8 @@ class ProductVC: UIViewController, WKNavigationDelegate {
         //사이즈체크 팝업 뷰가 뜹니다.
         let sizeCheckVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "SizeCheckVC")as! SizeCheckVC
         sizeCheckVC.productInfo = self.productInfo
+       // sizeCheckVC.productIdx = productInfo?.idx
+        
         self.addChild(sizeCheckVC)
         
         sizeCheckVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)

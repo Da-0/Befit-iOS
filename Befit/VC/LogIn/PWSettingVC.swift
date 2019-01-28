@@ -39,7 +39,7 @@ class PWSettingVC: UIViewController {
     
     @IBAction func passwordRegex(_ sender: Any) {
         if let check = newPWTF.text?.validationEmail() {
-//            newPWCKTF.isEnabled = check ? true : false
+//          newPWCKTF.isEnabled = check ? true : false
             passwordNoticeLB.textColor = check ? #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) : #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1)
         }
     }
