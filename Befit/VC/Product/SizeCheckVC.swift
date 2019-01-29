@@ -90,8 +90,22 @@ class SizeCheckVC: UIViewController {
     func initProducutInfo(){
         
         //1) 뷰의 시작점에서 현재 선택한 상품의 사이즈 종류를 Export.
-        guard let psize = productInfo?.measure1?.toJSON().keys.sorted()else{return}
-        productSizeList = Array(psize)
+        // guard let psize = productInfo?.measure1?.toJSON().keys.sorted()else{return}
+        //productSizeList = Array(psize)
+        
+        
+        //Sorted Test!!!!~~
+        guard let sizeSorted = productInfo?.measure1?.toJSON().keys.sorted(by: { (first, second) -> Bool in
+            
+            if let firstVal = sortedDic[first], let secondVal = sortedDic[second] {
+                if firstVal < secondVal { return true }
+                else { return false }
+            }
+            return first < second
+        })else {return}
+        
+         productSizeList = Array(sizeSorted)
+        
         
         //2) 선택한 상품의 이름을 설정
         productNameLB.text = productInfo?.name
@@ -131,13 +145,8 @@ class SizeCheckVC: UIViewController {
                 
             //2) 옷장에 데이터가 있는 경우
             else {
-                print("closet_idx = \(res.data?[0].closet_idx)")
-                print("product_idx = \(self.productInfo?.idx)")
-                print("productSizeList.first = \(self.productSizeList.first)")
-                
                 // Original Image 설정
                 SizeCheckService.shared.showSizeCheck(closetIdx: res.data?[0].closet_idx!, productIdx: self.productInfo?.idx!, productSize: self.productSizeList.first) { (res) in
-                    print("(result!! = \(res)")
                     self.originalImage.imageFromUrl(res.data?.my_url, defaultImgPath: "")
                 }
             }
@@ -226,17 +235,28 @@ extension SizeCheckVC {
             
             let runLoop = CFRunLoopGetCurrent() //Synchronous하게 받아오기 위해 사용.
             
-            SizeCheckService.shared.showSizeCheck(closetIdx: myCloset.closet_idx!, productIdx: productInfo?.idx!, productSize: size) { (res) in
+            SizeCheckService.shared.showSizeCheck(closetIdx: myCloset.closet_idx!, productIdx: productInfo?.idx!, productSize: size) { (result) in
                 
                 print("\n<" + size + " Size와의 비교 결과>")
-                print(res.data)
-                self.comparableList.append(res.data!)
+                print(result.data)
+                self.comparableList.append(result.data!)
                 
-                print("\n<comparable에 append 이후 데이터")
-                print(self.comparableList)
+                //guard let keys = result.data?.measure?.toJSON().keys else {return}
+                let keys = Array((result.data?.measure?.toJSON().keys)!)
                 
-                guard let keys = res.data?.measure?.toJSON().keys else {return}
-                self.realKey = Array(keys)
+                let sortedKeys = keys.sorted(by: { (first, second) -> Bool in
+                    
+                    switch (first, second) {
+                        case ("totalLength", _ ) :
+                            return true
+                        case (_ ,"totalLength") :
+                            return false
+                    default: break
+                    }
+                    return first > second
+                })
+                
+                self.realKey = sortedKeys
             
                 CFRunLoopStop(runLoop)//Stop Loop
             }
@@ -436,3 +456,5 @@ extension SizeCheckVC: UITextFieldDelegate {
     }
     
 }
+
+

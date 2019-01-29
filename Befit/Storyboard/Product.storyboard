@@ -92,9 +92,12 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="percentBack" translatesAutoresizingMaskIntoConstraints="NO" id="lsG-mX-dDG">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="percentBack" translatesAutoresizingMaskIntoConstraints="NO" id="lsG-mX-dDG">
                                         <rect key="frame" x="264" y="0.0" width="60" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="YNa-iH-6vE"/>
+                                            <constraint firstAttribute="width" constant="60" id="shO-IY-Ghl"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="32" translatesAutoresizingMaskIntoConstraints="NO" id="QQE-Ey-yQP">
                                         <rect key="frame" x="93.333333333333314" y="48.333333333333329" width="137" height="38.333333333333329"/>
@@ -105,7 +108,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zI3-p4-pb6">
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zI3-p4-pb6">
                                         <rect key="frame" x="52" y="92.333333333333314" width="220" height="225"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="220" id="3Pn-kF-Tft"/>
@@ -210,153 +213,137 @@
                                         <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </pageControl>
-                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-ih-nwz">
-                                        <rect key="frame" x="10.999999999999972" y="363.00000000000006" width="302.66666666666669" height="70"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sizeCheck3Box" translatesAutoresizingMaskIntoConstraints="NO" id="ICz-Gi-2tc">
+                                        <rect key="frame" x="14.333333333333343" y="354.66666666666663" width="295" height="86"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86" id="SAI-fm-4ii"/>
+                                            <constraint firstAttribute="width" constant="295" id="VoZ-OH-TQU"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="t1Y-ih-nwz">
+                                        <rect key="frame" x="19.333333333333343" y="362.66666666666663" width="285" height="70"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="i43-13-jqn">
                                                 <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="총장" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJp-6a-b8Y">
-                                                        <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="13.333333333333334"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="총장" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJp-6a-b8Y">
+                                                        <rect key="frame" x="0.0" y="0.0" width="34.666666666666664" height="14.666666666666666"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQb-eb-gvs">
-                                                        <rect key="frame" x="0.0" y="29.333333333333325" width="34.666666666666664" height="12.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQb-eb-gvs">
+                                                        <rect key="frame" x="0.0" y="30.666666666666682" width="34.666666666666664" height="12.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
                                                         <color key="textColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="61cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4En-VR-d0J">
-                                                        <rect key="frame" x="0.0" y="57.666666666666671" width="34.666666666666664" height="12.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="61cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4En-VR-d0J">
+                                                        <rect key="frame" x="0.0" y="59.000000000000057" width="34.666666666666664" height="11"/>
+                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3wQ-ng-mCz">
-                                                <rect key="frame" x="62" y="0.0" width="42" height="70"/>
+                                                <rect key="frame" x="57.666666666666671" y="0.0" width="42" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="어깨너비" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-i7-LR8">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="어깨너비" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-i7-LR8">
                                                         <rect key="frame" x="0.0" y="0.0" width="42" height="13.333333333333334"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3l-Lc-jhM">
-                                                        <rect key="frame" x="0.0" y="29.333333333333325" width="42" height="12.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="4cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t3l-Lc-jhM">
+                                                        <rect key="frame" x="0.0" y="29.333333333333368" width="42" height="12.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
                                                         <color key="textColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="74cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdn-5g-ymc">
-                                                        <rect key="frame" x="0.0" y="57.666666666666671" width="42" height="12.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="74cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jdn-5g-ymc">
+                                                        <rect key="frame" x="0.0" y="57.666666666666686" width="42" height="12.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="M9h-9c-jgx">
-                                                <rect key="frame" x="125.66666666666667" y="0.0" width="45.666666666666671" height="70"/>
+                                                <rect key="frame" x="110.00000000000001" y="0.0" width="59.666666666666671" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가슴 단면" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSa-Md-q84">
-                                                        <rect key="frame" x="0.0" y="0.0" width="45.666666666666664" height="13.333333333333334"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="가슴 단면" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSa-Md-q84">
+                                                        <rect key="frame" x="0.0" y="0.0" width="59.666666666666664" height="13.333333333333334"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="딱맞음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSQ-kv-5W0">
-                                                        <rect key="frame" x="0.0" y="29.333333333333325" width="45.666666666666664" height="12.333333333333332"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="15.8cm 작음" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSQ-kv-5W0">
+                                                        <rect key="frame" x="0.0" y="29.333333333333368" width="59.666666666666664" height="12.333333333333332"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
                                                         <color key="textColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="36cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yb2-Sm-krM">
-                                                        <rect key="frame" x="0.0" y="57.666666666666671" width="45.666666666666664" height="12.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="36cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yb2-Sm-krM">
+                                                        <rect key="frame" x="0.0" y="57.666666666666686" width="59.666666666666664" height="12.333333333333329"/>
+                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iIg-Mf-y0G">
-                                                <rect key="frame" x="191.33333333333334" y="0.0" width="45.666666666666657" height="70"/>
+                                                <rect key="frame" x="178" y="0.0" width="45.666666666666657" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="소매 길이" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXI-3c-BkR">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="소매 길이" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXI-3c-BkR">
                                                         <rect key="frame" x="0.0" y="0.0" width="45.666666666666664" height="13.333333333333334"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qY6-sx-vD4">
-                                                        <rect key="frame" x="0.0" y="29.333333333333325" width="45.666666666666664" height="12.333333333333332"/>
-                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qY6-sx-vD4">
+                                                        <rect key="frame" x="0.0" y="29.333333333333371" width="45.666666666666664" height="11"/>
+                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="10"/>
                                                         <color key="textColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="43cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g5-bc-Eev">
-                                                        <rect key="frame" x="0.0" y="57.666666666666671" width="45.666666666666664" height="12.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="43cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g5-bc-Eev">
+                                                        <rect key="frame" x="0.0" y="56.333333333333314" width="45.666666666666664" height="13.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="AcK-qm-6AQ">
-                                                <rect key="frame" x="257" y="0.0" width="45.666666666666686" height="70"/>
+                                                <rect key="frame" x="239.33333333333329" y="0.0" width="45.666666666666657" height="70"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="밑단 단면" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5S-FW-TWh">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="밑단 단면" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u5S-FW-TWh">
                                                         <rect key="frame" x="0.0" y="0.0" width="45.666666666666664" height="13.333333333333334"/>
                                                         <fontDescription key="fontDescription" name="KoPubDotumMedium" family="KoPubDotum" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eje-pZ-FSq">
-                                                        <rect key="frame" x="0.0" y="29.333333333333325" width="45.666666666666664" height="12.333333333333332"/>
-                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="2cm 큼" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eje-pZ-FSq">
+                                                        <rect key="frame" x="0.0" y="29.333333333333371" width="45.666666666666664" height="11"/>
+                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="10"/>
                                                         <color key="textColor" red="0.47843137250000001" green="0.21176470589999999" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="61cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoe-DN-mVl">
-                                                        <rect key="frame" x="0.0" y="57.666666666666671" width="45.666666666666664" height="12.333333333333329"/>
-                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="11"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="61cm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoe-DN-mVl">
+                                                        <rect key="frame" x="0.0" y="56.333333333333314" width="45.666666666666664" height="13.666666666666671"/>
+                                                        <fontDescription key="fontDescription" name="KoPubDotumBold" family="KoPubDotum" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="285" id="c1k-uO-Xgc"/>
+                                            <constraint firstAttribute="height" constant="70" id="qcg-7B-3gV"/>
+                                        </constraints>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JB3-Np-cKd" userLabel="barView4">
-                                        <rect key="frame" x="17" y="443.66666666666669" width="288" height="1"/>
-                                        <color key="backgroundColor" red="0.47843137254901957" green="0.47843137254901957" blue="0.47843137254901957" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="288" id="aSg-vG-uFh"/>
-                                            <constraint firstAttribute="height" constant="1" id="rHR-AO-bqU"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1E7-oi-EVK" userLabel="barView3">
-                                        <rect key="frame" x="17" y="413" width="288" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="79c-Jy-14E" userLabel="barView1">
-                                        <rect key="frame" x="18" y="353" width="288" height="1"/>
-                                        <color key="backgroundColor" red="0.47843137250000001" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1" id="kUY-bf-t2x"/>
-                                            <constraint firstAttribute="width" constant="288" id="wMg-O9-fxP"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNA-Lc-z6p" userLabel="barView2">
-                                        <rect key="frame" x="19" y="383" width="288" height="1"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.86274509799999999" green="0.86274509799999999" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -365,24 +352,28 @@
                                     <constraint firstAttribute="height" constant="607" id="5rD-ay-GAo"/>
                                     <constraint firstItem="bbR-4O-Dnp" firstAttribute="top" secondItem="b3K-7y-bqC" secondAttribute="bottom" constant="20" id="8hZ-M7-Qel"/>
                                     <constraint firstItem="bbR-4O-Dnp" firstAttribute="leading" secondItem="84o-w9-n4L" secondAttribute="leading" constant="18" id="8i7-8B-SeP"/>
-                                    <constraint firstItem="JB3-Np-cKd" firstAttribute="leading" secondItem="84o-w9-n4L" secondAttribute="leading" constant="17" id="CBB-Ca-UkB"/>
+                                    <constraint firstItem="t1Y-ih-nwz" firstAttribute="centerY" secondItem="ICz-Gi-2tc" secondAttribute="centerY" id="CC6-MM-VKl"/>
                                     <constraint firstItem="iFz-XA-fp6" firstAttribute="leading" secondItem="bbR-4O-Dnp" secondAttribute="leading" id="E0c-Pu-nDc"/>
                                     <constraint firstItem="b3K-7y-bqC" firstAttribute="top" secondItem="QQE-Ey-yQP" secondAttribute="bottom" constant="3" id="HIW-gO-tuL"/>
                                     <constraint firstItem="G2j-eg-FPa" firstAttribute="centerX" secondItem="84o-w9-n4L" secondAttribute="centerX" id="LV6-lq-xXI"/>
+                                    <constraint firstAttribute="trailing" secondItem="lsG-mX-dDG" secondAttribute="trailing" id="LVf-hl-ktX"/>
                                     <constraint firstItem="zFr-yi-Ngd" firstAttribute="top" secondItem="ZvT-Ou-Nsu" secondAttribute="bottom" constant="10" id="M0w-hV-VXT"/>
                                     <constraint firstItem="zJa-zN-JAA" firstAttribute="top" secondItem="iFz-XA-fp6" secondAttribute="bottom" constant="4" id="OyQ-ve-2Qx"/>
-                                    <constraint firstItem="iFz-XA-fp6" firstAttribute="top" secondItem="JB3-Np-cKd" secondAttribute="bottom" constant="15.67" id="Ts1-15-y7H"/>
                                     <constraint firstItem="QQE-Ey-yQP" firstAttribute="centerX" secondItem="G2j-eg-FPa" secondAttribute="centerX" id="Uqc-0q-nRJ"/>
                                     <constraint firstItem="ZvT-Ou-Nsu" firstAttribute="centerX" secondItem="zFr-yi-Ngd" secondAttribute="centerX" id="Y6l-TC-53x"/>
                                     <constraint firstItem="G2j-eg-FPa" firstAttribute="top" secondItem="84o-w9-n4L" secondAttribute="top" constant="28" id="ZZW-Tm-R3l"/>
                                     <constraint firstItem="zJa-zN-JAA" firstAttribute="leading" secondItem="84o-w9-n4L" secondAttribute="leading" constant="17" id="bF7-AI-Uej"/>
                                     <constraint firstAttribute="trailing" secondItem="zFr-yi-Ngd" secondAttribute="trailing" id="c6a-yP-4M8"/>
                                     <constraint firstAttribute="bottom" secondItem="zFr-yi-Ngd" secondAttribute="bottom" constant="-10" id="czQ-mn-Rrp"/>
+                                    <constraint firstItem="t1Y-ih-nwz" firstAttribute="centerX" secondItem="ICz-Gi-2tc" secondAttribute="centerX" id="e3k-Vc-3L0"/>
+                                    <constraint firstItem="iFz-XA-fp6" firstAttribute="top" secondItem="ICz-Gi-2tc" secondAttribute="bottom" constant="20" id="lco-ow-oZQ"/>
                                     <constraint firstItem="zFr-yi-Ngd" firstAttribute="top" secondItem="zJa-zN-JAA" secondAttribute="bottom" constant="55" id="nyY-dl-lQg"/>
+                                    <constraint firstItem="ICz-Gi-2tc" firstAttribute="centerX" secondItem="b3K-7y-bqC" secondAttribute="centerX" id="oMf-fa-20n"/>
                                     <constraint firstItem="zI3-p4-pb6" firstAttribute="centerX" secondItem="QQE-Ey-yQP" secondAttribute="centerX" id="pa2-16-BU3"/>
                                     <constraint firstItem="zFr-yi-Ngd" firstAttribute="leading" secondItem="84o-w9-n4L" secondAttribute="leading" id="pjJ-9p-B3d"/>
                                     <constraint firstAttribute="width" constant="324" id="rKh-np-g0y"/>
                                     <constraint firstItem="ayU-cL-QAe" firstAttribute="leading" secondItem="84o-w9-n4L" secondAttribute="leading" constant="283" id="tzz-eJ-Arn"/>
+                                    <constraint firstItem="lsG-mX-dDG" firstAttribute="top" secondItem="84o-w9-n4L" secondAttribute="top" id="vSV-MB-Z1l"/>
                                     <constraint firstItem="zI3-p4-pb6" firstAttribute="top" secondItem="QQE-Ey-yQP" secondAttribute="bottom" constant="5.6666666666666572" id="x1h-Mi-Md8"/>
                                     <constraint firstItem="b3K-7y-bqC" firstAttribute="leading" secondItem="84o-w9-n4L" secondAttribute="leading" id="zGo-xM-iUz"/>
                                     <constraint firstItem="QQE-Ey-yQP" firstAttribute="top" secondItem="G2j-eg-FPa" secondAttribute="bottom" constant="6" id="zSV-tK-w4u"/>
@@ -447,6 +438,7 @@
         <image name="icDayClick" width="22" height="23"/>
         <image name="icX" width="48" height="48"/>
         <image name="percentBack" width="59.333332061767578" height="69.666664123535156"/>
+        <image name="sizeCheck3Box" width="291" height="91"/>
         <image name="sizeCheckButton" width="70" height="21"/>
     </resources>
 </document>

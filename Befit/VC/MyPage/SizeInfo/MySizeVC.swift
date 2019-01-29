@@ -33,9 +33,6 @@ class MySizeVC: UIViewController {
     @IBOutlet weak var fourthStack: UIStackView!
     @IBOutlet weak var fifthStack: UIStackView!
     
-    var keyCount: Int?
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabel()
@@ -79,38 +76,41 @@ class MySizeVC: UIViewController {
             guard let `self` = self else {return}
             guard let data = res.data else {return}
             
-            //싱단 기본정보 (이미지, 이름, 사이즈)
+            //기본정보 (이미지, 이름, 사이즈)
             self.productImg.imageFromUrl(data.image_url!, defaultImgPath: "")
             self.brandName.text = data.name_english
             self.productName.text = data.name
             self.size.text = data.product_size
             
-            //하단 측정치 정보
-          
-            guard let keys = data.measure2?.toJSON().keys else {return}
-            guard let values = data.measure2?.toJSON().values else {return}
+            //측정치 정보
+            let measureData = Array(data.measure2!.toJSON()).sorted(by: { (first, second) -> Bool in
+                
+                switch (first.key, second.key) {
+                    case ("totalLength", _ ) :
+                        return true
+                    case (_ ,"totalLength") :
+                        return false
+                    default: break
+                }
+                return first.key > second.key
+            })
+         
+            print("\n<등록된 내 사이즈 정보>")
+            print("측정지 값들(toJSON) = " + "\(measureData))")
             
-            print("<등록된 내 사이즈 정보>")
-            print("\n 측정지 값들 = " + "\(data.measure2!)")
-            print("\n 추출 Key값들 =  \(keys)")
-            print("\n 추출 Value값들 =  \(values)")
-            
-            if keys.count == 3 {
+            if measureData.count == 3 {
                 self.fourthStack.isHidden = true
-            self.fifthStack.isHidden = true
-            }
-            if keys.count == 4 {
                 self.fifthStack.isHidden = true
             }
-            
-            for (idx, val) in values.enumerated() {
-                self.LB1Array[idx].text = val as? String
+            else if measureData.count == 4 {
+                self.fourthStack.isHidden = false
+                self.fifthStack.isHidden = true
             }
-        
+         
             
-            for (idx, key) in keys.enumerated() {
+            for (idx, data) in measureData.enumerated() {
                 
-                switch key {
+                switch data.key{
                     case "chestSection":
                         self.LB0Array[idx].text = BodyPart.chest.rawValue
                         break
@@ -132,12 +132,15 @@ class MySizeVC: UIViewController {
                     case "crotch":
                         self.LB0Array[idx].text = BodyPart.crotch.rawValue
                         break
-                    case "dobladilloSection":
+                    case "dobladillosSection":
                         self.LB0Array[idx].text = BodyPart.dobla.rawValue
                         break
                     default:
-                    break
+                        break
                 }
+                
+                self.LB1Array[idx].text = data.value as? String
+
                 
             }
         
