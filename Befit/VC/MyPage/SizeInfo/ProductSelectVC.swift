@@ -5,6 +5,8 @@
 //  Created by 이충신 on 03/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  MyPage.Storyboard
+//  3-5) 브랜드 검색과 상품검색이 일어나는 뷰(TableView)
 
 import UIKit
 
@@ -25,6 +27,7 @@ class ProductSelectVC: UIViewController {
     var productList: [Product]?
     var categoryIdx: Int?
     var brandIdx: Int?
+    var enrollNewCloset = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +42,12 @@ class ProductSelectVC: UIViewController {
     }
 
     @IBAction func backBtn(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: true)
+        if enrollNewCloset == true {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -136,8 +143,14 @@ extension ProductSelectVC : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let product = productList else {return}
         self.delegate?.ProductVCResponse(value: product[indexPath.row])
-        self.navigationController?.popViewController(animated: true)
+        
+        if enrollNewCloset == true {
+            self.dismiss(animated: true, completion: nil)
         }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     
 }
 

@@ -5,6 +5,9 @@
 //  Created by 이충신 on 30/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  Search.Storyboard
+//  2-2) 키워드 검색 결과 관련된 브랜드 목록 보여주는 VC (TableView)
+
 
 import UIKit
 import XLPagerTabStrip
@@ -51,7 +54,6 @@ class SearchBrandVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = searchBrandList?[indexPath.row]
-        brandVC.brandIdx = searchBrandList?[indexPath.row].idx
         self.navigationController?.pushViewController(brandVC, animated: true)
     }
     

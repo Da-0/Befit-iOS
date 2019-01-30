@@ -5,8 +5,8 @@
 //  Created by 이충신 on 31/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-//  MyPage.storyboard
-//  우편번호 찾기 뷰
+//  MyPage.Storyboard
+//  4-2) 우편번호 찾기 VC
 
 import UIKit
 import WebKit

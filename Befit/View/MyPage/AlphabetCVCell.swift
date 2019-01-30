@@ -1,5 +1,5 @@
 //
-//  CollectionViewCell.swift
+//  AlphabetCVCell.swift
 //  For-Dayoung
 //
 //  Created by LeeSeungsoo on 09/01/2019.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class AlphabetCVCell: UICollectionViewCell {
     
     @IBOutlet weak var alphabet: UILabel!
     

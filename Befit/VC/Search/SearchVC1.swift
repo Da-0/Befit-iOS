@@ -5,6 +5,8 @@
 //  Created by 이충신 on 29/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  Search.Storyboard
+//  1) 불규칙적인 액자형태의 복잡한 VC
 
 import UIKit
 import SNCollectionViewLayout
@@ -63,15 +65,8 @@ extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UIColl
         
         let searchProduct = searchProductList[indexPath.row]
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-        
-        guard let link = searchProduct.link else {return}
-        guard let brandName = searchProduct.name_English else {return}
-        
-        productVC.address = link
-        productVC.brandName = brandName
+    
         productVC.productInfo = searchProduct
-        
-        print("셀렉됨")
         
         self.navigationController?.present(productVC, animated: true, completion: nil)
         

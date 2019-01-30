@@ -5,42 +5,40 @@
 //  Created by 이충신 on 29/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  Search.Storyboard
+//  2) PagerTab VC (SearchProduct, SearchBrand를 포함하는 VC)
 
 import UIKit
 import XLPagerTabStrip
 
 class SearchVC2: ButtonBarPagerTabStripViewController  {
     
-    
     var searchController : UISearchController!
     
     override func viewDidLoad() {
         configureButtonBar()
         super.viewDidLoad()
-       // initSearchBar()
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        moveToViewController(at: 0)
     }
     
     // willMove -> It appears on the parent screen.
     override func willMove(toParent parent: UIViewController?) {
         print(#function)
+       
     }
     
     // It appears on the parent screen. -> didMove
     override func didMove(toParent parent: UIViewController?) {
-//        print(#function)
+    // print(#function)
     }
-    
-    
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
         
@@ -79,6 +77,8 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
             oldCell?.label.textColor = .gray
             newCell?.label.textColor = .black
         }
+        
+        moveToViewController(at: 1)
     }
 }
 

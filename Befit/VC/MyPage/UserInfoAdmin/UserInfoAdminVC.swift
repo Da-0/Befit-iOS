@@ -5,8 +5,8 @@
 //  Created by 이충신 on 31/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-//  MyPage.storyboard
-//  통합회원정보관리 뷰
+//  MyPage.Storyboard
+//  4-1) 통합 회원 정보관리 VC
 
 import UIKit
 

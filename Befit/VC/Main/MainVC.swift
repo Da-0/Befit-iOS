@@ -5,6 +5,8 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  Main.Storyboard
+//  1) 메인 화면 VC
 
 import UIKit
 import SideMenuSwift
@@ -14,8 +16,9 @@ class MainVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var recommendBrand: [Brand] = []
-    var recommendProduct: [Product]?
+    var recommendProduct: [Product] = []
    
+    var bannerBrandInfo0: Product?
     var bannerBrandInfo1: Brand?
     var bannerBrandInfo2: Brand?
 
@@ -28,9 +31,8 @@ class MainVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         network()
-        self.collectionView.reloadData()
+        collectionView.reloadData()
     }
-    
     
     func network(){
         
@@ -43,21 +45,24 @@ class MainVC: UIViewController {
         
         //2) 나를 위한 상품 추천 호출
         ProductRecService.shared.showProductRec { (res) in
-            self.recommendProduct = res.data
+            guard let productList = res.data else {return}
+            self.recommendProduct = productList
             self.collectionView.reloadData()
         }
         
-        //3) 배너 광고에 대한 브랜드 호출
-        
+        //3) 배너 광고에 대한 상품 및 브랜드 호출(3개)
+        ProductInfoService.shared.showProductInfo(idx: 427) { (res) in
+            guard let productInfo = res.data else {return}
+            self.bannerBrandInfo0 = productInfo
+        }
         BannerBrandService.shared.showBannerBrand(idx: 33) { (res) in
-                guard let brandInfo = res.data else {return}
-                self.bannerBrandInfo1 = brandInfo
+            guard let brandInfo = res.data else {return}
+            self.bannerBrandInfo1 = brandInfo
           }
         BannerBrandService.shared.showBannerBrand(idx: 21) { (res) in
             guard let brandInfo = res.data else {return}
             self.bannerBrandInfo2 = brandInfo
         }
-        
     
     }
     
@@ -68,7 +73,7 @@ class MainVC: UIViewController {
 }
 
 
-extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
@@ -84,15 +89,14 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         } else if section == 2 {
             return 1
         }else {
-            guard let product = recommendProduct else {return 0}
-            return product.count
+            return recommendProduct.count
         }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        //1) 최상단 브랜드 이미지 구현부
+        //1) 나를 위한 브랜드 추천 Cell
         if indexPath.section == 0
         {
             let cell0 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell0", for: indexPath) as! MainCVCell0
@@ -102,7 +106,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             return cell0
         }
             
-        //2) Banner 구현부
+        //2) Banner Cell
         else if indexPath.section == 1 {
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell1", for: indexPath) as! MainCVCell1
             cell1.delegate = self;
@@ -110,7 +114,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             return cell1
         }
             
-        //3)나를 위한 추천 레이블(기능X)
+        //3) LB 제목 Cell('나를 위한 추천')
         else if indexPath.section == 2{
             let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell2", for: indexPath) as! MainCVCell2
             return cell2
@@ -119,11 +123,10 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         //4) 나를 위한 상품 추천 Cell
         else  {
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell3", for: indexPath) as! MainCVCell3
-            
-            guard let productList = recommendProduct else {return cell3}
-            cell3.productImg.imageFromUrl(productList[indexPath.row].image_url, defaultImgPath: "")
-            cell3.brandName.text = productList[indexPath.row].name_English
-            cell3.productName.text = productList[indexPath.row].name
+            let product = recommendProduct[indexPath.row]
+                cell3.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
+                cell3.brandName.text = product.name_English
+                cell3.productName.text = product.name
             return cell3
         }
     }
@@ -134,22 +137,26 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         if indexPath.section == 0 {}
         else if indexPath.section == 1 {}
         else if indexPath.section == 2 {}
-            
         else {
             let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
-            productVC.brandName = recommendProduct?[indexPath.row].name_English
-            productVC.address = recommendProduct?[indexPath.row].link
-            productVC.productInfo = recommendProduct?[indexPath.row]
-            // productVC.productIdx = recommendProduct?[indexPath.row].idx
+            let product = recommendProduct[indexPath.row]
+            productVC.productInfo = product
             self.navigationController?.present(productVC, animated: true, completion: nil)
             
         }
     }
     
+ 
+    
+}
+
+
+extension MainVC : UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.section == 0 {
-            return CGSize(width: 375, height: 550)  // 525에서 변경
+            return CGSize(width: 375, height: 525)
         }
         else if indexPath.section == 1 {
             return CGSize(width: 375, height: 90)
@@ -175,20 +182,16 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
         
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
-    
 }
-
 
  //1) 브랜드 메인 + 3개 상품에 대한 Delegate
 extension MainVC: customCellDelegate {
   
-    //맨 위 브랜드 사진 클릭
+    //맨 위 제일 큰 브랜드 사진 클릭
     func mainBrandPressed(cell: MainCVCell0, idx: Int) {
         
         let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
             brandVC.brandInfo = recommendBrand[idx]
-            brandVC.brandIdx = recommendBrand[idx].idx
-
         self.navigationController?.pushViewController(brandVC, animated: true)
     }
     
@@ -201,8 +204,6 @@ extension MainVC: customCellDelegate {
         let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
         brandVC.brandInfo = recommendBrand[bid]
         brandVC.productInfo = recommendBrand[bid].products?[pid]
-        brandVC.brandIdx = recommendBrand[bid].idx
-        
         self.navigationController?.pushViewController(brandVC, animated: true)
         
     }
@@ -214,38 +215,29 @@ extension MainVC: customCellDelegate {
 //2) 배너에 대한 Delegate
 extension MainVC: customCellDelegate2 {
     
-    
     func bannerPressed(cell: MainCVCell1, idx: Int) {
+        
         switch idx {
             case 0:
                 let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
-                productVC.brandName = "FRIZMWORKS"
-                productVC.address = "m.frizm.co.kr/product/detail.html?product_no=1480&cate_no=33&display_group=1"
+                productVC.productInfo = bannerBrandInfo0
                 self.present(productVC, animated: true, completion: nil)
                 break
             case 1:
                 let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
-                brandVC.brandIdx = 33
                 brandVC.brandInfo = bannerBrandInfo1
-                
                 self.navigationController?.pushViewController(brandVC, animated: true)
                 break
             case 2:
                 let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
-                brandVC.brandIdx = 21
                 brandVC.brandInfo = bannerBrandInfo2
-                
                 self.navigationController?.pushViewController(brandVC, animated: true)
                 break
             default:
                 break
         }
 
-        
-        
-        
     }
-    
     
     
 }

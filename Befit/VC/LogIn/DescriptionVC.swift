@@ -5,6 +5,8 @@
 //  Created by 박다영 on 06/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  LogIn.Storyboard
+//  0) 처음 앱 설치시 나오는 설명 스크롤 VC
 
 import UIKit
 
@@ -40,8 +42,8 @@ class DescriptionVC: UIViewController, UIScrollViewDelegate {
             let imageView = UIImageView()
             imageView.image = UIImage(named: images[i])
             
-            imageView.contentMode = .scaleAspectFit //  사진의 비율을 맞춤.
-            let xPosition = self.view.frame.width * CGFloat(i) // 현재 보이는 스크린에서 하나의 이미지만 보이게 하기 위해
+            imageView.contentMode = .scaleAspectFit
+            let xPosition = self.view.frame.width * CGFloat(i) 
             
             imageView.frame = CGRect(x: xPosition, y: -44, width: self.view.frame.width, height: self.view.frame.height)
             scrollView.contentSize.width = self.view.frame.width * CGFloat(1+i)

@@ -5,8 +5,8 @@
 //  Created by 이충신 on 03/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
-
-// 콜렉션뷰에서 의류를 선택하는 뷰
+//  MyPage.Storyboard
+//  3-2) 해당 카테고리의 내 옷장 리스트 VC (CollectionView)
 
 import UIKit
 import QuartzCore
@@ -20,6 +20,7 @@ class SizeInfoVC2: UIViewController {
     var categoryIdx: Int!
     var categoryName: String?
     var ClosetList: [Closet]?
+    var enrollNewCloset = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,9 +54,9 @@ class SizeInfoVC2: UIViewController {
     
     func network(){
         
-        GetClosetListService.shared.showClosetList(idx: categoryIdx, completion:{ (clsoetList) in
+        GetClosetListService.shared.showClosetList(idx: categoryIdx, completion:{ (res) in
             
-            self.ClosetList = clsoetList
+            self.ClosetList = res.data
             self.collectionView.reloadData()
             
             self.tabView.isHidden = self.ClosetList == nil ?  false : true
@@ -69,12 +70,26 @@ class SizeInfoVC2: UIViewController {
         
         let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
         sizeInfoVC3.categoryIdx = self.categoryIdx
-        self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
+    
+        if enrollNewCloset == true {
+            sizeInfoVC3.enrollNewCloset = true
+            self.present(sizeInfoVC3, animated: true, completion: nil)
+            
+        }
+        else {
+            self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
+        }
         
     }
     
     @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        
+        if enrollNewCloset == false {
+            self.navigationController?.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+        
     }
     
     
@@ -129,7 +144,14 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
             //마지막 index는 등록뷰로 이동
             let sizeInfoVC3 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC3")as! SizeInfoVC3
             sizeInfoVC3.categoryIdx = self.categoryIdx
-            self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
+    
+             if enrollNewCloset == true {
+                sizeInfoVC3.enrollNewCloset = true
+                self.present(sizeInfoVC3, animated: true, completion: nil)
+             }
+             else{
+                self.navigationController?.pushViewController(sizeInfoVC3, animated: true)
+            }
             
         }
         else {
@@ -137,8 +159,14 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
             //내 사이즈 확인뷰로 이동
             let mysizeVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "MySizeVC")as! MySizeVC
             mysizeVC.closetIdx = self.ClosetList?[indexPath.row].closet_idx
-
-            self.navigationController?.pushViewController(mysizeVC, animated: true)
+          
+             if enrollNewCloset == true {
+                mysizeVC.enrollNewCloset = true
+                self.present(mysizeVC, animated: true, completion: nil)
+             }
+             else{
+                self.navigationController?.pushViewController(mysizeVC, animated: true)
+            }
             
         }
     

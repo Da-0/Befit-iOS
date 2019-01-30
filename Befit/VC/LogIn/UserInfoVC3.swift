@@ -6,7 +6,7 @@
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
 //  LogIn.Storyboard
-//  3)회원가입 단계에서 개인 정보를 입력하는 뷰
+//  4) 회원가입 단계에서 개인 정보를 입력하는 VC
 
 import UIKit
 

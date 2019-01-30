@@ -6,7 +6,7 @@
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
 //  LogIn.Storyboard
-//  0)아이디와 패스워드를 입력하는 뷰
+//  1) 아이디와 패스워드를 입력하는 VC
 
 import UIKit
 

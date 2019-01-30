@@ -5,6 +5,8 @@
 //  Created by 이충신 on 01/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  MyPage.Storyboard
+//  3-1) 나의 사이즈 정보 클릭 후 카테고리 선택 단계 VC (TableView)
 
 import UIKit
 

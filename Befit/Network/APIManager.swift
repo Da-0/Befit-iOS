@@ -10,11 +10,9 @@ protocol APIManager {}
 
 extension APIManager {
     
-    // http://를 명시해주지 않으면 1002 ERROR가 발생한다.
+    // http:// 를 명시해주지 않으면 1002 ERROR가 발생한다.
     static func url(_ path: String) -> String {
-        //return "http://befitapi.tk:8081" + path
-        return "http://13.209.168.93:8081" + path
-        //return "http://192.168.200.170" + path
+        return "http://52.78.136.132:8081" + path
     }
     
     func gsno(_ value : String?) -> String{

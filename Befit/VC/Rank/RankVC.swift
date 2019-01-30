@@ -5,6 +5,8 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  Rank.Storyboard
+//  1) 브랜드 랭킹(1위-10위)를 보여주는 VC (TableView)
 
 import UIKit
 
@@ -17,7 +19,6 @@ class RankVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self;
         tableView.dataSource = self;
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,9 +46,8 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let brand = brandRankList[indexPath.row]
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "RankTVCell", for: indexPath) as! RankTVCell
+        let brand = brandRankList[indexPath.row]
         
         cell.rankLB.text = "\(indexPath.row + 1)"
         cell.brandImg.imageFromUrl(brand.logo_url, defaultImgPath: "")
@@ -61,7 +61,6 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
         
         let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = brandRankList[indexPath.row]
-        brandVC.brandIdx = brandRankList[indexPath.row].idx
         self.navigationController?.pushViewController(brandVC, animated: true)
         
     }

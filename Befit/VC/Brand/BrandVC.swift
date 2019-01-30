@@ -5,6 +5,8 @@
 //  Created by 이충신 on 17/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  Brand.Storyboard
+//  1) 브랜드 페이지 VC
 
 import UIKit
 
@@ -12,9 +14,8 @@ class BrandVC: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var brandInfo : Brand!
+    var brandInfo : Brand?
     var productInfo: Product?
-    var brandIdx: Int?
     var productList: [Product]?
     
     override func viewDidLoad() {
@@ -69,13 +70,13 @@ extension BrandVC: UICollectionViewDataSource{
             
             let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: "BrandCVCell1", for: indexPath) as! BrandCVCell1
             
-            cell1.brandLogoImg.imageFromUrl(brandInfo.logo_url, defaultImgPath: "")
-            cell1.brandBackGround.imageFromUrl(brandInfo.mainpage_url, defaultImgPath: "")
-            cell1.brandNameEnglishLB.text = brandInfo.name_english
-            cell1.brandNameKoreanLB.text = brandInfo.name_korean
+            cell1.brandLogoImg.imageFromUrl(brandInfo?.logo_url, defaultImgPath: "")
+            cell1.brandBackGround.imageFromUrl(brandInfo?.mainpage_url, defaultImgPath: "")
+            cell1.brandNameEnglishLB.text = brandInfo?.name_english
+            cell1.brandNameKoreanLB.text = brandInfo?.name_korean
             cell1.brandLikeBtn.addTarget(self, action: #selector(clickBLike(_:)), for: .touchUpInside)
             
-            if brandInfo.likeFlag == 1 {cell1.brandLikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)}
+            if brandInfo?.likeFlag == 1 {cell1.brandLikeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)}
             else{cell1.brandLikeBtn.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)}
             
             return cell1
@@ -90,7 +91,7 @@ extension BrandVC: UICollectionViewDataSource{
             //브랜드의 선택한 상품
             if let pInfo = productInfo  {
                 cell2.productImg.imageFromUrl(pInfo.image_url, defaultImgPath: "")
-                cell2.productBrand.text = brandInfo.name_korean
+                cell2.productBrand.text = brandInfo?.name_korean
                 cell2.productName.text = pInfo.name
                 cell2.price.text = pInfo.price
                 cell2.brandProductLikeBtn.addTarget(self, action: #selector(clickBPLike(_:)), for: .touchUpInside)
@@ -135,14 +136,14 @@ extension BrandVC: UICollectionViewDataSource{
     }
     
     func productListNewInit() {
-        ProductSortingService.shared.showSortingNew (brandIdx: brandIdx!, completion: { (productData) in
+        ProductSortingService.shared.showSortingNew (brandIdx: (brandInfo?.idx)!, completion: { (productData) in
             self.productList = productData
             self.collectionView.reloadData()
         })
     }
     
     func productListPopularInit() {
-        ProductSortingService.shared.showSortingPopular(brandIdx: brandIdx!, completion: { (productData) in
+        ProductSortingService.shared.showSortingPopular(brandIdx: (brandInfo?.idx)!, completion: { (productData) in
             self.productList = productData
             self.collectionView.reloadData()
         })
@@ -153,29 +154,20 @@ extension BrandVC: UICollectionViewDataSource{
         
         let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         
-        //상단부 클릭시 브랜드의 홈페이지로 이동
+        //상단부 클릭시 브랜드의 홈페이지로(웹) 이동
         if indexPath.section == 0 {
-            productVC.brandName = brandInfo.name_english
-            productVC.address = brandInfo.link
-            productVC.brandHome = true
+            productVC.brandInfo = brandInfo
         }
         
-        //중간부 클릭시 브랜드의 홈페이지로 이동
+        //중간부 클릭시 브랜드의 자체 페이지로 이동
         else if indexPath.section == 1 {
-            productVC.brandName = brandInfo.name_english
-            productVC.address = productInfo?.link
             productVC.productInfo = productInfo
-            productVC.brandHome = false
-            
         }
         
         //하단부 클릭시 상품의 페이지몰로 이동
         else {
-            productVC.brandName = productList?[indexPath.row].name_English
-            productVC.address = productList?[indexPath.row].link
-            productVC.productInfo = productList?[indexPath.row]
-            productVC.brandHome = false
-           
+            guard let product = productList?[indexPath.row] else {return}
+            productVC.productInfo = product
         }
         
          self.navigationController?.present(productVC, animated: true, completion: nil)
@@ -196,7 +188,7 @@ extension BrandVC {
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
             
-            LikeBService.shared.unlike(brandIdx: brandIdx!) { (res) in
+            LikeBService.shared.unlike(brandIdx: (brandInfo?.idx)!) { (res) in
                 if let status = res.status {
                     switch status {
                     case 200 :
@@ -212,7 +204,7 @@ extension BrandVC {
         else {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
             
-            LikeBService.shared.like(brandIdx: brandIdx!) { (res) in
+            LikeBService.shared.like(brandIdx: (brandInfo?.idx)!) { (res) in
                 if let status = res.status {
                     switch status {
                     case 201 :
