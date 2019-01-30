@@ -5,7 +5,7 @@
 //  Created by 이충신 on 07/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
-// MySize에서 받는 용도의 Measure type
+//  MySize에서 데이터를 받는 Measure type
 
 import Foundation
 import ObjectMapper
@@ -42,5 +42,18 @@ struct Measure2 : Mappable {
     
 }
 
+enum BodyPart: String {
+    
+    case chest = "가슴 단면"
+    case total = "총장"
+    case shoulder = "어깨 너비"
+    case sleeve = "소매 길이"
+    
+    case waist = "허리 단면"
+    case thigh = "허벅지 단면"
+    case crotch = "밑위"
+    case dobla = "밑단 단면"
+    
+}
 
 

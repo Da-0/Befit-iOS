@@ -26,6 +26,12 @@ extension String {
         let text = String(data: messageData!, encoding: .utf8)
         return text
     }
+    
+    
+    func toDouble() -> Double?{
+        return NumberFormatter().number(from: self)?.doubleValue
+    }
+
 }
 
 

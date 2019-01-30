@@ -5,6 +5,8 @@
 //  Created by 이충신 on 07/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  Product.Storyboard
+//  1) 상품정보 웹뷰 VC (+ 브랜드 자사 홈페이지 띄어주는 용도)
 
 import UIKit
 import WebKit
@@ -15,74 +17,34 @@ class ProductVC: UIViewController, WKNavigationDelegate {
 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var webView: WKWebView!
-    
-    var address: String?
-    var brandName: String?
-    var productInfo: Product?
-    var closetIdx: Int?
-    var productSize: String?
-    
-    var brandHome: Bool = false
     @IBOutlet weak var sizeCheckBtn: UIBarButtonItem!
     
-    private var boatAnimation: LOTAnimationView?
+    var productInfo: Product?
+    var brandInfo: Brand?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //createAnimation()
-   
     }
-    
-//    func createAnimation(){
-//
-//        // Create Boat Animation
-//        boatAnimation = LOTAnimationView(name: "material_wave_loading")
-//
-//        // Set view to full screen, aspectFit
-//        boatAnimation!.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-//        boatAnimation!.contentMode = .scaleAspectFit
-//        boatAnimation!.frame = loadingVIew.bounds
-//
-//        // Add the Animation
-//        loadingVIew.addSubview(boatAnimation!)
-//
-//
-//        // The center of the screen, where the boat will start
-//        //let screenCenter = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-//
-//        // The center one screen height above the screen. Where the boat will end up when the download completes
-//        //let offscreenCenter = CGPoint(x: view.bounds.midX, y: -view.bounds.midY)
-//
-//        // Convert points into animation view coordinate space.
-//        //let boatStartPoint = boatAnimation!.convert(screenCenter, toKeypathLayer: LOTKeypath(string: "Boat"))
-//
-//        //let boatEndPoint = boatAnimation!.convert(offscreenCenter, toKeypathLayer: LOTKeypath(string: "Boat"))
-//        //Play the first portion of the animation on loop until the download finishes.
-//       // boatAnimation!.loopAnimation = true
-//       // boatAnimation!.play(fromProgress: 0,
-//         //                   toProgress: 2,
-//          //                  withCompletion: nil)
-//
-//    }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationBar.topItem?.title = brandName
+        navigationBar.topItem?.title = productInfo?.name_English
         
         //브랜드 홈페이지 보여주는 경우
-        if brandHome {
-            self.request(url: address!)
+        if brandInfo != nil {
+            if let link = brandInfo?.link {
+                self.request(url: link)
+            }
             sizeCheckBtn.isEnabled = false
             sizeCheckBtn.image = nil
             
         }
         //상품 페이지를 보야주는 경우
-        else {
-            self.request(url: "https://" + address!)
-            print("url = " + "https://" + address!)
-            
+        else if productInfo != nil {
+            if let link = productInfo?.link {
+                self.request(url: "https://" + link)
+                print("상품 페이지 url = " + "https://" + link)
+            }
         }
         
     }
@@ -96,51 +58,33 @@ class ProductVC: UIViewController, WKNavigationDelegate {
         self.webView.load(URLRequest(url: URL(string: url)!))
     }
     
+    // 뒤로가기 버튼
     @IBAction func dismisssAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    // 사이즈 체크 버튼(PopUp)
     @IBAction func sizeCheckAction(_ sender: Any) {
         
-        //사이즈체크 팝업 뷰가 뜹니다.
         let sizeCheckVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "SizeCheckVC")as! SizeCheckVC
         sizeCheckVC.productInfo = self.productInfo
-       // sizeCheckVC.productIdx = productInfo?.idx
         
         self.addChild(sizeCheckVC)
-        
         sizeCheckVC.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        
         self.view.addSubview(sizeCheckVC.view)
         sizeCheckVC.didMove(toParent: self)
         
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-//
-//        loadingVIew.isHidden = false
-//        boatAnimation!.play(toProgress: 0.5) {[weak self] (_) in
-//            self?.boatAnimation?.loopAnimation = true
-//            self?.boatAnimation!.animationSpeed = 1
-//            self?.boatAnimation!.play(toProgress: 3, withCompletion: nil)
-//        }
-        
-        
+ 
     }
-    
     
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-       // boatAnimation!.loopAnimation = false
-//        loadingVIew.isHidden = true
-//        self.boatAnimation?.stop()
+
     }
     
+    
 }
-
-
-
-
-
 

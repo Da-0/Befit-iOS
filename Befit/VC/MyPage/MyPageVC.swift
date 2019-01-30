@@ -5,6 +5,8 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  MyPage.Storyboard
+//  0) 마이페이지 첫번째 VC(설정, 정보, 선택항목을 보여줌)
 
 import UIKit
 

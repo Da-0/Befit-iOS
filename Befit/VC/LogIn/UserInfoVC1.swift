@@ -6,7 +6,7 @@
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
 //  LogIn.Storyboard
-//  1)회원가입 단계에서 성별을 선택하는 뷰
+//  2) 회원가입 단계에서 성별을 선택하는 VC
 
 import UIKit
 

@@ -5,6 +5,8 @@
 //  Created by 박다영 on 31/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  LogIn.storyboard
+//  1-1) 비밀번호 찾기 VC
 
 import UIKit
 

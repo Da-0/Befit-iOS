@@ -14,11 +14,4 @@ class LikeBrandTVCell: UITableViewCell {
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var likeBtn: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-  
-
 }

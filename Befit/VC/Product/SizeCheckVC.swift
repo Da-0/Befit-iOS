@@ -5,22 +5,12 @@
 //  Created by 이충신 on 11/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
-//  웹 뷰에 띄울 사이즈 체크 비교 팝업 뷰
+//  Product.Storyboard
+//  2) 웹 뷰에 띄울 사이즈 체크 비교 팝업 뷰 VC
+//  (+ 브랜드 자사 홈페이지 띄어주는 용도)
 
 import UIKit
 
-enum BodyPart: String {
-    
-    case chest = "가슴 단면"
-    case total = "총장"
-    case shoulder = "어깨 너비"
-    case sleeve = "소매 길이"
-    case waist = "허리 단면"
-    case thigh = "허벅지 단면"
-    case crotch = "밑위"
-    case dobla = "밑단 단면"
-    
-}
 
 class SizeCheckVC: UIViewController {
     
@@ -30,6 +20,7 @@ class SizeCheckVC: UIViewController {
     @IBOutlet weak var originalImage: UIImageView!
     @IBOutlet weak var sizeCheckView: UIView!
     
+    @IBOutlet weak var noClosetView: UIControl!
     //내 비교 상품 리스트(옷장)
     var myClosetList: [Closet]?
     var comparableList: [SizeCheck] = []
@@ -41,10 +32,15 @@ class SizeCheckVC: UIViewController {
     @IBOutlet weak var productNameLB: UILabel!
     @IBOutlet weak var productSizeLB: UILabel!
     
-    //Picker, TF, PageControl
-    @IBOutlet weak var productTF: UITextField!
+    //Picker, TF, PageControl, progressBar
     let pickerView = UIPickerView()
+    @IBOutlet weak var productTF: UITextField!
     @IBOutlet weak var pageControl: UIPageControl!
+    
+    @IBOutlet weak var percentBG: UIImageView!
+    @IBOutlet weak var percentage: UILabel!
+    var circleGraph: CircleGraph?
+    @IBOutlet weak var percentStack: UIStackView!
     
     //상품 사이즈 정보 LB 관련
     @IBOutlet weak var wholeStack: UIStackView!
@@ -90,13 +86,7 @@ class SizeCheckVC: UIViewController {
     func initProducutInfo(){
         
         //1) 뷰의 시작점에서 현재 선택한 상품의 사이즈 종류를 Export.
-        // guard let psize = productInfo?.measure1?.toJSON().keys.sorted()else{return}
-        //productSizeList = Array(psize)
-        
-        
-        //Sorted Test!!!!~~
         guard let sizeSorted = productInfo?.measure1?.toJSON().keys.sorted(by: { (first, second) -> Bool in
-            
             if let firstVal = sortedDic[first], let secondVal = sortedDic[second] {
                 if firstVal < secondVal { return true }
                 else { return false }
@@ -137,10 +127,11 @@ class SizeCheckVC: UIViewController {
 
             self.myClosetList = res.data
             
-            //1) 옷장에 데이터가 없는 경우
+            //1) 옷장에 데이터가 없는 경우(등록 유도 뷰)
             if res.data == nil {
-                //************이 시점에서 뷰(옷장 등록을 유도하는)를 Show ************
-                self.simpleAlert(title: "ERROR", message: "등록된 옷장이 없습니다!!")
+                print("옷장에 아무것도 없는 카테고리의 인덱스")
+                print(self.productInfo?.product_category_index)
+                self.noClosetView.isHidden = false
             }
                 
             //2) 옷장에 데이터가 있는 경우
@@ -148,6 +139,9 @@ class SizeCheckVC: UIViewController {
                 // Original Image 설정
                 SizeCheckService.shared.showSizeCheck(closetIdx: res.data?[0].closet_idx!, productIdx: self.productInfo?.idx!, productSize: self.productSizeList.first) { (res) in
                     self.originalImage.imageFromUrl(res.data?.my_url, defaultImgPath: "")
+                    if res.data?.my_url == nil {
+                        self.simpleAlert(title: "ERROR!", message: "상품의 사이즈 데이터가 없어 비교가 불가합니다!")
+                    }
                 }
             }
             
@@ -158,6 +152,22 @@ class SizeCheckVC: UIViewController {
     @IBAction func okBtn(_ sender: Any) {
         self.removeAnimate();
     }
+    
+
+    @IBAction func enrollClosetAction(_ sender: Any) {
+      
+        let sizeInfoVC2 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC2")as! SizeInfoVC2
+        sizeInfoVC2.categoryIdx = productInfo?.product_category_index!
+        sizeInfoVC2.enrollNewCloset = true
+        sizeInfoVC2.categoryName = "slacks"
+        self.present(sizeInfoVC2, animated: true) {
+            self.removeAnimate();
+        }
+       
+    }
+    
+   
+    
 
 }
 
@@ -213,6 +223,7 @@ extension SizeCheckVC: UIPickerViewDelegate,UIPickerViewDataSource{
         pageControl.currentPage = 0
         collectionView.isScrollEnabled = true
         wholeStack.isHidden = false
+        percentStack.isHidden = false
         collectionView.reloadData()
         self.view.endEditing(true)
     }
@@ -237,35 +248,38 @@ extension SizeCheckVC {
             
             SizeCheckService.shared.showSizeCheck(closetIdx: myCloset.closet_idx!, productIdx: productInfo?.idx!, productSize: size) { (result) in
                 
-                print("\n<" + size + " Size와의 비교 결과>")
-                print(result.data)
-                self.comparableList.append(result.data!)
-                
-                //guard let keys = result.data?.measure?.toJSON().keys else {return}
-                let keys = Array((result.data?.measure?.toJSON().keys)!)
-                
-                let sortedKeys = keys.sorted(by: { (first, second) -> Bool in
+                if result.message == "옷 사이즈 비교 불가능" {
+                    self.simpleAlert(title: "ERROR", message: "옷 사이즈 비교가 불가능 합니다!")
+                    self.removeAnimate();
+                }
+               
+                else {
+                    print("\n<" + size + " Size와의 비교 결과>")
+                    print(result.data)
+                    self.comparableList.append(result.data!)
+        
+                    let keys = Array((result.data?.measure?.toJSON().keys)!)
                     
-                    switch (first, second) {
-                        case ("totalLength", _ ) :
-                            return true
-                        case (_ ,"totalLength") :
-                            return false
-                    default: break
-                    }
-                    return first > second
-                })
-                
-                self.realKey = sortedKeys
+                    let sortedKeys = keys.sorted(by: { (first, second) -> Bool in
+                        
+                        switch (first, second) {
+                            case ("totalLength", _ ) :
+                                return true
+                            case (_ ,"totalLength") :
+                                return false
+                        default: break
+                        }
+                        return first > second
+                    })
+                    
+                    self.realKey = sortedKeys
+                }
             
                 CFRunLoopStop(runLoop)//Stop Loop
             }
             
             CFRunLoopRun()//Run Loop
         }
-        
-        print("\n<realKey배열에 저장된 데이터>")
-        print(self.realKey)
         
         //LB0의 항목들을 설정
         for (idx, key) in self.realKey.enumerated() {
@@ -346,6 +360,12 @@ extension SizeCheckVC {
             LB2Array[idx].text = realDic[realKey[idx]]! + "cm"
             
         }
+        
+        guard let percent = comparableList[row].percent else {return}
+        self.percentage.text = percent + "%"
+        circleGraph = CircleGraph(percentBG, percent)
+        circleGraph?.animateCircle()
+        
 
     }
     

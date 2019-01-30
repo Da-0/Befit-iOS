@@ -5,6 +5,8 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  Like.Storyboard
+//  1) PagerTab VC (LikeProduct, LikeBrand를 포함하는 VC)
 
 import UIKit
 import XLPagerTabStrip
@@ -16,21 +18,10 @@ class LikeVC: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-       
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-         moveToViewController(at: 0)
-    }
 
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
-        
-        let child1 = UIStoryboard(name: "Like", bundle: nil).instantiateViewController(withIdentifier: "LikeProductCVC") as! LikeProductCVC
-        let child2 = UIStoryboard(name: "Like", bundle: nil).instantiateViewController(withIdentifier: "LikeBrandTVC") as! LikeBrandTVC
-        
+        let child1 = UIStoryboard(name: "Like", bundle: nil).instantiateViewController(withIdentifier: "LikeProductVC") as! LikeProductVC
+        let child2 = UIStoryboard(name: "Like", bundle: nil).instantiateViewController(withIdentifier: "LikeBrandVC") as! LikeBrandVC
         return [child1, child2]
     }
     
@@ -54,11 +45,7 @@ class LikeVC: ButtonBarPagerTabStripViewController {
         // Sets the height and colour of the slider bar of the selected pager tab
         settings.style.selectedBarHeight = 3.0
         settings.style.selectedBarBackgroundColor = .black // 선택되었을경우
-        settings.style.selectedBarVerticalAlignment = .bottom //****
-        
-        
-        //containerView.frame.origin.y = 104//****
-        //buttonBarView.frame.contains(CGRect(x: 0, y: 300, width: 375, height: 812))//****
+        settings.style.selectedBarVerticalAlignment = .bottom
         
         // Changing item text color on swipe
         changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in

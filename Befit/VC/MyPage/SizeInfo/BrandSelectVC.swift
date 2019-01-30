@@ -5,6 +5,8 @@
 //  Created by 이충신 on 03/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  MyPage.Storyboard
+//  3-4) Alphabet으로 브랜드 선택을 하는 VC (CollectionView + TableView)
 
 import UIKit
 
@@ -17,6 +19,7 @@ class BrandSelectVC: UIViewController {
     
     let userDefault = UserDefaults.standard
     var delegate: BrandVCDelegate?
+    var enrollNewCloset = false
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -41,7 +44,12 @@ class BrandSelectVC: UIViewController {
     }
     
     @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if enrollNewCloset == true {
+            self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +96,12 @@ extension BrandSelectVC : UITableViewDataSource, UITableViewDelegate{
         guard let _brand = brand else {return}
         self.delegate?.BrandVCResponse(value: _brand[indexPath.row])
         //userDefault.set(_brand[indexPath.row].idx!, forKey: "brand_idx")
-        self.navigationController?.popViewController(animated: true)
+        if enrollNewCloset == true {
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
+      
     }
 
 }
@@ -101,7 +114,7 @@ extension BrandSelectVC: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! CollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AlphabetCVCell", for: indexPath) as! AlphabetCVCell
         cell.alphabet.text = alphabet[indexPath.item]
         cell.alphabet.adjustsFontSizeToFitWidth = true
         cell.alphabet.minimumScaleFactor = 0.2
@@ -112,7 +125,7 @@ extension BrandSelectVC: UICollectionViewDataSource {
 extension BrandSelectVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let cell = collectionView.cellForItem(at: indexPath) as! CollectionViewCell
+        let cell = collectionView.cellForItem(at: indexPath) as! AlphabetCVCell
         
         if cell.isSelected {
             cell.isSelected = false

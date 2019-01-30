@@ -6,7 +6,7 @@
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
 //  LogIn.storyboard
-//  계정 비밀번호 재설정 뷰
+//  1-2) 계정 비밀번호 재설정 VC
 
 import UIKit
 

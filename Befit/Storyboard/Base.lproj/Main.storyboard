@@ -118,7 +118,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="01S-5o-JzX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="01S-5o-JzX">
                                 <rect key="frame" x="55" y="0.0" width="320" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -147,7 +147,7 @@
                                         <rect key="frame" x="0.0" y="84" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ytJ-q2-x4P" id="pbF-4n-cik">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Menu List" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMh-Vx-ban">
@@ -257,14 +257,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell0" reuseIdentifier="MainCVCell0" id="RDe-HA-IBT" customClass="MainCVCell0" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="550"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zyw-Us-KQ3">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="527"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="502"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="APf-XX-IAw">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -274,7 +274,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell00" reuseIdentifier="MainCVCell00" id="fyr-We-FXE" customClass="MainCVCell00" customModule="Befit" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="1" width="375" height="525"/>
+                                                            <rect key="frame" x="0.0" y="-11.666666666666666" width="375" height="525"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="525"/>
@@ -390,7 +390,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uI8-dt-cOr" userLabel="pageControl">
-                                                    <rect key="frame" x="35" y="527" width="340" height="3"/>
+                                                    <rect key="frame" x="35" y="502" width="340" height="3"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vYU-Cn-7iq">
                                                             <rect key="frame" x="0.0" y="0.0" width="113" height="3"/>
@@ -419,7 +419,7 @@
                                             <constraint firstItem="Zyw-Us-KQ3" firstAttribute="top" secondItem="RDe-HA-IBT" secondAttribute="top" id="ejq-XQ-GGe"/>
                                             <constraint firstItem="uI8-dt-cOr" firstAttribute="leading" secondItem="RDe-HA-IBT" secondAttribute="leading" constant="35" id="rrh-Vc-HEh"/>
                                         </constraints>
-                                        <size key="customSize" width="375" height="550"/>
+                                        <size key="customSize" width="375" height="525"/>
                                         <connections>
                                             <outlet property="collectionView0" destination="Zyw-Us-KQ3" id="GUR-av-pDY"/>
                                             <outlet property="pagerLeftCons" destination="3O2-iG-wUi" id="QuX-ui-mtz"/>
@@ -427,7 +427,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell1" reuseIdentifier="MainCVCell1" id="Zvw-oT-zlj" customClass="MainCVCell1" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="550" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="525" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -482,7 +482,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell2" reuseIdentifier="MainCVCell2" id="fDI-e4-vYu" customClass="MainCVCell2" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="640" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="615" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -508,7 +508,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="MainCVCell3" reuseIdentifier="MainCVCell3" id="bvY-Qu-utv" customClass="MainCVCell3" customModule="Befit" customModuleProvider="target">
-                                        <rect key="frame" x="93.666666666666671" y="710" width="188" height="256"/>
+                                        <rect key="frame" x="93.666666666666671" y="685" width="188" height="256"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="188" height="256"/>

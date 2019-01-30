@@ -1,3 +1,12 @@
+//
+//  SearchProductVC.swift
+//  Befit
+//
+//  Created by 이충신 on 30/12/2018.
+//  Copyright © 2018 GGOMMI. All rights reserved.
+//
+//  Search.Storyboard
+//  2-1) 키워드 검색 결과 관련된 상품 목록 보여주는 VC (CollectionView)
 
 import UIKit
 import XLPagerTabStrip
@@ -59,14 +68,12 @@ extension SearchProductVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard let searchProduct = productList else {return}
+        guard let searchProduct = productList?[indexPath.row] else {return}
         
         let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-        productVC.address = searchProduct[indexPath.row].link
-        productVC.brandName = searchProduct[indexPath.row].name_English
-        productVC.productInfo = searchProduct[indexPath.row]
-        
+        productVC.productInfo = searchProduct
         self.navigationController?.present(productVC, animated: true, completion: nil)
+        
     }
     
     @objc func clickLike(_ sender: UIButton){

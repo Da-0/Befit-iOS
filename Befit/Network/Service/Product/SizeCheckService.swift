@@ -36,6 +36,7 @@ struct SizeCheckService: APIManager, Requestable{
         
         
         gettable(str_url!, body: nil, header: headers) { res in
+        
             switch res {
             case .success(let value):
                 completion(value)

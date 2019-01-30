@@ -5,6 +5,8 @@
 //  Created by 이충신 on 05/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  Main.Storyboard
+//  3) 해당 카테고리의 상품을 보여주는 VC (CollectionView)
 
 import UIKit
 
@@ -22,19 +24,6 @@ class CategoryDetailVC: UIViewController {
     var genderIdx: Int = 0
     var genderTxt: String = ""
     
-    @IBAction func backBtnAction(_ sender: Any) {
-        
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype.fromLeft
-        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
-        view.window!.layer.add(transition, forKey: kCATransition)
-        
-        dismiss(animated: false, completion: nil)
-    }
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self;
@@ -47,10 +36,8 @@ class CategoryDetailVC: UIViewController {
         
         navigationBar.topItem?.title = categoryName
         self.backBtn.image = #imageLiteral(resourceName: "backArrow")
-        
-        if genderIdx == 0 {genderTxt = "w"}
-        else { genderTxt = "m"}
-        
+        genderTxt = genderIdx == 0 ? "w" : "m"
+    
         initCategoryProductList1()
         
     }
@@ -62,33 +49,6 @@ class CategoryDetailVC: UIViewController {
     }
     
 
-    
-}
-
-
-
-extension CategoryDetailVC: UICollectionViewDataSource{
-    
-    
-    //MARK: - Reusable view cell (Header)
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            
-            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewPopularSortingCRV", for: indexPath as IndexPath) as! NewPopularSortingCRV
-            
-            cell.newBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
-            cell.popularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
-            
-            return cell
-            
-        default:
-            assert(false, "Unexpected element kind")
-        }
-        
-    }
-    
     @objc func newBtnClicked(){
         initCategoryProductList1()
         
@@ -105,7 +65,6 @@ extension CategoryDetailVC: UICollectionViewDataSource{
             self.collectionView.reloadData()
         }
     }
-    
     func initCategoryProductList2(){
         ProductSortingService.shared.showSortingPopularCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
             self.productList = product
@@ -113,32 +72,46 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         }
     }
     
+    @IBAction func backBtnAction(_ sender: Any) {
+        
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = CATransitionType.push
+        transition.subtype = CATransitionSubtype.fromLeft
+        transition.timingFunction = CAMediaTimingFunction(name:CAMediaTimingFunctionName.easeInEaseOut)
+        view.window!.layer.add(transition, forKey: kCATransition)
+        
+        dismiss(animated: false, completion: nil)
+    }
+
+}
+
+
+
+extension CategoryDetailVC: UICollectionViewDataSource{
     
-    //MARK: - content view cell
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let product = productList else {return 0}
         return product.count
     }
     
+    //MARK: - CellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
-     
-        cell.productImg.imageFromUrl(productList?[indexPath.row].image_url, defaultImgPath: "")
-        cell.brandName.text = productList?[indexPath.row].name_korean
-        cell.productName.text = productList?[indexPath.row].name
-        cell.price.text = productList?[indexPath.row].price
+        guard let product = productList?[indexPath.row] else {return cell}
+        
+        cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
+        cell.brandName.text = product.name_korean
+        cell.productName.text = product.name
+        cell.price.text = product.price
+        
+        let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+        cell.likeBtn.setImage(likeImg , for: .normal)
         cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
         cell.likeBtn.tag = indexPath.row
         
-        
-        if productList?[indexPath.row].product_like == 1 {
-            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-        }else{
-            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
-        }
-        
-
         return cell
     }
 
@@ -187,16 +160,8 @@ extension CategoryDetailVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let categoryProduct = productList?[indexPath.row]
-        
         let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-        
-        guard let link = categoryProduct?.link else {return}
-        guard let brandName = categoryProduct?.name_English else {return}
-        
-        productVC.address = link
-        productVC.brandName = brandName
-        productVC.productInfo = categoryProduct
-        
+            productVC.productInfo = categoryProduct
         self.present(productVC, animated: true, completion: nil)
 
     }
@@ -206,6 +171,25 @@ extension CategoryDetailVC: UICollectionViewDataSource{
 
 
 extension CategoryDetailVC: UICollectionViewDelegateFlowLayout {
+    
+    //MARK: - Reusable view cell (Header)
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            
+            let cell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "NewPopularSortingCRV", for: indexPath as IndexPath) as! NewPopularSortingCRV
+            
+            cell.newBtn.addTarget(self, action: #selector(newBtnClicked), for: .touchUpInside)
+            cell.popularBtn.addTarget(self, action: #selector(popularBtnClicked), for: .touchUpInside)
+            
+            return cell
+            
+        default:
+            assert(false, "Unexpected element kind")
+        }
+        
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = 239

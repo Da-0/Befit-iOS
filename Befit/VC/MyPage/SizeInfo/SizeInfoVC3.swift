@@ -5,9 +5,9 @@
 //  Created by 이충신 on 03/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  MyPage.Storyboard
+//  3-3) 브랜드 검색과 상품검색이 일어나는 VC
 
-//브랜드 검색과 상품검색이 일어나는 TableView
-//검색을 모두 마친뒤에는 isHidden = false 로 변경
 
 import UIKit
 
@@ -18,12 +18,11 @@ class SizeInfoVC3: UIViewController {
     //Right BarButton Item
     @IBOutlet weak var completeBtn: UIBarButtonItem!
     
-    //Cell 0
+    //Brand Select Button
     @IBOutlet weak var brandSelectView: UIControl!
     @IBOutlet weak var brandNameLB: UILabel!
-    var brandName: String?
  
-    //Cell 1
+    //Product Select Button
     @IBOutlet weak var productSelectView: UIControl!
     @IBOutlet weak var productTitleLB: UILabel!
     @IBOutlet weak var productNameLB: UILabel!
@@ -42,12 +41,11 @@ class SizeInfoVC3: UIViewController {
     var realValueArray = [[String: Any]]()
     @IBOutlet weak var stackView: UIStackView!
     
-    
-    var brandIdx: Int?
+    var brandInfo: Brand?
     var categoryIdx: Int?
     var productIdx: Int?
     var productSize: String?
-    var idx: Int = 0
+    var enrollNewCloset = false
     
     @IBOutlet weak var fourthStack: UIStackView!
     @IBOutlet weak var fifthStack: UIStackView!
@@ -102,14 +100,12 @@ class SizeInfoVC3: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         self.tabBarController?.tabBar.isHidden = true
         
-        if brandName != nil {
+        if brandInfo != nil {
             
-            brandNameLB.text = brandName
+            brandNameLB.text = brandInfo?.name_english
             productViewEnable(true)
             
-            if productName != nil {
-                ContentView.isHidden = false
-            }
+            if productName != nil { ContentView.isHidden = false}
             
         }
         
@@ -120,9 +116,6 @@ class SizeInfoVC3: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.navigationBar.isHidden = false
         self.tabBarController?.tabBar.isHidden = false
-        
-        productViewEnable(false)
-        productName = nil
        
     }
     
@@ -138,15 +131,26 @@ class SizeInfoVC3: UIViewController {
 
 }
 
-//Mark: - Button Action 관련
-
+//Mark: - Button Action
 extension SizeInfoVC3 {
     
     @IBAction func brandSelectAction(_ sender: Any) {
         
+        //브랜드 선택시에는 ContentView가 false
+        productViewEnable(false)
+        productName = nil
+        ContentView.isHidden = true
+        
         let brandSelectVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "BrandSelectVC")as! BrandSelectVC
         brandSelectVC.delegate = self;
-        self.navigationController?.pushViewController(brandSelectVC, animated: true)
+
+        if enrollNewCloset == true{
+            brandSelectVC.enrollNewCloset = true
+            self.present(brandSelectVC, animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.pushViewController(brandSelectVC, animated: true)
+        }
     }
     
     
@@ -155,10 +159,16 @@ extension SizeInfoVC3 {
         let productSelectVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ProductSelectVC")as! ProductSelectVC
         
         productSelectVC.delegate = self;
-        productSelectVC.brandIdx = self.brandIdx;
+        productSelectVC.brandIdx = brandInfo?.idx
         productSelectVC.categoryIdx = self.categoryIdx;
-        
-        self.navigationController?.pushViewController(productSelectVC, animated: true)
+  
+        if enrollNewCloset == true {
+            productSelectVC.enrollNewCloset = true
+            self.present(productSelectVC, animated: true, completion: nil)
+        }
+        else{
+            self.navigationController?.pushViewController(productSelectVC, animated: true)
+        }
         
     }
     
@@ -166,10 +176,13 @@ extension SizeInfoVC3 {
         
         AddClosetService.shared.addCloset(idx: productIdx!, size: productSize!) { (res) in
             if let status = res.status {
-                print(res)
                 switch status {
                     case 200, 201:
+                        if self.enrollNewCloset == true {
+                            self.dismiss(animated: true, completion: nil)
+                        }else{
                           self.navigationController?.popViewController(animated: true)
+                        }
                     case 400...600 :
                         self.simpleAlert(title: "Error", message: res.message!)
                     default: break
@@ -181,7 +194,11 @@ extension SizeInfoVC3 {
     
     
     @IBAction func backBtn(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if enrollNewCloset == true {
+            self.dismiss(animated: true, completion: nil)
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     
@@ -219,7 +236,6 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
         bar.sizeToFit()
         
         let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
         let doneButton = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(selectedPicker))
         
         bar.setItems([flexible,doneButton], animated: true)
@@ -229,64 +245,74 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     @objc func selectedPicker(){
+        
         let row = pickerview.selectedRow(inComponent: 0)
         sizeTF.text = sizeArray[row]
         productSize = sizeArray[row]
      
-        let key = realValueArray[row].keys
-        let value = realValueArray[row].values
+        
+        let dicData = realValueArray[row].sorted(by: { (first, second) -> Bool in
+            
+            switch (first.key, second.key) {
+            case ("totalLength", _ ) :
+                return true
+            case (_ ,"totalLength") :
+                return false
+            default: break
+            }
+            return first.key > second.key
+        })
+        
         
         self.stackView.isHidden = false
         
-        if value.count == 3 {
+        if dicData.count == 3 {
             fourthStack.isHidden = true
             fifthStack.isHidden = true
         }
-        if value.count == 4 {
+        if dicData.count == 4 {
+            fourthStack.isHidden = false
             fifthStack.isHidden = true
         }
         
+
         
-        for k in key {
-            switch k {
+        for (idx, data) in dicData.enumerated() {
+            
+            switch data.key {
                 case "totalLength":
-                    self.LB0Array[self.idx].text = "총장"
+                    self.LB0Array[idx].text = BodyPart.total.rawValue
                     break
                 case "chestSection":
-                    self.LB0Array[self.idx].text = "가슴 단면"
+                    self.LB0Array[idx].text = BodyPart.chest.rawValue
                     break
                 case "shoulderWidth":
-                    self.LB0Array[self.idx].text = "어깨 너비"
+                    self.LB0Array[idx].text = BodyPart.shoulder.rawValue
                     break
                 case "sleeveLength":
-                    self.LB0Array[self.idx].text = "소매 길이"
+                    self.LB0Array[idx].text = BodyPart.sleeve.rawValue
                     break
                 case "waistSection":
-                    self.LB0Array[self.idx].text = "허리 단면"
+                    self.LB0Array[idx].text = BodyPart.waist.rawValue
                     break
                 case "thighSection":
-                    self.LB0Array[self.idx].text = "허벅지 단면"
+                    self.LB0Array[idx].text = BodyPart.thigh.rawValue
                     break
                 case "crotch":
-                    self.LB0Array[self.idx].text = "밑위"
+                    self.LB0Array[idx].text = BodyPart.crotch.rawValue
                     break
                 case "dobladillosSection":
-                    self.LB0Array[self.idx].text = "밑단 단면"
+                    self.LB0Array[idx].text = BodyPart.dobla.rawValue
                     break
             default:
                 break
             }
-            idx += 1
+            
+            self.LB1Array[idx].text = data.value as? String
+            
+        
         }
-        
-        idx = 0
-        
-        for v in value {
-           self.LB1Array[self.idx].text =  v as? String
-            idx += 1
-        }
-        
-        idx = 0
+      
         view.endEditing(true)
     }
     
@@ -308,9 +334,7 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
 //Mark: - BrandVCDelegate
 extension SizeInfoVC3 : BrandVCDelegate {
     func BrandVCResponse(value: Brand) {
-        self.brandName = value.name_english
-        self.brandIdx = value.idx
-    
+        self.brandInfo = value
     }
 }
 
@@ -332,17 +356,24 @@ extension SizeInfoVC3: ProductVCDelegate {
         self.productIdx = value.idx
         
         guard let measureData = value.measure1?.toJSON() else {return}
-        print("\n key값 = \(measureData.keys)")
-        print(" value값 = \(measureData.values)")
         
+        let realRoot = measureData.sorted { (first, second) -> Bool in
+            if let firstVal = sortedDic[first.key], let secondVal = sortedDic[second.key] {
+                if firstVal < secondVal { return true }
+                else { return false }
+            }
+            return first.key < second.key
+        }
+        
+        
+        for data in realRoot {
+            sizeArray.append(data.key)
+            realValueArray.append(data.value as! [String:Any])
+        }
+ 
+        print("\nkey값 = \(sizeArray)")
+        print("value값 = \(realValueArray)")
    
-        for size in measureData.keys {
-            sizeArray.append(size)
-        }
-        
-        for values in measureData.values {
-            realValueArray.append(values as! [String : Any])
-        }
 
     }
 }

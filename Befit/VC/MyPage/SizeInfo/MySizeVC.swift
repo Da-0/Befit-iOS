@@ -5,6 +5,8 @@
 //  Created by 이충신 on 05/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  MyPage.Storyboard
+//  3-6) SizeInfoVC2에서 셀 선택시 나타나는 특정 사이즈 정보
 
 import UIKit
 
@@ -32,6 +34,8 @@ class MySizeVC: UIViewController {
     
     @IBOutlet weak var fourthStack: UIStackView!
     @IBOutlet weak var fifthStack: UIStackView!
+    
+    var enrollNewCloset = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,8 +153,11 @@ class MySizeVC: UIViewController {
 
 
     @IBAction func backBtn(_ sender: Any) {
-        
-        self.navigationController?.popViewController(animated: true)
+        if enrollNewCloset == true {
+            self.dismiss(animated: true, completion: nil)
+        }else {
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }
 

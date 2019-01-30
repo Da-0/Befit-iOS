@@ -5,11 +5,15 @@
 //  Created by 이충신 on 25/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
+//  Search.Storyboard
+//  0) SearchVC1과 SearchVC2를 담는 컨테이너 뷰 + SearchBar
+
 import UIKit
 class SearchVC: UIViewController {
     
     let userDefault = UserDefaults.standard
     var searchController : UISearchController!
+    
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var secondView: UIView!
     private var didTapDeleteKey = false
@@ -32,7 +36,7 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-//        print("키보드 입력중...")
+        // print("키보드 입력중...")
         
     }
     

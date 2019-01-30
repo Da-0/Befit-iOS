@@ -6,7 +6,7 @@
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
 //  LogIn.Storyboard
-//  2)회원가입 단계에서 선호 브랜드를 선택하는 뷰
+//  3) 회원가입 단계에서 선호 브랜드를 선택하는 VC
 
 import UIKit
 

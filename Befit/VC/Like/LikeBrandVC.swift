@@ -1,27 +1,31 @@
 //
-//  LikeBrandTVC.swift
+//  LikeBrandVC.swift
 //  Befit
 //
 //  Created by 이충신 on 27/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-// 좋아요 한 브랜드 조회
-// 테이블 뷰로 구성
+//  Like.Storyboard
+//  1-2) 브랜드 찜 목록을 보여주는 VC (TableView)
 
 import UIKit
 import XLPagerTabStrip
 
-class LikeBrandTVC: UITableViewController {
+class LikeBrandVC: UIViewController{
     
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var likeBrandNumb: UILabel!
+    @IBOutlet weak var tabbarHeight: NSLayoutConstraint!
+    @IBOutlet weak var tableView: UITableView!
+    
     var brandLikeList: [Brand]?
     var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
+    @IBOutlet weak var likeBrandNumb: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        //tabbarHeight.constant = (self.tabBarController?.tabBar.frame.size.height)!
+        tabbarHeight.constant = 44
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +38,6 @@ class LikeBrandTVC: UITableViewController {
         showLikeBListService.shared.showBrandLike { (value) in
             
             guard let status = value.status else {return}
-            
             switch status {
                 case 200:
                     if value.data == nil { self.brandLikeList = nil}
@@ -47,13 +50,18 @@ class LikeBrandTVC: UITableViewController {
             
         }
     }
+    
+}
 
+
+extension LikeBrandVC: UITableViewDelegate, UITableViewDataSource{
+    
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if brandLikeList == nil {
             self.likeBrandNumb.text = "찜한브랜드 0"
             return 0
@@ -64,28 +72,45 @@ class LikeBrandTVC: UITableViewController {
             
         }
     }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "LikeBrandTVCell", for: indexPath) as! LikeBrandTVCell
         
         if let brands = brandLikeList?[indexPath.row] {
-        
+            
             cell.brandImg.imageFromUrl(brands.logo_url!, defaultImgPath: "")
             cell.brandName.text = brands.name_english
             cell.likeBtn.tag = indexPath.row
             cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
             cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
-      
+            
         }
-    
+        
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        brandVC.brandInfo = brandLikeList?[indexPath.row]
+        self.navigationController?.pushViewController(brandVC, animated: true)
+        
+    }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
     
+
     
-    //좋아요가 작동하는 부분
+}
+
+
+//MARK: - like function
+extension LikeBrandVC {
+    
     @objc func clickLike(_ sender: UIButton){
         
         guard let idx = brandLikeList?[sender.tag].idx else {return}
@@ -105,8 +130,6 @@ class LikeBrandTVC: UITableViewController {
                     }
                 }
             }
-            
-            
         }
             
         else {
@@ -130,25 +153,9 @@ class LikeBrandTVC: UITableViewController {
         sender.setImage(likesImage[sender.tag], for: .normal)
         
     }
-    
-   
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
-        brandVC.brandInfo = brandLikeList?[indexPath.row]
-        brandVC.brandIdx = brandLikeList?[indexPath.row].idx
-        self.navigationController?.pushViewController(brandVC, animated: true)
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
-    }
-    
 }
 
-extension LikeBrandTVC: IndicatorInfoProvider{
+extension LikeBrandVC: IndicatorInfoProvider{
     
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "브랜드")

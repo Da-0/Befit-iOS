@@ -5,6 +5,8 @@
 //  Created by 박다영 on 06/01/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
+//  LogIn.Storyboard
+//  0) 처음 앱 설치시 나오는 설명 스크롤 VC
 
 import UIKit
 

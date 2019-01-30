@@ -1,12 +1,12 @@
 //
-//  LikeProductCVC.swift
+//  LikeProductVC.swift
 //  Befit
 //
 //  Created by 이충신 on 28/12/2018.
 //  Copyright © 2018 GGOMMI. All rights reserved.
 //
-// 좋아요 한 상품 조회
-// 콜렉션 뷰로 구성
+//  Like.Storyboard
+//  1-1) 상품 찜 목록을 보여주는 VC (CollectionView)
 
 import UIKit
 import XLPagerTabStrip
@@ -15,6 +15,7 @@ class LikeProductVC: UIViewController {
 
     @IBOutlet weak var tabbarHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var productLikeList: [Product]?
     var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
     
@@ -36,15 +37,14 @@ class LikeProductVC: UIViewController {
     func productListInit() {
         showLikePListService.shared.showProductLike { (value) in
             guard let status = value.status else {return}
-            
             switch status {
-            case 200:
-                if value.data == nil { self.productLikeList = nil}
-                else{ self.productLikeList = value.data}
-                self.collectionView.reloadData()
+                case 200:
+                    if value.data == nil { self.productLikeList = nil}
+                    else{ self.productLikeList = value.data}
+                    self.collectionView.reloadData()
                 
-            default:
-                break
+                default:
+                    break
             }
         }
     }
@@ -88,17 +88,16 @@ extension LikeProductVC: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
         
         if let product = productLikeList?[indexPath.row] {
-        cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
-        cell.brandName.text = product.name_korean
-        cell.productName.text = product.name
-        cell.price.text = product.price
+            cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
+            cell.brandName.text = product.name_korean
+            cell.productName.text = product.name
+            cell.price.text = product.price
         }
-        
-        cell.likeBtn.tag = indexPath.row
-        cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-        cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+            cell.likeBtn.tag = indexPath.row
+            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
     
-        return cell
+            return cell
     }
 
     
@@ -113,6 +112,7 @@ extension LikeProductVC: UICollectionViewDataSource{
     
 }
 
+//MARK: - like function
 extension LikeProductVC {
     
     //좋아요가 작동하는 부분
@@ -123,7 +123,7 @@ extension LikeProductVC {
         if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
             likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
             
-            //상품 좋아요 취소가 작동하는 부분
+            //1)상품 좋아요 취소가 작동하는 부분
             LikePService.shared.unlike(productIdx: idx) { (res) in
                 if let status = res.status {
                     switch status {
@@ -139,7 +139,8 @@ extension LikeProductVC {
             
         else {
             likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
-            //상품 좋아요가 작동하는 부분
+            
+            //2)상품 좋아요가 작동하는 부분
             LikePService.shared.like(productIdx: idx) { (res) in
                 if let status = res.status {
                     switch status {
