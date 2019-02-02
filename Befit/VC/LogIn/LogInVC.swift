@@ -26,7 +26,8 @@ class LogInVC: UIViewController, APIManager {
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
         
         if let uid = userDefault.string(forKey: "id"), let upw = userDefault.string(forKey: "pw"){
-        autoLogIn(uid, upw)
+            autoLogIn(uid, upw)
+            
         }
     }
     

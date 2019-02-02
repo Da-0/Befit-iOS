@@ -17,7 +17,6 @@ protocol ProductVCDelegate
 
 class ProductSelectVC: UIViewController {
 
-    let userDefault = UserDefaults.standard
     var delegate: ProductVCDelegate?
     
     @IBOutlet weak var searchTF: UITextField!

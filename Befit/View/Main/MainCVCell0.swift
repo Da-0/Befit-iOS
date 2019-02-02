@@ -30,7 +30,6 @@ class MainCVCell0: UICollectionViewCell, UICollectionViewDataSource, UICollectio
         collectionView0.delegate = self;
         collectionView0.dataSource = self;
         collectionView0.reloadData()
-        collectionView0.flashScrollIndicators()
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {

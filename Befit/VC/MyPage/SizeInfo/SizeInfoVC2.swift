@@ -84,10 +84,10 @@ class SizeInfoVC2: UIViewController {
     
     @IBAction func backBtn(_ sender: Any) {
         
-        if enrollNewCloset == false {
-            self.navigationController?.popViewController(animated: true)
-        } else {
+        if enrollNewCloset == true {
             self.dismiss(animated: true, completion: nil)
+        } else {
+            self.navigationController?.popViewController(animated: true)
         }
         
     }

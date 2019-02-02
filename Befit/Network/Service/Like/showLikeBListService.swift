@@ -15,12 +15,12 @@ struct showLikeBListService: APIManager, Requestable{
     
     let URL = url("/likes/brands")
     
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
-    
     //좋아요한 브랜드 보여주기
     func showBrandLike(completion: @escaping (NetworkData) -> Void) {
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {

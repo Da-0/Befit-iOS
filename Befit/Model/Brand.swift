@@ -49,3 +49,39 @@ struct Brand : Mappable {
     
 }
 
+enum BrandName: Int {
+    case THISISNEVERTHAT = 17
+    case ROMANTIC_CROWN = 12
+    case IST_KUNST = 18
+    case LIBERTENG = 10
+    case COVERNAT = 7
+    case ANDERSSON = 9
+    case INSILENCE = 22
+    case CRITIC = 14
+    case MINAV = 2
+    case LAFUDGESTORE = 3
+    case MORE_OR_LESS = 32
+    case OiOi = 37
+}
+
+//남,여 Tag 번호에 따른 실제 브랜드 Idx
+
+//남성:
+//0. THISISNEVERTHAT 17.
+//1. ROMANTIC CROWN 12
+//2. IST KUNST 18
+//3. LIBERTENG 10
+//4. COVERNAT 7
+//5. ANDERSSON BELL 9
+//6. INSILENCE 22
+//7. CRITIC 14
+
+//여성:
+//0. THISISNEVERTHAT 17
+//1. ROMANTIC CROWN 12
+//2. MINAV 2    ***************
+//3. LAFUDGESTORE 3   ***************
+//4. MORE OR LESS 32   ***************
+//5. ANDERSSON BELL 9
+//6. OiOi 37     ***************
+//7. CRITIC 14

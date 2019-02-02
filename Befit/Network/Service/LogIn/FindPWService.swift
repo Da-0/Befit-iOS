@@ -14,10 +14,7 @@ struct FindPWService: APIManager, Requestable{
     static let shared = FindPWService()
     
     let URL = url("/user/passwordFind")
-    let headers: HTTPHeaders = [
-        "Content-Type" : "application/json"
-    ]
-    
+
     //비밀번호 찾기 api
     func findPW(email: String, name: String, birthday: String, completion: @escaping (NetworkData) -> Void) {
         
@@ -26,6 +23,10 @@ struct FindPWService: APIManager, Requestable{
             "name" : name,
             "birthday" : birthday
         ]
+        let headers: HTTPHeaders = [
+            "Content-Type" : "application/json"
+        ]
+        
         
         postable(URL, body: body, header: headers) { res in
             switch res {

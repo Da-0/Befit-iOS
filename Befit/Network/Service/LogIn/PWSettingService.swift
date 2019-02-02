@@ -14,9 +14,7 @@ struct PWSettingService: APIManager, Requestable{
     static let shared = PWSettingService()
     
     let URL = url("/user")
-    let headers: HTTPHeaders = [
-        "Content-Type" : "application/json"
-    ]
+   
     
     //비밀번호 재설정 api
     func setPW(idx: Int, pw: String, completion: @escaping (NetworkData) -> Void) {
@@ -25,6 +23,10 @@ struct PWSettingService: APIManager, Requestable{
             "userIdx" : idx,
             "password" : pw
             ] as [String : Any]
+        
+        let headers: HTTPHeaders = [
+            "Content-Type" : "application/json"
+        ]
         
         puttable(URL, body: body, header: headers) { res in
             switch res {

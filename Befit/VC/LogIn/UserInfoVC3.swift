@@ -12,8 +12,6 @@ import UIKit
 
 class UserInfoVC3: UIViewController {
     
-    let userDefault = UserDefaults.standard
-    
     //Name
     @IBOutlet weak var nameTF: UITextField!
     
@@ -33,7 +31,10 @@ class UserInfoVC3: UIViewController {
     @IBOutlet weak var correctLB: UILabel!
     var pwCheck: Bool = false
     
-    //brand preferences
+    //UserInfoVC1 variable
+    var gender: String?
+    
+    //UserInfoVC2 variable
     var brandIdx1: Int?
     var brandIdx2: Int?
 
@@ -43,7 +44,7 @@ class UserInfoVC3: UIViewController {
     let pickerView2 = UIPickerView()
     let pickerView3 = UIPickerView()
     
-    var gender: String?
+ 
     var keyboardDismissGesture : UITapGestureRecognizer?
     
     var yearsTillNow : [String] {

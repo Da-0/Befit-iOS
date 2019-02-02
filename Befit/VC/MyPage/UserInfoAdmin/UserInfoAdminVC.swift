@@ -12,7 +12,6 @@ import UIKit
 
 class UserInfoAdminVC: UIViewController {
     
-    let ueserDefault = UserDefaults.standard
     @IBOutlet weak var completeBtn: UIBarButtonItem!
     var textComplete = false
 

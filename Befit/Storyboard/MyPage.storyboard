@@ -512,14 +512,15 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pFO-VH-bSr" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="176" width="375" height="602"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="i6o-y5-ydN">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i6o-y5-ydN">
                                         <rect key="frame" x="16.666666666666657" y="28" width="342" height="342"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="342" id="KVg-by-rET"/>
                                             <constraint firstAttribute="height" constant="342" id="nPl-oA-vYZ"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UNIQLO 조던 스포츠웨어 에어 티 " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gex-xs-qfm">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gex-xs-qfm">
                                         <rect key="frame" x="19.666666666666657" y="386" width="336" height="21.666666666666686"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21.666666666666686" id="2TL-Dw-4wF"/>
@@ -704,16 +705,6 @@
                         <outlet property="ContentView" destination="pFO-VH-bSr" id="lTT-AS-jND"/>
                         <outlet property="CproductImg" destination="i6o-y5-ydN" id="bj4-gl-hfI"/>
                         <outlet property="CproductName" destination="gex-xs-qfm" id="3Nx-09-8Ft"/>
-                        <outlet property="LB00" destination="Op7-iW-xIs" id="01w-oG-Er8"/>
-                        <outlet property="LB01" destination="ydB-9u-kyL" id="Zlv-pL-zJT"/>
-                        <outlet property="LB02" destination="GJU-MH-cXn" id="FSx-2L-OhE"/>
-                        <outlet property="LB03" destination="qQl-Vx-NQE" id="VfX-Yq-1kY"/>
-                        <outlet property="LB04" destination="i5R-ID-xSv" id="OkF-Uf-TIc"/>
-                        <outlet property="LB10" destination="Gvb-sb-MY9" id="ycy-Kc-wEF"/>
-                        <outlet property="LB11" destination="EEw-lT-jHd" id="doY-N7-sXC"/>
-                        <outlet property="LB12" destination="2es-lp-9AN" id="oy0-KV-4TW"/>
-                        <outlet property="LB13" destination="2Ha-Ry-5fy" id="q1z-l2-bYT"/>
-                        <outlet property="LB14" destination="5xv-sx-KkO" id="1qN-TK-vPA"/>
                         <outlet property="arrowBtn" destination="7KA-Nt-rCR" id="8Go-OM-neI"/>
                         <outlet property="brandNameLB" destination="PL1-Oe-cNT" id="SAG-MV-zoB"/>
                         <outlet property="brandSelectView" destination="bE1-zt-TaK" id="LKB-Pn-um7"/>
@@ -725,6 +716,16 @@
                         <outlet property="productTitleLB" destination="GAY-YU-S9P" id="CHl-ef-IDC"/>
                         <outlet property="sizeTF" destination="Rmz-Tl-itb" id="jXF-K9-zXc"/>
                         <outlet property="stackView" destination="3c2-y2-rlY" id="Bx7-hp-m2O"/>
+                        <outletCollection property="LB0Array" destination="Op7-iW-xIs" collectionClass="NSMutableArray" id="5VZ-Fl-MVX"/>
+                        <outletCollection property="LB0Array" destination="ydB-9u-kyL" collectionClass="NSMutableArray" id="K8c-PS-wl6"/>
+                        <outletCollection property="LB0Array" destination="GJU-MH-cXn" collectionClass="NSMutableArray" id="mvo-0w-wkw"/>
+                        <outletCollection property="LB0Array" destination="qQl-Vx-NQE" collectionClass="NSMutableArray" id="asc-jF-8V2"/>
+                        <outletCollection property="LB0Array" destination="i5R-ID-xSv" collectionClass="NSMutableArray" id="qo3-cc-0rO"/>
+                        <outletCollection property="LB1Array" destination="Gvb-sb-MY9" collectionClass="NSMutableArray" id="wJO-fO-wEI"/>
+                        <outletCollection property="LB1Array" destination="EEw-lT-jHd" collectionClass="NSMutableArray" id="aE2-Zh-YEq"/>
+                        <outletCollection property="LB1Array" destination="2es-lp-9AN" collectionClass="NSMutableArray" id="pG1-ab-nge"/>
+                        <outletCollection property="LB1Array" destination="2Ha-Ry-5fy" collectionClass="NSMutableArray" id="zpk-u0-pw0"/>
+                        <outletCollection property="LB1Array" destination="5xv-sx-KkO" collectionClass="NSMutableArray" id="2K3-xj-G3N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0r-Tv-cTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1557,8 +1558,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="Irj-R2-d11">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Irj-R2-d11">
                                 <rect key="frame" x="0.0" y="88" width="375" height="375"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="375" id="CwL-Mi-6PN"/>
                                     <constraint firstAttribute="width" constant="375" id="TpT-Ii-S7e"/>
@@ -1736,22 +1738,22 @@
                         <viewLayoutGuide key="safeArea" id="biD-4D-T3r"/>
                     </view>
                     <connections>
-                        <outlet property="LB00" destination="Tfm-jF-Szf" id="HTA-t1-bUb"/>
-                        <outlet property="LB01" destination="A52-V5-eZU" id="RYd-zM-xac"/>
-                        <outlet property="LB02" destination="1iW-65-cbv" id="MTQ-TX-cEm"/>
-                        <outlet property="LB03" destination="zV0-Dj-TaL" id="QIY-Di-ubA"/>
-                        <outlet property="LB04" destination="ET4-JM-vMT" id="nzk-Rh-Fmk"/>
-                        <outlet property="LB10" destination="Csq-YC-oqb" id="QUa-Bq-BGn"/>
-                        <outlet property="LB11" destination="OxG-hR-qcU" id="gou-50-VCB"/>
-                        <outlet property="LB12" destination="ErI-tM-L1A" id="8kE-rs-bvv"/>
-                        <outlet property="LB13" destination="qkv-Gd-lwP" id="bxH-QH-iRI"/>
-                        <outlet property="LB14" destination="gjG-eE-nBU" id="l9X-zt-8LS"/>
                         <outlet property="brandName" destination="BoJ-X3-kaR" id="b9S-Xw-WPd"/>
                         <outlet property="fifthStack" destination="WML-2y-s0A" id="ZFZ-q5-cG1"/>
                         <outlet property="fourthStack" destination="Vnx-22-LGA" id="fRv-ob-BZb"/>
                         <outlet property="productImg" destination="Irj-R2-d11" id="xFg-wy-acv"/>
                         <outlet property="productName" destination="J67-Qb-KTg" id="qLE-9b-7lV"/>
                         <outlet property="size" destination="BTh-EM-qY5" id="Nn4-MF-hpy"/>
+                        <outletCollection property="LB0Array" destination="Tfm-jF-Szf" collectionClass="NSMutableArray" id="hbU-rd-jEt"/>
+                        <outletCollection property="LB0Array" destination="A52-V5-eZU" collectionClass="NSMutableArray" id="U7Y-GQ-XPK"/>
+                        <outletCollection property="LB0Array" destination="1iW-65-cbv" collectionClass="NSMutableArray" id="xH0-Hk-xuk"/>
+                        <outletCollection property="LB0Array" destination="zV0-Dj-TaL" collectionClass="NSMutableArray" id="fWw-Nh-Q1a"/>
+                        <outletCollection property="LB0Array" destination="ET4-JM-vMT" collectionClass="NSMutableArray" id="3PO-Cq-t8v"/>
+                        <outletCollection property="LB1Array" destination="Csq-YC-oqb" collectionClass="NSMutableArray" id="AF3-hw-F8a"/>
+                        <outletCollection property="LB1Array" destination="OxG-hR-qcU" collectionClass="NSMutableArray" id="sIZ-Qh-oAe"/>
+                        <outletCollection property="LB1Array" destination="ErI-tM-L1A" collectionClass="NSMutableArray" id="aZ1-FB-bDx"/>
+                        <outletCollection property="LB1Array" destination="qkv-Gd-lwP" collectionClass="NSMutableArray" id="jyI-gm-Rzs"/>
+                        <outletCollection property="LB1Array" destination="gjG-eE-nBU" collectionClass="NSMutableArray" id="Jw9-ab-zkm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bu-h2-8Uw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1893,14 +1895,14 @@
                     </view>
                     <connections>
                         <outlet property="backBtn" destination="CHN-ZP-98V" id="OF0-Fg-39O"/>
-                        <outlet property="btn0" destination="cH8-8G-GKD" id="lwL-S6-SnH"/>
-                        <outlet property="btn1" destination="ATD-my-bYN" id="qhd-wx-yaf"/>
-                        <outlet property="btn2" destination="Byj-na-Fs3" id="gpH-NH-wEW"/>
-                        <outlet property="btn3" destination="PRo-3H-5OD" id="Xu2-Kx-XDU"/>
-                        <outlet property="btn4" destination="wwt-yg-ibF" id="moC-tb-l1F"/>
-                        <outlet property="btn5" destination="sfI-mD-ODk" id="l8A-xX-RDc"/>
-                        <outlet property="btn6" destination="UwF-an-1iM" id="Yml-ZU-74l"/>
-                        <outlet property="btn7" destination="nyG-No-Cm6" id="Evu-7d-OUO"/>
+                        <outletCollection property="btnArray" destination="cH8-8G-GKD" collectionClass="NSMutableArray" id="yQe-Ia-gWm"/>
+                        <outletCollection property="btnArray" destination="ATD-my-bYN" collectionClass="NSMutableArray" id="SiV-RN-yaK"/>
+                        <outletCollection property="btnArray" destination="Byj-na-Fs3" collectionClass="NSMutableArray" id="RZf-FL-wQ7"/>
+                        <outletCollection property="btnArray" destination="PRo-3H-5OD" collectionClass="NSMutableArray" id="CyL-0K-LbW"/>
+                        <outletCollection property="btnArray" destination="wwt-yg-ibF" collectionClass="NSMutableArray" id="ySK-LM-Ui8"/>
+                        <outletCollection property="btnArray" destination="sfI-mD-ODk" collectionClass="NSMutableArray" id="8YT-is-b30"/>
+                        <outletCollection property="btnArray" destination="UwF-an-1iM" collectionClass="NSMutableArray" id="goK-ar-KM1"/>
+                        <outletCollection property="btnArray" destination="nyG-No-Cm6" collectionClass="NSMutableArray" id="wHR-EO-J7V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="axv-Og-Zlm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1928,6 +1930,5 @@
         <image name="search" width="18" height="18"/>
         <image name="sizecheckBox" width="342" height="69"/>
         <image name="tabMypage" width="22.666666030883789" height="21.666666030883789"/>
-        <image name="testImage" width="139" height="142"/>
     </resources>
 </document>

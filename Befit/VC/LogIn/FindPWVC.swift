@@ -11,8 +11,6 @@
 import UIKit
 
 class FindPWVC: UIViewController {
-
-    let userDefault = UserDefaults.standard
     
     @IBOutlet weak var nameTF: UITextField!
     @IBOutlet weak var yearTF: UITextField!

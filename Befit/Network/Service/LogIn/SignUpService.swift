@@ -14,9 +14,7 @@ struct SignUpService: APIManager, Requestable{
     static let shared = SignUpService()
     
     let URL = url("/user")
-    let headers: HTTPHeaders = [
-        "Content-Type" : "application/json"
-    ]
+   
     
     //회원가입 api
     func signUp(email: String, pw: String, gender: String, name: String, brand1: Int, brand2: Int, birthday: String, completion: @escaping (NetworkData) -> Void) {
@@ -30,6 +28,10 @@ struct SignUpService: APIManager, Requestable{
             "brand2_idx": brand2,
             "birthday": birthday
             ] as [String : Any]
+        
+        let headers: HTTPHeaders = [
+            "Content-Type" : "application/json"
+        ]
         
         postable(URL, body: body, header: headers) { res in
             switch res {

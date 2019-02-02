@@ -15,10 +15,7 @@ struct AddClosetService: APIManager, Requestable {
     
     let URL = url("/closet")
     
-    let headers: HTTPHeaders = [
-        "Content-Type" : "application/json",
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
+  
     
     //옷장 추가 api
     func addCloset(idx: Int, size: String, completion: @escaping (NetworkData) -> Void) {
@@ -28,7 +25,10 @@ struct AddClosetService: APIManager, Requestable {
             "product_size" : size
             ] as [String : Any]
     
-        
+        let headers: HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
         postable(URL, body: body, header: headers) { res in
             switch res {
             case .success(let value):

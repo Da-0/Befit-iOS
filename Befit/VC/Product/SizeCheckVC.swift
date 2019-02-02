@@ -21,10 +21,12 @@ class SizeCheckVC: UIViewController {
     @IBOutlet weak var sizeCheckView: UIView!
     
     @IBOutlet weak var noClosetView: UIControl!
+    
     //내 비교 상품 리스트(옷장)
     var myClosetList: [Closet]?
     var comparableList: [SizeCheck] = []
     var realKey: [String] = []
+    var bodyPart: BodyPart?
 
     //선택한 상품 정보
     var productInfo: Product?
@@ -32,15 +34,14 @@ class SizeCheckVC: UIViewController {
     @IBOutlet weak var productNameLB: UILabel!
     @IBOutlet weak var productSizeLB: UILabel!
     
-    //Picker, TF, PageControl, progressBar
+    //Picker, TF, PageControl, PercentBar
     let pickerView = UIPickerView()
     @IBOutlet weak var productTF: UITextField!
     @IBOutlet weak var pageControl: UIPageControl!
-    
     @IBOutlet weak var percentBG: UIImageView!
     @IBOutlet weak var percentage: UILabel!
-    var circleGraph: CircleGraph?
     @IBOutlet weak var percentStack: UIStackView!
+    var circleGraph: CircleGraph?
     
     //상품 사이즈 정보 LB 관련
     @IBOutlet weak var wholeStack: UIStackView!
@@ -129,8 +130,6 @@ class SizeCheckVC: UIViewController {
             
             //1) 옷장에 데이터가 없는 경우(등록 유도 뷰)
             if res.data == nil {
-                print("옷장에 아무것도 없는 카테고리의 인덱스")
-                print(self.productInfo?.product_category_index)
                 self.noClosetView.isHidden = false
             }
                 
@@ -283,34 +282,20 @@ extension SizeCheckVC {
         
         //LB0의 항목들을 설정
         for (idx, key) in self.realKey.enumerated() {
+            
             switch key {
-                case "chestSection":
-                    self.LB0Array[idx].text = BodyPart.chest.rawValue
-                    break
-                case "totalLength":
-                    self.LB0Array[idx].text = BodyPart.total.rawValue
-                    break
-                case "shoulderWidth":
-                    self.LB0Array[idx].text = BodyPart.shoulder.rawValue
-                    break
-                case "sleeveLength":
-                    self.LB0Array[idx].text = BodyPart.sleeve.rawValue
-                    break
-                case "waistSection":
-                    self.LB0Array[idx].text = BodyPart.waist.rawValue
-                    break
-                case "thighSection":
-                    self.LB0Array[idx].text = BodyPart.thigh.rawValue
-                    break
-                case "crotch":
-                    self.LB0Array[idx].text = BodyPart.crotch.rawValue
-                    break
-                case "dobladillosSection":
-                    self.LB0Array[idx].text = BodyPart.dobla.rawValue
-                    break
-                default:
-                    break
+                case "totalLength": bodyPart = .total
+                case "chestSection": bodyPart = .chest
+                case "shoulderWidth": bodyPart = .shoulder
+                case "sleeveLength": bodyPart = .sleeve
+                case "waistSection": bodyPart = .waist
+                case "thighSection": bodyPart = .thigh
+                case "crotch": bodyPart = .crotch
+                case "dobladillosSection": bodyPart = .dobla
+                default: return
             }
+            
+            LB0Array[idx].text = bodyPart?.rawValue
             
         }
         

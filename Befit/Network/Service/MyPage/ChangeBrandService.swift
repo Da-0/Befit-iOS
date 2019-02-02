@@ -14,10 +14,7 @@ struct ChangeBrandService: APIManager, Requestable{
     static let shared = ChangeBrandService()
     
     let URL = url("/user/brand")
-    let headers: HTTPHeaders = [
-        "Content-Type" : "application/json",
-        "Authorization": UserDefaults.standard.string(forKey: "token")!
-    ]
+   
     
     //비밀번호 재설정 api
     func setBrand(brand1: Int, brand2: Int, completion: @escaping (NetworkData) -> Void) {
@@ -27,6 +24,10 @@ struct ChangeBrandService: APIManager, Requestable{
             "brand2_idx" : brand2
             ] as [String : Any]
         
+        let headers: HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization": UserDefaults.standard.string(forKey: "token")!
+        ]
         puttable(URL, body: body, header: headers) { res in
             switch res {
             case .success(let value):

@@ -17,16 +17,16 @@ struct ProductSortingService : APIManager, Requestable{
     static let shared = ProductSortingService()
     
     let baseURL = url("/products")
-    
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
-    
+
     
     // 브랜드 상품 신상품순
     func showSortingNew(brandIdx: Int, completion: @escaping ([Product]) -> Void) {
         
         let URL = baseURL + "/new/brand/" + "\(brandIdx)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
@@ -45,6 +45,10 @@ struct ProductSortingService : APIManager, Requestable{
     func showSortingPopular(brandIdx: Int, completion: @escaping ([Product]) -> Void) {
         
         let URL = baseURL + "/popular/brand/" + "\(brandIdx)"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {
@@ -66,6 +70,10 @@ struct ProductSortingService : APIManager, Requestable{
         
         let URL = baseURL + "/new/category/" + "\(categoryIdx)" + "?gender=" + gender
         
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
+        
         gettable(URL, body: nil, header: headers) { res in
             switch res {
                 
@@ -83,6 +91,10 @@ struct ProductSortingService : APIManager, Requestable{
     func showSortingPopularCategory (categoryIdx: Int, gender: String, completion: @escaping ([Product]) -> Void) {
         
         let URL = baseURL + "/popular/category/" + "\(categoryIdx)" + "?gender=" + gender
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
         
         gettable(URL, body: nil, header: headers) { res in
             switch res {

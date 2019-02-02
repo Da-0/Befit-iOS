@@ -15,10 +15,7 @@ struct SetUserInfoService: APIManager, Requestable{
     
     let URL = url("/user/combineForm")
     
-    let headers: HTTPHeaders = [
-        "Content-Type" : "application/json",
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
+
     
     //개인 회원 정보 보여주기
     func setUserInfo(post: String, address: String, detail: String, phone: String, completion: @escaping (NetworkData) -> Void) {
@@ -28,6 +25,11 @@ struct SetUserInfoService: APIManager, Requestable{
             "home_address": address,
             "detail_address": detail,
             "phone": phone
+        ]
+        
+        let headers: HTTPHeaders = [
+            "Content-Type" : "application/json",
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
         ]
         
         puttable(URL, body: body, header: headers) { res in

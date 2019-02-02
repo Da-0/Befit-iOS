@@ -15,13 +15,13 @@ struct GetClosetDetailService: APIManager, Requestable{
     
     let URL = url("/closet/")
     
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
     
     //해당 카테고리의 등록된 옷의 세부 정보
     func showClosetDetail(idx: Int , completion: @escaping (NetworkData) -> Void) {
         
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
         let url = URL + "\(idx)"
         
         gettable(url, body: nil, header: headers) { res in

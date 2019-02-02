@@ -30,6 +30,7 @@ class LikeProductVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         productListInit()
+        self.collectionView.reloadData()
         
     }
     
@@ -40,9 +41,10 @@ class LikeProductVC: UIViewController {
             switch status {
                 case 200:
                     if value.data == nil { self.productLikeList = nil}
-                    else{ self.productLikeList = value.data}
-                    self.collectionView.reloadData()
-                
+                    else{
+                        self.productLikeList = value.data
+                        self.collectionView.reloadData()
+                    }
                 default:
                     break
             }
@@ -96,7 +98,7 @@ extension LikeProductVC: UICollectionViewDataSource{
             cell.likeBtn.tag = indexPath.row
             cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
             cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
-    
+        
             return cell
     }
 
