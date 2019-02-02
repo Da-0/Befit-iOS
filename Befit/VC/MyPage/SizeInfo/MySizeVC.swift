@@ -16,21 +16,11 @@ class MySizeVC: UIViewController {
     @IBOutlet weak var brandName: UILabel!
     @IBOutlet weak var productName: UILabel!
     @IBOutlet weak var size: UILabel!
+    var bodyPart: BodyPart?
     var closetIdx: Int?
 
-    @IBOutlet weak var LB00: UILabel!
-    @IBOutlet weak var LB01: UILabel!
-    @IBOutlet weak var LB02: UILabel!
-    @IBOutlet weak var LB03: UILabel!
-    @IBOutlet weak var LB04: UILabel!
-    var LB0Array: [UILabel] = []
-    
-    @IBOutlet weak var LB10: UILabel!
-    @IBOutlet weak var LB11: UILabel!
-    @IBOutlet weak var LB12: UILabel!
-    @IBOutlet weak var LB13: UILabel!
-    @IBOutlet weak var LB14: UILabel!
-    var LB1Array: [UILabel] = []
+    @IBOutlet var LB0Array: [UILabel]!
+    @IBOutlet var LB1Array: [UILabel]!
     
     @IBOutlet weak var fourthStack: UIStackView!
     @IBOutlet weak var fifthStack: UIStackView!
@@ -39,23 +29,8 @@ class MySizeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setLabel()
     }
     
-    func setLabel(){
-        
-        LB0Array.append(LB00)
-        LB0Array.append(LB01)
-        LB0Array.append(LB02)
-        LB0Array.append(LB03)
-        LB0Array.append(LB04)
-        
-        LB1Array.append(LB10)
-        LB1Array.append(LB11)
-        LB1Array.append(LB12)
-        LB1Array.append(LB13)
-        LB1Array.append(LB14)
-    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -86,7 +61,7 @@ class MySizeVC: UIViewController {
             self.productName.text = data.name
             self.size.text = data.product_size
             
-            //측정치 정보
+            //측정치 정보 sorting
             let measureData = Array(data.measure2!.toJSON()).sorted(by: { (first, second) -> Bool in
                 
                 switch (first.key, second.key) {
@@ -115,37 +90,18 @@ class MySizeVC: UIViewController {
             for (idx, data) in measureData.enumerated() {
                 
                 switch data.key{
-                    case "chestSection":
-                        self.LB0Array[idx].text = BodyPart.chest.rawValue
-                        break
-                    case "totalLength":
-                        self.LB0Array[idx].text = BodyPart.total.rawValue
-                        break
-                    case "shoulderWidth":
-                        self.LB0Array[idx].text = BodyPart.shoulder.rawValue
-                        break
-                    case "sleeveLength":
-                        self.LB0Array[idx].text = BodyPart.sleeve.rawValue
-                        break
-                    case "waistSection":
-                        self.LB0Array[idx].text = BodyPart.waist.rawValue
-                        break
-                    case "thighSection":
-                        self.LB0Array[idx].text = BodyPart.thigh.rawValue
-                        break
-                    case "crotch":
-                        self.LB0Array[idx].text = BodyPart.crotch.rawValue
-                        break
-                    case "dobladillosSection":
-                        self.LB0Array[idx].text = BodyPart.dobla.rawValue
-                        break
-                    default:
-                        break
+                    case "totalLength": self.bodyPart = .total
+                    case "chestSection": self.bodyPart = .chest
+                    case "shoulderWidth": self.bodyPart = .shoulder
+                    case "sleeveLength": self.bodyPart = .sleeve
+                    case "waistSection": self.bodyPart = .waist
+                    case "thighSection": self.bodyPart = .thigh
+                    case "crotch": self.bodyPart = .crotch
+                    case "dobladillosSection": self.bodyPart = .dobla
+                    default: return
                 }
-                
+                self.LB0Array[idx].text = self.bodyPart?.rawValue
                 self.LB1Array[idx].text = data.value as? String
-
-                
             }
         
         })

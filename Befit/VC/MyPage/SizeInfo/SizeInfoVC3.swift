@@ -13,8 +13,6 @@ import UIKit
 
 class SizeInfoVC3: UIViewController {
     
-    let userDefault = UserDefaults.standard
-    
     //Right BarButton Item
     @IBOutlet weak var completeBtn: UIBarButtonItem!
     
@@ -45,24 +43,15 @@ class SizeInfoVC3: UIViewController {
     var categoryIdx: Int?
     var productIdx: Int?
     var productSize: String?
+    var bodyPart: BodyPart?
+    
     var enrollNewCloset = false
     
     @IBOutlet weak var fourthStack: UIStackView!
     @IBOutlet weak var fifthStack: UIStackView!
     
-    @IBOutlet weak var LB00: UILabel!
-    @IBOutlet weak var LB01: UILabel!
-    @IBOutlet weak var LB02: UILabel!
-    @IBOutlet weak var LB03: UILabel!
-    @IBOutlet weak var LB04: UILabel!
-    var LB0Array = [UILabel]()
-    
-    @IBOutlet weak var LB10: UILabel!
-    @IBOutlet weak var LB11: UILabel!
-    @IBOutlet weak var LB12: UILabel!
-    @IBOutlet weak var LB13: UILabel!
-    @IBOutlet weak var LB14: UILabel!
-    var LB1Array = [UILabel]()
+    @IBOutlet var LB0Array: [UILabel]!
+    @IBOutlet var LB1Array: [UILabel]!
     
     
     override func viewDidLoad() {
@@ -75,24 +64,9 @@ class SizeInfoVC3: UIViewController {
         sizeTF.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
         sizeTF.delegate = self;
         initPicker()
-        setLB()
         
     }
-    
-    func setLB(){
-        
-        LB0Array.append(LB00)
-        LB0Array.append(LB01)
-        LB0Array.append(LB02)
-        LB0Array.append(LB03)
-        LB0Array.append(LB04)
-        
-        LB1Array.append(LB10)
-        LB1Array.append(LB11)
-        LB1Array.append(LB12)
-        LB1Array.append(LB13)
-        LB1Array.append(LB14)
-    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -280,37 +254,19 @@ extension SizeInfoVC3 : UIPickerViewDelegate, UIPickerViewDataSource {
         for (idx, data) in dicData.enumerated() {
             
             switch data.key {
-                case "totalLength":
-                    self.LB0Array[idx].text = BodyPart.total.rawValue
-                    break
-                case "chestSection":
-                    self.LB0Array[idx].text = BodyPart.chest.rawValue
-                    break
-                case "shoulderWidth":
-                    self.LB0Array[idx].text = BodyPart.shoulder.rawValue
-                    break
-                case "sleeveLength":
-                    self.LB0Array[idx].text = BodyPart.sleeve.rawValue
-                    break
-                case "waistSection":
-                    self.LB0Array[idx].text = BodyPart.waist.rawValue
-                    break
-                case "thighSection":
-                    self.LB0Array[idx].text = BodyPart.thigh.rawValue
-                    break
-                case "crotch":
-                    self.LB0Array[idx].text = BodyPart.crotch.rawValue
-                    break
-                case "dobladillosSection":
-                    self.LB0Array[idx].text = BodyPart.dobla.rawValue
-                    break
-            default:
-                break
+                case "totalLength": bodyPart = .total
+                case "chestSection": bodyPart = .chest
+                case "shoulderWidth": bodyPart = .shoulder
+                case "sleeveLength": bodyPart = .sleeve
+                case "waistSection": bodyPart = .waist
+                case "thighSection": bodyPart = .thigh
+                case "crotch": bodyPart = .crotch
+                case "dobladillosSection": bodyPart = .dobla
+                default: return
             }
-            
+            self.LB0Array[idx].text = bodyPart?.rawValue
             self.LB1Array[idx].text = data.value as? String
             
-        
         }
       
         view.endEditing(true)

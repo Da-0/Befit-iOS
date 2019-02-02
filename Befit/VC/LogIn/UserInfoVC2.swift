@@ -12,28 +12,18 @@ import UIKit
 
 class UserInfoVC2: UIViewController {
     
-    let userDefault = UserDefaults.standard
-    var brandIdx: [Int] = []
-    var gender: String?
-    
-    
-    var btnArray: [UIButton] = [UIButton]()
-    @IBOutlet weak var btn0: UIButton!
-    @IBOutlet weak var btn1: UIButton!
-    @IBOutlet weak var btn2: UIButton!
-    @IBOutlet weak var btn3: UIButton!
-    @IBOutlet weak var btn4: UIButton!
-    @IBOutlet weak var btn5: UIButton!
-    @IBOutlet weak var btn6: UIButton!
-    @IBOutlet weak var btn7: UIButton!
-    @IBOutlet weak var nextBtn: UIButton!
-    
     //Buttons Images
     let menUnselected: [UIImage] = [#imageLiteral(resourceName: "manThisisneverthat"),#imageLiteral(resourceName: "manRomanticcrown"),#imageLiteral(resourceName: "manIstkunst"),#imageLiteral(resourceName: "manLiberteng"),#imageLiteral(resourceName: "manCovernat"),#imageLiteral(resourceName: "manAnderssonbell"),#imageLiteral(resourceName: "manInsilence"),#imageLiteral(resourceName: "manCritic")]
     var menSelected:[UIImage] = [#imageLiteral(resourceName: "manSelectThisisneverthat"),#imageLiteral(resourceName: "manSelectRomanticcrown"),#imageLiteral(resourceName: "manSelectIstkunst"),#imageLiteral(resourceName: "manSelectLiberteng"),#imageLiteral(resourceName: "manSelectCovernat"),#imageLiteral(resourceName: "manSelectAnderssonbell"),#imageLiteral(resourceName: "manSelectInsilence"),#imageLiteral(resourceName: "manSelectCritic")]
     let womenUnselected: [UIImage] = [#imageLiteral(resourceName: "womanThisisneverthat"),#imageLiteral(resourceName: "womanRomanticCrwon"),#imageLiteral(resourceName: "womanMinav"),#imageLiteral(resourceName: "womanLafudgestore"),#imageLiteral(resourceName: "womanMoreOrLess"),#imageLiteral(resourceName: "womanAnderssonBell"),#imageLiteral(resourceName: "womanOioi"),#imageLiteral(resourceName: "womanCritic")]
     var womenSelected:[UIImage] = [#imageLiteral(resourceName: "womanSelectThisisneverthat"),#imageLiteral(resourceName: "womanSelectRomanticCrown"),#imageLiteral(resourceName: "womanSelectMinav"),#imageLiteral(resourceName: "womanSelectLafudgestore"),#imageLiteral(resourceName: "womanSelectMoreOrLess"),#imageLiteral(resourceName: "womanSelectAnderssonBell"),#imageLiteral(resourceName: "womanSelectOioi"),#imageLiteral(resourceName: "womanSelectCritic")]
-    var selectedCount = 0
+
+    @IBOutlet weak var nextBtn: UIButton!
+    @IBOutlet var btnArray: [UIButton]!
+    
+    var brandIdx: [Int] = []
+    var gender: String?
+    var selectedBrand: BrandName!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,23 +42,17 @@ class UserInfoVC2: UIViewController {
     
     func initBtn(){
         
-        btnArray.append(btn0)
-        btnArray.append(btn1)
-        btnArray.append(btn2)
-        btnArray.append(btn3)
-        btnArray.append(btn4)
-        btnArray.append(btn5)
-        btnArray.append(btn6)
-        btnArray.append(btn7)
-        
+
         for btn in btnArray {
             
             if gender == "남성" {
                 btn.setImage(menUnselected[btn.tag], for: .normal)
+                btn.setImage(menSelected[btn.tag], for: .selected)
+                
             }
             else {
                 btn.setImage(womenUnselected[btn.tag], for: .normal)
-                menSelected = womenSelected
+                btn.setImage(womenSelected[btn.tag], for: .selected)
             }
             
         }
@@ -81,68 +65,21 @@ class UserInfoVC2: UIViewController {
     
     @IBAction func buttonClick(_ sender: UIButton) {
         
-        if selectedCount != 2 {
-            
+        if brandIdx.count != 2 {
             if sender.isSelected == false {
-                sender.setImage(menSelected[sender.tag], for: .selected)
                 sender.isSelected = true
-                
-                let selected = gender == "남성"
-                
-                switch sender.tag {
-                    case 0:
-                        brandIdx.append(17)
-                        break
-                    case 1:
-                        brandIdx.append(12)
-                        break
-                    case 2:
-                        selected ? brandIdx.append(18) : brandIdx.append(2)
-                        break
-                    case 3:
-                        selected ? brandIdx.append(10) : brandIdx.append(3)
-                        break
-                    case 4:
-                        selected ? brandIdx.append(7) : brandIdx.append(32)
-                        break
-                    case 5:
-                        brandIdx.append(9)
-                        break
-                    case 6:
-                        selected ? brandIdx.append(22) : brandIdx.append(37)
-                        break
-                    case 7:
-                        brandIdx.append(14)
-                        break
-                    default: break
-                }
-               
-                selectedCount += 1
-                
-                if selectedCount == 2 {
-                    nextBtn.setImage( #imageLiteral(resourceName: "icPurplearrow"), for: .normal)
-                }
-                
+                self.appendRemoveIdx(true, sender.tag)
             }
-                
             else{
-                sender.setImage(menUnselected[sender.tag], for: .selected)
                 sender.isSelected = false
-                brandIdx.removeLast()
-                selectedCount -= 1
+                self.appendRemoveIdx(false, sender.tag)
             }
-            
         }
-        
-        //selected count == 2
         else {
             
             if sender.isSelected == true {
-                sender.imageView!.image = menUnselected[sender.tag]
                 sender.isSelected = false
-                brandIdx.removeLast()
-                selectedCount -= 1
-                nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+                self.appendRemoveIdx(false, sender.tag)
                 
             }
         }
@@ -151,7 +88,7 @@ class UserInfoVC2: UIViewController {
 
     @IBAction func nextAction(_ sender: Any) {
         
-        if selectedCount == 2 {
+        if brandIdx.count == 2 {
 
             let userInfoVC3 =  UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC3") as! UserInfoVC3
             
@@ -165,32 +102,52 @@ class UserInfoVC2: UIViewController {
         
         
     }
-
+    
+    func appendRemoveIdx(_ append: Bool, _ tag: Int) {
+        
+        let selected = gender == "남성"
+        
+        switch tag {
+            case 0:
+                selectedBrand = .THISISNEVERTHAT
+            case 1:
+                selectedBrand = .ROMANTIC_CROWN
+            case 2:
+                selectedBrand = selected ? .IST_KUNST : .MINAV
+            case 3:
+                selectedBrand = selected ? .LIBERTENG : .LAFUDGESTORE
+            case 4:
+                selectedBrand = selected ? .COVERNAT : .MORE_OR_LESS
+            case 5:
+                selectedBrand = .ANDERSSON
+            case 6:
+                selectedBrand = selected ? .INSILENCE : .OiOi
+            case 7:
+                selectedBrand = .CRITIC
+            default: break
+        }
+        
+        if append{
+            brandIdx.append(selectedBrand.rawValue)
+            
+            if brandIdx.count == 2 {
+                nextBtn.setImage( #imageLiteral(resourceName: "icPurplearrow"), for: .normal)
+            }
+        }
+        else {
+            if let index = brandIdx.index(of: selectedBrand.rawValue) {
+                brandIdx.remove(at: index)
+                nextBtn.setImage(#imageLiteral(resourceName: "icGrayarrow"), for: .normal)
+            }
+            
+            
+        
+        }
+        
+    }
+    
 }
 
-
-
-//남,여 Tag 번호에 따른 실제 브랜드 Idx
-
-//남성:
-//0. THISISNEVERTHAT 17.
-//1. ROMANTIC CROWN 12
-//2. IST KUNST 18
-//3. LIBERTENG 10
-//4. COVERNAT 7
-//5. ANDERSSON BELL 9
-//6. INSILENCE 22
-//7. CRITIC 14
-
-//여성:
-//0. THISISNEVERTHAT 17
-//1. ROMANTIC CROWN 12
-//2. MINAV 2    ***************
-//3. LAFUDGESTORE 3   ***************
-//4. MORE OR LESS 32   ***************
-//5. ANDERSSON BELL 9
-//6. OiOi 37     ***************
-//7. CRITIC 14
 
 
 

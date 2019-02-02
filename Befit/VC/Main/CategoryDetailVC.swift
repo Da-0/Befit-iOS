@@ -12,7 +12,6 @@ import UIKit
 
 class CategoryDetailVC: UIViewController {
     
-    let userDefault = UserDefaults.standard
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var backBtn: UIBarButtonItem!

@@ -77,7 +77,6 @@
 		506E5C6121D74EA80016549B /* SearchProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6021D74EA80016549B /* SearchProductVC.swift */; };
 		506E5C6521D756A50016549B /* SearchVC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6421D756A50016549B /* SearchVC2.swift */; };
 		506E5C6921D758680016549B /* SearchBrandTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506E5C6821D758680016549B /* SearchBrandTVCell.swift */; };
-		5081255522018456002B7B7F /* BrandButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081255422018456002B7B7F /* BrandButton.swift */; };
 		508125572201ECEC002B7B7F /* ProductInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508125562201ECEC002B7B7F /* ProductInfoService.swift */; };
 		5082DF6C21D4AF2900E4135D /* LikeBrandVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5082DF6B21D4AF2900E4135D /* LikeBrandVC.swift */; };
 		508A8AB921E730BD000AE141 /* ProductRecService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508A8AB821E730BD000AE141 /* ProductRecService.swift */; };
@@ -200,7 +199,6 @@
 		506E5C6021D74EA80016549B /* SearchProductVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductVC.swift; sourceTree = "<group>"; };
 		506E5C6421D756A50016549B /* SearchVC2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC2.swift; sourceTree = "<group>"; };
 		506E5C6821D758680016549B /* SearchBrandTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBrandTVCell.swift; sourceTree = "<group>"; };
-		5081255422018456002B7B7F /* BrandButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandButton.swift; sourceTree = "<group>"; };
 		508125562201ECEC002B7B7F /* ProductInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductInfoService.swift; sourceTree = "<group>"; };
 		5082DF6B21D4AF2900E4135D /* LikeBrandVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeBrandVC.swift; sourceTree = "<group>"; };
 		508A8AB821E730BD000AE141 /* ProductRecService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecService.swift; sourceTree = "<group>"; };
@@ -453,7 +451,6 @@
 				503114A121E37ED9008D81AC /* Measure2.swift */,
 				50D596D721F86CF90082B4CA /* SizeCheck.swift */,
 				5066558D21D228C900580137 /* Category.swift */,
-				5081255422018456002B7B7F /* BrandButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -852,7 +849,6 @@
 				5031148E21E22A4F008D81AC /* showLikePListService.swift in Sources */,
 				50DAFCE721E6783700D4BF2F /* MainCVCell00.swift in Sources */,
 				A5BA69AE21E1DCB200949E42 /* DescriptionVC.swift in Sources */,
-				5081255522018456002B7B7F /* BrandButton.swift in Sources */,
 				506E5C5021D546660016549B /* LikeBrandTVCell.swift in Sources */,
 				50373B7621EC8D4C0005153E /* Idx.swift in Sources */,
 				50DD804B21E1AAE400E6F743 /* ResponseObject.swift in Sources */,

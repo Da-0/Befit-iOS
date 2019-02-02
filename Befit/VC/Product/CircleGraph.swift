@@ -11,15 +11,12 @@
 
 import UIKit
 
-class CircleGraph{
+class CircleGraph {
     
     //이니셜라이저 변수
     var parentView: UIImageView?
     var percentage: String?
     var percent: Double?
-    
-    //감시자역할(원형의 로딩에 따라 퍼센트레이블 증가)
-    var loadingDisplayLink: CADisplayLink?
     
     //두개의 레이어(배경테두리,색상테두리)
     let grayLayer = CAShapeLayer()
@@ -32,10 +29,12 @@ class CircleGraph{
         self.parentView = parentView;
         self.percentage = percentage;
         self.percent = percentage.toDouble()
-        makeCircleLayer()
+        
+        self.makeCircleLayer()
     }
     
     func makeCircleLayer(){
+        
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 20, startAngle: 0, endAngle: 2 * CGFloat.pi, clockwise: true)
         let centerPoint =  CGPoint(x:(parentView?.layer.bounds.midX)!, y: 29)
         

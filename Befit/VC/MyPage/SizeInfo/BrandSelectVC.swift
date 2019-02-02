@@ -34,8 +34,8 @@ class BrandSelectVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        collectionView.delegate = self;
+        collectionView.dataSource = self;
         
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -123,6 +123,7 @@ extension BrandSelectVC: UICollectionViewDataSource {
 }
 
 extension BrandSelectVC: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath) as! AlphabetCVCell

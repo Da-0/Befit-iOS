@@ -14,9 +14,7 @@ struct LoginService: APIManager, Requestable {
     static let shared = LoginService()
     
     let loginURL = url("/login")
-    let headers: HTTPHeaders = [
-        "Content-Type" : "application/json"
-    ]
+   
     
     //로그인 api
     func login(email: String, password: String, completion: @escaping (NetworkData) -> Void) {
@@ -25,6 +23,10 @@ struct LoginService: APIManager, Requestable {
             "email" : email,
             "password" : password
             ]
+        
+        let headers: HTTPHeaders = [
+            "Content-Type" : "application/json"
+        ]
         
         postable(loginURL, body: body, header: headers) { res in
             switch res {

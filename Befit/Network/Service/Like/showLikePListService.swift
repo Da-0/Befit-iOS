@@ -14,14 +14,13 @@ struct showLikePListService: APIManager, Requestable{
     static let shared = showLikePListService()
     
     let URL = url("/likes/products")
-    
-    let headers: HTTPHeaders = [
-        "Authorization" : UserDefaults.standard.string(forKey: "token")!
-    ]
-    
+
     //좋아요한 상품 보여주기
     func showProductLike(completion: @escaping (NetworkData) -> Void) {
-        
+        print("토근값 조회!! = \(UserDefaults.standard.string(forKey: "token")!)")
+        let headers: HTTPHeaders = [
+            "Authorization" : UserDefaults.standard.string(forKey: "token")!
+        ]
         gettable(URL, body: nil, header: headers) { res in
             switch res {
             case .success(let value):

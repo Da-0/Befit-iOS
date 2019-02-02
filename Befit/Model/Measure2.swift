@@ -28,6 +28,7 @@ struct Measure2 : Mappable {
     }
     
     mutating func mapping(map: Map) {
+        
         total <- map["totalLength"]
         chest <- map["chestSection"]
         sleeve <- map["sleeveLength"]
