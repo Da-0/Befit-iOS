@@ -1,5 +1,5 @@
 //
-//  SignUpService.swift
+//  SignService.swift
 //  Befit
 //
 //  Created by 이충신 on 06/01/2019.
@@ -8,10 +8,10 @@
 
 import Alamofire
 
-struct SignUpService: APIManager, Requestable{
+struct SignService: APIManager, Requestable{
     
     typealias NetworkData = ResponseObject<Token>
-    static let shared = SignUpService()
+    static let shared = SignService()
     
     let URL = url("/user")
    
@@ -34,6 +34,27 @@ struct SignUpService: APIManager, Requestable{
         ]
         
         postable(URL, body: body, header: headers) { res in
+            switch res {
+            case .success(let value):
+                completion(value)
+            case .error(let error):
+                print(error)
+            }
+        }
+        
+    }
+    
+    //회원탈퇴 api
+    func signOut(completion: @escaping (NetworkData) -> Void) {
+        
+        guard let token = UserDefaults.standard.string(forKey: "token") else {return}
+        
+        let headers: HTTPHeaders = [
+            "Content-Type": "application/json",
+            "Authorization" : token
+        ]
+        
+        delete(URL, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
                 completion(value)
