@@ -21,28 +21,23 @@ struct SizeCheckService: APIManager, Requestable{
         guard let product = productIdx else {return}
         guard let size = productSize else {return}
      
-        
-        
         let queryURL = baseURL  + "\(closet)" + "/compare/" + "\(product)" + "?product_size=" + size
         let str_url = queryURL.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
-        
-   
         
         guard let token = userDefault.string(forKey: "token") else {return}
         
         let headers: HTTPHeaders = [
             "Authorization" : token
         ]
-        
-        
+        //print(str_url)
         gettable(str_url!, body: nil, header: headers) { res in
-        
+    
             switch res {
-            case .success(let value):
-                completion(value)
-            case .error(let error):
-                print(error)
-            }
+                case .success(let value):
+                    completion(value)
+                case .error(let error):
+                    print(error)
+                }
         }
         
     }

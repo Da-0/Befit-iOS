@@ -16,8 +16,9 @@ class LikeBrandVC: UIViewController{
     @IBOutlet weak var tabbarHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
+    //prevent Button image disappear in custom cell
+    var brandLikesImg: [UIImage]?
     var brandLikeList: [Brand]?
-    var likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: 50)
     @IBOutlet weak var likeBrandNumb: UILabel!
     
     override func viewDidLoad() {
@@ -26,6 +27,9 @@ class LikeBrandVC: UIViewController{
         self.tableView.dataSource = self;
         //tabbarHeight.constant = (self.tabBarController?.tabBar.frame.size.height)!
         tabbarHeight.constant = 44
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,25 +38,15 @@ class LikeBrandVC: UIViewController{
         
     }
     
-    func brandListInit() {
-        showLikeBListService.shared.showBrandLike { (value) in
-            
-            guard let status = value.status else {return}
-            switch status {
-                case 200:
-                    if value.data == nil { self.brandLikeList = nil}
-                    else{ self.brandLikeList = value.data}
-                    self.tableView.reloadData()
-                
-                default:
-                    break
-            }
-            
-        }
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func reloadData(_ sender: UIRefreshControl) {
+        self.brandListInit()
+        tableView.reloadData()
+        sender.endRefreshing()
     }
     
+    
 }
-
 
 extension LikeBrandVC: UITableViewDelegate, UITableViewDataSource{
     
@@ -83,7 +77,7 @@ extension LikeBrandVC: UITableViewDelegate, UITableViewDataSource{
             cell.brandImg.imageFromUrl(brands.logo_url!, defaultImgPath: "")
             cell.brandName.text = brands.name_english
             cell.likeBtn.tag = indexPath.row
-            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            cell.likeBtn.setImage(brandLikesImg?[indexPath.row], for: .normal)
             cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
             
         }
@@ -93,7 +87,7 @@ extension LikeBrandVC: UITableViewDelegate, UITableViewDataSource{
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        let brandVC  = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = brandLikeList?[indexPath.row]
         self.navigationController?.pushViewController(brandVC, animated: true)
         
@@ -115,44 +109,22 @@ extension LikeBrandVC {
         
         guard let idx = brandLikeList?[sender.tag].idx else {return}
         
-        if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
-            
-            //1)브랜드 좋아요 취소가 작동하는 부분
-            LikeBService.shared.unlike(brandIdx: idx) { (res) in
-                if let status = res.status {
-                    switch status {
-                    case 200 :
-                        print("브랜드 좋아요 취소 성공!")
-                    case 400...600 :
-                        self.simpleAlert(title: "ERROR", message: res.message!)
-                    default: break
-                    }
-                }
-            }
+        //1) 브랜드 좋아요 취소가 작동하는 부분
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+            unlike(idx: idx)
+            brandLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
         }
             
+        //2) 브랜드 좋아요가 작동하는 부분
         else {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
-            
-            //2)브랜드 좋아요가 작동하는 부분
-            LikeBService.shared.like(brandIdx: idx) { (res) in
-                if let status = res.status {
-                    switch status {
-                    case 201 :
-                        print("브랜드 좋아요 성공!")
-                    case 400...600 :
-                        self.simpleAlert(title: "ERROR", message: res.message!)
-                    default: break
-                    }
-                }
-            }
-            
+            like(idx: idx)
+            brandLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
         }
-        
-        sender.setImage(likesImage[sender.tag], for: .normal)
         
     }
+    
 }
 
 extension LikeBrandVC: IndicatorInfoProvider{
@@ -160,4 +132,60 @@ extension LikeBrandVC: IndicatorInfoProvider{
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "브랜드")
     }
+}
+
+//Mark: - Network Service
+extension LikeBrandVC{
+    
+    func brandListInit() {
+        showLikeBListService.shared.showBrandLike { (value) in
+            
+            guard let status = value.status else {return}
+            switch status {
+            case 200:
+                if value.data == nil { self.brandLikeList = nil}
+                else{
+                    self.brandLikeList = value.data
+                    self.brandLikesImg = []
+                    for brand in value.data! {
+                        let likeImg = brand.likeFlag == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                        self.brandLikesImg?.append(likeImg)
+                    }
+                    self.tableView.reloadData()
+                }
+            default:
+                break
+            }
+            
+        }
+    }
+    
+    func like(idx: Int){
+        LikeBService.shared.like(brandIdx: idx) { (res) in
+            if let status = res.status {
+                switch status {
+                case 201 :
+                    print("브랜드 좋아요 성공!")
+                case 400...600 :
+                    self.simpleAlert(title: "ERROR", message: res.message!)
+                default: return
+                }
+            }
+        }
+    }
+    
+    func unlike(idx: Int){
+        LikeBService.shared.unlike(brandIdx: idx) { (res) in
+            if let status = res.status {
+                switch status {
+                case 200 :
+                    print("브랜드 좋아요 취소 성공!")
+                case 400...600 :
+                    self.simpleAlert(title: "ERROR", message: res.message!)
+                default: return
+                }
+            }
+        }
+    }
+    
 }

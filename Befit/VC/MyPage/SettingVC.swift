@@ -57,6 +57,7 @@ class SettingVC: UIViewController {
                 self.userDefault.synchronize()
                 
                 self.performSegue(withIdentifier: "GoToLogin", sender: self)
+                print("로그아웃 완료!")
             }
             
             let cancelAction = UIAlertAction(title: "취소", style: .cancel)
@@ -65,13 +66,54 @@ class SettingVC: UIViewController {
             alert.addAction(cancelAction)
             present(alert, animated: true, completion: nil)
         
-            print("로그아웃 완료!")
+        
     
     }
 
     @IBAction func signoutBtn(_ sender: Any) {
         
-        print("회원을 탈퇴하였습니다!")
+        let alert = UIAlertController(title: "회원탈퇴", message: "탈퇴 하시겠습니까?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "확인", style: .default) {
+            _ in
+    
+            self.userDefault.removeObject(forKey: "id")
+            self.userDefault.removeObject(forKey: "pw")
+            self.userDefault.synchronize()
+            
+            self.signOut()
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+        
+        
         
     }
+}
+
+//Mark: - Network Service
+extension SettingVC {
+    
+    func signOut(){
+        SignService.shared.signOut { (res) in
+            print(res)
+            guard let status = res.status else {return}
+            switch status {
+            case 200:
+                self.simpleAlert(res.message!, "회원을 성공적으로 탈퇴하였습니다!", completion: { (res) in
+                    self.performSegue(withIdentifier: "GoToLogin", sender: self)
+                    print("탈퇴 완료!")
+                })
+                
+            case 401, 500, 600:
+                self.simpleAlert(title: "Error", message: res.message!)
+            default: return
+            }
+        }
+    }
+    
 }

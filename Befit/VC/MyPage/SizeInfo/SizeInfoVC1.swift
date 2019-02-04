@@ -71,7 +71,7 @@ extension SizeInfoVC1: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let sizeInfoVC2 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC2")as! SizeInfoVC2
+        let sizeInfoVC2 = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "SizeInfoVC2")as! SizeInfoVC2
         
         sizeInfoVC2.categoryIdx = categoryList[indexPath.row].idx
         sizeInfoVC2.categoryName = categoryList[indexPath.row].title

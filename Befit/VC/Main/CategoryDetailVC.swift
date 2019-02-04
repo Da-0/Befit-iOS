@@ -19,9 +19,12 @@ class CategoryDetailVC: UIViewController {
     var productList:[Product]? = []
     
     var categoryName: String?
-    var categoryIdx: Int = 0
-    var genderIdx: Int = 0
-    var genderTxt: String = ""
+    var categoryIdx: Int?
+    var genderIdx: Int?
+    var genderTxt: String?
+    
+    //prevent Button image disappear in custom cell
+    var productLikesImg: [UIImage]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +35,8 @@ class CategoryDetailVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        navigationBar.topItem?.title = categoryName
-        self.backBtn.image = #imageLiteral(resourceName: "backArrow")
-        genderTxt = genderIdx == 0 ? "w" : "m"
-    
-        initCategoryProductList1()
-        
+        initVC()
+        sortingNew(idx: categoryIdx!, gneder: genderTxt!)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,29 +45,23 @@ class CategoryDetailVC: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    func initVC(){
+        self.backBtn.image = #imageLiteral(resourceName: "backArrow")
+        navigationBar.topItem?.title = categoryName
+        genderTxt = genderIdx == 0 ? "w" : "m"
+       
+    }
 
     @objc func newBtnClicked(){
-        initCategoryProductList1()
+        sortingNew(idx: categoryIdx!, gneder: genderTxt!)
         
     }
     
     @objc func popularBtnClicked(){
-        initCategoryProductList2()
+        sortingPopular(idx: categoryIdx!, gender: genderTxt!)
         
     }
     
-    func initCategoryProductList1(){
-        ProductSortingService.shared.showSortingNewCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
-            self.productList = product
-            self.collectionView.reloadData()
-        }
-    }
-    func initCategoryProductList2(){
-        ProductSortingService.shared.showSortingPopularCategory(categoryIdx: self.categoryIdx, gender: genderTxt) { (product) in
-            self.productList = product
-            self.collectionView.reloadData()
-        }
-    }
     
     @IBAction func backBtnAction(_ sender: Any) {
         
@@ -95,6 +87,17 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         return product.count
     }
     
+    //MARK: - didSelectItemAt
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let categoryProduct = productList?[indexPath.row]
+        let productVC  = Storyboard.shared().product.instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        productVC.productInfo = categoryProduct
+        self.present(productVC, animated: true, completion: nil)
+        
+    }
+    
+    
     //MARK: - CellForItemAt
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -105,66 +108,38 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         cell.brandName.text = product.name_korean
         cell.productName.text = product.name
         cell.price.text = product.price
-        
-        let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
-        cell.likeBtn.setImage(likeImg , for: .normal)
+     
+        //likeBtn 구현부
         cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
         cell.likeBtn.tag = indexPath.row
+        cell.likeBtn.setImage(productLikesImg?[indexPath.row] , for: .normal)
         
         return cell
     }
 
+    //MARK: - 좋아요 클릭 기능
     @objc func clickLike(_ sender: UIButton){
 
         guard let productIdx = productList?[sender.tag].idx else {return}
         
          //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+            unlike(idx: productIdx)
+            productLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
-        
-           LikePService.shared.unlike(productIdx: productIdx) { (res) in
-                if let status = res.status {
-                    switch status {
-                    case 200 :
-                        print("상품 좋아요 취소 성공!")
-                    case 400...600 :
-                        self.simpleAlert(title: "ERROR", message: res.message!)
-                    default: break
-                    }
-                }
-            }
+         
         }
             
-        //2)상품 좋아요가 작동하는 부분
+        //2) 상품 좋아요가 작동하는 부분
         else {
+            like(idx: productIdx)
+            productLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-            
-            LikePService.shared.like(productIdx: productIdx) { (res) in
-                if let status = res.status {
-                    switch status {
-                    case 201 :
-                        print("상품 좋아요 성공!")
-                    case 400...600 :
-                        self.simpleAlert(title: "ERROR", message: res.message!)
-                    default: break
-                    }
-                }
-            }
-            
+           
         }
         
     }
-    
-    //MARK: - didSelectItemAt
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let categoryProduct = productList?[indexPath.row]
-        let productVC  = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
-            productVC.productInfo = categoryProduct
-        self.present(productVC, animated: true, completion: nil)
 
-    }
-    
     
 }
 
@@ -211,4 +186,63 @@ extension CategoryDetailVC: UICollectionViewDelegateFlowLayout {
     }
     
     
+}
+
+//Mark: - Network Service
+extension CategoryDetailVC {
+    
+    func sortingNew(idx: Int, gneder: String){
+        ProductSortingService.shared.showSortingNewCategory(categoryIdx: idx, gender: gneder) { (productData) in
+            self.productList = productData
+            self.productLikesImg = []
+            
+            for product in productData {
+                let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                self.productLikesImg?.append(likeImg)
+            }
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func sortingPopular(idx: Int, gender: String){
+        ProductSortingService.shared.showSortingPopularCategory(categoryIdx: idx, gender: gender) { (productData) in
+            self.productList = productData
+            self.productLikesImg = []
+            
+            for product in productData {
+                let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                self.productLikesImg?.append(likeImg)
+            }
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func like(idx: Int){
+        LikePService.shared.like(productIdx: idx) { (res) in
+            if let status = res.status {
+                switch status {
+                case 201 :
+                    print("상품 좋아요 성공!")
+                case 400...600 :
+                    self.simpleAlert(title: "ERROR", message: res.message!)
+                default: return
+                }
+            }
+        }
+    }
+    
+    func unlike(idx: Int){
+        LikePService.shared.unlike(productIdx: idx) { (res) in
+            if let status = res.status {
+                switch status {
+                    case 200 :
+                        print("상품 좋아요 취소 성공!")
+                    case 400...600 :
+                        self.simpleAlert(title: "ERROR", message: res.message!)
+                    default: return
+                }
+            }
+        }
+    }
+
 }

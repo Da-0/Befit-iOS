@@ -36,6 +36,8 @@ struct Measure1 : Mappable {
     var XLn: Measure2?
     var XXLn: Measure2?
     
+    var onrSize: Measure2?
+    var oneSize: Measure2?
     var one0: Measure2?
     var one1: Measure2?
     var two: Measure2?
@@ -93,6 +95,10 @@ struct Measure1 : Mappable {
     var bottom20: Measure2?
     var bottom21: Measure2?
     
+    var zeroOne: Measure2?
+    var zeroTwo: Measure2?
+    var zeroThree: Measure2?
+    
     
     
     init?(map: Map) {}
@@ -122,6 +128,8 @@ struct Measure1 : Mappable {
         XLn <- map["XL(03)"]
         XXLn <- map["XXL(04)"]
         
+        onrSize <- map["ONR SIZE"]
+        oneSize <- map["ONE SIZE"]
         one0 <- map["1(ONE SIZE)"]
         one1 <- map["1(SIZE)"]
         two <- map["2(SIZE)"]
@@ -180,6 +188,9 @@ struct Measure1 : Mappable {
         bottom20 <- map["34/30"]
         bottom21 <- map["34/32"]
         
+        zeroOne <- map["01"]
+        zeroTwo <- map["02"]
+        zeroThree <- map["03"]
        
         
         

@@ -45,8 +45,6 @@ class MyPageVC: UIViewController {
         
         UserInfoService.shared.showUserInfo { (res) in
             
-         
-            //현재 로그인 한 유저의 정보
             print("\n<***현재 회원 정보***>")
             print("idx = \(res.idx!)")
             print("email = \(res.email!)")
@@ -64,7 +62,7 @@ class MyPageVC: UIViewController {
             self.brandIdx[0] = res.brand1_idx!
             self.brandIdx[1] = res.brand2_idx!
             
-            //정보의 일부가 없으면 guard let으로 빠져나갈 수 있기때문에 코드 순서 변경하면 안됨
+            //정보의 일부가 없으면 guard let으로 빠져나감(코드 순서 변경 하지 말것)
             guard let address = res.home_address, let detail = res.detail_address, let phone = res.phone, let post = res.post_number
                 else {return}
             
@@ -76,7 +74,7 @@ class MyPageVC: UIViewController {
     }
     
     @IBAction func settingBtn(_ sender: Any) {
-        let settingVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SettingVC") as! SettingVC
+        let settingVC = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "SettingVC") as! SettingVC
         self.navigationController?.present(settingVC, animated: true, completion: nil)
     }
     
@@ -104,18 +102,18 @@ extension MyPageVC : UITableViewDelegate, UITableViewDataSource{
         switch indexPath.row {
             
             case 0:
-                let changeBrandVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ChangeBrandVC")as! ChangeBrandVC
+                let changeBrandVC = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "ChangeBrandVC")as! ChangeBrandVC
                     changeBrandVC.gender = self.gender
                     changeBrandVC.brandIdx = self.brandIdx
                     self.navigationController?.pushViewController(changeBrandVC, animated: true)
             
             case 1:
-                let sizeInfoVC1 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC1")as! SizeInfoVC1
+                let sizeInfoVC1 = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "SizeInfoVC1")as! SizeInfoVC1
                     sizeInfoVC1.gender = self.gender
                     self.navigationController?.pushViewController(sizeInfoVC1, animated: true)
             
             case 2:
-                let userInfoAdminVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "UserInfoAdminVC")as! UserInfoAdminVC
+                let userInfoAdminVC = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "UserInfoAdminVC")as! UserInfoAdminVC
                     self.navigationController?.present(userInfoAdminVC, animated: true, completion: nil)
 
             case 3:

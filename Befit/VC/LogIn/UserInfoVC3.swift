@@ -96,41 +96,19 @@ class UserInfoVC3: UIViewController {
     
     
     @IBAction func nextAction(_ sender: Any) {
+        
         if pwCheck == false {
             simpleAlert(title: "Error", message: "비밀번호 입력을 확인해 주세요")
         }
         else{
-            network()
+            let year = yearTF.text?.dropLast()
+            let month = monthTF.text?.dropLast()
+            let day = dayTF.text?.dropLast()
+            
+            let birthday = "\(year!)" + "/" + "\(month!)" + "/" + "\(day!)"
+            signUp(email: emailTF.text!, pw: passwordTF.text!, gender: gender!, name: nameTF.text!, bid1: brandIdx1!, bid2: brandIdx2!, birth: birthday)
         }
     }
-    
-    func network(){
-        
-        let year = yearTF.text?.dropLast()
-        let month = monthTF.text?.dropLast()
-        let day = dayTF.text?.dropLast()
-        
-        let birthday = "\(year!)" + "/" + "\(month!)" + "/" + "\(day!)"
-       
-        SignUpService.shared.signUp(email: emailTF.text!, pw: passwordCkTF.text!, gender: gender!, name: nameTF.text!, brand1: brandIdx1!, brand2: brandIdx2!, birthday: birthday, completion: {[weak self] (res) in
-            guard let `self` = self else {return}
-            
-            guard let status = res.status else {return}
-            
-            switch status {
-                case 201:
-                    self.dismiss(animated: true, completion: nil)
-                case 409:
-                    self.simpleAlert(title: "Error", message: res.message!)
-                    self.duplicationLB.isHidden = false
-                    self.duplicationLB.text = "중복"
-                case 400,500,600:
-                    self.simpleAlert(title: "Error", message: res.message!)
-                default: break
-            }
-        })
-    }
-    
 }
 
 
@@ -314,5 +292,25 @@ extension UserInfoVC3: UITextFieldDelegate, UIGestureRecognizerDelegate {
     }
 }
 
+//Mark: - Network Service
+extension UserInfoVC3 {
+    
+    func signUp(email: String, pw: String, gender: String, name: String, bid1: Int, bid2: Int, birth: String) {
+        SignService.shared.signUp(email: email, pw: pw, gender: gender, name: name, brand1: bid1, brand2: bid2, birthday: birth, completion: {[weak self] (res) in
+            guard let `self` = self else {return}
+            guard let status = res.status else {return}
+                switch status {
+                    case 201:
+                        self.dismiss(animated: true, completion: nil)
+                    case 409:
+                        self.simpleAlert(title: "Error", message: res.message!)
+                        self.duplicationLB.isHidden = false
+                        self.duplicationLB.text = "중복"
+                    case 400,500,600:
+                        self.simpleAlert(title: "Error", message: res.message!)
+                    default: return
+                }
+        })
+    }
 
-
+}

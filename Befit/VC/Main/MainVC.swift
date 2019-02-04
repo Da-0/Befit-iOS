@@ -138,7 +138,7 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource {
         else if indexPath.section == 1 {}
         else if indexPath.section == 2 {}
         else {
-            let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
+            let productVC = Storyboard.shared().product.instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
             let product = recommendProduct[indexPath.row]
             productVC.productInfo = product
             self.navigationController?.present(productVC, animated: true, completion: nil)
@@ -190,7 +190,7 @@ extension MainVC: customCellDelegate {
     //맨 위 제일 큰 브랜드 사진 클릭
     func mainBrandPressed(cell: MainCVCell0, idx: Int) {
         
-        let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+        let brandVC = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
             brandVC.brandInfo = recommendBrand[idx]
         self.navigationController?.pushViewController(brandVC, animated: true)
     }
@@ -201,7 +201,7 @@ extension MainVC: customCellDelegate {
         let bid = Int(idx/3)
         let pid = idx % 3
 
-        let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+        let brandVC = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
         brandVC.brandInfo = recommendBrand[bid]
         brandVC.productInfo = recommendBrand[bid].products?[pid]
         self.navigationController?.pushViewController(brandVC, animated: true)
@@ -219,17 +219,17 @@ extension MainVC: customCellDelegate2 {
         
         switch idx {
             case 0:
-                let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
+                let productVC = Storyboard.shared().product.instantiateViewController(withIdentifier: "ProductVC") as! ProductVC
                 productVC.productInfo = bannerBrandInfo0
                 self.present(productVC, animated: true, completion: nil)
                 break
             case 1:
-                let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+                let brandVC = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
                 brandVC.brandInfo = bannerBrandInfo1
                 self.navigationController?.pushViewController(brandVC, animated: true)
                 break
             case 2:
-                let brandVC = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
+                let brandVC = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC") as! BrandVC
                 brandVC.brandInfo = bannerBrandInfo2
                 self.navigationController?.pushViewController(brandVC, animated: true)
                 break

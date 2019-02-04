@@ -44,29 +44,12 @@ class SizeCheckVC: UIViewController {
     var circleGraph: CircleGraph?
     
     //상품 사이즈 정보 LB 관련
-    @IBOutlet weak var wholeStack: UIStackView!
-    @IBOutlet weak var fourthStack: UIStackView!
-    @IBOutlet weak var fifthStack: UIStackView!
+    @IBOutlet weak var LB0Stack: UIStackView!
+    @IBOutlet var LB0Array: [UILabel]!
+    @IBOutlet var LB1Array: [UILabel]!
+    @IBOutlet var LB2Array: [UILabel]!
+    @IBOutlet weak var labelView: UIView!
     
-    var LB0Array: [UILabel] = []
-    @IBOutlet weak var LB00: UILabel!
-    @IBOutlet weak var LB01: UILabel!
-    @IBOutlet weak var LB02: UILabel!
-    @IBOutlet weak var LB03: UILabel!
-    @IBOutlet weak var LB04: UILabel!
-    var LB1Array: [UILabel] = []
-    @IBOutlet weak var LB10: UILabel!
-    @IBOutlet weak var LB11: UILabel!
-    @IBOutlet weak var LB12: UILabel!
-    @IBOutlet weak var LB13: UILabel!
-    @IBOutlet weak var LB14: UILabel!
-    var LB2Array: [UILabel] = []
-    @IBOutlet weak var LB20: UILabel!
-    @IBOutlet weak var LB21: UILabel!
-    @IBOutlet weak var LB22: UILabel!
-    @IBOutlet weak var LB23: UILabel!
-    @IBOutlet weak var LB24: UILabel!
-    ////////////////////////////////
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,12 +58,13 @@ class SizeCheckVC: UIViewController {
         initPickerWithTF()
         collectionView.delegate = self;
         collectionView.dataSource = self;
+        print("선택한 상품의 전체 정보")
+        print(productInfo)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         initProducutInfo()
-        initLB()
         network()
     }
     
@@ -105,21 +89,6 @@ class SizeCheckVC: UIViewController {
         pageControl.numberOfPages = productSizeList.count
     }
     
-    func initLB(){
-        
-        LB0Array.append(LB00); LB0Array.append(LB01)
-        LB0Array.append(LB02); LB0Array.append(LB03)
-        LB0Array.append(LB04)
-        
-        LB1Array.append(LB10); LB1Array.append(LB11)
-        LB1Array.append(LB12); LB1Array.append(LB13)
-        LB1Array.append(LB14)
-        
-        LB2Array.append(LB20); LB2Array.append(LB21)
-        LB2Array.append(LB22); LB2Array.append(LB23)
-        LB2Array.append(LB24)
-
-    }
     
     func network(){
         
@@ -155,7 +124,7 @@ class SizeCheckVC: UIViewController {
 
     @IBAction func enrollClosetAction(_ sender: Any) {
       
-        let sizeInfoVC2 = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "SizeInfoVC2")as! SizeInfoVC2
+        let sizeInfoVC2 = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "SizeInfoVC2")as! SizeInfoVC2
         sizeInfoVC2.categoryIdx = productInfo?.product_category_index!
         sizeInfoVC2.enrollNewCloset = true
         sizeInfoVC2.categoryName = "slacks"
@@ -218,10 +187,10 @@ extension SizeCheckVC: UIPickerViewDelegate,UIPickerViewDataSource{
         self.sizeCheckNetwork(row)
         self.valueSetting(0)
         
+        labelView.isHidden = false
         collectionView.contentOffset.x = 0
         pageControl.currentPage = 0
         collectionView.isScrollEnabled = true
-        wholeStack.isHidden = false
         percentStack.isHidden = false
         collectionView.reloadData()
         self.view.endEditing(true)
@@ -248,8 +217,10 @@ extension SizeCheckVC {
             SizeCheckService.shared.showSizeCheck(closetIdx: myCloset.closet_idx!, productIdx: productInfo?.idx!, productSize: size) { (result) in
                 
                 if result.message == "옷 사이즈 비교 불가능" {
-                    self.simpleAlert(title: "ERROR", message: "옷 사이즈 비교가 불가능 합니다!")
                     self.removeAnimate();
+                    self.simpleAlert("ERROR", "옷 사이즈 비교가 불가능 합니다!", completion: { (alert) in
+                        self.removeAnimate();
+                    })
                 }
                
                 else {
@@ -268,7 +239,7 @@ extension SizeCheckVC {
                                 return false
                         default: break
                         }
-                        return first > second
+                        return first < second
                     })
                     
                     self.realKey = sortedKeys
@@ -294,7 +265,6 @@ extension SizeCheckVC {
                 case "dobladillosSection": bodyPart = .dobla
                 default: return
             }
-            
             LB0Array[idx].text = bodyPart?.rawValue
             
         }
@@ -310,16 +280,31 @@ extension SizeCheckVC {
         guard let values = comparableList[row].measure?.toJSON().values else {return}
         
         if keys.count == 3 {
-            self.fourthStack.isHidden = true
-            self.fifthStack.isHidden = true
+            LB0Stack.spacing = 30
+            LB0Array[3].isHidden = true
+            LB1Array[3].isHidden = true
+            LB2Array[3].isHidden = true
+            LB0Array[4].isHidden = true
+            LB1Array[4].isHidden = true
+            LB2Array[4].isHidden = true
         }
         if keys.count == 4 {
-            self.fourthStack.isHidden = false
-            self.fifthStack.isHidden = true
+            LB0Stack.spacing = 15
+            LB0Array[3].isHidden = false
+            LB1Array[3].isHidden = false
+            LB2Array[3].isHidden = false
+            LB0Array[4].isHidden = true
+            LB1Array[4].isHidden = true
+            LB2Array[4].isHidden = true
         }
         if keys.count == 5 {
-            self.fourthStack.isHidden = false
-            self.fifthStack.isHidden = false
+            LB0Stack.spacing = 5
+            LB0Array[3].isHidden = false
+            LB1Array[3].isHidden = false
+            LB2Array[3].isHidden = false
+            LB0Array[4].isHidden = false
+            LB1Array[4].isHidden = false
+            LB2Array[4].isHidden = false
         }
         
         self.productSizeLB.text = productSizeList[row]
@@ -361,6 +346,9 @@ extension SizeCheckVC {
 
 extension SizeCheckVC: UICollectionViewDelegate, UICollectionViewDataSource{
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return productSizeList.count

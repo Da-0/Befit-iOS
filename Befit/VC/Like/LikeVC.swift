@@ -20,8 +20,8 @@ class LikeVC: ButtonBarPagerTabStripViewController {
     
 
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
-        let child1 = UIStoryboard(name: "Like", bundle: nil).instantiateViewController(withIdentifier: "LikeProductVC") as! LikeProductVC
-        let child2 = UIStoryboard(name: "Like", bundle: nil).instantiateViewController(withIdentifier: "LikeBrandVC") as! LikeBrandVC
+        let child1 = Storyboard.shared().like.instantiateViewController(withIdentifier: "LikeProductVC") as! LikeProductVC
+        let child2 = Storyboard.shared().like.instantiateViewController(withIdentifier: "LikeBrandVC") as! LikeBrandVC
         return [child1, child2]
     }
     

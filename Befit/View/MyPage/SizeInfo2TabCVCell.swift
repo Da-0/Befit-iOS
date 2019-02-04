@@ -1,16 +1,15 @@
 //
-//  SearchCVCell.swift
+//  SizeInfo2TabCVCell.swift
 //  Befit
 //
-//  Created by 이충신 on 05/01/2019.
+//  Created by 이충신 on 03/02/2019.
 //  Copyright © 2019 GGOMMI. All rights reserved.
 //
 
 import UIKit
 
-class SearchCVCell: UICollectionViewCell {
-    
-    @IBOutlet weak var productImg: UIImageView!
+class SizeInfo2TabCVCell: UICollectionViewCell {
+    @IBOutlet weak var tabImg: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

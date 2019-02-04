@@ -28,18 +28,9 @@ class SearchBrandVC: UITableViewController {
         super.viewWillAppear(animated)
         guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
         searchKeyword = keyword
-        initSearchBrandList()
+        searchBrnad(keyword: searchKeyword)
     }
     
-    func initSearchBrandList(){
-            
-        SearchBrandService.shared.showSearchBrand(keyword: self.searchKeyword) { (res) in
-            self.searchBrandList = res.data
-            self.tableView.reloadData()
-            
-        }
-        
-    }
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +43,7 @@ class SearchBrandVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        let brandVC  = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = searchBrandList?[indexPath.row]
         self.navigationController?.pushViewController(brandVC, animated: true)
     }
@@ -81,7 +72,15 @@ extension SearchBrandVC: IndicatorInfoProvider{
     }
 }
 
-
+//Mark: - Network Service
+extension SearchBrandVC {
+    func searchBrnad(keyword: String) {
+        SearchBrandService.shared.showSearchBrand(keyword: keyword) { (res) in
+            self.searchBrandList = res.data
+            self.tableView.reloadData()
+        }
+    }
+}
 
     
 

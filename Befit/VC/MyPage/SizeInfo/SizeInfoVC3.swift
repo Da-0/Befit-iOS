@@ -115,7 +115,7 @@ extension SizeInfoVC3 {
         productName = nil
         ContentView.isHidden = true
         
-        let brandSelectVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "BrandSelectVC")as! BrandSelectVC
+        let brandSelectVC = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "BrandSelectVC")as! BrandSelectVC
         brandSelectVC.delegate = self;
 
         if enrollNewCloset == true{
@@ -130,7 +130,7 @@ extension SizeInfoVC3 {
     
     @IBAction func productSelectAction(_ sender: Any) {
         
-        let productSelectVC = UIStoryboard(name: "MyPage", bundle: nil).instantiateViewController(withIdentifier: "ProductSelectVC")as! ProductSelectVC
+        let productSelectVC = Storyboard.shared().myPage.instantiateViewController(withIdentifier: "ProductSelectVC")as! ProductSelectVC
         
         productSelectVC.delegate = self;
         productSelectVC.brandIdx = brandInfo?.idx
@@ -152,11 +152,8 @@ extension SizeInfoVC3 {
             if let status = res.status {
                 switch status {
                     case 200, 201:
-                        if self.enrollNewCloset == true {
-                            self.dismiss(animated: true, completion: nil)
-                        }else{
-                          self.navigationController?.popViewController(animated: true)
-                        }
+                        if self.enrollNewCloset { self.dismiss(animated: true, completion: nil) }
+                        else{ self.navigationController?.popViewController(animated: true) }
                     case 400...600 :
                         self.simpleAlert(title: "Error", message: res.message!)
                     default: break
