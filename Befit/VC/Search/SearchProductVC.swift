@@ -31,7 +31,7 @@ class SearchProductVC: UIViewController {
         super.viewWillAppear(animated)
         guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
         searchKeyword = keyword
-        initSearchProductList1()
+        sortingNew(keyword: searchKeyword)
     }
     
 }
@@ -70,7 +70,7 @@ extension SearchProductVC: UICollectionViewDataSource {
         
         guard let searchProduct = productList?[indexPath.row] else {return}
         
-        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        let productVC = Storyboard.shared().product.instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
         productVC.productInfo = searchProduct
         self.navigationController?.present(productVC, animated: true, completion: nil)
         
@@ -83,35 +83,13 @@ extension SearchProductVC: UICollectionViewDataSource {
         //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
-            
-            LikePService.shared.unlike(productIdx: productIdx) { (res) in
-                if let status = res.status {
-                    switch status {
-                    case 200 :
-                        print("상품 좋아요 취소 성공!")
-                    case 400...600 :
-                        self.simpleAlert(title: "ERROR", message: res.message!)
-                    default: break
-                    }
-                }
-            }
+            unlike(idx: productIdx)
         }
             
-            //2)상품 좋아요가 작동하는 부분
+        //2)상품 좋아요가 작동하는 부분
         else {
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-            
-            LikePService.shared.like(productIdx: productIdx) { (res) in
-                if let status = res.status {
-                    switch status {
-                    case 201 :
-                        print("상품 좋아요 성공!")
-                    case 400...600 :
-                        self.simpleAlert(title: "ERROR", message: res.message!)
-                    default: break
-                    }
-                }
-            }
+            like(idx: productIdx)
             
         }
         
@@ -144,39 +122,11 @@ extension SearchProductVC:  UICollectionViewDelegateFlowLayout {
     }
     
     @objc func newReload(){
-        initSearchProductList1()
+       sortingNew(keyword: searchKeyword)
     }
-    
     
     @objc func popularReload(){
-        initSearchProductList2()
-    }
-    
-    func initSearchProductList1(){
-        SearchProductService.shared.showSearchProductNew(keyword: searchKeyword) { (res) in
-            guard let status = res.status else {return}
-            if status == 200 {
-                if res.data == nil {
-                    self.noResultView.isHidden = false
-                    self.collectionView.isHidden = true
-                }
-                else{
-                    self.noResultView.isHidden = true
-                    self.collectionView.isHidden = false
-                }
-            }
-            self.productList = res.data
-            self.collectionView.reloadData()
-            
-        }
-        
-    }
-    
-    func initSearchProductList2(){
-        SearchProductService.shared.showSearchProductPopular(keyword: self.searchKeyword) { (res) in
-            self.productList = res.data
-            self.collectionView.reloadData()
-        }
+        sortingPopular(keyword: searchKeyword)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -204,4 +154,65 @@ extension SearchProductVC: IndicatorInfoProvider{
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "상품")
     }
+}
+
+//Mark: - Network Service
+extension SearchProductVC {
+    
+    func sortingNew(keyword: String){
+        SearchProductService.shared.showSearchProductNew(keyword: keyword) { (res) in
+            guard let status = res.status else {return}
+            if status == 200 {
+                if res.data == nil {
+                    self.noResultView.isHidden = false
+                    self.collectionView.isHidden = true
+                }
+                else{
+                    self.noResultView.isHidden = true
+                    self.collectionView.isHidden = false
+                }
+            }
+            self.productList = res.data
+            self.collectionView.reloadData()
+            
+        }
+    }
+    
+    func sortingPopular(keyword: String){
+        SearchProductService.shared.showSearchProductPopular(keyword: keyword) { (res) in
+            self.productList = res.data
+            self.collectionView.reloadData()
+        }
+    }
+    
+    func like(idx: Int){
+        LikePService.shared.like(productIdx: idx) { (res) in
+            if let status = res.status {
+                switch status {
+                case 201 :
+                    print("상품 좋아요 성공!")
+                case 400...600 :
+                    self.simpleAlert(title: "ERROR", message: res.message!)
+                default: return
+                }
+            }
+        }
+    }
+
+    
+    func unlike(idx: Int){
+        LikePService.shared.unlike(productIdx: idx) { (res) in
+            if let status = res.status {
+                switch status {
+                case 200 :
+                    print("상품 좋아요 취소 성공!")
+                case 400...600 :
+                    self.simpleAlert(title: "ERROR", message: res.message!)
+                default: return
+                }
+            }
+        }
+    }
+    
+    
 }

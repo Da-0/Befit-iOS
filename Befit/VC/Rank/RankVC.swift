@@ -19,6 +19,9 @@ class RankVC: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self;
         tableView.dataSource = self;
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,15 +29,17 @@ class RankVC: UIViewController {
         brandListInit() 
         
     }
-    
-    func brandListInit() {
-        BrandRankService.shared.showBrandRank { (brandData) in
-            self.brandRankList = brandData
-            self.tableView.reloadData()
-        }
-    }
 
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func reloadData(_ sender: UIRefreshControl) {
+        self.brandListInit()
+        tableView.reloadData()
+        sender.endRefreshing()
+    }
 }
+
+
+
 
 
 extension RankVC: UITableViewDelegate, UITableViewDataSource {
@@ -59,12 +64,20 @@ extension RankVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let brandVC  = UIStoryboard(name: "Brand", bundle: nil).instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
+        let brandVC  = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = brandRankList[indexPath.row]
         self.navigationController?.pushViewController(brandVC, animated: true)
         
     }
-    
-    
-    
+
+}
+
+//Mark: - Network Service
+extension RankVC {
+    func brandListInit(){
+        BrandRankService.shared.showBrandRank { (brandData) in
+        self.brandRankList = brandData
+        self.tableView.reloadData()
+        }
+    }
 }

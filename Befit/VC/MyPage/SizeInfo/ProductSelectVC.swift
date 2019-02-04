@@ -75,9 +75,7 @@ class ProductSelectVC: UIViewController {
             self.productList = product
             self.tableView.reloadData()
             guard let plist = self.productList else {return}
-            for product in plist {
-                self.originalProduct.append(product)
-            }
+            for product in plist { self.originalProduct.append(product)}
         })
     }
     

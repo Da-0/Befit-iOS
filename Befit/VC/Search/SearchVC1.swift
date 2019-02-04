@@ -21,19 +21,14 @@ class SearchVC1: UIViewController {
         collectionView.delegate = self;
         collectionView.dataSource = self;
         initSNCollection()
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initSearchProductList()
+        initproductList()
         
-    }
-    
-    func initSearchProductList(){
-        SearchFirstService.shared.showSearchFirstView { (productData) in
-            self.searchProductList = productData
-            self.collectionView.reloadData()
-        }
     }
     
     func initSNCollection() {
@@ -42,8 +37,17 @@ class SearchVC1: UIViewController {
         snCollectionViewLayout.fixedDivisionCount = 6
         collectionView.collectionViewLayout = snCollectionViewLayout
     }
+
+
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func reloadData(_ sender: UIRefreshControl) {
+        self.initproductList()
+        collectionView.reloadData()
+        sender.endRefreshing()
+    }
     
 }
+
 
 extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     
@@ -64,7 +68,7 @@ extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let searchProduct = searchProductList[indexPath.row]
-        let productVC = UIStoryboard(name: "Product", bundle: nil).instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
+        let productVC = Storyboard.shared().product.instantiateViewController(withIdentifier: "ProductVC")as! ProductVC
     
         productVC.productInfo = searchProduct
         
@@ -88,5 +92,14 @@ extension SearchVC1: SNCollectionViewLayoutDelegate {
         return 2
     }
     
-    
+}
+
+//Mark: - Nerwork Service
+extension SearchVC1{
+    func initproductList(){
+        SearchFirstService.shared.showSearchFirstView { (productData) in
+            self.searchProductList = productData
+            self.collectionView.reloadData()
+        }
+    }
 }

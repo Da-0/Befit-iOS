@@ -90,7 +90,7 @@ class UserInfoVC2: UIViewController {
         
         if brandIdx.count == 2 {
 
-            let userInfoVC3 =  UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "UserInfoVC3") as! UserInfoVC3
+            let userInfoVC3 =  Storyboard.shared().login.instantiateViewController(withIdentifier: "UserInfoVC3") as! UserInfoVC3
             
             userInfoVC3.gender = self.gender
             userInfoVC3.brandIdx1 = self.brandIdx[0]

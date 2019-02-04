@@ -62,8 +62,7 @@ class UserInfoVC1: UIViewController {
     @IBAction func nextBtn(_ sender: Any) {
         
         if manBtn.isSelected || womanBtn.isSelected {
-            let logIn = UIStoryboard.init(name: "LogIn", bundle: nil)
-            let userInfoVC2 = logIn.instantiateViewController(withIdentifier: "UserInfoVC2") as! UserInfoVC2
+            let userInfoVC2 = Storyboard.shared().login.instantiateViewController(withIdentifier: "UserInfoVC2") as! UserInfoVC2
             userInfoVC2.gender = self.gender
             self.navigationController?.pushViewController(userInfoVC2, animated: true)
         }
