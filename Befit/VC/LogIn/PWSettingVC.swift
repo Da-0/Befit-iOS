@@ -39,7 +39,6 @@ class PWSettingVC: UIViewController {
     
     @IBAction func passwordRegex(_ sender: Any) {
         if let check = newPWTF.text?.validationEmail() {
-//          newPWCKTF.isEnabled = check ? true : false
             passwordNoticeLB.textColor = check ? #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) : #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1)
         }
     }
@@ -69,29 +68,8 @@ class PWSettingVC: UIViewController {
             simpleAlert(title: "경고", message: "패스워드가 불일치 합니다.")
         }
         
-        network()
+        passwordSet(idx: userIdx!, pw: newPWTF.text!)
     }
-    
-    
-    func network(){
-    
-        PWSettingService.shared.setPW(idx: userIdx!, pw: newPWTF.text!, completion:
-            {[weak self] (res) in
-            guard let `self` = self else {return}
-            if let status = res.status {
-                switch status {
-                    case 200:
-                      self.dismiss(animated: true, completion: nil)
-                    case 204, 500, 600:
-                        self.simpleAlert(title: "Error", message: res.message!)
-                default:
-                    break
-                }
-            }
-        })
-    
-    }
-    
     
     
     @IBAction func backBtn(_ sender: Any) {
@@ -120,6 +98,28 @@ extension PWSettingVC: UITextFieldDelegate {
         if sender === newPWTF {
             newPWCKTF.becomeFirstResponder()
         }
+    }
+}
+
+//Mark: - Network Service
+extension PWSettingVC {
+    
+    func passwordSet(idx: Int, pw: String){
+        PWSettingService.shared.setPW(idx: idx, pw: pw, completion:
+            {[weak self] (res) in
+                guard let `self` = self else {return}
+                if let status = res.status {
+                    switch status {
+                    case 200:
+                        self.dismiss(animated: true, completion: nil)
+                    case 204, 500, 600:
+                        self.simpleAlert(title: "Error", message: res.message!)
+                    default:
+                        break
+                    }
+                }
+        })
+        
     }
 }
 

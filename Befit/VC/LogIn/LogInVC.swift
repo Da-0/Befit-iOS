@@ -26,7 +26,7 @@ class LogInVC: UIViewController, APIManager {
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
         
         if let uid = userDefault.string(forKey: "id"), let upw = userDefault.string(forKey: "pw"){
-            autoLogIn(uid, upw)
+            login(email: uid, pw: upw)
             
         }
     }
@@ -42,62 +42,11 @@ class LogInVC: UIViewController, APIManager {
             simpleAlert(title: "로그인 실패", message: "모든 항목을 입력해 주세요")
             return
         }
-        
-        network()
+         login(email: emailTF.text!, pw: pwTF.text!)
         
     }
     
-    func autoLogIn(_ uid: String,_ upw: String){
-      
-        LoginService.shared.login(email: uid, password: upw, completion: {[weak self] (res) in
-         
-            guard let `self` = self else {return}
-            if let status = res.status {
-                switch status {
-                case 200 :
-                    guard let token = res.data?.token else { return}
-                    print("토근값 = " + token + "\n")
-                    self.userDefault.set(token, forKey: "token")
-                    let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
-                    self.present(mainVC, animated: true, completion: nil)
-                    break
-                default:
-                    break
-                }
-            }
-        })
-    }
-    
-    func network(){
 
-        LoginService.shared.login(email: emailTF.text!, password: pwTF.text!, completion: {[weak self] (res) in
-            guard let `self` = self else {return}
-           
-            if let status = res.status {
-                switch status {
-                    case 200 :
-                        guard let token = res.data?.token else { return}
-                         print("토근값 = " + token + "\n")
-                         self.userDefault.set(token, forKey: "token")
-                         let mainVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "sideStart")
-                         self.present(mainVC, animated: true, completion: nil)
-                         break
-                    
-                    case 400:
-                        self.simpleAlert(title: "Error", message: "아이디 또는 패스워드가 일치하지 않습니다!")
-                    break
-                    
-                    case 401, 500, 600 :
-                        self.simpleAlert(title: "Error", message: res.message!)
-                        break
-                    default:
-                        break
-                }
-            }
-        })
-        
-    }
-    
     @IBAction func unwind(_ sender: UIStoryboardSegue){
         
     }
@@ -172,4 +121,39 @@ extension LogInVC: UITextFieldDelegate, UIGestureRecognizerDelegate {
     }
     
 
+}
+
+//Mark: - Network Service
+extension LogInVC {
+    
+    func login(email: String, pw: String){
+        
+        LoginService.shared.login(email: email, password: pw, completion: {[weak self] (res) in
+            guard let `self` = self else {return}
+            
+            if let status = res.status {
+                switch status {
+                    case 200 :
+                        guard let token = res.data?.token else { return}
+                        print("토근값 = " + token + "\n")
+                        self.userDefault.set(token, forKey: "token")
+                        let mainVC = Storyboard.shared().main.instantiateViewController(withIdentifier: "sideStart")
+                        self.present(mainVC, animated: true, completion: nil)
+                        break
+                    
+                    case 400:
+                        self.simpleAlert(title: "Error", message: "아이디 또는 패스워드가 일치하지 않습니다!")
+                        break
+                    
+                    case 401, 500, 600 :
+                        self.simpleAlert(title: "Error", message: res.message!)
+                        break
+                    default:
+                        break
+                }
+            }
+        })
+    }
+    
+    
 }

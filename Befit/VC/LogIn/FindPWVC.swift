@@ -68,42 +68,16 @@ class FindPWVC: UIViewController {
               simpleAlert(title: "찾기 실패", message: "모든 항목을 입력해 주세요")
         }
         
-        network()
-    }
-    
-    
-    func network(){
-        
         let year = yearTF.text?.dropLast()
         let month = monthTF.text?.dropLast()
         let day = dayTF.text?.dropLast()
         
         let birthday = "\(year!)" + "/" + "\(month!)" + "/" + "\(day!)"
-        
-        FindPWService.shared.findPW(email: emailTF.text!, name: nameTF.text!, birthday: birthday, completion: {[weak self] (res) in
-            guard let `self` = self else {return}
-            
-            if let status = res.status {
-                switch status {
-                    case 200 :
-                        let settingVC = UIStoryboard(name: "LogIn", bundle: nil).instantiateViewController(withIdentifier: "PWSettingVC") as! PWSettingVC
-                        settingVC.userIdx = res.data?.idx
-                        self.navigationController?.pushViewController(settingVC, animated: true)
-                        break
-                    case 400 :
-                        self.noticeLB.isHidden = false
-                    case 401, 500, 600 :
-                        self.simpleAlert(title: "Error", message: res.message!)
-                        break
-                    default:
-                        break
-                }
-            }
-        })
-        
+        findPassword(email: emailTF.text!, name: nameTF.text!, birthday: birthday)
+    
     }
     
-
+    
     @IBAction func backAction(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -236,6 +210,28 @@ extension FindPWVC: UITextFieldDelegate {
 }
 
 
-
+//Mark: - Network Service
+extension FindPWVC {
+    
+    func findPassword(email: String, name: String, birthday: String){
+        FindPWService.shared.findPW(email: email, name: name, birthday: birthday, completion: {[weak self] (res) in
+        guard let `self` = self else {return}
+        
+            if let status = res.status {
+                switch status {
+                    case 200 :
+                        let settingVC = Storyboard.shared().login.instantiateViewController(withIdentifier: "PWSettingVC") as! PWSettingVC
+                        settingVC.userIdx = res.data?.idx
+                        self.navigationController?.pushViewController(settingVC, animated: true)
+                    case 400 :
+                        self.noticeLB.isHidden = false
+                    case 401, 500, 600 :
+                        self.simpleAlert(title: "Error", message: res.message!)
+                    default: return
+            }
+          }
+        })
+    }
+}
 
 
