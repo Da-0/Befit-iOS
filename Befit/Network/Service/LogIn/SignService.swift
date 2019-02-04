@@ -50,7 +50,6 @@ struct SignService: APIManager, Requestable{
         guard let token = UserDefaults.standard.string(forKey: "token") else {return}
         
         let headers: HTTPHeaders = [
-            "Content-Type": "application/json",
             "Authorization" : token
         ]
         

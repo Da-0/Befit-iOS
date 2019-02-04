@@ -17,7 +17,6 @@ struct showLikePListService: APIManager, Requestable{
 
     //좋아요한 상품 보여주기
     func showProductLike(completion: @escaping (NetworkData) -> Void) {
-        print("토근값 조회!! = \(UserDefaults.standard.string(forKey: "token")!)")
         let headers: HTTPHeaders = [
             "Authorization" : UserDefaults.standard.string(forKey: "token")!
         ]

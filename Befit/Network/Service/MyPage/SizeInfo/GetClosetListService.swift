@@ -23,15 +23,17 @@ struct GetClosetListService: APIManager, Requestable{
         
         guard let token = userDefault.string(forKey: "token") else {return}
         
-    let headers: HTTPHeaders = [
-            "Authorization" : token
-        ]
+        let headers: HTTPHeaders = [
+                "Authorization" : token
+            ]
         
         let url = URL + "\(idx)"
         
         gettable(url, body: nil, header: headers) { res in
             switch res {
             case .success(let value):
+                print("현재 옷장 리스트 출력")
+                print(value.data)
                 completion(value)
             case .error(let error):
                 print(error)
