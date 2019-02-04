@@ -13,8 +13,10 @@ import XLPagerTabStrip
 
 class SearchProductVC: UIViewController {
     
-    let userDefault = UserDefaults.standard
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    //prevent Button image disappear in custom cell
+    var productLikesImg: [UIImage]?
     var productList: [Product]?
     
     var searchKeyword: String = ""
@@ -29,7 +31,7 @@ class SearchProductVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        guard let keyword = userDefault.string(forKey: "SearchKeyword") else {return}
+        guard let keyword = UserDefaults.standard.string(forKey: "SearchKeyword") else {return}
         searchKeyword = keyword
         sortingNew(keyword: searchKeyword)
     }
@@ -59,9 +61,11 @@ extension SearchProductVC: UICollectionViewDataSource {
         cell.productName.text =  product[indexPath.row].name
         cell.price.text = product[indexPath.row].price
         cell.productImg.imageFromUrl(product[indexPath.row].image_url, defaultImgPath: "")
+        
+        //likeBtn 구현부
         cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
         cell.likeBtn.tag = indexPath.row
-        
+        cell.likeBtn.setImage(productLikesImg?[indexPath.row], for: .normal)
         
         return cell
     }
@@ -82,14 +86,17 @@ extension SearchProductVC: UICollectionViewDataSource {
         
         //1) 상품 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
-            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
             unlike(idx: productIdx)
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
+            productLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
         }
             
         //2)상품 좋아요가 작동하는 부분
         else {
-            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
             like(idx: productIdx)
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            productLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
+            
             
         }
         
@@ -162,6 +169,7 @@ extension SearchProductVC {
     func sortingNew(keyword: String){
         SearchProductService.shared.showSearchProductNew(keyword: keyword) { (res) in
             guard let status = res.status else {return}
+            
             if status == 200 {
                 if res.data == nil {
                     self.noResultView.isHidden = false
@@ -171,16 +179,28 @@ extension SearchProductVC {
                     self.noResultView.isHidden = true
                     self.collectionView.isHidden = false
                 }
+                
+                self.productList = res.data
+                self.productLikesImg = []
+                for product in res.data! {
+                    let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                    self.productLikesImg?.append(likeImg)
+                }
+                self.collectionView.reloadData()
+                
             }
-            self.productList = res.data
-            self.collectionView.reloadData()
-            
+           
         }
     }
     
     func sortingPopular(keyword: String){
         SearchProductService.shared.showSearchProductPopular(keyword: keyword) { (res) in
             self.productList = res.data
+            self.productLikesImg = []
+            for product in res.data! {
+                let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                self.productLikesImg?.append(likeImg)
+            }
             self.collectionView.reloadData()
         }
     }

@@ -16,8 +16,10 @@ class LikeProductVC: UIViewController {
     @IBOutlet weak var tabbarHeight: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    //prevent Button image disappear in custom cell
+    var productLikesImg: [UIImage]?
     var productLikeList: [Product]?
-    var likesImage: [UIImage] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +35,7 @@ class LikeProductVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         productListInit()
-        self.collectionView.reloadData()
+
         
     }
    
@@ -84,10 +86,12 @@ extension LikeProductVC: UICollectionViewDataSource{
             cell.brandName.text = product.name_korean
             cell.productName.text = product.name
             cell.price.text = product.price
-        }
-            cell.likeBtn.tag = indexPath.row
-            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            
             cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
+            cell.likeBtn.tag = indexPath.row
+            cell.likeBtn.setImage(productLikesImg?[indexPath.row], for: .normal)
+           
+        }
         
             return cell
     }
@@ -113,19 +117,18 @@ extension LikeProductVC {
         guard let idx = productLikeList?[sender.tag].idx else {return}
         
         //1 )상품 좋아요 취소가 작동하는 부분
-        if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             unlike(idx: idx)
+            productLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
         }
         
         //2) 상품 좋아요가 작동하는 부분
         else {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
             like(idx: idx)
-            
+            productLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
         }
-        
-        sender.setImage(likesImage[sender.tag], for: .normal)
         
     }
 }
@@ -173,7 +176,11 @@ extension LikeProductVC{
                 if value.data == nil { self.productLikeList = nil}
                 else{
                     self.productLikeList = value.data
-                    self.likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: value.data?.count ?? 0)
+                    self.productLikesImg = []
+                    for product in value.data! {
+                        let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                        self.productLikesImg?.append(likeImg)
+                    }
                     self.collectionView.reloadData()
                 }
             default:

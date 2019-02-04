@@ -16,8 +16,9 @@ class LikeBrandVC: UIViewController{
     @IBOutlet weak var tabbarHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
+    //prevent Button image disappear in custom cell
+    var brandLikesImg: [UIImage]?
     var brandLikeList: [Brand]?
-    var likesImage: [UIImage] = []
     @IBOutlet weak var likeBrandNumb: UILabel!
     
     override func viewDidLoad() {
@@ -76,7 +77,7 @@ extension LikeBrandVC: UITableViewDelegate, UITableViewDataSource{
             cell.brandImg.imageFromUrl(brands.logo_url!, defaultImgPath: "")
             cell.brandName.text = brands.name_english
             cell.likeBtn.tag = indexPath.row
-            cell.likeBtn.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+            cell.likeBtn.setImage(brandLikesImg?[indexPath.row], for: .normal)
             cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
             
         }
@@ -109,20 +110,21 @@ extension LikeBrandVC {
         guard let idx = brandLikeList?[sender.tag].idx else {return}
         
         //1) 브랜드 좋아요 취소가 작동하는 부분
-        if likesImage[sender.tag] == #imageLiteral(resourceName: "icLikeFull") {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
+        if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
             unlike(idx: idx)
+            brandLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeLine")
+            sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
         }
             
-        //2 )브랜드 좋아요가 작동하는 부분
+        //2) 브랜드 좋아요가 작동하는 부분
         else {
-            likesImage[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
             like(idx: idx)
+            brandLikesImg?[sender.tag] = #imageLiteral(resourceName: "icLikeFull")
+            sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
         }
         
-        sender.setImage(likesImage[sender.tag], for: .normal)
-        
     }
+    
 }
 
 extension LikeBrandVC: IndicatorInfoProvider{
@@ -144,10 +146,13 @@ extension LikeBrandVC{
                 if value.data == nil { self.brandLikeList = nil}
                 else{
                     self.brandLikeList = value.data
-                    self.likesImage = [UIImage](repeating: #imageLiteral(resourceName: "icLikeFull"), count: value.data?.count ?? 0)
+                    self.brandLikesImg = []
+                    for brand in value.data! {
+                        let likeImg = brand.likeFlag == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                        self.brandLikesImg?.append(likeImg)
+                    }
+                    self.tableView.reloadData()
                 }
-                self.tableView.reloadData()
-                
             default:
                 break
             }
