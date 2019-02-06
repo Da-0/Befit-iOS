@@ -13,14 +13,22 @@ import UIKit
 class SettingVC: UIViewController {
     
     let userDefault = UserDefaults.standard
+    @IBOutlet weak var autoSwitch: UISwitch!
+    var autoLogin: Bool?
+    var tempID: String?
+    var tempPW: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        autoLogin = userDefault.bool(forKey: "autoLogin")
+        print(userDefault.string(forKey: "id"))
+        print(userDefault.string(forKey: "pw"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        autoSwitch.isOn = userDefault.bool(forKey: "autoLogin")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -29,18 +37,41 @@ class SettingVC: UIViewController {
     }
     
     @IBAction func switchBtn(_ sender: UISwitch) {
-        if sender.isOn == true
-        {
-            print("자동로그인 ON!")
-        }
-        else{
-            print("자동로그인 OFF!")
-            userDefault.removeObject(forKey: "pw")
-            userDefault.removeObject(forKey: "id")
-        }
+        autoLogin = sender.isOn
+        userDefault.set(autoLogin, forKey: "autoLogin")
+        print("자동로그인 \(autoLogin)")
     }
     
     @IBAction func backBtn(_ sender: Any) {
+        
+        if autoLogin!{
+            
+            if let tempid = userDefault.string(forKey: "tempid") {
+                print(tempid)
+                userDefault.set(tempid, forKey: "id")
+                userDefault.removeObject(forKey: "tempid")
+            }
+            if let temppw = userDefault.string(forKey: "temppw") {
+                print(temppw)
+                userDefault.set(temppw, forKey: "pw")
+                userDefault.removeObject(forKey: "temppw")
+            }
+           
+        }
+        else {
+            if let id = userDefault.string(forKey: "id"){
+                userDefault.set(id, forKey: "tempid")
+                userDefault.removeObject(forKey: "id")
+            }
+            if let pw = userDefault.string(forKey: "pw") {
+                userDefault.set(pw, forKey: "temppw")
+                userDefault.removeObject(forKey: "pw")
+            }
+          
+            
+        }
+        
+        userDefault.synchronize()
         self.dismiss(animated: true, completion: nil)
     }
     

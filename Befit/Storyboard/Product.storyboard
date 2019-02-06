@@ -581,21 +581,6 @@ befit에서 제공하는 상품정보 및 가격은 쇼핑몰과 일치하지
             </objects>
             <point key="canvasLocation" x="1037.5999999999999" y="124.8768472906404"/>
         </scene>
-        <!--LoadVC-->
-        <scene sceneID="eFC-zi-SKm">
-            <objects>
-                <viewController storyboardIdentifier="LoadVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xSo-Uf-Va6" customClass="LoadVC" customModule="Befit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5jI-MN-uuh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="V8Q-sU-fqZ"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="iAl-dU-fq5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="66" y="882"/>
-        </scene>
     </scenes>
     <resources>
         <image name="icClothesPlus" width="24" height="24"/>

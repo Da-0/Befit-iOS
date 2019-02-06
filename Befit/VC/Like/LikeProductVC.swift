@@ -82,7 +82,7 @@ extension LikeProductVC: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
         
         if let product = productLikeList?[indexPath.row] {
-            cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
+            cell.productImg.imageFromUrl2(product.image_url, defaultImgPath: "")
             cell.brandName.text = product.name_korean
             cell.productName.text = product.name
             cell.price.text = product.price

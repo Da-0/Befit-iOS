@@ -38,7 +38,7 @@ class PWSettingVC: UIViewController {
     
     
     @IBAction func passwordRegex(_ sender: Any) {
-        if let check = newPWTF.text?.validationEmail() {
+        if let check = newPWTF.text?.validationPassword() {
             passwordNoticeLB.textColor = check ? #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) : #colorLiteral(red: 0.4784313725, green: 0.2117647059, blue: 0.8941176471, alpha: 1)
         }
     }
@@ -64,11 +64,29 @@ class PWSettingVC: UIViewController {
         if (newPWTF.text?.isEmpty)! || (newPWCKTF.text?.isEmpty)! {
             simpleAlert(title: "경고", message: "모든 항목을 입력해 주십시오.")
         }
-        if passwordNoticeLB.textColor != #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) && !disagreeLB.isHidden {
-            simpleAlert(title: "경고", message: "패스워드가 불일치 합니다.")
-        }
         
-        passwordSet(idx: userIdx!, pw: newPWTF.text!)
+        let pwRegex = passwordNoticeLB.textColor == #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5)
+        let correct = disagreeLB.isHidden
+        
+        switch (pwRegex, correct) {
+            case (true, true) :
+                 passwordSet(idx: userIdx!, pw: newPWTF.text!)
+            case (false , _) :
+                 simpleAlert(title: "Error", message: "비밀번호를 형식에 맞게 설정해 주세요.")
+            case (_, false):
+                 simpleAlert(title: "Error", message: "비밀번호가 불일치 합니다.")
+           
+            default: return
+        }
+//        if passwordNoticeLB.textColor != #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5) && !disagreeLB.isHidden {
+//            simpleAlert(title: "경고", message: "패스워드가 불일치 합니다.")
+//        }
+//
+//        if passwordNoticeLB.textColor == #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 0.5)  && disagreeLB.isHidden {
+//
+//        }
+        
+       
     }
     
     

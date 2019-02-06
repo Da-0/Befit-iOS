@@ -53,12 +53,18 @@ extension SearchVC : UISearchControllerDelegate, UISearchResultsUpdating,UISearc
         
         guard let searchKeyword = searchBar.text else {return}
         userDefault.set(searchKeyword, forKey: "SearchKeyword")
+        
         self.view.endEditing(true)
         self.searchController.searchBar.showsCancelButton = false
-        
+     
         firstView.isHidden = true
         secondView.isHidden = false
         
+        let searchVC2 = Storyboard.shared().search.instantiateViewController(withIdentifier: "SearchVC2") as! SearchVC2
+        searchVC2.updateSearchResults(for: searchController)
+//        let vc = Storyboard.shared().search.instantiateViewController(withIdentifier: "SearchProductVC") as! SearchProductVC
+//        vc.sortingNew(keyword: searchKeyword)
+        NotificationCenter.default.post(name: Notification.Name("searchEnd"), object: nil)
         
     }
     

@@ -12,6 +12,8 @@ import UIKit
 
 class UserInfoAdminVC: UIViewController {
     
+    var keyboardDismissGesture : UITapGestureRecognizer?
+    
     @IBOutlet weak var completeBtn: UIBarButtonItem!
     var textComplete = false
 
@@ -40,6 +42,7 @@ class UserInfoAdminVC: UIViewController {
         detailAddress.delegate = self;
         phoneNumber.delegate = self;
         completeBtn.isEnabled = false;
+        setKeyboardSetting()
         network()
     }
     
@@ -123,8 +126,8 @@ class UserInfoAdminVC: UIViewController {
 
 }
 
-
-extension UserInfoAdminVC: UITextFieldDelegate {
+//MARK: - 키보드 대응 및 뷰 탭
+extension UserInfoAdminVC: UITextFieldDelegate, UIGestureRecognizerDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -134,6 +137,35 @@ extension UserInfoAdminVC: UITextFieldDelegate {
         textField.resignFirstResponder()
         self.view.endEditing(true)
         return true
+    }
+    
+    func setKeyboardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: true)
+        self.view.frame.origin.y = -120
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+        self.view.frame.origin.y = 0
+    }
+    
+    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
+        if isKeyboardVisible {
+            if keyboardDismissGesture == nil {
+                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
+                view.addGestureRecognizer(keyboardDismissGesture!)
+            }
+        } else {
+            if keyboardDismissGesture != nil {
+                view.removeGestureRecognizer(keyboardDismissGesture!)
+                keyboardDismissGesture = nil
+            }
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -149,6 +181,17 @@ extension UserInfoAdminVC: UITextFieldDelegate {
         }
         
     }
+    
+    
+    @objc func tapBackground() {
+        self.view.endEditing(true)
+    }
+    
+  
+    
+ 
+    
+ 
 
 }
 

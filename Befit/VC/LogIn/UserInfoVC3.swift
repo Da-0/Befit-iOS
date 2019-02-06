@@ -190,7 +190,8 @@ extension UserInfoVC3: UIPickerViewDelegate,UIPickerViewDataSource{
         bar.sizeToFit()
         
         let doneButton = UIBarButtonItem(title: "확인", style: .done, target: self, action: #selector(selectedPicker))
-        bar.setItems([doneButton], animated: true)
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        bar.setItems([flexible, doneButton], animated: true)
         
         textField.addTarget(self, action: #selector(selectedPicker), for: .touchUpInside)
         textField.delegate = self;

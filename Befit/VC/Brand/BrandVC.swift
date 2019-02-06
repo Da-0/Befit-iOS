@@ -78,12 +78,12 @@ extension BrandVC: UICollectionViewDataSource{
             productVC.brandInfo = brandInfo
         }
             
-            //중간부 클릭시 브랜드의 자체 페이지로 이동
+        //중간부 클릭시 브랜드의 자체 페이지로 이동
         else if indexPath.section == 1 {
             productVC.productInfo = productInfo
         }
             
-            //하단부 클릭시 상품의 페이지몰로 이동
+        //하단부 클릭시 상품의 페이지몰로 이동
         else {
             guard let product = productList?[indexPath.row] else {return}
             productVC.productInfo = product
@@ -108,7 +108,7 @@ extension BrandVC: UICollectionViewDataSource{
             cell1.brandNameKoreanLB.text = brandInfo?.name_korean
             
             cell1.brandLikeBtn.addTarget(self, action: #selector(clickBLike(_:)), for: .touchUpInside)
-          
+            
             cell1.brandLikeBtn.setImage(brandLikeImg, for: .normal)
             
             return cell1
@@ -122,7 +122,7 @@ extension BrandVC: UICollectionViewDataSource{
             
             //브랜드의 선택한 상품
             if let pInfo = productInfo  {
-                cell2.productImg.imageFromUrl(pInfo.image_url, defaultImgPath: "")
+                cell2.productImg.imageFromUrl2(pInfo.image_url, defaultImgPath: "")
                 cell2.productBrand.text = brandInfo?.name_korean
                 cell2.productName.text = pInfo.name
                 cell2.price.text = pInfo.price
@@ -151,7 +151,7 @@ extension BrandVC: UICollectionViewDataSource{
             cell3.brandName.text = productList?[indexPath.row].name_korean
             cell3.productName.text = productList?[indexPath.row].name
             cell3.price.text = productList?[indexPath.row].price
-            cell3.productImg.imageFromUrl(productList?[indexPath.row].image_url, defaultImgPath: "")
+            cell3.productImg.imageFromUrl2(productList?[indexPath.row].image_url, defaultImgPath: "")
             
             //likeBtn 구현부
             cell3.likeBtn.addTarget(self, action: #selector(clickPLike(_:)), for: .touchUpInside)
@@ -176,15 +176,20 @@ extension BrandVC: UICollectionViewDataSource{
     
     func brandInfoInit(){
         
+        //이 부분을 수정해야함 **********************************
         if let brand = brandInfo {
-            brandLikeImg = brand.likeFlag == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+            print(brand)
+            if brand.brandLike != nil {brandLikeImg = brand.brandLike == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")}
+            if brand.likeFlag != nil {brandLikeImg = brand.likeFlag == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")}
         }
         
         if let bProduct = productInfo{
             bProductLikeImg = bProduct.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+    
         }
         
         self.collectionView.reloadData()
+       
     }
     
     
@@ -204,17 +209,18 @@ extension BrandVC {
         
         //1) 브랜드 좋아요 취소가 작동하는 부분
         if sender.imageView?.image == #imageLiteral(resourceName: "icLikeFull") {
+            unlikeB(idx: idx)
             brandLikeImg = #imageLiteral(resourceName: "icLikeLine")
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
-            unlikeB(idx: idx)
+        
         }
             
         //2) 브랜드 좋아요가 작동하는 부분
         else {
+            likeB(idx: idx)
             brandLikeImg = #imageLiteral(resourceName: "icLikeFull")
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
-            likeB(idx: idx)
-    
+          
         }
         
     }
@@ -229,6 +235,7 @@ extension BrandVC {
             unlikeP(idx: idx)
             bProductLikeImg = #imageLiteral(resourceName: "icLikeLine")
             sender.setImage(#imageLiteral(resourceName: "icLikeLine"), for: .normal)
+          
         }
             
             //2) 상품 좋아요가 작동하는 부분
@@ -236,6 +243,7 @@ extension BrandVC {
             likeP(idx: idx)
             bProductLikeImg = #imageLiteral(resourceName: "icLikeFull")
             sender.setImage(#imageLiteral(resourceName: "icLikeFull"), for: .normal)
+         
         }
         
     }
@@ -260,10 +268,7 @@ extension BrandVC {
         }
         
     }
-    
-    
-  
-    
+
 }
 
 

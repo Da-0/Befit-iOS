@@ -113,7 +113,7 @@ extension SizeInfoVC2 : UICollectionViewDataSource {
         }
         else {
             cell1.delegate = self;
-            cell1.productImg.imageFromUrl(closet[indexPath.row].image_url!, defaultImgPath: "")
+            cell1.productImg.imageFromUrl2(closet[indexPath.row].image_url!, defaultImgPath: "")
             cell1.brandName.text = closet[indexPath.row].name_korean
             cell1.productName.text = closet[indexPath.row].name
 

@@ -23,6 +23,7 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("SearchVC2 ViewWillAppear!")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,13 +42,38 @@ class SearchVC2: ButtonBarPagerTabStripViewController  {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController]{
-        
+        print("호출!!")
         let child1 = Storyboard.shared().search.instantiateViewController(withIdentifier: "SearchProductVC") as! SearchProductVC
         let child2 = Storyboard.shared().search.instantiateViewController(withIdentifier: "SearchBrandVC") as! SearchBrandVC
         
         return [child1, child2]
     }
     
+    
+//    func setObserver() {
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//     
+//    }
+//    
+//    @objc func keyboardWillShow(_ notification: Notification) {
+//        adjustKeyboardDismissGesture(isKeyboardVisible: true)
+//        self.view.frame.origin.y = -120
+//    }
+//    
+//    @objc func keyboardWillHide(_ notification: Notification) {
+//        adjustKeyboardDismissGesture(isKeyboardVisible: false)
+//        self.view.frame.origin.y = 0
+//    }
+    
+//    
+//    func adjustKeyboardDismissGesture(isKeyboardVisible: Bool) {
+//        if isKeyboardVisible {
+//            if keyboardDismissGesture == nil {
+//                keyboardDismissGesture = UITapGestureRecognizer(target: self, action: #selector(tapBackground))
+//                view.addGestureRecognizer(keyboardDismissGesture!)
+//            }
+//        }
+//    }
     
     func configureButtonBar() {
         
@@ -88,6 +114,12 @@ extension SearchVC2 : UISearchControllerDelegate, UISearchResultsUpdating,UISear
     
     func updateSearchResults(for searchController: UISearchController) {
         print("hello world!")
+//        let vc2 = Storyboard.shared().search.instantiateViewController(withIdentifier: "SearchBrandVC") as! SearchBrandVC
+//        moveTo(viewController: vc2)
+        
+       
+      
+       
     }
     
 }

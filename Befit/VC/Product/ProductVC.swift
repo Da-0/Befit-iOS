@@ -42,7 +42,7 @@ class ProductVC: UIViewController, WKNavigationDelegate {
         aniView.frame = bodyMove.frame
         aniView.contentMode = .scaleAspectFill
         aniView.autoReverseAnimation = true
-        aniView.animationSpeed = 1
+        aniView.animationSpeed = 1.5
         self.lottieView.addSubview(aniView)
         aniView.loopAnimation = true
         aniView.play()
@@ -52,12 +52,17 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationBar.topItem?.title = productInfo?.name_English
+       
         
         //1) 브랜드 홈페이지 보여주는 경우
         if brandInfo != nil {
+             navigationBar.topItem?.title = brandInfo?.name_english
+            
             if let link = brandInfo?.link {
-                self.request(url: link)
+                
+                let str_url = link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                self.request(url: str_url!)
+                print("\n브랜드 페이지 url = " + "http://" + str_url!)
             }
             sizeCheckBtn.isEnabled = false
             sizeCheckBtn.image = nil
@@ -66,9 +71,13 @@ class ProductVC: UIViewController, WKNavigationDelegate {
             
         //2) 상품 페이지를 보야주는 경우
         else if productInfo != nil {
+            navigationBar.topItem?.title = productInfo?.name_English
+            
             if let link = productInfo?.link {
-                self.request(url: "https://" + link)
-                print("\n상품 페이지 url = " + "https://" + link)
+                let str_url = link.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)
+                self.request(url: "http://" + str_url!)
+                print("\n상품 페이지 url = " + "http://" + str_url!)
+            
             }
         }
         
@@ -81,6 +90,7 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     // 현재 webView에서 받아온 URL 페이지를 로드한다.
     func request(url: String) {
         self.webView?.load(URLRequest(url: URL(string: url)!))
+       
     }
     
     // 뒤로가기 버튼
@@ -104,6 +114,21 @@ class ProductVC: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
          print("didFinish")
+//        lottieView.isHidden = true
+//        if brandInfo == nil {
+//            sizeCheckBtn.isEnabled = true
+//            sizeCheckBtn.image = #imageLiteral(resourceName: "sizeCheckButton")
+//        }
+//        aniView.stop()
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("Start!")
+        animate()
+    }
+
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        print("Commit!")
         lottieView.isHidden = true
         if brandInfo == nil {
             sizeCheckBtn.isEnabled = true
@@ -112,12 +137,6 @@ class ProductVC: UIViewController, WKNavigationDelegate {
         aniView.stop()
     }
     
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("Start!")
-        animate()
-    }
-   
-
     
 }
 

@@ -25,6 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SideMenuController.preferences.basic.supportedOrientations = .portrait
         
         Thread.sleep(forTimeInterval: 2.0)
+            
+        let userDefault = UserDefaults.standard
+        
+        if userDefault.object(forKey: "firstTime") == nil {
+                userDefault.set("No", forKey:"firstTime")
+                userDefault.synchronize()
+        
+                let descVC = Storyboard.shared().login.instantiateViewController(withIdentifier: "DescriptionVC") as! DescriptionVC
+                self.window?.rootViewController = descVC
+                self.window?.makeKeyAndVisible()
+            }
         
         return true
     }

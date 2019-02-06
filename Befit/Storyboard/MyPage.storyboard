@@ -256,7 +256,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="187" height="280"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dCe-hu-EGR">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dCe-hu-EGR">
                                                     <rect key="frame" x="0.0" y="0.0" width="187" height="182"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="182" id="Lhz-xh-sRU"/>
@@ -804,7 +804,7 @@
                                     <constraint firstAttribute="height" constant="1" id="Z5A-TH-ywk"/>
                                 </constraints>
                             </view>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wEN-qf-3za">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wEN-qf-3za">
                                 <rect key="frame" x="302" y="106" width="51" height="31"/>
                                 <color key="onTintColor" red="0.47843137254901957" green="0.21176470588235294" blue="0.89411764705882346" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
@@ -864,6 +864,7 @@
                         <viewLayoutGuide key="safeArea" id="gUC-DY-QC0"/>
                     </view>
                     <connections>
+                        <outlet property="autoSwitch" destination="wEN-qf-3za" id="hI4-2Y-TKc"/>
                         <segue destination="BDl-Ib-hcY" kind="unwind" identifier="GoToLogin" unwindAction="unwind:" id="sHw-QP-DNH"/>
                     </connections>
                 </viewController>
@@ -1114,7 +1115,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRw-Ug-bgL">
                                 <rect key="frame" x="0.0" y="44" width="375" height="44"/>

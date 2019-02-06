@@ -122,7 +122,7 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
                 
                 guard let presentedVC = self.storyboard!.instantiateViewController(withIdentifier: "CategoryDetailVC") as? CategoryDetailVC else {return}
                 presentedVC.genderIdx = sections
-                presentedVC.categoryIdx = tableData[sections].items[rows-1].idx
+                presentedVC.categoryIdx = tableData[sections].items[rows-1].index
                 presentedVC.categoryName = tableData[sections].items[rows-1].title
                 
                 self.dismissJudge = true
@@ -138,6 +138,19 @@ extension CategoryVC: UITableViewDelegate, UITableViewDataSource{
             tableData[sections].open = true
             let section = IndexSet.init(integer: sections)
             tableView.reloadSections(section, with: .automatic)
+            
+            if sections == 0 &&  tableData[sections + 1].open == true {
+                tableData[sections + 1].open = false
+                tableView.reloadSections(IndexSet.init(integer: 1), with: .automatic)
+            }
+          
+            if sections == 1 && tableData[sections - 1].open == true {
+                tableData[sections - 1].open = false
+                tableView.reloadSections(IndexSet.init(integer: 0), with: .automatic)
+            }
+            
+            
+           
     
         }
     }

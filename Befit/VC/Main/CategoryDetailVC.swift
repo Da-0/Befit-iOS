@@ -104,7 +104,7 @@ extension CategoryDetailVC: UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProductCVCell", for: indexPath) as! ProductCVCell
         guard let product = productList?[indexPath.row] else {return cell}
         
-        cell.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
+        cell.productImg.imageFromUrl2(product.image_url, defaultImgPath: "")
         cell.brandName.text = product.name_korean
         cell.productName.text = product.name
         cell.price.text = product.price
