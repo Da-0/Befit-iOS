@@ -19,7 +19,7 @@ class DescriptionVC: UIViewController, UIScrollViewDelegate {
     var enterBtn: UIButton = {
         let btn = UIButton()
         btn.setImage(#imageLiteral(resourceName: "startButton"), for: .normal)
-        btn.addTarget(self, action: #selector(downBtnTapped), for: .touchUpInside)
+        btn.addTarget(self, action: #selector(startBtnTabbed), for: .touchUpInside)
         return btn
     }()
     
@@ -50,7 +50,8 @@ class DescriptionVC: UIViewController, UIScrollViewDelegate {
             scrollView.addSubview(imageView)
             
             if i == 3 {
-                enterBtn.frame = CGRect(x:1249, y:650, width:127, height:36)
+                //enterBtn.frame = CGRect(x:1249, y:650, width:127, height:36)
+                enterBtn.frame = CGRect(x:1249, y:  550 , width:120, height: 30)
                 scrollView.addSubview(enterBtn)
             }
             
@@ -63,7 +64,7 @@ class DescriptionVC: UIViewController, UIScrollViewDelegate {
     
     
 
-    @objc func downBtnTapped (){
+    @objc func startBtnTabbed (){
         let loginVC = Storyboard.shared().login.instantiateViewController(withIdentifier: "LogInVC") as! LogInVC
 
         self.present(loginVC, animated: true, completion: nil)
