@@ -12,13 +12,10 @@ struct Category {
 
     let title: String
     let image: UIImage?
-    let idx: Int
+    let index: Int
     
-    init( title: String, image: UIImage?, index: Int) {
-        self.image = image
-        self.title = title
-        self.idx = index
-    }
+  
+    
     
     static func allmen() -> [Category] {
         return [

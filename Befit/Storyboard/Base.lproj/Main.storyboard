@@ -118,7 +118,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="01S-5o-JzX">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="01S-5o-JzX">
                                 <rect key="frame" x="55" y="0.0" width="320" height="812"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -514,13 +514,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="188" height="256"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testImage" translatesAutoresizingMaskIntoConstraints="NO" id="QSQ-j1-HIR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="188" height="188"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="188" id="3JX-eg-dAv"/>
-                                                        <constraint firstAttribute="width" constant="188" id="RPk-K1-hah"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="브랜드명" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NkL-7r-usa">
                                                     <rect key="frame" x="14" y="200" width="148" height="12"/>
                                                     <constraints>
@@ -539,22 +532,28 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HXY-1E-uDV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="188" height="186"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="186" id="qU6-3Y-u0o"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="QLC-3q-Sr8" firstAttribute="leading" secondItem="bvY-Qu-utv" secondAttribute="leading" constant="14" id="7v2-Er-3MM"/>
-                                            <constraint firstItem="NkL-7r-usa" firstAttribute="top" secondItem="QSQ-j1-HIR" secondAttribute="bottom" constant="12" id="9Ev-2t-myY"/>
+                                            <constraint firstAttribute="trailing" secondItem="HXY-1E-uDV" secondAttribute="trailing" id="9YI-EB-V1A"/>
                                             <constraint firstAttribute="trailing" secondItem="NkL-7r-usa" secondAttribute="trailing" constant="26" id="N7t-wJ-OCH"/>
                                             <constraint firstItem="NkL-7r-usa" firstAttribute="leading" secondItem="bvY-Qu-utv" secondAttribute="leading" constant="14" id="Oal-f7-NxH"/>
-                                            <constraint firstItem="QSQ-j1-HIR" firstAttribute="top" secondItem="bvY-Qu-utv" secondAttribute="top" id="QLP-a4-jqf"/>
                                             <constraint firstItem="QLC-3q-Sr8" firstAttribute="top" secondItem="NkL-7r-usa" secondAttribute="bottom" constant="4" id="QYS-MC-nN9"/>
-                                            <constraint firstItem="QSQ-j1-HIR" firstAttribute="leading" secondItem="bvY-Qu-utv" secondAttribute="leading" id="Rpu-wl-itQ"/>
-                                            <constraint firstAttribute="trailing" secondItem="QSQ-j1-HIR" secondAttribute="trailing" id="bGU-AB-xbG"/>
+                                            <constraint firstItem="HXY-1E-uDV" firstAttribute="top" secondItem="bvY-Qu-utv" secondAttribute="top" id="az1-Rh-Xr4"/>
+                                            <constraint firstItem="NkL-7r-usa" firstAttribute="top" secondItem="HXY-1E-uDV" secondAttribute="bottom" constant="14" id="dEG-lX-UnJ"/>
+                                            <constraint firstItem="HXY-1E-uDV" firstAttribute="leading" secondItem="bvY-Qu-utv" secondAttribute="leading" id="dHi-ev-os8"/>
                                         </constraints>
                                         <size key="customSize" width="188" height="256"/>
                                         <connections>
                                             <outlet property="brandName" destination="NkL-7r-usa" id="WE4-0M-oTx"/>
-                                            <outlet property="productImg" destination="QSQ-j1-HIR" id="uIg-n4-ROy"/>
+                                            <outlet property="productImg" destination="HXY-1E-uDV" id="uwn-Y4-xU5"/>
                                             <outlet property="productName" destination="QLC-3q-Sr8" id="CKb-az-Up0"/>
                                         </connections>
                                     </collectionViewCell>
@@ -972,6 +971,5 @@ AAAAAAAAAAAALHU
         <image name="hambugerBar" width="36" height="36"/>
         <image name="icLikeLine" width="34" height="34"/>
         <image name="tabHome" width="25.333333969116211" height="24.666666030883789"/>
-        <image name="testImage" width="139" height="142"/>
     </resources>
 </document>
