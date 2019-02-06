@@ -12,8 +12,10 @@
 import UIKit
 import XLPagerTabStrip
 
-class SearchBrandVC: UITableViewController {
+class SearchBrandVC: UIViewController {
 
+    @IBOutlet weak var noResultView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     let userDefault = UserDefaults.standard
     
     var searchBrandList:[Brand]? = []
@@ -21,7 +23,15 @@ class SearchBrandVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self;
+        tableView.dataSource = self;
         tableView.tableFooterView = UIView()
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(searchListen), name: Notification.Name(rawValue: "searchEnd"), object: nil)
+    }
+    
+    @objc func searchListen(){
+        viewWillAppear(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,25 +40,32 @@ class SearchBrandVC: UITableViewController {
         searchKeyword = keyword
         searchBrnad(keyword: searchKeyword)
     }
-    
+  
+}
+
+
+extension SearchBrandVC: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table view data source
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let brand = searchBrandList else { return 0 }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let brand = searchBrandList else {
+            noResultView.isHidden = false
+            return 0
+        }
         return brand.count
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let brandVC  = Storyboard.shared().brand.instantiateViewController(withIdentifier: "BrandVC")as! BrandVC
         brandVC.brandInfo = searchBrandList?[indexPath.row]
         self.navigationController?.pushViewController(brandVC, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchBrandTVCell", for: indexPath) as! SearchBrandTVCell
         guard let brand = searchBrandList else {return cell}
@@ -60,9 +77,12 @@ class SearchBrandVC: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
+    
+    
 }
 
 extension SearchBrandVC: IndicatorInfoProvider{
@@ -77,6 +97,12 @@ extension SearchBrandVC {
     func searchBrnad(keyword: String) {
         SearchBrandService.shared.showSearchBrand(keyword: keyword) { (res) in
             self.searchBrandList = res.data
+            if res.data != nil {
+                self.noResultView.isHidden = true
+            }
+            else{
+                self.noResultView.isHidden = false
+            }
             self.tableView.reloadData()
         }
     }

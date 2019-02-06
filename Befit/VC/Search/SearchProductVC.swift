@@ -13,6 +13,7 @@ import XLPagerTabStrip
 
 class SearchProductVC: UIViewController {
     
+    @IBOutlet weak var noResultView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     //prevent Button image disappear in custom cell
@@ -21,8 +22,7 @@ class SearchProductVC: UIViewController {
     
     var searchKeyword: String = ""
     
-    @IBOutlet weak var noResultView: UIView!
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self;
@@ -31,13 +31,12 @@ class SearchProductVC: UIViewController {
     }
     
     @objc func searchListen(){
-        print("LISTEN!!!")
         viewWillAppear(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("여깄지롱2!!")
+
         guard let keyword = UserDefaults.standard.string(forKey: "SearchKeyword") else {return}
         searchKeyword = keyword
         sortingNew(keyword: searchKeyword)
