@@ -26,14 +26,28 @@ class MainVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
+        
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
+    
+        if UserDefaults.standard.bool(forKey: "autoLogin") {
+            ToastView.shared.long(self.view, txt_msg: "자동 로그인이 되었습니다.")
+        }
     }
     
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         network()
         collectionView.reloadData()
     }
     
+    // refreshControl이 돌아갈 때 일어나는 액션
+    @objc func reloadData(_ sender: UIRefreshControl) {
+        self.network()
+        collectionView.reloadData()
+        sender.endRefreshing()
+    }
     func network(){
         
         //1) 브랜드 추천 호출
@@ -124,7 +138,8 @@ extension MainVC: UICollectionViewDelegate, UICollectionViewDataSource {
         else  {
             let cell3 = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCVCell3", for: indexPath) as! MainCVCell3
             let product = recommendProduct[indexPath.row]
-                cell3.productImg.imageFromUrl(product.image_url, defaultImgPath: "")
+                cell3.productImg.imageFromUrl2(product.image_url, defaultImgPath: "")
+               
                 cell3.brandName.text = product.name_English
                 cell3.productName.text = product.name
             return cell3

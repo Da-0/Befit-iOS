@@ -22,6 +22,7 @@ struct Brand : Mappable {
     var logo_url : String?
     var mainpage_url : String?
     var mainfeed_url : String?
+    var brandLike: Int?
     var likeFlag : Int?
     var products: [Product]?
     
@@ -30,7 +31,7 @@ struct Brand : Mappable {
     }
     
     mutating func mapping(map: Map) {
-        
+    
         idx <- map["idx"]
         name_korean <- map["name_korean"]
         name_english <- map["name_english"]
@@ -42,8 +43,10 @@ struct Brand : Mappable {
         logo_url <- map["logo_url"]
         mainpage_url <- map["mainpage_url"]
         mainfeed_url <- map["mainfeed_url"]
+        brandLike <- map["brand_like"]
         likeFlag <- map["likeFlag"]
         products <- map["products"]
+        
         
     }
     

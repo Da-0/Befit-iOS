@@ -56,7 +56,7 @@ class MySizeVC: UIViewController {
             guard let data = res.data else {return}
             
             //기본정보 (이미지, 이름, 사이즈)
-            self.productImg.imageFromUrl(data.image_url!, defaultImgPath: "")
+            self.productImg.imageFromUrl2(data.image_url!, defaultImgPath: "")
             self.brandName.text = data.name_english
             self.productName.text = data.name
             self.size.text = data.product_size

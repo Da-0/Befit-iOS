@@ -303,7 +303,7 @@ extension SizeInfoVC3: ProductVCDelegate {
         
         self.productInformation = value
         
-        self.CproductImg.imageFromUrl(value.image_url!, defaultImgPath: "")
+        self.CproductImg.imageFromUrl2(value.image_url!, defaultImgPath: "")
         self.CproductName.text = value.name
         self.productName = value.name
         self.productIdx = value.idx
