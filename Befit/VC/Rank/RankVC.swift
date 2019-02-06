@@ -20,8 +20,6 @@ class RankVC: UIViewController {
         tableView.delegate = self;
         tableView.dataSource = self;
         
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,17 +27,8 @@ class RankVC: UIViewController {
         brandListInit() 
         
     }
-
-    // refreshControl이 돌아갈 때 일어나는 액션
-    @objc func reloadData(_ sender: UIRefreshControl) {
-        self.brandListInit()
-        tableView.reloadData()
-        sender.endRefreshing()
-    }
+    
 }
-
-
-
 
 
 extension RankVC: UITableViewDelegate, UITableViewDataSource {
