@@ -10,7 +10,7 @@
 
 import UIKit
 
-class LogInVC: UIViewController, APIManager {
+class LogInVC: UIViewController {
     
     let userDefault = UserDefaults.standard
 
@@ -18,7 +18,8 @@ class LogInVC: UIViewController, APIManager {
     @IBOutlet weak var pwTF: UITextField!
     @IBOutlet weak var switchBtn: UISwitch!
     
-     var keyboardDismissGesture : UITapGestureRecognizer?
+    var keyboardDismissGesture : UITapGestureRecognizer?
+    var autoLogin = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,9 @@ class LogInVC: UIViewController, APIManager {
         switchBtn.transform = CGAffineTransform(scaleX: 0.63, y: 0.63)
         
         if let uid = userDefault.string(forKey: "id"), let upw = userDefault.string(forKey: "pw"){
-            login(email: uid, pw: upw)
+            if userDefault.bool(forKey: "autoLogin") {
+                login(email: uid, pw: upw)
+            }
             
         }
     }
@@ -42,7 +45,12 @@ class LogInVC: UIViewController, APIManager {
             simpleAlert(title: "로그인 실패", message: "모든 항목을 입력해 주세요")
             return
         }
-         login(email: emailTF.text!, pw: pwTF.text!)
+        
+     
+        userDefault.set(emailTF.text!, forKey: "id")
+        userDefault.set(pwTF.text!, forKey: "pw")
+        userDefault.set(autoLogin, forKey: "autoLogin")
+        login(email: emailTF.text!, pw: pwTF.text!)
         
     }
     
@@ -53,20 +61,12 @@ class LogInVC: UIViewController, APIManager {
 
 
     @IBAction func autoLogin(_ sender: UISwitch) {
-        if sender.isOn {
-            print("자동로그인 켰습니다!")
-            userDefault.set(emailTF.text!, forKey: "id")
-            userDefault.set(pwTF.text!, forKey: "pw")
-        }
-        else{
-            print("자동로그인 껐습니다!")
-            userDefault.removeObject(forKey: "id")
-            userDefault.removeObject(forKey: "pw")
-        }
+            autoLogin = sender.isOn
+            print("자동로그인 \(autoLogin)")
+    
     }
     
-    
-    
+
     
     
 }
