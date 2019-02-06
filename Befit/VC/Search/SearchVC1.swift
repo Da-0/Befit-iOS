@@ -23,11 +23,12 @@ class SearchVC1: UIViewController {
         initSNCollection()
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(reloadData(_:)), for: .valueChanged)
+        initproductList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        initproductList()
+       
         
     }
     
@@ -59,7 +60,7 @@ extension SearchVC1: UICollectionViewDelegate,UICollectionViewDataSource, UIColl
         
         let product = searchProductList[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCVCell", for: indexPath) as! SearchCVCell
-        cell.productImg.imageFromUrl(product.image_url!, defaultImgPath: "")
+        cell.productImg.imageFromUrl2(product.image_url!, defaultImgPath: "")
         
         return cell
     }

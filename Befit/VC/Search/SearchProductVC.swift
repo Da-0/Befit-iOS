@@ -27,10 +27,17 @@ class SearchProductVC: UIViewController {
         super.viewDidLoad()
         collectionView.delegate = self;
         collectionView.dataSource = self;
+        NotificationCenter.default.addObserver(self, selector: #selector(searchListen), name: Notification.Name(rawValue: "searchEnd"), object: nil)
+    }
+    
+    @objc func searchListen(){
+        print("LISTEN!!!")
+        viewWillAppear(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("여깄지롱2!!")
         guard let keyword = UserDefaults.standard.string(forKey: "SearchKeyword") else {return}
         searchKeyword = keyword
         sortingNew(keyword: searchKeyword)
@@ -60,7 +67,7 @@ extension SearchProductVC: UICollectionViewDataSource {
         cell.brandName.text = product[indexPath.row].name_korean
         cell.productName.text =  product[indexPath.row].name
         cell.price.text = product[indexPath.row].price
-        cell.productImg.imageFromUrl(product[indexPath.row].image_url, defaultImgPath: "")
+        cell.productImg.imageFromUrl2(product[indexPath.row].image_url, defaultImgPath: "")
         
         //likeBtn 구현부
         cell.likeBtn.addTarget(self, action: #selector(clickLike(_:)), for: .touchUpInside)
@@ -168,9 +175,14 @@ extension SearchProductVC {
     
     func sortingNew(keyword: String){
         SearchProductService.shared.showSearchProductNew(keyword: keyword) { (res) in
+            
+            
             guard let status = res.status else {return}
             
+            print(status)
+            
             if status == 200 {
+                
                 if res.data == nil {
                     self.noResultView.isHidden = false
                     self.collectionView.isHidden = true
@@ -180,16 +192,20 @@ extension SearchProductVC {
                     self.collectionView.isHidden = false
                 }
                 
-                self.productList = res.data
-                self.productLikesImg = []
-                for product in res.data! {
-                    let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
-                    self.productLikesImg?.append(likeImg)
-                }
-                self.collectionView.reloadData()
-                
             }
-           
+            
+                self.productList = res.data
+            
+                if let data = res.data {
+                    self.productLikesImg = []
+                    for product in data {
+                        let likeImg = product.product_like == 1 ? #imageLiteral(resourceName: "icLikeFull") : #imageLiteral(resourceName: "icLikeLine")
+                        self.productLikesImg?.append(likeImg)
+                    }
+                }
+            
+                self.collectionView.reloadData()
+            
         }
     }
     
@@ -236,3 +252,5 @@ extension SearchProductVC {
     
     
 }
+
+
