@@ -62,7 +62,7 @@ class ChangeBrandVC: UIViewController {
             switch Idx {
 
                 case 17:
-                    btnArray[0].isSelected = true; break;
+                     btnArray[0].isSelected = true; break;
                 case 12:
                      btnArray[1].isSelected = true; break;
                 case 2,18:
@@ -109,6 +109,7 @@ class ChangeBrandVC: UIViewController {
                 sender.isSelected = false
                 self.appendRemoveIdx(false, sender.tag)
             }
+            
         }
         else {
             

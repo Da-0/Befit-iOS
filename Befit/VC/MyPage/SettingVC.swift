@@ -21,8 +21,6 @@ class SettingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         autoLogin = userDefault.bool(forKey: "autoLogin")
-        print(userDefault.string(forKey: "id"))
-        print(userDefault.string(forKey: "pw"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,10 +37,7 @@ class SettingVC: UIViewController {
     @IBAction func switchBtn(_ sender: UISwitch) {
         autoLogin = sender.isOn
         userDefault.set(autoLogin, forKey: "autoLogin")
-        print("자동로그인 \(autoLogin)")
-    }
-    
-    @IBAction func backBtn(_ sender: Any) {
+        print("자동로그인 \(autoLogin!)")
         
         if autoLogin!{
             
@@ -56,7 +51,7 @@ class SettingVC: UIViewController {
                 userDefault.set(temppw, forKey: "pw")
                 userDefault.removeObject(forKey: "temppw")
             }
-           
+            
         }
         else {
             if let id = userDefault.string(forKey: "id"){
@@ -67,11 +62,16 @@ class SettingVC: UIViewController {
                 userDefault.set(pw, forKey: "temppw")
                 userDefault.removeObject(forKey: "pw")
             }
-          
+            
             
         }
         
         userDefault.synchronize()
+    }
+    
+    @IBAction func backBtn(_ sender: Any) {
+        
+        
         self.dismiss(animated: true, completion: nil)
     }
     
