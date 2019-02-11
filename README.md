@@ -10,7 +10,7 @@
 
 **[Work Flow]**
 
-![workflow](https://github.com/SOPT23-Befit/Befit-iOS/blob/master/publicData/workflow_befit.pdf)
+![workflow](https://github.com/SOPT23-Befit/Befit-iOS/blob/master/publicData/workflow_befit.png)
 
 
 ## ✏️ Features
